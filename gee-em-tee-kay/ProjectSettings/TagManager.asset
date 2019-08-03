@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collider
   - Stacker
+  - PlantPot
   layers:
   - Default
   - TransparentFX
