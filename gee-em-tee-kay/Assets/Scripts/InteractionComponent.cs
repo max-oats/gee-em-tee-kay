@@ -6,12 +6,19 @@ public class InteractionComponent : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided");
-        if (other.gameObject.tag != "PlantPot")
+        if (other.transform.parent.gameObject.tag != "PlantPot")
         {
             return;
         }
+        Debug.Log("Enter Plant Pot!");
+    }
 
-        Debug.Log("Plant Pot!");
+    void OnTriggerExit(Collider other)
+    {
+        if (other.transform.parent.gameObject.tag != "PlantPot")
+        {
+            return;
+        }
+        Debug.Log("Exit Plant Pot!");
     }
 }
