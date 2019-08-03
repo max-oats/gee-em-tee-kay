@@ -6,6 +6,7 @@ public class Global : MonoBehaviour
 {
     public CamController camController;
     public DialogueHandler diaHandler;
+    public DayManager theDayManager;
 
     public static Rewired.Player input;
     public static Global instance;
@@ -26,9 +27,7 @@ public class Global : MonoBehaviour
 
             cameraController = camController;
             dialogueHandler = diaHandler;
-
-            // Grab daymanager
-            //dayManager = GameObject.Find("DayManager").GetComponent<DayManager>();
+            dayManager = theDayManager;
         }
     }
 
