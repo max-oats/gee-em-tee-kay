@@ -10,6 +10,8 @@ public class Flower : MonoBehaviour
     public Vector3 nextEndPointTEST;
 
     public float segmentOffsetIncrease;
+    public float initialMultiplier;
+    public float multiplierIncrement;
 
     private List<FlowerSection> sections;
     private float time = 0;
@@ -29,13 +31,13 @@ public class Flower : MonoBehaviour
 
         time += Time.deltaTime;
         float offset = 0;
-        float multiplier = 0.2f;
+        float multiplier = initialMultiplier;
         float segmentOffset = 0f;
         foreach (FlowerSection section in sections)
         {
             section.startPointOffset = offset;
             offset = multiplier * Mathf.Sin(time +segmentOffset);
-            multiplier += 0.1f;
+            multiplier += multiplierIncrement;
             segmentOffset += segmentOffsetIncrease;
             section.endPointOffset = offset;
         }
