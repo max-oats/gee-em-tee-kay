@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public GameObject stemSectionPrefab;
-    public StemSection initialSection;
+    public Vector3 nextEndPointOffsetTEST;
 
-    public Vector3 nextEndPointTEST;
-
+    [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private float segmentOffsetIncrease;
     [SerializeField] private float initialMultiplier;
     [SerializeField] private float multiplierIncrement;
@@ -24,6 +22,21 @@ public class Plant : MonoBehaviour
     void Start()
     {
         sections = new List<StemSection>();
+    }
+
+    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Texture2D inStemMaterial, Vector3 inRootPosition)
+    {
+        FlowerPrefab = inFlowerPrefab;
+        FlowerHue = inFlowerHue;
+        LeafPrefab = inLeafPrefab;
+        StemMaterial = inStemMaterial;
+        // TODO use Material for Stem
+
+        StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
+        initialSection.endPoint = inRootPosition;
+        initialSection.endTangent = inRootPosition - new Vector3(0,1,0);
+        initialSection.startTangent = inRootPosition - new Vector3(0,2,0);
+        initialSection.startPoint = inRootPosition - new Vector3(0,3,0);
         sections.Add(initialSection);
     }
 
@@ -31,15 +44,21 @@ public class Plant : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            AddSection(nextEndPointTEST);
+            AddSection(nextEndPointOffsetTEST);
         }
 
         time += Time.deltaTime;
         float offset = 0;
         float multiplier = initialMultiplier;
         float segmentOffset = 0f;
+        bool first = true;
         foreach (StemSection section in sections)
         {
+            if (first)
+            {
+                first = false;
+                continue;
+            }
             section.startPointOffset = offset;
             offset = multiplier * Mathf.Sin(time +segmentOffset);
             multiplier += multiplierIncrement;
@@ -48,7 +67,7 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPoint)
+    public void AddSection(Vector3 endPointOffset)
     {
         if (sections.Count == 0)
         {
@@ -58,7 +77,7 @@ public class Plant : MonoBehaviour
         StemSection lastSection = sections[sections.Count-1];
         StemSection newSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
         Vector3 p0 = lastSection.endPoint;
-        Vector3 p3 = endPoint;
+        Vector3 p3 = p0 + endPointOffset;
         Vector3 d = (p0 - lastSection.endTangent).normalized;
         float scale = (p3 - p0).magnitude / 3;
         Vector3 p1 = p0 + scale * d;
