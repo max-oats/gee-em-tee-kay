@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class InteractionComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
+        Debug.Log("Collided");
+        if (other.gameObject.tag != "PlantPot")
+        {
+            return;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Plant Pot!");
     }
 }
