@@ -11,6 +11,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private float initialMultiplier;
     [SerializeField] private float multiplierIncrement;
 
+    [SerializeField] private Transform WindowLocation;
+
     private GameObject FlowerPrefab;
     private float FlowerHue;
     private GameObject LeafPrefab;
