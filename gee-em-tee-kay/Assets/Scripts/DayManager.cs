@@ -9,11 +9,14 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int DaysWithWaterToBeDrowning;
     [SerializeField] private int TooMuchLightThreshold;
     [SerializeField] private int NotEnoughLightThreshold;
+    [SerializeField] private int DaysConversedForNeitherAnswer;
+    [SerializeField] private int DaysConversedForBothAnswer;
 
     [SerializeField] private int InitialHealth;
     [SerializeField] private int HealthPenaltyForWater;
     [SerializeField] private int HealthPenaltyForLight;
     [SerializeField] private int HealthRewardForGoodDay;
+    [SerializeField] private int HealthRewardForTalkingToday;
 
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
@@ -57,6 +60,12 @@ public class DayManager : MonoBehaviour
             persistentData.GeneralHealth += HealthRewardForGoodDay;
         }
 
+        if (transientData.HaveConversedToday)
+        {
+            persistentData.DaysConversed++;
+            persistentData.GeneralHealth += HealthRewardForTalkingToday;
+        }
+
         transientData = new PlantHealthTransientData();
     }
 
@@ -92,10 +101,12 @@ public class PlantHealthPersistentData
     public int DaysNotWateredStreak = 0;
     public int AccumulatedLight = 0;
     public int GeneralHealth;
+    public int DaysConversed = 0;
 }
 
 public class PlantHealthTransientData
 {
     public bool WasWateredToday = false;
     public int LightGettingToday = 0;
+    public bool HaveConversedToday = false;
 }
