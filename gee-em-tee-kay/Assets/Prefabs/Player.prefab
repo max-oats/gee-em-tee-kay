@@ -49,6 +49,11 @@ MonoBehaviour:
   groundSpeed: 5
   jumpPower: 0
   gravity: -9.8
+  rotationSmoother:
+    smoothTime: 0.1
+    defaultDesired: 0
+    angleSmooth: 1
+    defaultDesiredVector: {x: 0, y: 0, z: 0}
 --- !u!114 &8945416016642556368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70090926
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalRotation.z
@@ -108,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.71325046
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_RootOrder
@@ -120,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -138,6 +143,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3570421bc8f60a8419692847471ab645, type: 2}
     - target: {fileID: 13700020, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

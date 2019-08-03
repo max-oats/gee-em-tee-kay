@@ -17,16 +17,20 @@ public class PlayerController : MonoBehaviour
     public float jumpPower; /** Jump impulse */
     public float gravity; /** Gravity default */
 
+    public SmoothDamper rotationSmoother;
+
     /** ----- Private variables ----- */
     private const float onGroundSpeedY = -1f; /** The initial fall speed */
     private float speedY = onGroundSpeedY; /** The default vertical speed */
     private Vector3 localInput;
     private State state;
     private Entity entity;
+    private Animator animator;
 
     void Awake()
     {
         entity = GetComponent<Entity>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
         UpdateInput();
 
         UpdateMovement();
+
+        UpdateFacing();
     }
 
     private void UpdateInput()
@@ -44,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
         // Normalize magnitude
         localInput = Vector3.ClampMagnitude(input, 1.0f);
+
+        animator.SetFloat("Move.Velocity", localInput.magnitude);
     }
 
     private void UpdateMovement()
@@ -129,6 +137,19 @@ public class PlayerController : MonoBehaviour
                 SetState(State.JumpFall);
             }
         }
+    }
+
+    private void UpdateFacing()
+    {
+        // Update desired angle
+        if (localInput.magnitude > 0.05f)
+        {
+            rotationSmoother.SetDesired(Vector3.SignedAngle(Vector3.forward, localInput, Vector3.up));
+        }
+
+        // Rotate player
+        Vector3 eulerAngles = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(eulerAngles.x, rotationSmoother.Smooth(), eulerAngles.z);
     }
 
     private void SetState(State newState)
