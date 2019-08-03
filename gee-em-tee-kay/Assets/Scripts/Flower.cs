@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
-    public GameObject flowerSectionPrefab;
-    public FlowerSection initialSection;
+    public GameObject stemSectionPrefab;
+    public StemSection initialSection;
 
     public Vector3 nextEndPointTEST;
 
-    public float segmentOffsetIncrease;
-    public float initialMultiplier;
-    public float multiplierIncrement;
+    [SerializeField] private float segmentOffsetIncrease;
+    [SerializeField] private float initialMultiplier;
+    [SerializeField] private float multiplierIncrement;
 
-    private List<FlowerSection> sections;
+
+    private List<StemSection> sections;
     private float time = 0;
 
     void Start()
     {
-        sections = new List<FlowerSection>();
+        sections = new List<StemSection>();
         sections.Add(initialSection);
     }
 
@@ -33,7 +34,7 @@ public class Flower : MonoBehaviour
         float offset = 0;
         float multiplier = initialMultiplier;
         float segmentOffset = 0f;
-        foreach (FlowerSection section in sections)
+        foreach (StemSection section in sections)
         {
             section.startPointOffset = offset;
             offset = multiplier * Mathf.Sin(time +segmentOffset);
@@ -50,8 +51,8 @@ public class Flower : MonoBehaviour
             return;
         }
 
-        FlowerSection lastSection = sections[sections.Count-1];
-        FlowerSection newSection = Instantiate(flowerSectionPrefab, transform).GetComponent<FlowerSection>();
+        StemSection lastSection = sections[sections.Count-1];
+        StemSection newSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
         Vector3 p0 = lastSection.endPoint;
         Vector3 p3 = endPoint;
         Vector3 d = (p0 - lastSection.endTangent).normalized;

@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(FlowerSection))]
-public class FlowerSectionEditor : Editor
+[CustomEditor(typeof(StemSection))]
+public class StemSectionEditor : Editor
 {
     private void OnSceneViewGUI(SceneView sv)
     {
-        FlowerSection fs = target as FlowerSection;
+        StemSection fs = target as StemSection;
 
         fs.startPoint = Handles.PositionHandle(fs.startPoint, Quaternion.identity);
         fs.endPoint = Handles.PositionHandle(fs.endPoint, Quaternion.identity);

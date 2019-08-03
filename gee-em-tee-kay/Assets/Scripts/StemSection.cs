@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [RequireComponent(typeof(LineRenderer))]
-public class FlowerSection : MonoBehaviour
+public class StemSection : MonoBehaviour
 {
     public float height;
     public Vector3 startPoint;
