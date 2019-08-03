@@ -8,16 +8,19 @@ public class PlayerController : MonoBehaviour
     {
         Ground,
         Jump,
-        JumpFall
+        JumpFall,
     }
 
     /** ----- Balancing variables ----- */
     public float groundSpeed; /** The ground movement speed */
+    public float carryingSpeed; /** The carrying movement speed */
     
     public float jumpPower; /** Jump impulse */
     public float gravity; /** Gravity default */
 
     public SmoothDamper rotationSmoother;
+
+    public ParticleSystem sweatParticles;
 
     /** ----- Private variables ----- */
     private const float onGroundSpeedY = -1f; /** The initial fall speed */
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private State state;
     private Entity entity;
     private Animator animator;
+    private bool bIsCarrying = false;
 
     void Awake()
     {
@@ -40,7 +44,35 @@ public class PlayerController : MonoBehaviour
 
         UpdateMovement();
 
+        UpdateInteract();
+
         UpdateFacing();
+    }
+
+    private void UpdateInteract()
+    {
+        if (Global.input.GetButtonDown("Interact"))
+        {
+            SetCarrying(!bIsCarrying);
+        }
+    }
+
+    private void SetCarrying(bool onOff)
+    {
+        bIsCarrying = onOff;
+
+        if (bIsCarrying)
+        {
+            animator.CrossFadeInFixedTime("HeavyWalk", 0.1f);
+            ParticleSystem.EmissionModule em = sweatParticles.emission;
+            em.enabled = true;
+        }
+        else
+        {
+            animator.CrossFadeInFixedTime("IdleWalk", 0.1f);
+            ParticleSystem.EmissionModule em = sweatParticles.emission;
+            em.enabled = false;
+        }
     }
 
     private void UpdateInput()
@@ -61,7 +93,11 @@ public class PlayerController : MonoBehaviour
         Vector3 toPos = fromPos;
 
         // Calculate horizontal movement vector
-        Vector3 move = Time.deltaTime * groundSpeed * localInput;
+        Vector3 move;
+        if (!bIsCarrying)
+            move = Time.deltaTime * groundSpeed * localInput;
+        else
+            move = Time.deltaTime * carryingSpeed * localInput;
 
         /** ----- HORIZONTAL ----- */
         // If there is a movement input, attempt to move

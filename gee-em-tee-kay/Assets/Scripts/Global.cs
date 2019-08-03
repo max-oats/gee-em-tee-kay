@@ -6,6 +6,7 @@ public class Global : MonoBehaviour
 {
     public static Rewired.Player input;
     public static Global instance;
+    public static DayManager dayManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -17,6 +18,9 @@ public class Global : MonoBehaviour
 
             // Initialize Input
             input = Rewired.ReInput.players.GetPlayer("Player0");
+
+            // Grab daymanager
+            //dayManager = GameObject.Find("DayManager").GetComponent<DayManager>();
         }
     }
 
