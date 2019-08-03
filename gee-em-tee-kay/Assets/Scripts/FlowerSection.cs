@@ -14,6 +14,9 @@ public class FlowerSection : MonoBehaviour
 
     public LineRenderer lineRenderer;
 
+    public float startPointOffset = 0;
+    public float endPointOffset = 0;
+
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
 
@@ -34,12 +37,12 @@ public class FlowerSection : MonoBehaviour
 
     void DrawCurve()
     {
-        for (int i = 1; i <= SEGMENT_COUNT; i++)
+        for (int i = 0; i <= SEGMENT_COUNT; i++)
         {
             float t = i / (float)SEGMENT_COUNT;
-            Vector3 pixel = CalculateCubicBezierPoint(t, startPoint, startTangent, endTangent, endPoint);
-            lineRenderer.positionCount = i;
-            lineRenderer.SetPosition(i - 1, pixel);
+            Vector3 pixel = CalculateCubicBezierPoint(t, startPoint + new Vector3(startPointOffset,0,0), startTangent + new Vector3(startPointOffset,0,0), endTangent + new Vector3(endPointOffset,0,0), endPoint + new Vector3(endPointOffset,0,0));
+            lineRenderer.positionCount = i+1;
+            lineRenderer.SetPosition(i, pixel);
         }
     }
 
