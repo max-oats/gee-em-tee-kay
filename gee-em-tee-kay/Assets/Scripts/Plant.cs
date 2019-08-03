@@ -37,6 +37,7 @@ public class Plant : MonoBehaviour
         initialSection.endTangent = inRootPosition - new Vector3(0,1,0);
         initialSection.startTangent = inRootPosition - new Vector3(0,2,0);
         initialSection.startPoint = inRootPosition - new Vector3(0,3,0);
+        initialSection.gameObject.GetComponent<LineRenderer>().enabled = false;
         sections.Add(initialSection);
     }
 

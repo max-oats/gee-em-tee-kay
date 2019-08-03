@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2742773790090652148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59993434, y: 0.2987225, z: -1.7806134}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf477d852cca487fa0265288cd9f2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextEndPointTEST: {x: 0, y: 0, z: 0}
+  nextEndPointOffsetTEST: {x: 0, y: 0, z: 0}
   stemSectionPrefab: {fileID: 307330046233775394, guid: 481002490aa85465cb461412d707e5c7,
     type: 3}
-  segmentOffsetIncrease: 0
-  initialMultiplier: 0
-  multiplierIncrement: 0
+  segmentOffsetIncrease: -0.1
+  initialMultiplier: 0.2
+  multiplierIncrement: 0.1
