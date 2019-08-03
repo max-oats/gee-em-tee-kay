@@ -43,13 +43,14 @@ public class Plant : MonoBehaviour
         sections.Add(initialSection);
     }
 
+    public void AddSectionsForDay()
+    {
+        // TODO Implement
+        Debug.Log("Adding Sections for Day");
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AddSection(nextEndPointOffsetTEST);
-        }
-
         time += Time.deltaTime;
         float offset = 0;
         float multiplier = initialMultiplier;

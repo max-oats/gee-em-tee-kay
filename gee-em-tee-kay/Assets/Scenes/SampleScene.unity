@@ -5356,6 +5356,7 @@ MonoBehaviour:
   FlowerPrefabOptions: []
   StemTextureOptions: []
   FlowerOriginOffset: {x: 0, y: 0.5, z: 0}
+  PlantName: 
 --- !u!4 &1256197213
 Transform:
   m_ObjectHideFlags: 0
@@ -5847,6 +5848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22fea1d7ff4d544fbd0bc7a38456ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Plant: {fileID: 1557597305}
   TotalNumDays: 5
   DaysWithoutWaterToBeThirsty: 1
   DaysWithWaterToBeDrowning: 3

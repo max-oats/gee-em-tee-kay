@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
+    [SerializeField] private Plant Plant;
+
     [SerializeField] private int TotalNumDays;
     [SerializeField] private int DaysWithoutWaterToBeThirsty;
     [SerializeField] private int DaysWithWaterToBeDrowning;
@@ -28,8 +30,19 @@ public class DayManager : MonoBehaviour
         transientData = new PlantHealthTransientData();
     }
 
+    void Update()
+    {
+        // TODO Remove Debug code
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            EndDay();
+        }
+    }
+
     public void EndDay()
     {
+        Debug.Log("Ending Day");
+
         if (transientData.WasWateredToday)
         {
             persistentData.DaysWateredStreak++;
@@ -65,6 +78,8 @@ public class DayManager : MonoBehaviour
             persistentData.DaysConversed++;
             persistentData.GeneralHealth += HealthRewardForTalkingToday;
         }
+
+        Plant.AddSectionsForDay();
 
         transientData = new PlantHealthTransientData();
     }

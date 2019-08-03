@@ -12,14 +12,26 @@ public class PlantManager : MonoBehaviour
 
     [SerializeField] private Vector3 FlowerOriginOffset;
 
-    void Start()
+    [SerializeField] private string PlantName;
+    private bool HasStarted = false;
+
+    void Update()
     {
-        // TODO Call this when we get seed
-        CreatePlant(1);
+        //TODO Remove Debug code
+        if (HasStarted)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CreatePlant(PlantName.GetHashCode());
+        }
     }
 
     private void CreatePlant(int seed)
     {
+        Debug.Log("Creating Plant");
         Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemTexture(seed), Plant.transform.position + FlowerOriginOffset);
     }
 
