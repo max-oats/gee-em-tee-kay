@@ -13,6 +13,10 @@ public class Plant : MonoBehaviour
     [SerializeField] private float initialMultiplier;
     [SerializeField] private float multiplierIncrement;
 
+    private GameObject FlowerPrefab;
+    private float FlowerHue;
+    private GameObject LeafPrefab;
+    private Texture2D StemMaterial;
 
     private List<StemSection> sections;
     private float time = 0;
