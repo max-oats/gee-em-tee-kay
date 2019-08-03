@@ -9,12 +9,16 @@ ModelImporter:
     100006: Cube_002
     100008: Cylinder
     100010: Cylinder_001
+    100012: Cylinder_002
+    100014: Cylinder_003
     400000: //RootNode
     400002: Cube
     400004: Cube_001
     400006: Cube_002
     400008: Cylinder
     400010: Cylinder_001
+    400012: Cylinder_002
+    400014: Cylinder_003
     2100000: unnamed
     2100002: None__ColourAtlas_png
     2100004: MainMaterial__ColourAtlas_png
@@ -28,20 +32,31 @@ ModelImporter:
     2300006: Cube_002
     2300008: Cylinder
     2300010: Cylinder_001
+    2300012: Cylinder_002
+    2300014: Cylinder_003
     3300000: //RootNode
     3300002: Cube
     3300004: Cube_001
     3300006: Cube_002
     3300008: Cylinder
     3300010: Cylinder_001
+    3300012: Cylinder_002
+    3300014: Cylinder_003
     4300000: Cube
     4300002: Cube_001
     4300004: Cube_002
     4300006: Cylinder_001
     4300008: Cylinder
+    4300010: Cylinder_003
+    4300012: Cylinder_002
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainMaterial__MainTex_png
+    second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
