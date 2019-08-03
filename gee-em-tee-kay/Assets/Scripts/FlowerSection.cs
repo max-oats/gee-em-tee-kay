@@ -22,7 +22,7 @@ public class FlowerSection : MonoBehaviour
     {
         if (!lineRenderer)
         {
-            lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer = gameObject.GetComponent<LineRenderer>();
         }
         lineRenderer.sortingLayerID = layerOrder;
     }
