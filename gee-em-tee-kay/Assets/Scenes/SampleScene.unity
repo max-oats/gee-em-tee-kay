@@ -283,6 +283,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+    - target: {fileID: 400012, guid: 696535d558ca49c4e8ce91ae4038f0c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 696535d558ca49c4e8ce91ae4038f0c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 696535d558ca49c4e8ce91ae4038f0c2, type: 3}
 --- !u!4 &647770862 stripped
@@ -5485,7 +5493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5493,7 +5501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5501,11 +5509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_RootOrder
@@ -5535,6 +5543,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63c3336a62ad0ad48bcb78393eb73b3d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
 --- !u!4 &2094030317 stripped
@@ -5657,7 +5669,7 @@ PrefabInstance:
     - target: {fileID: 1613103414783073677, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.379
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 1613103413806348287, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
@@ -5841,6 +5853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0.18222676
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826054485671145429, guid: 647c2826553fbea4ea67bbff76243fba,
+        type: 3}
+      propertyPath: field of view
+      value: 84.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 647c2826553fbea4ea67bbff76243fba, type: 3}
