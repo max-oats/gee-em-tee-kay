@@ -1,44 +1,14 @@
 fileFormatVersion: 2
-guid: 696535d558ca49c4e8ce91ae4038f0c2
+guid: d6e5cba49e608f4459d04d37d7cc9fac
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube
-    100004: Cube_001
-    100006: Cube_002
-    100008: Cylinder
-    100010: Cylinder_001
     400000: //RootNode
-    400002: Cube
-    400004: Cube_001
-    400006: Cube_002
-    400008: Cylinder
-    400010: Cylinder_001
-    2100000: unnamed
-    2100002: None__ColourAtlas_png
-    2100004: MainMaterial__ColourAtlas_png
-    2100006: WoodMaterial__ColourAtlas_png
-    2100008: MainMaterial__MainTex_png
-    2100010: None__MainTex_png
-    2100012: Masked
+    2100000: MainMaterial__MainTex_png
     2300000: //RootNode
-    2300002: Cube
-    2300004: Cube_001
-    2300006: Cube_002
-    2300008: Cylinder
-    2300010: Cylinder_001
     3300000: //RootNode
-    3300002: Cube
-    3300004: Cube_001
-    3300006: Cube_002
-    3300008: Cylinder
-    3300010: Cylinder_001
-    4300000: Cube
-    4300002: Cube_001
-    4300004: Cube_002
-    4300006: Cylinder_001
-    4300008: Cylinder
+    4300000: Plane
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
