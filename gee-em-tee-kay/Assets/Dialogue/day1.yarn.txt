@@ -1,7 +1,16 @@
 title: Day1.Intro
 tags:
 ---
-Player: hmmm.
+Player: cool.
+Player: the moving van isn't bringing the furniture for another \w5 days\w.
+Player: and the apartment comes with\d002.\d002.\d002. a plant pot.
+Player: cool.
+===
+
+title: Day1.Talk
+tags:
+---
 Player: ...
-Player: i'm not gonna talk to you, you know.
+Player: i'm not gonna talk to you,\d002 you know.
+Player: \d002.\d002.\d002.she used to talk to plants.
 ===

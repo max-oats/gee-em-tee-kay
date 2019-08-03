@@ -30,14 +30,14 @@ public class CamController : MonoBehaviour
 
         if (Global.dialogueHandler.inDialogue)
         {
-            cameraYSmoother.SetDesired(dialogueUpBoost);
+            cameraYSmoother.SetDesired(playerToFollow.position.z / closenessToCenter);
         }
         else
         {
             cameraYSmoother.SetDesired(0.0f);
         }
         
-        transform.position = transform.position + (transform.up * cameraYSmoother.Smooth());
+        transform.position = transform.position + (transform.forward * cameraYSmoother.Smooth());
 
         // Add screenshake
         Vector2 screenShake = Random.insideUnitCircle;

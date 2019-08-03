@@ -106,11 +106,11 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         DialogueString dialogueString = new DialogueString(stringContents);
         dialogueString.AddLineBreaks(lineLength);
 
-        speechBubbleHandler.mainBubble.SetSize((dialogueString.lineLength * letterWidth) + widthPadding, (dialogueString.noOfLines * letterHeight) + heightPadding);
+        speechBubbleHandler.mainBubble.SetSize((dialogueString.lineLength * letterWidth) + widthPadding*2f, (dialogueString.noOfLines * letterHeight) + heightPadding*2f);
 
         // Create objects
-        float tempXLocation = 0f;
-        float tempYLocation = 0f;
+        float tempXLocation = Global.dialogueHandler.defaultInset.x;
+        float tempYLocation = Global.dialogueHandler.defaultInset.y;
         foreach (DialogueCharacter dc in dialogueString.dialogue)
         {
             float delay = textSpeed;
@@ -126,7 +126,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             {
                 // Update Y location
                 tempYLocation -= Global.dialogueHandler.letterHeight;
-                tempXLocation = 0f;
+                tempXLocation = Global.dialogueHandler.defaultInset.x;
             }
 
             yield return new WaitForSeconds(delay * delayTimeMultiplier);

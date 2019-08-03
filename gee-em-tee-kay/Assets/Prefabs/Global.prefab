@@ -139,7 +139,7 @@ MonoBehaviour:
   overrideLanguage: 10
   variableStorage: {fileID: 1193051569}
   dialogueUI: {fileID: 1193051568}
-  startNode: Day2.Intro
+  startNode: Day1.Intro
   startAutomatically: 1
   automaticCommands: 1
 --- !u!114 &1193051569
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPfb: {fileID: 9172904301534774897, guid: 7df07f65ac57bc044b62b7f6af2b1374, type: 3}
-  textSpeed: 0.1
+  textSpeed: 0.05
   speedyTextMultiplier: 0.3
   defaultInset: {x: 0, y: 0}
   heightPadding: 20
@@ -377,6 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613103414316031209}
   - component: {fileID: 1613103414316031208}
+  - component: {fileID: 2032892916}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -416,6 +417,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camController: {fileID: 0}
   diaHandler: {fileID: 1193051568}
+  theDayManager: {fileID: 2032892916}
+  potPositions:
+  - {x: -2.16, y: -1, z: 0.61}
+  - {x: 0, y: -1, z: 0.61}
+  - {x: 2.16, y: -1, z: 0.61}
+  - {x: -2.16, y: -1, z: -2.125}
+  - {x: 0, y: -1, z: -2.125}
+  - {x: 2.16, y: -1, z: -2.125}
+  - {x: -2.16, y: -1, z: -4.68}
+  - {x: 0, y: -1, z: -4.68}
+  - {x: 2.16, y: -1, z: -4.68}
+--- !u!114 &2032892916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613103414316031214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22fea1d7ff4d544fbd0bc7a38456ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Plant: {fileID: 0}
+  TotalNumDays: 5
+  DaysWithoutWaterToBeThirsty: 1
+  DaysWithWaterToBeDrowning: 3
+  TooMuchLightThreshold: 3
+  NotEnoughLightThreshold: 0
+  DaysConversedForNeitherAnswer: 0
+  DaysConversedForBothAnswer: 0
+  InitialHealth: 0
+  HealthPenaltyForWater: 0
+  HealthPenaltyForLight: 0
+  HealthRewardForGoodDay: 0
+  HealthRewardForTalkingToday: 0
 --- !u!1 &1613103414783073682
 GameObject:
   m_ObjectHideFlags: 0
