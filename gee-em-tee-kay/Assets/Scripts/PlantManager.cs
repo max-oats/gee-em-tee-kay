@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowerManager : MonoBehaviour
+public class PlantManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> LeafPrefabOptions;
     [SerializeField] private List<GameObject> FlowerPrefabOptions;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flower : MonoBehaviour
+public class Plant : MonoBehaviour
 {
     public GameObject stemSectionPrefab;
     public StemSection initialSection;
