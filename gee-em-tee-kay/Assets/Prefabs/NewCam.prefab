@@ -139,7 +139,7 @@ MonoBehaviour:
     defaultDesiredVector: {x: 0, y: 0, z: 0}
   playerToFollow: {fileID: 0}
   closenessToCenter: 3
-  dialogueUpBoost: 3
+  dialogueUpBoost: 1
   screenShakeDamper:
     smoothTime: 0.1
     defaultDesired: 0
