@@ -18,8 +18,6 @@ public class Entity : MonoBehaviour
 	private int layerMaskObstruction;
 	private int layerMaskGround;
 
-	private int DialogueNodeIndex = 0;
-
 	private void Awake()
 	{
 		layerMaskObstruction = LayerMask.GetMask("Default", "Obstruction", "Character", "Collider", "Outline");
