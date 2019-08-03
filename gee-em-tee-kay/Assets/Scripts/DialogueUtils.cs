@@ -31,6 +31,8 @@ public class DialogueCharacter
     {
         textObject.text = character.ToString();
 
+        textObject.GetComponent<SpeechText>().Init(false);
+
         if (isBold)
             textObject.fontStyle = FontStyle.Bold;
 
