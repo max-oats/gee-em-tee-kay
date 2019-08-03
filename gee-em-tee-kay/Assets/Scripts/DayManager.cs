@@ -10,12 +10,53 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int TooMuchLightThreshold;
     [SerializeField] private int NotEnoughLightThreshold;
 
+    [SerializeField] private int InitialHealth;
+    [SerializeField] private int HealthPenaltyForWater;
+    [SerializeField] private int HealthPenaltyForLight;
+    [SerializeField] private int HealthRewardForGoodDay;
+
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
 
     void Start()
     {
         persistentData = new PlantHealthPersistentData();
+        persistentData.GeneralHealth = InitialHealth;
+        transientData = new PlantHealthTransientData();
+    }
+
+    public void EndDay()
+    {
+        if (transientData.WasWateredToday)
+        {
+            persistentData.DaysWateredStreak++;
+            persistentData.DaysNotWateredStreak = 0;
+        }
+        else
+        {
+            persistentData.DaysWateredStreak = 0;
+            persistentData.DaysNotWateredStreak++;
+        }
+
+        persistentData.AccumulatedLight += transientData.LightGettingToday;
+
+        bool HasBeenDamaged = false;
+        if (IsThirsty() || IsDrowning())
+        {
+            persistentData.GeneralHealth -= HealthPenaltyForWater;
+            HasBeenDamaged = true;
+        }
+        if (HasTooMuchLight() || HasNotEnoughLight())
+        {
+            persistentData.GeneralHealth -= HealthPenaltyForLight;
+            HasBeenDamaged = true;
+        }
+
+        if (!HasBeenDamaged)
+        {
+            persistentData.GeneralHealth += HealthRewardForGoodDay;
+        }
+
         transientData = new PlantHealthTransientData();
     }
 
@@ -50,6 +91,7 @@ public class PlantHealthPersistentData
     public int DaysWateredStreak = 0;
     public int DaysNotWateredStreak = 0;
     public int AccumulatedLight = 0;
+    public int GeneralHealth;
 }
 
 public class PlantHealthTransientData
