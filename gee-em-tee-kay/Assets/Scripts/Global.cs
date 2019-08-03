@@ -5,11 +5,13 @@ using UnityEngine;
 public class Global : MonoBehaviour
 {
     public CamController camController;
+    public DialogueHandler diaHandler;
 
     public static Rewired.Player input;
     public static Global instance;
     public static DayManager dayManager;
     public static CamController cameraController;
+    public static DialogueHandler dialogueHandler;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +25,7 @@ public class Global : MonoBehaviour
             input = Rewired.ReInput.players.GetPlayer("Player0");
 
             cameraController = camController;
+            dialogueHandler = diaHandler;
 
             // Grab daymanager
             //dayManager = GameObject.Find("DayManager").GetComponent<DayManager>();

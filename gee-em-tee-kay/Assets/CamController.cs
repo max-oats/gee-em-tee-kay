@@ -5,8 +5,10 @@ using UnityEngine;
 public class CamController : MonoBehaviour
 {
     public SmoothDamper cameraSmoother;
+    public SmoothDamper cameraYSmoother;
     public Transform playerToFollow;
     public float closenessToCenter = 3f;
+    public float dialogueUpBoost = 3f;
     public SmoothDamper screenShakeDamper;
 
     private Vector3 initialPosition;
@@ -25,6 +27,17 @@ public class CamController : MonoBehaviour
         cameraSmoother.SetDesired((playerX - initialPosition.x) / closenessToCenter);
 
         transform.position = new Vector3(cameraSmoother.Smooth(), initialPosition.y, initialPosition.z);
+
+        if (Global.dialogueHandler.inDialogue)
+        {
+            cameraYSmoother.SetDesired(dialogueUpBoost);
+        }
+        else
+        {
+            cameraYSmoother.SetDesired(0.0f);
+        }
+        
+        transform.position = transform.position + (transform.up * cameraYSmoother.Smooth());
 
         // Add screenshake
         Vector2 screenShake = Random.insideUnitCircle;
