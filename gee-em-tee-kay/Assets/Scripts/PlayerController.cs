@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public SmoothDamper rotationSmoother;
 
     public ParticleSystem sweatParticles;
+    
+    public GameObject stompParticle;
 
     /** ----- Private variables ----- */
     private const float onGroundSpeedY = -1f; /** The initial fall speed */
@@ -30,11 +32,15 @@ public class PlayerController : MonoBehaviour
     private Entity entity;
     private Animator animator;
     private bool bIsCarrying = false;
+    private InteractionComponent interactionComponent;
+    private Holder holder;
 
     void Awake()
     {
         entity = GetComponent<Entity>();
         animator = GetComponentInChildren<Animator>();
+        interactionComponent = GetComponent<InteractionComponent>();
+        holder = GetComponent<Holder>();
     }
 
     // Update is called once per frame
@@ -53,8 +59,56 @@ public class PlayerController : MonoBehaviour
     {
         if (Global.input.GetButtonDown("Interact"))
         {
-            SetCarrying(!bIsCarrying);
+            if (bIsCarrying)
+            {
+                PlacePot();
+                SetCarrying(false);
+            }
+            else if (interactionComponent.bIsAbleToInteract)
+            {
+                StartCoroutine(Interact());
+            }
         }
+    }
+
+    private IEnumerator Interact()
+    {
+        bool selectedOption = false;
+
+        while (!selectedOption)
+        {
+            SetCarrying(true);
+            holder.heldObject = GameObject.Find("Plant Pot");
+
+            selectedOption = true;
+
+            yield return null;
+        }
+    }
+
+    private void PlacePot()
+    {
+        float minDistance = 10000f;
+        Vector3 potPosition = holder.heldObject.transform.position;
+
+        Vector3 finalPos = Vector3.zero;
+        foreach (Vector3 v3 in Global.instance.potPositions)
+        {
+            float checkDistance = (potPosition - v3).magnitude;
+            
+            if (checkDistance < minDistance)
+            {
+                minDistance = checkDistance;
+                finalPos = v3;
+            }
+        }
+
+        holder.Drop(finalPos);
+
+        GameObject go = Instantiate(stompParticle, finalPos, Quaternion.identity);
+        Destroy(go, 1.0f);
+
+        Global.cameraController.ScreenShake(0.2f);
     }
 
     private void SetCarrying(bool onOff)

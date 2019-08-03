@@ -46,8 +46,8 @@ public class CamController : MonoBehaviour
         transform.position = transform.position + (transform.up*screenShake.y*multiplier) + (transform.right*screenShake.x*multiplier);
     }
 
-    public void ScreenShake()
+    public void ScreenShake(float strength = 0.1f)
     {
-        screenShakeDamper.SetCurrent(0.1f);
+        screenShakeDamper.SetCurrent(strength);
     }
 }

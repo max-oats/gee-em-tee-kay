@@ -40,4 +40,13 @@ public class Holder : MonoBehaviour
             heldObject.transform.Rotate(heldEuler, Space.Self);
         }
     }
+
+    public void Drop(Vector3 dropLocation)
+    {
+        Transform heldTransform = heldObject.transform;
+        heldObject = null;
+
+        heldTransform.position = dropLocation;
+        heldTransform.rotation = Quaternion.identity;
+    }
 }

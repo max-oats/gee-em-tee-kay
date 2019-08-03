@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class InteractionComponent : MonoBehaviour
 {
+    public bool bIsAbleToInteract = false;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.transform.parent.gameObject.tag != "PlantPot")
         {
             return;
         }
-        Debug.Log("Enter Plant Pot!");
+        
+        bIsAbleToInteract = true;
     }
 
     void OnTriggerExit(Collider other)
@@ -19,6 +22,7 @@ public class InteractionComponent : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Exit Plant Pot!");
+
+        bIsAbleToInteract = false;
     }
 }
