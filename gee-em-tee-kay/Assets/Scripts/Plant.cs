@@ -9,6 +9,7 @@ public class Plant : MonoBehaviour
 
     [SerializeField] private float MaxHorizontalDistance;
 
+    [SerializeField] private GameObject leafPrefab;
     [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private float maxHeightOfPlant;
     [SerializeField] private int maxNumberOfLeavesPerDay;
@@ -26,11 +27,13 @@ public class Plant : MonoBehaviour
     private Color StemColor;
 
     private List<StemSection> sections;
+    private List<Leaf> leaves;
     private float time = 0;
 
     void Start()
     {
         sections = new List<StemSection>();
+        leaves = new List<Leaf>();
     }
 
     public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
@@ -56,7 +59,7 @@ public class Plant : MonoBehaviour
         if (nextEndPointOffsetTEST != Vector3.zero)
         {
             // Debug
-            AddSection(nextEndPointOffsetTEST, sectionsToSplitIntoTEST);
+            AddSection(nextEndPointOffsetTEST, sectionsToSplitIntoTEST, false);
             return;
         }
 
@@ -67,6 +70,12 @@ public class Plant : MonoBehaviour
             return;
         }
 
+        if (dm.PlantIsDead())
+        {
+            SetColourBasedOnHealth(dm.CurrentHealthPercentage());
+            return;
+        }
+
         Vector3 ToNextPoint = GetMaxHorizontalMovement();
         ToNextPoint += new Vector3(0, dm.GetMaxHeightOfSection(), 0);
         if (dm.IsThirsty() || dm.IsDrowning())
@@ -74,7 +83,17 @@ public class Plant : MonoBehaviour
             ToNextPoint *= 0.5f;
         }
 
-        AddSection(ToNextPoint, 1);
+        bool shouldAddLeaves = dm.GetPlantProgressionDay() != 0;
+
+        int LeavesToAdd = 0;
+        if (shouldAddLeaves)
+        {
+            LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, dm.CurrentHealthPercentage());
+        }
+
+        AddSection(ToNextPoint, LeavesToAdd, dm.HasTooMuchLight());
+
+        SetColourBasedOnHealth(dm.CurrentHealthPercentage());
     }
 
     private Vector3 GetMaxHorizontalMovement()
@@ -118,6 +137,10 @@ public class Plant : MonoBehaviour
         {
             section.SetColour(Color.Lerp(StemColor, DeadColor, param));
         }
+        foreach(Leaf leaf in leaves)
+        {
+            leaf.SetColor(Color.Lerp(StemColor, DeadColor, param));
+        }
     }
 
     void Update()
@@ -142,12 +165,14 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPointOffset, int sectionsToSplitInto)
+    public void AddSection(Vector3 endPointOffset, int LeavesToAdd, bool LeavesShouldBeSmall)
     {
         if (sections.Count == 0)
         {
             return;
         }
+
+        int sectionsToSplitInto = LeavesToAdd + 1;
 
         StemSection lastSection = sections[sections.Count-1];
 
@@ -168,11 +193,11 @@ public class Plant : MonoBehaviour
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
-            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3]);
+            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3], i < LeavesToAdd, LeavesShouldBeSmall);
         }
     }
 
-    private void AddSection(Transform Attachment, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    private void AddSection(Transform Attachment, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, bool ShouldAddLeaf, bool LeavesShouldBeSmall)
     {
         StemSection newSection = Instantiate(stemSectionPrefab, Attachment).GetComponent<StemSection>();
 
@@ -180,6 +205,20 @@ public class Plant : MonoBehaviour
         newSection.startTangent = p1 - p0;
         newSection.endTangent = p2 - p0;
         newSection.endPoint = p3 - p0;
+
+        if (ShouldAddLeaf)
+        {
+            GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
+            newLeaf.transform.position = newSection.EndPoint.position;
+
+            Leaf leaf = newLeaf.GetComponent<Leaf>();
+            Debug.Log(leaf);
+            if (LeavesShouldBeSmall)
+            {
+                leaf.SetScale(0.5f);
+            }
+            leaves.Add(leaf);
+        }
 
         GeneralSectionSetup(newSection);
     }
