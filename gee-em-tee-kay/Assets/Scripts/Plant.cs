@@ -7,6 +7,9 @@ public class Plant : MonoBehaviour
     public Vector3 nextEndPointOffsetTEST;
 
     [SerializeField] private GameObject stemSectionPrefab;
+    [SerializeField] private float maxHeightOfPlant;
+    [SerializeField] private int maxNumberOfLeavesPerDay;
+
     [SerializeField] private float segmentOffsetIncrease;
     [SerializeField] private float initialMultiplier;
     [SerializeField] private float multiplierIncrement;
