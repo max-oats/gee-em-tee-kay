@@ -1,5 +1,18 @@
 title: Day3.Talk
 tags:
 ---
-Player: today sucks.
+Player: today sucks, PLANTNAME.
+Player: not because of the weather. i actually like the rain!!
+Player: that's right.\d002 i'm one of those a-holes.
+Player: \w"ooooh i think i'm cool and unique because i like the rain"
+Player: that's an impression of myself.
+Player: ...
+Player: i miss her.
+Player: i'm beginning to think\d002 \jthat i pushed her away.
+Player: i think when i noticed her\d002 lack of affection...
+Player: i began to resent her for it.
+Player: \d002.\d002.\d002.
+Player: i'm telling a plant more than i tell my therapist.
+Player: which if anything
+Player: proves that i should tell my therapist more.
 ===
