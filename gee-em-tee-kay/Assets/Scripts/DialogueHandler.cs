@@ -18,6 +18,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public GameObject textPfb;
     public GameObject speechBubPfb;
     public GameObject _audioSource;
+    public Animator playerAnimator;
 
     /// How quickly to show the text, in seconds per character
     [Tooltip("How quickly to show the text, in seconds per character")]
@@ -140,10 +141,14 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         
             if (timeCounter >= timeBetweenBleeps)
             {
-                GameObject go = Instantiate(_audioSource);
-                Destroy(go, 1.0f);
+                if ((dc.character != '.' && dc.character != ' '))
+                {
+                    GameObject go = Instantiate(_audioSource);
+                    Destroy(go, 1.0f);
+                    playerAnimator.CrossFadeInFixedTime("Talk", 0.05f);
 
-                timeCounter = 0.0f;
+                    timeCounter = 0.0f;
+                }
             }
 
             timeCounter += (delay * delayTimeMultiplier);
