@@ -231,7 +231,21 @@ public class DayManager : MonoBehaviour
 
     public string SelectNode()
     {
-        return "Day1.Talk";
+        string nodeName = "";
+        if (IsThirsty())
+        {
+
+        }
+        else if (IsDrowning())
+        {
+
+        }
+        else
+        {
+            return "Day" + (persistentData.DaysConversed+1) +  ".Talk";
+        }
+
+        return nodeName;
     }
 
     public bool HasEverConversed()
