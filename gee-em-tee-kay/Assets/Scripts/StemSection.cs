@@ -22,7 +22,6 @@ public class StemSection : MonoBehaviour
 
     public void SetColour(Color inColor)
     {
-        Debug.Log(string.Format("Setting to {0},{1},{2}", inColor.r, inColor.g, inColor.b));
         lineRenderer.material.color = inColor;
     }
 
