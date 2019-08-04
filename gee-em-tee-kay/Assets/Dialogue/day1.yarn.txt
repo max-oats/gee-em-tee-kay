@@ -9,7 +9,7 @@ Player: haha, do we have to talk about it?
 [[her fault|Day1.Intro2]]
 ===
 
-title: Day1.Intro
+title: Day1.Intro2
 tags:
 ---
 Player: \jit was\d003 her fault.
