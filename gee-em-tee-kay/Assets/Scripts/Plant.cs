@@ -53,6 +53,13 @@ public class Plant : MonoBehaviour
         // TODO Implement
         Debug.Log("Adding Sections for Day");
 
+        DayManager dm = Global.dayManager;
+
+        if (!dm.HasEverConversed())
+        {
+            return;
+        }
+
         // Debug
         AddSection(nextEndPointOffsetTEST);
     }

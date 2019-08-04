@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
     /** ----- Balancing variables ----- */
     public float groundSpeed; /** The ground movement speed */
     public float carryingSpeed; /** The carrying movement speed */
-    
+
     public float jumpPower; /** Jump impulse */
     public float gravity; /** Gravity default */
 
     public SmoothDamper rotationSmoother;
 
     public ParticleSystem sweatParticles;
-    
+
     public GameObject stompParticle;
 
     /** ----- Private variables ----- */
@@ -76,11 +76,11 @@ public class PlayerController : MonoBehaviour
     {
         if (selectedMenuOption == "talk")
         {
-
+            Global.dayManager.Talk();
         }
         else if (selectedMenuOption == "water")
         {
-            // do water stuff
+            Global.dayManager.Water();
         }
         else if (selectedMenuOption == "move")
         {
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         foreach (Vector3 v3 in Global.instance.potPositions)
         {
             float checkDistance = (potPosition - v3).magnitude;
-            
+
             if (checkDistance < minDistance)
             {
                 minDistance = checkDistance;
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                // If movement is not successful and the speed 
+                // If movement is not successful and the speed
                 if (speedY > 0f)
                 {
                     speedY = 0f;
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Actually set position now that it's tested 
+        // Actually set position now that it's tested
         transform.position = toPos;
 
         // If not on ground, handle gravity
