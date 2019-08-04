@@ -5,7 +5,7 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
     public Vector3 nextEndPointOffsetTEST;
-    public int sectionsToSplitInto = 1;
+    public int sectionsToSplitIntoTEST = 1;
 
     [SerializeField] private float MaxHorizontalDistance;
 
@@ -56,7 +56,7 @@ public class Plant : MonoBehaviour
         if (nextEndPointOffsetTEST != Vector3.zero)
         {
             // Debug
-            AddSection(nextEndPointOffsetTEST);
+            AddSection(nextEndPointOffsetTEST, sectionsToSplitIntoTEST);
             return;
         }
 
@@ -74,16 +74,15 @@ public class Plant : MonoBehaviour
             ToNextPoint *= 0.5f;
         }
 
-        AddSection(ToNextPoint);
+        AddSection(ToNextPoint, 1);
     }
 
     private Vector3 GetMaxHorizontalMovement()
     {
-        Vector3 e = GetLastSectionEndPos() - transform.position;
-        Vector3 w = WindowLocation.position - GetLastSectionEndPos();
+        Vector3 e = GetLastSectionEndPos().position - transform.position;
+        Vector3 w = WindowLocation.position - GetLastSectionEndPos().position;
         w.y = 0;
         w.Normalize();
-
 
         float r = Global.dayManager.GetMaxDistanceFromPotCenter();
         float a = w.x*w.x + w.z*w.z;
@@ -143,7 +142,7 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPointOffset)
+    public void AddSection(Vector3 endPointOffset, int sectionsToSplitInto)
     {
         if (sections.Count == 0)
         {
@@ -191,9 +190,9 @@ public class Plant : MonoBehaviour
         sections.Add(inSection);
     }
 
-    private Vector3 GetLastSectionEndPos()
+    private Transform GetLastSectionEndPos()
     {
         StemSection lastSection = sections[sections.Count-1];
-        return lastSection.EndPoint.position;
+        return lastSection.EndPoint;
     }
 }
