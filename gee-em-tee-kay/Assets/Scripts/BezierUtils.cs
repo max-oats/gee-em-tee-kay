@@ -44,7 +44,7 @@ public class BezierUtils
         List<float> Z = new List<float>();
         for (int i = 1; i < n; i++)
         {
-            Z.Add(i/n);
+            Z.Add((float)i/n);
         }
 
         while (Z.Count > 0)
@@ -82,7 +82,7 @@ public class BezierUtils
             p2 = q2;
 
             // Otherwise, need to rebalance other z params
-            for (int index = 0; index < Z.Count; z++)
+            for (int index = 0; index < Z.Count; index++)
             {
                 float ithZ = Z[index];
                 Z[index] = (ithZ - z) / zi;

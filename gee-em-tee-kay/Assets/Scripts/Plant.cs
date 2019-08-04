@@ -5,6 +5,7 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
     public Vector3 nextEndPointOffsetTEST;
+    public int sectionsToSplitInto = 1;
 
     [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private float maxHeightOfPlant;
@@ -96,7 +97,7 @@ public class Plant : MonoBehaviour
         }
 
         StemSection lastSection = sections[sections.Count-1];
-        StemSection newSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
+
         Vector3 p0 = lastSection.endPoint;
         Vector3 p3 = p0 + endPointOffset;
         Vector3 d = (p0 - lastSection.endTangent).normalized;
@@ -104,6 +105,28 @@ public class Plant : MonoBehaviour
         Vector3 p1 = p0 + scale * d;
         Vector3 m = (p1 + p3) / 2;
         Vector3 p2 = m + (p1-p0) / 2;
+
+        List<Vector3> ControlPointsToAdd = BezierUtils.SplitCubicBezierNWays(p0, p1, p2, p3, sectionsToSplitInto);
+        if (ControlPointsToAdd.Count / 4 == sectionsToSplitInto)
+        {
+            Debug.Log("Correct num sections");
+        }
+        else
+        {
+            Debug.Log(string.Format("Expected {0} sections, got {1}", sectionsToSplitInto, ControlPointsToAdd.Count / 4));
+            return;
+        }
+
+        for (int i = 0; i < sectionsToSplitInto; i++)
+        {
+            int initialIndex = i * 4;
+            AddSection(ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3]);
+        }
+    }
+
+    private void AddSection(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        StemSection newSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
 
         newSection.startPoint = p0;
         newSection.startTangent = p1;
