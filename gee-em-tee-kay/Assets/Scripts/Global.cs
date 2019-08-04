@@ -23,6 +23,8 @@ public class Global : MonoBehaviour
     public static CamController cameraController;
     public static DialogueHandler dialogueHandler;
 
+    public static string plantName;
+
     // Start is called before the first frame update
     void Awake()
     {

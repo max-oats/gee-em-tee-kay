@@ -1,7 +1,5 @@
-title: Day3.Intro
+title: Day3.Talk
 tags:
 ---
-Player: hmmm.
-Player: ...
-Player: i'm not gonna talk to you, you know.
+Player: today sucks.
 ===

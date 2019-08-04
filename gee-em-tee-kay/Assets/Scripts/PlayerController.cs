@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (selectedMenuOption == "neglect")
         {
-
+            interactionComponent.BumpCollider();
         }
         else if (selectedMenuOption == "bedtime")
         {
@@ -147,11 +147,107 @@ public class PlayerController : MonoBehaviour
 
             Global.dayManager.EndDay();
         }
+        else if (selectedMenuOption == "name plant")
+        {
+            Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
+            Global.dayManager.seedPlanted = true;
+
+            StartCoroutine(NamePlant());
+        }
+    }
+
+    public IEnumerator NamePlant()
+    { 
+        GameObject go = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform);
+        SpeechBubbleImage speechBubble = go.GetComponent<SpeechBubbleImage>();
+        string interactString = "";
+        int maxLength = 10;
+        speechBubble.SetSize((maxLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f, 
+                    (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f);
+        
+        speechBubble.ShowBubble();
+        speechBubble.GrowBubble();
+
+        bool plantNamed = false;
+        while (!plantNamed)
+        {
+            speechBubble.KillTextElements();
+
+            foreach (char c in System.Text.RegularExpressions.Regex.Replace(Input.inputString, @"[^A-Za-z0-9 ]+", ""))
+            {
+                if (interactString.Length < maxLength)
+                {
+                    interactString += c;
+                }
+            }
+
+            interactString = interactString.ToLower();
+
+            // Create objects
+            float tempXLocation = Global.dialogueHandler.defaultInset.x;
+            float tempYLocation = Global.dialogueHandler.defaultInset.y;
+
+            foreach (char c in interactString)
+            {
+                DialogueCharacter dc = new DialogueCharacter();
+                dc.character = c;
+
+                float delay = 0.0f;
+                speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
+                                                                                speechBubble.transform, 
+                                                                                new Vector2(tempXLocation, tempYLocation),  
+                                                                                out delay));
+                // Update X location
+                tempXLocation += Global.dialogueHandler.letterWidth;
+
+                // Add linebreak if necessary
+                if (dc.isLineBreak)
+                {
+                    // Update Y location
+                    tempYLocation -= Global.dialogueHandler.letterHeight;
+                    tempXLocation = Global.dialogueHandler.defaultInset.x;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (interactString.Length > 0)
+                {
+                    plantNamed = true;
+                    Global.plantName = interactString;
+                    Global.plantManager.CreatePlant(interactString.GetHashCode());
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                if (interactString.Length > 0)
+                    interactString = interactString.Remove(interactString.Length-1);
+            }
+
+            yield return null;
+        }
+
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+
+        speechBubble.KillTextElements();
+        speechBubble.ShrinkBubble();
+        Destroy(speechBubble.gameObject, 1.0f);
+
+        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlant");
     }
 
     private void Interact()
     {
-        interactionComponent.SetUpMenu();
+        if (!Global.dayManager.seedPlanted)
+        {
+            List<string> strings = new List<string>();
+            strings.Add("name plant");
+            interactionComponent.SetUpMenu(strings);
+        }
+        else
+        {
+            interactionComponent.SetUpMenu(null);
+        }
     }
 
     private void PlacePot()

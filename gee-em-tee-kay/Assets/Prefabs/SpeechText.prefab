@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698f1be71150f344698f99124859863f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMultiplier: 10
+  waveMultiplier: 6
   waveSpeed: 8
   jitterMultiplier: 2
   introCurve:
