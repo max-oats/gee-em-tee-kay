@@ -6,7 +6,7 @@ public class DayManager : MonoBehaviour
 {
     [SerializeField] private Plant Plant;
     [SerializeField] private PlantPot PlantPot;
-
+    
     [SerializeField] private int TotalNumDays;
     [SerializeField] private int DaysWithoutWaterToBeThirsty;
     [SerializeField] private int DaysWithWaterToBeDrowning;
@@ -21,6 +21,11 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int HealthRewardForGoodDay;
     [SerializeField] private int HealthRewardForTalkingToday;
 
+    [SerializeField] private List<LightSettings> lightSettings = new List<LightSettings>();
+    [SerializeField] private Light ambientLight;
+    [SerializeField] private Light sunLight;
+    
+    private int currentDay = 0;
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
 
@@ -38,6 +43,18 @@ public class DayManager : MonoBehaviour
         {
             EndDay();
         }
+    }
+
+    public void StartDay()
+    {
+        // Update lighting settings
+        ambientLight.color = lightSettings[currentDay].ambientLight; 
+        ambientLight.intensity = lightSettings[currentDay].ambientLightIntensity;
+
+        sunLight.color = lightSettings[currentDay].sunlight; 
+        sunLight.shadowStrength = lightSettings[currentDay].shadowStrength;
+
+        Global.cameraController.SetBackgroundColour(lightSettings[currentDay].skyboxColour);
     }
 
     public void EndDay()
@@ -126,7 +143,13 @@ public class DayManager : MonoBehaviour
     // Talking
     public void Talk()
     {
+        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(SelectNode());
         transientData.HaveConversedToday = true;
+    }
+
+    public string SelectNode()
+    {
+        return "Day1.Talk";
     }
 
     public bool HasEverConversed()
@@ -171,4 +194,19 @@ public class PlantHealthTransientData
     public bool WasWateredToday = false;
     public int LightGettingToday = 0;
     public bool HaveConversedToday = false;
+}
+
+[System.Serializable]
+public class LightSettings
+{
+    public Color ambientLight;
+    public Color sunlight;
+
+    public Color skyboxColour;
+
+    [Range(0.0f, 1.0f)]
+    public float shadowStrength;
+
+    [Range(0.0f, 2.0f)]
+    public float ambientLightIntensity;
 }

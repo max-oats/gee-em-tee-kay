@@ -10,6 +10,7 @@ public class InteractionComponent : MonoBehaviour
     public bool bIsAbleToInteract = false;
 
     public List<string> menuOptions;
+    public Collider theCollider;
 
     private SpeechBubbleImage speechBubble = null;
 
@@ -95,6 +96,19 @@ public class InteractionComponent : MonoBehaviour
         bIsAbleToInteract = false;
 
         StartCoroutine(SetUpBubbles());
+    }
+
+    public void BumpCollider()
+    {
+        theCollider.enabled = false;
+        StartCoroutine(BumpColliderCoroutine());
+    }
+
+    IEnumerator BumpColliderCoroutine()
+    {
+        yield return new WaitForSeconds(0.05f);
+
+        theCollider.enabled = true;
     }
 
     IEnumerator SetUpBubbles()

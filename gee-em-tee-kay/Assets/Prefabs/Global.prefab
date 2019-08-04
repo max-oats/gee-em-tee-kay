@@ -162,20 +162,24 @@ MonoBehaviour:
   textPfb: {fileID: 9172904301534774897, guid: 7df07f65ac57bc044b62b7f6af2b1374, type: 3}
   speechBubPfb: {fileID: 8563041433594134032, guid: 80aa33e00a21ea4428c27fe9a2973578,
     type: 3}
+  _audioSource: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
+    type: 3}
+  playerAnimator: {fileID: 0}
   textSpeed: 0.05
+  timeBetweenBleeps: 0.1
   speedyTextMultiplier: 0.3
   defaultInset: {x: 20, y: -20}
   heightPadding: 20
   widthPadding: 40
   letterHeight: 40
   letterWidth: 20
-  letterOffset: 0.05
+  letterOffset: -0.15
   optionOffset: 30
   optionDelay: 0.1
   cameraUpOffset: -2
   lineLength: 20
   lineLengthMultiplier: 0.85
-  offsetAddition: 0.1
+  offsetAddition: 0.3
   screenShakeMultiplier: 0.6
   playerSpeechHandler: {fileID: 0}
   normalColours: []

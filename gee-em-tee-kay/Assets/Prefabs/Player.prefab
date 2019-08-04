@@ -4967,7 +4967,10 @@ MonoBehaviour:
     angleSmooth: 1
     defaultDesiredVector: {x: 0, y: 0, z: 0}
   sweatParticles: {fileID: 574173482152455334}
-  stompParticle: {fileID: 0}
+  stompParticle: {fileID: 6986923231519268130, guid: cf1c78bdad02a934e88815f33d950139,
+    type: 3}
+  stompSound: {fileID: 5723108230827763314, guid: ece33c9b463ed6a478c4971ebe3930d8,
+    type: 3}
 --- !u!114 &8945416016642556368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5008,6 +5011,7 @@ MonoBehaviour:
   - water
   - move
   - neglect
+  theCollider: {fileID: 4879872831458779107}
 --- !u!136 &4879872831458779107
 CapsuleCollider:
   m_ObjectHideFlags: 0

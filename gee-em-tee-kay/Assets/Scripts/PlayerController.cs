@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem sweatParticles;
 
     public GameObject stompParticle;
+    public GameObject stompSound;
 
     /** ----- Private variables ----- */
     private const float onGroundSpeedY = -1f; /** The initial fall speed */
@@ -42,6 +43,11 @@ public class PlayerController : MonoBehaviour
         interactionComponent = GetComponent<InteractionComponent>();
         interactionComponent.selectedMenuOption += SelectedMenuOption;
         holder = GetComponent<Holder>();
+    }
+
+    void Start()
+    {
+        Global.dialogueHandler.dialogueEnd += DialogueEnd;
     }
 
     // Update is called once per frame
@@ -70,6 +76,17 @@ public class PlayerController : MonoBehaviour
                 Interact();
             }
         }
+    }
+
+    public void DialogueEnd()
+    {
+        interactionComponent.BumpCollider();
+    }
+
+    [Yarn.Unity.YarnCommand("phoneOff")]
+    public void SwitchPhoneOff()
+    {
+        animator.CrossFadeInFixedTime("IdleWalk", 0.5f);
     }
 
     public void SelectedMenuOption(string selectedMenuOption)
@@ -119,7 +136,12 @@ public class PlayerController : MonoBehaviour
         GameObject go = Instantiate(stompParticle, finalPos, Quaternion.identity);
         Destroy(go, 1.0f);
 
+        GameObject goaudio = Instantiate(stompSound);
+        Destroy(goaudio, 1.0f);
+
         Global.cameraController.ScreenShake(0.2f);
+
+        interactionComponent.BumpCollider();
     }
 
     private void SetCarrying(bool onOff)

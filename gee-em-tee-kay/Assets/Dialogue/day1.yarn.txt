@@ -1,9 +1,10 @@
 title: Day1.Intro
 tags:
 ---
-Player: yeah,\d002 i'm walking into the new place as we speak!
+Player: yeah,\d002 i'm walking into the new place right now!
 Player: well, its\d002.\d002.\d002. cozy
-Player: but i couldn't stay\d003 \jthere.
+Player: they left a \c004plant pot\c000 here
+Player: which i guess is my bed now?
 Player: haha, do we have to talk about it?
 Player: well... obviously it was...
 [[her fault|Day1.Intro2]]
@@ -13,25 +14,18 @@ Player: well... obviously it was...
 title: Day1.Intro2
 tags:
 ---
-Player: \jit was\d003 her fault.
+Player: it was\d001 \jher\j fault.
 Player: i'll be okay.\d002 thank you though.
 Player: yeah, the moving van isn't bringing the furniture for another \w5 days\w.
-Player: but don't worry. i've got a plant pot.
-Player: and exactly \c001£1.50\c000 to my name.
+Player: but don't worry. i've got exactly \c001£1.50\c000 to my name.
 Player: \whahaha\w.\d002 okay man.\d002 thanks for checking in.
+<<phoneOff Player>>
 ===
 
-title: Day1.Talk1
+title: Day1.Talk
 tags:
 ---
 Player: ...
-[[talk|Day1.Talk2]]
-[[don't|Day1.Talk3]]
-===
-
-title: Day1.Talk2
-tags:
----
 Player: i'm not gonna talk to you,\d002 you know.
 Player: \d002.\d002.\d002.she used to talk to plants.
 ===

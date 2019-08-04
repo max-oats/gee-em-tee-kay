@@ -12,12 +12,19 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     /// the user selected
     private Yarn.OptionChooser SetSelectedOption;
 
+    public delegate void DialogueEnd();
+    public DialogueEnd dialogueEnd;
+
     public GameObject textPfb;
     public GameObject speechBubPfb;
+    public GameObject _audioSource;
+    public Animator playerAnimator;
 
     /// How quickly to show the text, in seconds per character
     [Tooltip("How quickly to show the text, in seconds per character")]
     public float textSpeed = 0.025f;
+
+    public float timeBetweenBleeps;
 
     public float speedyTextMultiplier = 0.3f;
 
@@ -112,6 +119,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         // Create objects
         float tempXLocation = Global.dialogueHandler.defaultInset.x;
         float tempYLocation = Global.dialogueHandler.defaultInset.y;
+
+        float timeCounter = 0.0f;
         foreach (DialogueCharacter dc in dialogueString.dialogue)
         {
             float delay = textSpeed;
@@ -129,6 +138,20 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
                 tempYLocation -= Global.dialogueHandler.letterHeight;
                 tempXLocation = Global.dialogueHandler.defaultInset.x;
             }
+        
+            if (timeCounter >= timeBetweenBleeps)
+            {
+                if ((dc.character != '.' && dc.character != ' '))
+                {
+                    GameObject go = Instantiate(_audioSource);
+                    Destroy(go, 1.0f);
+                    playerAnimator.CrossFadeInFixedTime("Talk", 0.05f);
+
+                    timeCounter = 0.0f;
+                }
+            }
+
+            timeCounter += (delay * delayTimeMultiplier);
 
             yield return new WaitForSeconds(delay * delayTimeMultiplier);
         }
@@ -311,6 +334,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     {
         Debug.Log ("Complete!");
         inDialogue = false;
+
+        dialogueEnd?.Invoke();
 
         yield break;
     }
