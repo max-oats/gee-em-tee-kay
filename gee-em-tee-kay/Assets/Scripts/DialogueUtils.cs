@@ -15,7 +15,7 @@ public class DialogueCharacter
     public bool isJittery = false;
     public bool isSwirly = false;
     public bool isShake = false;
-    public Color colour = new Color(0f, 0f, 0f, 255f);
+    public Color colour = new Color(255f, 255f, 255f, 255f);
     public float afterDelay = 0f;
 
     public float waveyOffset = 0f;
