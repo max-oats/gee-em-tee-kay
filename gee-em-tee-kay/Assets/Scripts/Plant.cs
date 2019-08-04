@@ -45,6 +45,7 @@ public class Plant : MonoBehaviour
         StemColor = inStemColor;
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
+        initialSection.OriginPoint = transform;
         initialSection.transform.position = inRootPosition - new Vector3(0, 0.3f, 0);
         initialSection.startTangent = new Vector3(0,0.1f,0);
         initialSection.endTangent = new Vector3(0,0.2f,0);
@@ -140,23 +141,12 @@ public class Plant : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-        float offset = 0;
-        float multiplier = initialMultiplier;
-        float segmentOffset = 0f;
-        bool first = true;
+        Debug.Log(gameObject.transform.parent.rotation);
+        Debug.Log(gameObject.transform);
+        gameObject.transform.rotation = gameObject.transform.parent.rotation;
         foreach (StemSection section in sections)
         {
-            if (first)
-            {
-                first = false;
-                continue;
-            }
-            section.startPointOffset = offset;
-            offset = multiplier * Mathf.Sin(time +segmentOffset);
-            multiplier += multiplierIncrement;
-            segmentOffset += segmentOffsetIncrease;
-            section.endPointOffset = offset;
+            section.Realign();
         }
     }
 
@@ -196,6 +186,7 @@ public class Plant : MonoBehaviour
     {
         StemSection newSection = Instantiate(stemSectionPrefab, Attachment).GetComponent<StemSection>();
 
+        newSection.OriginPoint = Attachment;
         newSection.gameObject.transform.position = p0;
         newSection.startTangent = p1 - p0;
         newSection.endTangent = p2 - p0;

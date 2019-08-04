@@ -12,6 +12,7 @@ public class StemSection : MonoBehaviour
     public Vector3 startTangent;
     public Vector3 endTangent;
 
+    public Transform OriginPoint;
     public Transform EndPoint;
 
     public LineRenderer lineRenderer;
@@ -29,6 +30,11 @@ public class StemSection : MonoBehaviour
     public void SetColour(Color inColor)
     {
         lineRenderer.material.color = inColor;
+    }
+
+    public void Realign()
+    {
+        gameObject.transform.rotation = OriginPoint.rotation;
     }
 
     void OnDrawGizmos()
