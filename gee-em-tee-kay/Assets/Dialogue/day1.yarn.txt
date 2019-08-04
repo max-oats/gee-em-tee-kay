@@ -21,17 +21,10 @@ Player: \whahaha\w.\d002 okay man.\d002 thanks for checking in.
 <<phoneOff Player>>
 ===
 
-title: Day1.Talk1
+title: Day1.Talk
 tags:
 ---
 Player: ...
-[[talk|Day1.Talk2]]
-[[don't|Day1.Talk3]]
-===
-
-title: Day1.Talk2
-tags:
----
 Player: i'm not gonna talk to you,\d002 you know.
 Player: \d002.\d002.\d002.she used to talk to plants.
 ===

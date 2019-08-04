@@ -126,7 +126,13 @@ public class DayManager : MonoBehaviour
     // Talking
     public void Talk()
     {
+        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(SelectNode());
         transientData.HaveConversedToday = true;
+    }
+
+    public string SelectNode()
+    {
+        return "Day1.Talk";
     }
 
     public bool HasEverConversed()
