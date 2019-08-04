@@ -38,7 +38,7 @@ public class PlantManager : MonoBehaviour
     private void CreatePlant(int seed)
     {
         Vector3 FlowerOriginOffset = new Vector3(0,PlantPot.bottomOfPlantOffset,0);
-        Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
+        Plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
     }
 
     private float GetFlowerHue(int seed)

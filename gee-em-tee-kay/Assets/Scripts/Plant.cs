@@ -36,8 +36,9 @@ public class Plant : MonoBehaviour
         leaves = new List<Leaf>();
     }
 
-    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
+    public void Setup(int seed, GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
     {
+        Random.InitState(seed);
         FlowerPrefab = inFlowerPrefab;
         FlowerHue = inFlowerHue;
         LeafPrefab = inLeafPrefab;
@@ -83,13 +84,7 @@ public class Plant : MonoBehaviour
             ToNextPoint *= 0.5f;
         }
 
-        bool shouldAddLeaves = dm.GetPlantProgressionDay() != 0;
-
-        int LeavesToAdd = 0;
-        if (shouldAddLeaves)
-        {
-            LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, dm.CurrentHealthPercentage());
-        }
+        int LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, dm.CurrentHealthPercentage());
 
         AddSection(ToNextPoint, LeavesToAdd, dm.HasTooMuchLight());
 
@@ -210,6 +205,7 @@ public class Plant : MonoBehaviour
         {
             GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
             newLeaf.transform.position = newSection.EndPoint.position;
+            newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
             Leaf leaf = newLeaf.GetComponent<Leaf>();
             Debug.Log(leaf);
