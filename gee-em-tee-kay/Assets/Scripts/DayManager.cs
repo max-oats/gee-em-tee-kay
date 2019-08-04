@@ -174,6 +174,8 @@ public class DayManager : MonoBehaviour
             persistentData.GeneralHealth += HealthRewardForTalkingToday;
         }
 
+        persistentData.GeneralHealth = Mathf.Clamp(persistentData.GeneralHealth, 0, MaxHealth);
+
         Plant.AddSectionsForDay();
 
         persistentData.DayNumber++;
@@ -278,6 +280,9 @@ public class DayManager : MonoBehaviour
 
     public float CurrentHealthPercentage()
     {
+        Debug.Log((float)persistentData.GeneralHealth);
+        Debug.Log(MaxHealth);
+        Debug.Log((float)persistentData.GeneralHealth / MaxHealth);
         return (float)persistentData.GeneralHealth / MaxHealth;
     }
 

@@ -499,6 +499,7 @@ MonoBehaviour:
   camController: {fileID: 0}
   diaHandler: {fileID: 1193051568}
   theDayManager: {fileID: 2032892916}
+  thePlantManager: {fileID: 0}
   potPositions:
   - Position: {x: -2.16, y: -1, z: 0.61}
     LightGainedHere: -2
@@ -530,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22fea1d7ff4d544fbd0bc7a38456ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seedPlanted: 0
   Plant: {fileID: 0}
   PlantPot: {fileID: 0}
   TotalNumDays: 5
@@ -539,9 +541,9 @@ MonoBehaviour:
   NotEnoughLightThreshold: 0
   DaysConversedForMineOption: 3
   DaysConversedForThirdOption: 5
-  MaxHealth: 0
-  HealthThresholdToLookUnhealthy: 0
-  InitialHealth: 3
+  MaxHealth: 5
+  HealthThresholdToLookUnhealthy: 2
+  InitialHealth: 5
   HealthPenaltyForWater: 2
   HealthPenaltyForLight: 2
   HealthRewardForGoodDay: 1

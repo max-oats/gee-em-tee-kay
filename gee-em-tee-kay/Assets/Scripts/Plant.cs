@@ -131,11 +131,11 @@ public class Plant : MonoBehaviour
     {
         foreach (StemSection section in sections)
         {
-            section.SetColour(Color.Lerp(StemColor, DeadColor, param));
+            section.SetColour(Color.Lerp(DeadColor, StemColor, param));
         }
         foreach(Leaf leaf in leaves)
         {
-            leaf.SetColor(Color.Lerp(StemColor, DeadColor, param));
+            leaf.SetColor(Color.Lerp(DeadColor, StemColor, param));
         }
     }
 
