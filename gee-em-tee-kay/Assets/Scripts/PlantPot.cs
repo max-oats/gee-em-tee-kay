@@ -11,6 +11,6 @@ public class PlantPot : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.up*(bottomOfPlantOffset + height/2f), new Vector3(distanceFromCenter, height, distanceFromCenter));
+        Gizmos.DrawWireCube(transform.position + transform.up*(bottomOfPlantOffset + height/2f), new Vector3(distanceFromCenter*2, height, distanceFromCenter*2));
     }
 }
