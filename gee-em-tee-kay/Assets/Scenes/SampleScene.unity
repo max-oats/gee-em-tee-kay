@@ -6077,18 +6077,18 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 1439283895}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: playerSpeechHandler
-      value: 
-      objectReference: {fileID: 939850913}
+    - target: {fileID: 1193051570, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: startAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 2025038190}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.size
-      value: 5
-      objectReference: {fileID: 0}
+    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: playerSpeechHandler
+      value: 
+      objectReference: {fileID: 939850913}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: Plant
       value: 
@@ -6098,272 +6098,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 628624978}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: sunLight
-      value: 
-      objectReference: {fileID: 1132330662}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: ambientLight
       value: 
       objectReference: {fileID: 170076734}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].sunlight.r
-      value: 0.8509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].sunlight.g
-      value: 0.52156866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].sunlight.b
-      value: 0.37254903
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].sunlight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].ambientLight.r
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].ambientLight.g
-      value: 0.43137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].ambientLight.b
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].ambientLight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].skyboxColour.r
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].skyboxColour.g
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].skyboxColour.b
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].ambientLightIntensity
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[0].shadowStrength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.r
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.g
-      value: 0.43137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.b
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.r
-      value: 0.8509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.g
-      value: 0.52156866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.b
-      value: 0.37254903
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].skyboxColour.r
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].skyboxColour.g
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].skyboxColour.b
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].shadowStrength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLightIntensity
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].ambientLight.r
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].ambientLight.g
-      value: 0.43137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].ambientLight.b
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].ambientLight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].sunlight.r
-      value: 0.8509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].sunlight.g
-      value: 0.52156866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].sunlight.b
-      value: 0.37254903
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].sunlight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].skyboxColour.r
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].skyboxColour.g
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].skyboxColour.b
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].shadowStrength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[2].ambientLightIntensity
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].ambientLight.r
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].ambientLight.g
-      value: 0.43137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].ambientLight.b
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].ambientLight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].sunlight.r
-      value: 0.8509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].sunlight.g
-      value: 0.52156866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].sunlight.b
-      value: 0.37254903
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].sunlight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].skyboxColour.r
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].skyboxColour.g
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].skyboxColour.b
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].shadowStrength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[3].ambientLightIntensity
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].ambientLight.r
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].ambientLight.g
-      value: 0.43137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].ambientLight.b
-      value: 0.3764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].ambientLight.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].sunlight.r
-      value: 0.8509804
-      objectReference: {fileID: 0}
+      propertyPath: sunLight
+      value: 
+      objectReference: {fileID: 1132330662}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].sunlight.g
-      value: 0.52156866
+      propertyPath: fadedInColor.r
+      value: 0.19607845
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].sunlight.b
-      value: 0.37254903
+      propertyPath: fadedInColor.g
+      value: 0.19215688
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].sunlight.a
-      value: 1
+      propertyPath: fadedInColor.b
+      value: 0.19215688
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].skyboxColour.r
-      value: 0.36862746
+      propertyPath: fadedOutColor.r
+      value: 0.19607845
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].skyboxColour.g
-      value: 0.21960784
+      propertyPath: fadedOutColor.g
+      value: 0.19215688
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].skyboxColour.b
-      value: 0.18039216
+      propertyPath: fadedOutColor.b
+      value: 0.19215688
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].shadowStrength
-      value: 1
+      propertyPath: fadedInColor.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[4].ambientLightIntensity
-      value: 0.99
+      propertyPath: fadeTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}

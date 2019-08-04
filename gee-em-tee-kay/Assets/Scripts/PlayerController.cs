@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Global.dialogueHandler.dialogueEnd += DialogueEnd;
+        Global.dayManager.dayEnded += ResetOnDay;
     }
 
     // Update is called once per frame
@@ -60,6 +61,13 @@ public class PlayerController : MonoBehaviour
         UpdateInteract();
 
         UpdateFacing();
+    }
+
+    public void ResetOnDay()
+    {
+        animator.CrossFadeInFixedTime("IdleWalk", 0.0f);
+        rotationSmoother.SetDesired(0);
+        transform.position = new Vector3(0, -1.14f, -5.7f);
     }
 
     private void UpdateInteract()
@@ -106,6 +114,15 @@ public class PlayerController : MonoBehaviour
         else if (selectedMenuOption == "neglect")
         {
 
+        }
+        else if (selectedMenuOption == "bedtime")
+        {
+            // Re-enable movement input
+            Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
+            rotationSmoother.SetDesired(180f);
+            animator.CrossFadeInFixedTime("Sleep", 0.2f);
+
+            Global.dayManager.EndDay();
         }
     }
 
