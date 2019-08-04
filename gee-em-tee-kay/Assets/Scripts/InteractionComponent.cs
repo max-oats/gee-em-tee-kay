@@ -90,12 +90,17 @@ public class InteractionComponent : MonoBehaviour
         }
     }
 
-    public void SetUpMenu()
+    public void SetUpMenu(List<string> options)
     {
+        if (options == null)
+        {
+            options = menuOptions;
+        }
+
         HideInteract();
         bIsAbleToInteract = false;
 
-        StartCoroutine(SetUpBubbles());
+        StartCoroutine(SetUpBubbles(options));
     }
 
     public void BumpCollider()
@@ -111,7 +116,7 @@ public class InteractionComponent : MonoBehaviour
         theCollider.enabled = true;
     }
 
-    IEnumerator SetUpBubbles()
+    IEnumerator SetUpBubbles(List<string> options)
     {
         // Disable movement input during dialogue
         Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
@@ -119,7 +124,7 @@ public class InteractionComponent : MonoBehaviour
         // todo: account for multiple lines
         // Find out the width of the longest option
         float longestOption = 0f;
-        foreach (string optionString in menuOptions)
+        foreach (string optionString in options)
         {
             if (optionString.Length > longestOption)
             {
@@ -131,7 +136,7 @@ public class InteractionComponent : MonoBehaviour
         // Grab the handler for the UI side
         SpeechBubbleHandler friendSpeechHandler = Global.dialogueHandler.playerSpeechHandler;
 
-        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) - Global.dialogueHandler.optionOffset) * (menuOptions.Count));
+        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) - Global.dialogueHandler.optionOffset) * (options.Count));
 
         offsetOption -= (Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset);
 
@@ -139,7 +144,7 @@ public class InteractionComponent : MonoBehaviour
 
         // Display each option in a button, and make it visible
         int j = 0;
-        foreach (var optionString in menuOptions) 
+        foreach (var optionString in options) 
         {
             GameObject speechgo = Instantiate(Global.dialogueHandler.speechBubPfb, friendSpeechHandler.transform);
             SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
@@ -215,7 +220,7 @@ public class InteractionComponent : MonoBehaviour
             {
                 friendSpeechHandler.buttons[selected].DeselectButton();
 
-                if (selected < menuOptions.Count-1)
+                if (selected < options.Count-1)
                 {
                     selected++;
                 }
@@ -240,7 +245,7 @@ public class InteractionComponent : MonoBehaviour
         // Re-enable movement input
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 
-        selectedMenuOption(menuOptions[selected]);
+        selectedMenuOption(options[selected]);
         
     }
 }

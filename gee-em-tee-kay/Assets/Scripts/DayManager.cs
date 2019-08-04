@@ -7,6 +7,8 @@ public class DayManager : MonoBehaviour
     public delegate void DayEnded();
     public DayEnded dayEnded;
 
+    public bool seedPlanted = false;
+
     [SerializeField] private Plant Plant;
     [SerializeField] private PlantPot PlantPot;
 

@@ -500,15 +500,24 @@ MonoBehaviour:
   diaHandler: {fileID: 1193051568}
   theDayManager: {fileID: 2032892916}
   potPositions:
-  - {x: -2.16, y: -1, z: 0.61}
-  - {x: 0, y: -1, z: 0.61}
-  - {x: 2.16, y: -1, z: 0.61}
-  - {x: -2.16, y: -1, z: -2.125}
-  - {x: 0, y: -1, z: -2.125}
-  - {x: 2.16, y: -1, z: -2.125}
-  - {x: -2.16, y: -1, z: -4.68}
-  - {x: 0, y: -1, z: -4.68}
-  - {x: 2.16, y: -1, z: -4.68}
+  - Position: {x: -2.16, y: -1, z: 0.61}
+    LightGainedHere: -2
+  - Position: {x: 0, y: -1, z: 0.61}
+    LightGainedHere: 3
+  - Position: {x: 2.16, y: -1, z: 0.61}
+    LightGainedHere: -2
+  - Position: {x: -2.16, y: -1, z: -2.125}
+    LightGainedHere: 1
+  - Position: {x: 0, y: -1, z: -2.125}
+    LightGainedHere: 2
+  - Position: {x: 2.16, y: -1, z: -2.125}
+    LightGainedHere: 1
+  - Position: {x: -2.16, y: -1, z: -4.68}
+    LightGainedHere: -1
+  - Position: {x: 0, y: -1, z: -4.68}
+    LightGainedHere: 0
+  - Position: {x: 2.16, y: -1, z: -4.68}
+    LightGainedHere: -1
 --- !u!114 &2032892916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,14 +550,14 @@ MonoBehaviour:
     skyboxColour: {r: 0.36862746, g: 0.21960784, b: 0.18039216, a: 0}
     shadowStrength: 1
     ambientLightIntensity: 0.99
-  - ambientLight: {r: 0.6509804, g: 0.43137255, b: 0.3764706, a: 1}
-    sunlight: {r: 0.8509804, g: 0.52156866, b: 0.37254903, a: 1}
+  - ambientLight: {r: 0.6509804, g: 0.3764706, b: 0.4018958, a: 1}
+    sunlight: {r: 0.8396226, g: 0.57511425, b: 0.45545566, a: 1}
     skyboxColour: {r: 0.36862746, g: 0.21960784, b: 0.18039216, a: 0}
     shadowStrength: 1
     ambientLightIntensity: 0.99
   - ambientLight: {r: 0.2746084, g: 0.32476413, b: 0.4811321, a: 1}
     sunlight: {r: 0.5790762, g: 0.6992891, b: 0.8584906, a: 1}
-    skyboxColour: {r: 0.30744925, g: 0.34526557, b: 0.4433962, a: 0}
+    skyboxColour: {r: 0.14978641, g: 0.16628951, b: 0.20754719, a: 0}
     shadowStrength: 1
     ambientLightIntensity: 0.99
   - ambientLight: {r: 0.6509804, g: 0.43137255, b: 0.3764706, a: 1}

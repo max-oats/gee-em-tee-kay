@@ -1,3 +1,10 @@
+title: Day1.NamePlant
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: i'm so sorry.
+===
+
 title: Day1.Intro
 tags:
 ---
@@ -27,6 +34,6 @@ title: Day1.Talk
 tags:
 ---
 Player: ...
-Player: i'm not gonna talk to you,\d002 you know.
+Player: i'm not gonna talk to you,\d002 PLANTNAME.
 Player: \d002.\d002.\d002.she used to talk to plants.
 ===
