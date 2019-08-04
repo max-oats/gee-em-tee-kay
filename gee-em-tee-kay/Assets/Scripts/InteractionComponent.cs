@@ -197,8 +197,6 @@ public class InteractionComponent : MonoBehaviour
             {
                 if (selectedMenuOption != null)
                 {
-                    selectedMenuOption(menuOptions[selected]);
-
                     optionSelected = true;
                 }
             }
@@ -241,6 +239,8 @@ public class InteractionComponent : MonoBehaviour
         
         // Re-enable movement input
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+
+        selectedMenuOption(menuOptions[selected]);
         
     }
 }

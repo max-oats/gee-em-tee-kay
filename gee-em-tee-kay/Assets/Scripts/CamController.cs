@@ -53,6 +53,6 @@ public class CamController : MonoBehaviour
 
     public void SetBackgroundColour(Color newColor)
     {
-        GetComponent<Camera>().backgroundColor = (newColor);
+        GetComponentInChildren<Camera>().backgroundColor = (newColor);
     }
 }

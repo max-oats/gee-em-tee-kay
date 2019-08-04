@@ -40,6 +40,7 @@ ModelImporter:
     100068: Bone_022
     100070: Sphere_006
     100072: Sphere_007
+    100074: Cylinder
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -77,6 +78,7 @@ ModelImporter:
     400068: Bone_022
     400070: Sphere_006
     400072: Sphere_007
+    400074: Cylinder
     2100000: MainMaterial__MainTex_png
     2100002: MainMaterial
     2100004: Material__MainTex_png
@@ -116,6 +118,7 @@ ModelImporter:
     4300018: Sphere
     4300020: Sphere_007
     4300022: Sphere_006
+    4300024: Cylinder
     7400000: Default Take
     7400002: Player_Idle
     7400004: Player_Walk
@@ -124,6 +127,8 @@ ModelImporter:
     7400010: Player_OnPhoneIdle
     7400012: Player_OnPhoneWalk
     7400014: Player_Talk
+    7400016: Player_Sleep
+    7400018: Player_Water
     9500000: //RootNode
     13700000: Cube
     13700002: Cube_001
@@ -137,6 +142,7 @@ ModelImporter:
     13700018: Sphere_005
     13700020: Sphere_006
     13700022: Sphere_007
+    13700024: Cylinder
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -442,6 +448,69 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Sleep
+      takeName: Player_Sleep
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Player_Water
+      takeName: Player_Water
+      firstFrame: 0
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.5455923
+        functionName: Spray
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
+    public delegate void DayEnded();
+    public DayEnded dayEnded;
+
     [SerializeField] private Plant Plant;
     [SerializeField] private PlantPot PlantPot;
     
@@ -24,6 +27,11 @@ public class DayManager : MonoBehaviour
     [SerializeField] private List<LightSettings> lightSettings = new List<LightSettings>();
     [SerializeField] private Light ambientLight;
     [SerializeField] private Light sunLight;
+
+    [SerializeField] private GameObject faderObject;
+    [SerializeField] private float fadeTime = 1.0f;
+    [SerializeField] private Color fadedInColor = Color.white;
+    [SerializeField] private Color fadedOutColor = Color.white;
     
     private int currentDay = 0;
     private PlantHealthPersistentData persistentData;
@@ -34,6 +42,8 @@ public class DayManager : MonoBehaviour
         persistentData = new PlantHealthPersistentData();
         persistentData.GeneralHealth = InitialHealth;
         transientData = new PlantHealthTransientData();
+
+        StartNewDay();
     }
 
     void Update()
@@ -45,20 +55,62 @@ public class DayManager : MonoBehaviour
         }
     }
 
-    public void StartDay()
+    public void StartNewDay()
     {
-        // Update lighting settings
-        ambientLight.color = lightSettings[currentDay].ambientLight; 
-        ambientLight.intensity = lightSettings[currentDay].ambientLightIntensity;
+        StartCoroutine(StartDayFade());
 
-        sunLight.color = lightSettings[currentDay].sunlight; 
-        sunLight.shadowStrength = lightSettings[currentDay].shadowStrength;
+        if (currentDay == 0)
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+        }
+    }
 
-        Global.cameraController.SetBackgroundColour(lightSettings[currentDay].skyboxColour);
+    public IEnumerator StartDayFade()
+    {
+        bool fadedOut = false;
+        float timeCounter = 0f;
+        while (!fadedOut)
+        {
+            if (timeCounter > fadeTime)
+            {
+                fadedOut = true;
+            }
+            else
+            {
+                timeCounter += Time.deltaTime;
+            }
+
+            faderObject.GetComponent<Renderer>().material.color = Color.Lerp(fadedOutColor, fadedInColor, timeCounter/fadeTime);
+
+            yield return null;
+        }
     }
 
     public void EndDay()
     {
+        StartCoroutine(EndDayFade());
+    }
+
+    public IEnumerator EndDayFade()
+    {
+        bool fadedOut = false;
+        float timeCounter = 0f;
+        while (!fadedOut)
+        {
+            if (timeCounter > fadeTime)
+            {
+                fadedOut = true;
+            }
+            else
+            {
+                timeCounter += Time.deltaTime;
+            }
+
+            faderObject.GetComponent<Renderer>().material.color = Color.Lerp(fadedInColor, fadedOutColor, timeCounter/fadeTime);
+
+            yield return null;
+        }
+
         Debug.Log("Ending Day");
 
         if (transientData.WasWateredToday)
@@ -100,6 +152,23 @@ public class DayManager : MonoBehaviour
         Plant.AddSectionsForDay();
 
         transientData = new PlantHealthTransientData();
+
+        currentDay++;
+
+        // Update lighting settings
+        ambientLight.color = lightSettings[currentDay].ambientLight; 
+        ambientLight.intensity = lightSettings[currentDay].ambientLightIntensity;
+
+        sunLight.color = lightSettings[currentDay].sunlight; 
+        sunLight.shadowStrength = lightSettings[currentDay].shadowStrength;
+
+        Global.cameraController.SetBackgroundColour(lightSettings[currentDay].skyboxColour);
+
+        dayEnded?.Invoke();
+
+        yield return new WaitForSeconds(1.0f);
+
+        StartNewDay();
     }
 
     // Water

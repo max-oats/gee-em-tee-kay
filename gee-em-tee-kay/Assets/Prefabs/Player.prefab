@@ -5011,6 +5011,7 @@ MonoBehaviour:
   - water
   - move
   - neglect
+  - bedtime
   theCollider: {fileID: 4879872831458779107}
 --- !u!136 &4879872831458779107
 CapsuleCollider:
