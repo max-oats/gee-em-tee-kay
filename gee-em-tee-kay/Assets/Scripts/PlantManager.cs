@@ -19,23 +19,7 @@ public class PlantManager : MonoBehaviour
     [SerializeField] private float MinStemBlue;
     [SerializeField] private float MaxStemBlue;
 
-    private bool HasStarted = false;
-
-    void Update()
-    {
-        //TODO Remove Debug code
-        if (HasStarted)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CreatePlant(PlantName.GetHashCode());
-        }
-    }
-
-    private void CreatePlant(int seed)
+    public void CreatePlant(int seed)
     {
         Vector3 FlowerOriginOffset = new Vector3(0,PlantPot.bottomOfPlantOffset,0);
         Plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);

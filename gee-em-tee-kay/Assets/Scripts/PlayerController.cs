@@ -211,8 +211,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                plantNamed = true;
-                Global.plantName = interactString;
+                if (interactString.Length > 0)
+                {
+                    plantNamed = true;
+                    Global.plantName = interactString;
+                    Global.plantManager.CreatePlant(interactString.GetHashCode());
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Backspace))
             {
