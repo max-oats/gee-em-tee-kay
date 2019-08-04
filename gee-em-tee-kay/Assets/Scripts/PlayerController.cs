@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         entity = GetComponent<Entity>();
         animator = GetComponentInChildren<Animator>();
         interactionComponent = GetComponent<InteractionComponent>();
+        interactionComponent.selectedMenuOption += SelectedMenuOption;
         holder = GetComponent<Holder>();
     }
 
@@ -66,24 +67,34 @@ public class PlayerController : MonoBehaviour
             }
             else if (interactionComponent.bIsAbleToInteract)
             {
-                StartCoroutine(Interact());
+                Interact();
             }
         }
     }
 
-    private IEnumerator Interact()
+    public void SelectedMenuOption(string selectedMenuOption)
     {
-        bool selectedOption = false;
+        if (selectedMenuOption == "talk")
+        {
 
-        while (!selectedOption)
+        }
+        else if (selectedMenuOption == "water")
+        {
+            // do water stuff
+        }
+        else if (selectedMenuOption == "move")
         {
             SetCarrying(true);
-            holder.heldObject = GameObject.Find("Plant Pot");
-
-            selectedOption = true;
-
-            yield return null;
         }
+        else if (selectedMenuOption == "neglect")
+        {
+
+        }
+    }
+
+    private void Interact()
+    {
+        interactionComponent.SetUpMenu();
     }
 
     private void PlacePot()
@@ -117,6 +128,8 @@ public class PlayerController : MonoBehaviour
 
         if (bIsCarrying)
         {
+            holder.heldObject = GameObject.Find("Plant Pot");
+
             animator.CrossFadeInFixedTime("HeavyWalk", 0.1f);
             ParticleSystem.EmissionModule em = sweatParticles.emission;
             em.enabled = true;

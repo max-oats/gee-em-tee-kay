@@ -5,9 +5,6 @@ Player: cool.
 Player: the moving van isn't bringing the furniture for another \w5 days\w.
 Player: and the apartment comes with\d002.\d002.\d002. a plant pot.
 Player: cool.
-[[Talk|Day1.Talk]]
-[[Other Test|Day1.Talk]]
-[[A third test!!|Day1.Talk]]
 ===
 
 title: Day1.Talk
