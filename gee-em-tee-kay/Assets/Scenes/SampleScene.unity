@@ -193,8 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1da0dee5c3a9f418b75c2a3be06bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromCenter: 1
-  height: 1
+  distanceFromCenter: 3
+  height: 3.5
+  bottomOfPlantOffset: 0.7
 --- !u!1001 &647770861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5785,6 +5786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantPot
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -5840,10 +5845,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: 146ee3b8a2ad87b418822e178c03ae3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6146,6 +6147,11 @@ PrefabInstance:
       propertyPath: Plant
       value: 
       objectReference: {fileID: 1557597305}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: PlantPot
+      value: 
+      objectReference: {fileID: 628624978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf80fa9c72b0f4aeda2df514c57bd04c, type: 3}
 --- !u!1001 &4258158762469802141
@@ -6249,6 +6255,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewCam
       objectReference: {fileID: 0}
+    - target: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
+        type: 3}
+      propertyPath: playerToFollow
+      value: 
+      objectReference: {fileID: 538059563}
+    - target: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
+        type: 3}
+      propertyPath: screenShakeDamper.smoothTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3800531364912115893, guid: 647c2826553fbea4ea67bbff76243fba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6323,16 +6339,6 @@ PrefabInstance:
         type: 3}
       propertyPath: field of view
       value: 84.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
-        type: 3}
-      propertyPath: playerToFollow
-      value: 
-      objectReference: {fileID: 538059563}
-    - target: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
-        type: 3}
-      propertyPath: screenShakeDamper.smoothTime
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 807829423, guid: 647c2826553fbea4ea67bbff76243fba, type: 3}

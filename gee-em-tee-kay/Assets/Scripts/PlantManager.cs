@@ -5,11 +5,10 @@ using UnityEngine;
 public class PlantManager : MonoBehaviour
 {
     [SerializeField] private Plant Plant;
+    [SerializeField] private PlantPot PlantPot;
 
     [SerializeField] private GameObject[] LeafPrefabOptions;
     [SerializeField] private GameObject[] FlowerPrefabOptions;
-
-    [SerializeField] private Vector3 FlowerOriginOffset;
 
     [SerializeField] private string PlantName;
     private bool HasStarted = false;
@@ -32,6 +31,7 @@ public class PlantManager : MonoBehaviour
     private void CreatePlant(int seed)
     {
         Debug.Log("Creating Plant with seed " + seed);
+        Vector3 FlowerOriginOffset = new Vector3(0,PlantPot.bottomOfPlantOffset,0);
         Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
     }
 
