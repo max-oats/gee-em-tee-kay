@@ -47,6 +47,6 @@ public class Holder : MonoBehaviour
         heldObject = null;
 
         heldTransform.position = dropLocation;
-        heldTransform.rotation = Quaternion.identity;
+        heldTransform.eulerAngles = new Vector3(0f, heldTransform.eulerAngles.y, 0f);
     }
 }

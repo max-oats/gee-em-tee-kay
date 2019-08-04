@@ -63,6 +63,8 @@ public class DayManager : MonoBehaviour
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
         }
+        
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }
 
     public IEnumerator StartDayFade()
