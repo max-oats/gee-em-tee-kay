@@ -20,9 +20,9 @@ public class StemSection : MonoBehaviour
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
 
-    public void SetMaterial(Material StemMaterial)
+    public void SetColour(Color inColor)
     {
-        lineRenderer.material = StemMaterial;
+        lineRenderer.material.color = inColor;
     }
 
     void Start()
@@ -44,25 +44,9 @@ public class StemSection : MonoBehaviour
         for (int i = 0; i <= SEGMENT_COUNT; i++)
         {
             float t = i / (float)SEGMENT_COUNT;
-            Vector3 pixel = CalculateCubicBezierPoint(t, startPoint + new Vector3(startPointOffset,0,0), startTangent + new Vector3(startPointOffset,0,0), endTangent + new Vector3(endPointOffset,0,0), endPoint + new Vector3(endPointOffset,0,0));
+            Vector3 pixel = BezierUtils.CalculateCubicBezierPoint(t, startPoint + new Vector3(startPointOffset,0,0), startTangent + new Vector3(startPointOffset,0,0), endTangent + new Vector3(endPointOffset,0,0), endPoint + new Vector3(endPointOffset,0,0));
             lineRenderer.positionCount = i+1;
             lineRenderer.SetPosition(i, pixel);
         }
-    }
-
-    Vector3 CalculateCubicBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
-    {
-        float u = 1 - t;
-        float tt = t * t;
-        float uu = u * u;
-        float uuu = uu * u;
-        float ttt = tt * t;
-
-        Vector3 p = uuu * p0;
-        p += 3 * uu * t * p1;
-        p += 3 * u * tt * p2;
-        p += ttt * p3;
-
-        return p;
     }
 }

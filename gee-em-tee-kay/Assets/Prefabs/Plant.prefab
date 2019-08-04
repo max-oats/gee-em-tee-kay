@@ -46,6 +46,10 @@ MonoBehaviour:
   nextEndPointOffsetTEST: {x: 0, y: 0, z: 0}
   stemSectionPrefab: {fileID: 307330046233775394, guid: 481002490aa85465cb461412d707e5c7,
     type: 3}
+  maxHeightOfPlant: 0
+  maxNumberOfLeavesPerDay: 0
+  DeadColor: {r: 0, g: 0, b: 0, a: 1}
   segmentOffsetIncrease: -0.1
   initialMultiplier: 0.2
   multiplierIncrement: 0.1
+  WindowLocation: {fileID: 0}

@@ -8,7 +8,6 @@ public class PlantManager : MonoBehaviour
 
     [SerializeField] private GameObject[] LeafPrefabOptions;
     [SerializeField] private GameObject[] FlowerPrefabOptions;
-    [SerializeField] private Material[] StemMaterialOptions;
 
     [SerializeField] private Vector3 FlowerOriginOffset;
 
@@ -33,7 +32,7 @@ public class PlantManager : MonoBehaviour
     private void CreatePlant(int seed)
     {
         Debug.Log("Creating Plant with seed " + seed);
-        Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemMaterial(seed), Plant.transform.position + FlowerOriginOffset);
+        Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
     }
 
     private float GetFlowerHue(int seed)
@@ -64,15 +63,8 @@ public class PlantManager : MonoBehaviour
         return FlowerPrefabOptions[index];
     }
 
-    private Material GetStemMaterial(int seed)
+    private Color GetStemColour(int seed)
     {
-        if (StemMaterialOptions.Length == 0)
-        {
-            return null;
-        }
-
-        int index = Mathf.Abs(seed * 19) % StemMaterialOptions.Length;
-        Debug.Log("Stem Material index: " + index);
-        return StemMaterialOptions[index];
+        return new Color(0,1,0);
     }
 }
