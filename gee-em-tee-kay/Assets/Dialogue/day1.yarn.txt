@@ -19,6 +19,7 @@ Player: yeah, the moving van isn't bringing the furniture for another \w5 days\w
 Player: but don't worry. i've got a plant pot.
 Player: and exactly \c001£1.50\c000 to my name.
 Player: \whahaha\w.\d002 okay man.\d002 thanks for checking in.
+<<phoneOff Player>>
 ===
 
 title: Day1.Talk1
