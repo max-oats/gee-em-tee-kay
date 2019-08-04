@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313993582}
   - component: {fileID: 313993584}
-  - component: {fileID: 313993583}
   m_Layer: 0
   m_Name: Texture Camera (1)
   m_TagString: MainCamera
@@ -75,14 +74,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &313993583
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313993581}
-  m_Enabled: 1
 --- !u!1 &1193051566
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +162,7 @@ MonoBehaviour:
   textPfb: {fileID: 9172904301534774897, guid: 7df07f65ac57bc044b62b7f6af2b1374, type: 3}
   textSpeed: 0.05
   speedyTextMultiplier: 0.3
-  defaultInset: {x: 0, y: 0}
+  defaultInset: {x: 20, y: -20}
   heightPadding: 20
   widthPadding: 40
   letterHeight: 40
@@ -294,7 +285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1613103413806348286}
   - component: {fileID: 1613103413806348287}
-  - component: {fileID: 1613103413806348284}
   m_Layer: 0
   m_Name: Texture Camera
   m_TagString: MainCamera
@@ -359,14 +349,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1613103413806348284
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613103413806348285}
-  m_Enabled: 1
 --- !u!1 &1613103414316031214
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,13 +428,13 @@ MonoBehaviour:
   DaysWithWaterToBeDrowning: 3
   TooMuchLightThreshold: 3
   NotEnoughLightThreshold: 0
-  DaysConversedForNeitherAnswer: 0
-  DaysConversedForBothAnswer: 0
-  InitialHealth: 0
-  HealthPenaltyForWater: 0
-  HealthPenaltyForLight: 0
-  HealthRewardForGoodDay: 0
-  HealthRewardForTalkingToday: 0
+  DaysConversedForNeitherAnswer: 3
+  DaysConversedForBothAnswer: 5
+  InitialHealth: 3
+  HealthPenaltyForWater: 2
+  HealthPenaltyForLight: 2
+  HealthRewardForGoodDay: 1
+  HealthRewardForTalkingToday: 1
 --- !u!1 &1613103414783073682
 GameObject:
   m_ObjectHideFlags: 0
