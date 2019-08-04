@@ -6,9 +6,9 @@ public class PlantManager : MonoBehaviour
 {
     [SerializeField] private Plant Plant;
 
-    [SerializeField] private List<GameObject> LeafPrefabOptions;
-    [SerializeField] private List<GameObject> FlowerPrefabOptions;
-    [SerializeField] private List<Texture2D> StemTextureOptions;
+    [SerializeField] private GameObject[] LeafPrefabOptions;
+    [SerializeField] private GameObject[] FlowerPrefabOptions;
+    [SerializeField] private Texture2D[] StemTextureOptions;
 
     [SerializeField] private Vector3 FlowerOriginOffset;
 
@@ -43,34 +43,34 @@ public class PlantManager : MonoBehaviour
 
     private GameObject GetLeafPrefab(int seed)
     {
-        if (LeafPrefabOptions.Count == 0)
+        if (LeafPrefabOptions.Length == 0)
         {
             return null;
         }
 
-        int index = (seed * 13) % LeafPrefabOptions.Count;
+        int index = (seed * 13) % LeafPrefabOptions.Length;
         return LeafPrefabOptions[index];
     }
 
     private GameObject GetFlowerPrefab(int seed)
     {
-        if (FlowerPrefabOptions.Count == 0)
+        if (FlowerPrefabOptions.Length == 0)
         {
             return null;
         }
 
-        int index = (seed * 17) % FlowerPrefabOptions.Count;
+        int index = (seed * 17) % FlowerPrefabOptions.Length;
         return FlowerPrefabOptions[index];
     }
 
     private Texture2D GetStemTexture(int seed)
     {
-        if (StemTextureOptions.Count == 0)
+        if (StemTextureOptions.Length == 0)
         {
             return null;
         }
 
-        int index = (seed * 19) % StemTextureOptions.Count;
+        int index = (seed * 19) % StemTextureOptions.Length;
         return StemTextureOptions[index];
     }
 }
