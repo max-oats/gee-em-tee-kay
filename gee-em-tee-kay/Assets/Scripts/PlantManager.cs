@@ -11,6 +11,14 @@ public class PlantManager : MonoBehaviour
     [SerializeField] private GameObject[] FlowerPrefabOptions;
 
     [SerializeField] private string PlantName;
+
+    [SerializeField] private float MinStemRed;
+    [SerializeField] private float MaxStemRed;
+    [SerializeField] private float MinStemGreen;
+    [SerializeField] private float MaxStemGreen;
+    [SerializeField] private float MinStemBlue;
+    [SerializeField] private float MaxStemBlue;
+
     private bool HasStarted = false;
 
     void Update()
@@ -23,14 +31,12 @@ public class PlantManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("Seed: " + PlantName);
             CreatePlant(PlantName.GetHashCode());
         }
     }
 
     private void CreatePlant(int seed)
     {
-        Debug.Log("Creating Plant with seed " + seed);
         Vector3 FlowerOriginOffset = new Vector3(0,PlantPot.bottomOfPlantOffset,0);
         Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
     }
@@ -65,6 +71,16 @@ public class PlantManager : MonoBehaviour
 
     private Color GetStemColour(int seed)
     {
-        return new Color(0,1,0);
+        float RedAlpha = (Mathf.Abs(seed * 7) / 64f) % 1;
+        float Red = Mathf.Lerp(MinStemRed, MaxStemRed, RedAlpha);
+
+        float GreenAlpha = (Mathf.Abs(seed * 11) / 64f) % 1;
+        float Green = Mathf.Lerp(MinStemGreen, MaxStemGreen, GreenAlpha);
+
+        float BlueAlpha = (Mathf.Abs(seed * 13) / 64f) % 1;
+        float Blue = Mathf.Lerp(MinStemBlue, MaxStemBlue, BlueAlpha);
+
+        Debug.Log(string.Format("Selected Color: {0}, {1}, {2}", Red, Green, Blue));
+        return new Color(Red,Green,Blue);
     }
 }

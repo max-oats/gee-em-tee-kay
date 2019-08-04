@@ -37,7 +37,6 @@ public class Plant : MonoBehaviour
         FlowerHue = inFlowerHue;
         LeafPrefab = inLeafPrefab;
         StemColor = inStemColor;
-        // TODO use Color for Stem
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
         initialSection.transform.position = inRootPosition - new Vector3(0, 0.3f, 0);
@@ -46,7 +45,8 @@ public class Plant : MonoBehaviour
         initialSection.endPoint = new Vector3(0,0.3f,0);
         initialSection.gameObject.GetComponent<LineRenderer>().enabled = false;
         initialSection.gameObject.transform.parent = gameObject.transform;
-        sections.Add(initialSection);
+
+        GeneralSectionSetup(initialSection);
     }
 
     public void AddSectionsForDay()
@@ -95,8 +95,6 @@ public class Plant : MonoBehaviour
             segmentOffset += segmentOffsetIncrease;
             section.endPointOffset = offset;
         }
-
-        SetColourBasedOnHealth(Mathf.PingPong(Time.time, 1));
     }
 
     public void AddSection(Vector3 endPointOffset)
@@ -121,15 +119,6 @@ public class Plant : MonoBehaviour
         Vector3 p2 = m + (p1-p0) / 2;
 
         List<Vector3> ControlPointsToAdd = BezierUtils.SplitCubicBezierNWays(p0, p1, p2, p3, sectionsToSplitInto);
-        if (ControlPointsToAdd.Count / 4 == sectionsToSplitInto)
-        {
-            Debug.Log("Correct num sections");
-        }
-        else
-        {
-            Debug.Log(string.Format("Expected {0} sections, got {1}", sectionsToSplitInto, ControlPointsToAdd.Count / 4));
-            return;
-        }
 
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
@@ -147,6 +136,12 @@ public class Plant : MonoBehaviour
         newSection.endTangent = p2 - p0;
         newSection.endPoint = p3 - p0;
 
-        sections.Add(newSection);
+        GeneralSectionSetup(newSection);
+    }
+
+    private void GeneralSectionSetup(StemSection inSection)
+    {
+        inSection.SetColour(StemColor);
+        sections.Add(inSection);
     }
 }

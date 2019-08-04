@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plant: {fileID: 0}
+  PlantPot: {fileID: 0}
   LeafPrefabOptions: []
   FlowerPrefabOptions: []
-  StemMaterialOptions:
-  - {fileID: 2100000, guid: b3f95405b2a9bf14aa2270f3f042160c, type: 2}
-  - {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
-  FlowerOriginOffset: {x: 0, y: 0.5, z: 0}
   PlantName: 
+  MinStemRed: 0
+  MaxStemRed: 0.3
+  MinStemGreen: 0.5
+  MaxStemGreen: 1
+  MinStemBlue: 0
+  MaxStemBlue: 0.3
