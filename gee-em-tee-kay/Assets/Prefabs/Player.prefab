@@ -5003,6 +5003,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsAbleToInteract: 0
+  menuOptions:
+  - talk
+  - water
+  - move
+  - neglect
 --- !u!136 &4879872831458779107
 CapsuleCollider:
   m_ObjectHideFlags: 0

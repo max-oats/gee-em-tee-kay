@@ -91,6 +91,9 @@ public class InteractionComponent : MonoBehaviour
 
     public void SetUpMenu()
     {
+        HideInteract();
+        bIsAbleToInteract = false;
+
         StartCoroutine(SetUpBubbles());
     }
 
@@ -114,7 +117,7 @@ public class InteractionComponent : MonoBehaviour
         // Grab the handler for the UI side
         SpeechBubbleHandler friendSpeechHandler = Global.dialogueHandler.playerSpeechHandler;
 
-        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset) * (menuOptions.Count));
+        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) - Global.dialogueHandler.optionOffset) * (menuOptions.Count));
 
         offsetOption -= (Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset);
 
@@ -210,6 +213,17 @@ public class InteractionComponent : MonoBehaviour
 
             yield return null;
         }
+
+        // Hide all the buttons
+        foreach (var button in friendSpeechHandler.buttons) 
+        {
+            button.DeselectButton();
+            button.KillTextElements();
+            button.ShrinkBubble();
+            Destroy(button, 1.0f);
+        }
+
+        friendSpeechHandler.buttons.Clear();
         
         // Re-enable movement input
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");

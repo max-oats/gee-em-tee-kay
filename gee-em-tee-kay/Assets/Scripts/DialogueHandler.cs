@@ -271,6 +271,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             button.HideBubble();
             Destroy(button, 1.0f);
         }
+        
+        friendSpeechHandler.buttons.Clear();
 
         yield break;
     }
