@@ -7,6 +7,9 @@ public class Plant : MonoBehaviour
     public Vector3 nextEndPointOffsetTEST;
     public int sectionsToSplitInto = 1;
 
+    // Move To DayManager
+    [SerializeField] private float MaxHorizontalDistance;
+
     [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private float maxHeightOfPlant;
     [SerializeField] private int maxNumberOfLeavesPerDay;
@@ -51,19 +54,61 @@ public class Plant : MonoBehaviour
 
     public void AddSectionsForDay()
     {
-        // TODO Implement
-        Debug.Log("Adding Sections for Day");
+        if (nextEndPointOffsetTEST != Vector3.zero)
+        {
+            // Debug
+            AddSection(nextEndPointOffsetTEST);
+            return;
+        }
 
         DayManager dm = Global.dayManager;
 
         if (!dm.HasEverConversed())
         {
-            return;
+            //return;
         }
 
-        Vector3 ToNextPoint = new Vector3(0, dm.GetMaxHeightOfSection(), 0);
+        Debug.Log("Start Calculation");
+        Vector3 e = GetLastSectionEndPos() - transform.position;
+        Vector3 w = WindowLocation.position - GetLastSectionEndPos();
+        w.y = 0;
+        w.Normalize();
 
-        // Debug
+        Debug.Log(e);
+        Debug.Log(w);
+
+        float r = dm.GetMaxDistanceFromPotCenter();
+        Debug.Log(r);
+        float a = w.x*w.x + w.z*w.z;
+        float b = 2*e.x*w.x + 2*e.z*w.z;
+        float c = e.x*e.x + e.z*e.z - r*r;
+
+        float d = Mathf.Sqrt(b*b - 4*a*c);
+
+        float top;
+        if (-b + d > 0)
+        {
+            top = -b + d;
+        }
+        else if (-b - d > 0)
+        {
+            top = -b - d;
+        }
+        else
+        {
+            top = 0;
+        }
+
+        float t = top / 2*a;
+        Debug.Log(t);
+
+        float Scale = Mathf.Min(t, MaxHorizontalDistance);
+        Debug.Log(Scale);
+
+        Vector3 ToNextPoint = w * Scale;
+        ToNextPoint += new Vector3(0, dm.GetMaxHeightOfSection(), 0);
+        Debug.Log(ToNextPoint);
+
         AddSection(ToNextPoint);
     }
 
@@ -143,5 +188,11 @@ public class Plant : MonoBehaviour
     {
         inSection.SetColour(StemColor);
         sections.Add(inSection);
+    }
+
+    private Vector3 GetLastSectionEndPos()
+    {
+        StemSection lastSection = sections[sections.Count-1];
+        return lastSection.EndPoint.position;
     }
 }
