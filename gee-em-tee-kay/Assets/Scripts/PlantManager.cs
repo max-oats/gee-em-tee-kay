@@ -8,7 +8,7 @@ public class PlantManager : MonoBehaviour
 
     [SerializeField] private GameObject[] LeafPrefabOptions;
     [SerializeField] private GameObject[] FlowerPrefabOptions;
-    [SerializeField] private Texture2D[] StemTextureOptions;
+    [SerializeField] private Material[] StemMaterialOptions;
 
     [SerializeField] private Vector3 FlowerOriginOffset;
 
@@ -25,14 +25,15 @@ public class PlantManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+            Debug.Log("Seed: " + PlantName);
             CreatePlant(PlantName.GetHashCode());
         }
     }
 
     private void CreatePlant(int seed)
     {
-        Debug.Log("Creating Plant");
-        Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemTexture(seed), Plant.transform.position + FlowerOriginOffset);
+        Debug.Log("Creating Plant with seed " + seed);
+        Plant.Setup(GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemMaterial(seed), Plant.transform.position + FlowerOriginOffset);
     }
 
     private float GetFlowerHue(int seed)
@@ -48,7 +49,7 @@ public class PlantManager : MonoBehaviour
             return null;
         }
 
-        int index = (seed * 13) % LeafPrefabOptions.Length;
+        int index = Mathf.Abs(seed * 13) % LeafPrefabOptions.Length;
         return LeafPrefabOptions[index];
     }
 
@@ -59,18 +60,19 @@ public class PlantManager : MonoBehaviour
             return null;
         }
 
-        int index = (seed * 17) % FlowerPrefabOptions.Length;
+        int index = Mathf.Abs(seed * 17) % FlowerPrefabOptions.Length;
         return FlowerPrefabOptions[index];
     }
 
-    private Texture2D GetStemTexture(int seed)
+    private Material GetStemMaterial(int seed)
     {
-        if (StemTextureOptions.Length == 0)
+        if (StemMaterialOptions.Length == 0)
         {
             return null;
         }
 
-        int index = (seed * 19) % StemTextureOptions.Length;
-        return StemTextureOptions[index];
+        int index = Mathf.Abs(seed * 19) % StemMaterialOptions.Length;
+        Debug.Log("Stem Material index: " + index);
+        return StemMaterialOptions[index];
     }
 }

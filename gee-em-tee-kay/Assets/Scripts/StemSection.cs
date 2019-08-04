@@ -20,6 +20,10 @@ public class StemSection : MonoBehaviour
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
 
+    public void SetMaterial(Material StemMaterial)
+    {
+        lineRenderer.material = StemMaterial;
+    }
 
     void Start()
     {
