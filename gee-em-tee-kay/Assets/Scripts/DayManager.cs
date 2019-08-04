@@ -5,14 +5,15 @@ using UnityEngine;
 public class DayManager : MonoBehaviour
 {
     [SerializeField] private Plant Plant;
+    [SerializeField] private PlantPot PlantPot;
 
     [SerializeField] private int TotalNumDays;
     [SerializeField] private int DaysWithoutWaterToBeThirsty;
     [SerializeField] private int DaysWithWaterToBeDrowning;
     [SerializeField] private int TooMuchLightThreshold;
     [SerializeField] private int NotEnoughLightThreshold;
-    [SerializeField] private int DaysConversedForNeitherAnswer;
-    [SerializeField] private int DaysConversedForBothAnswer;
+    [SerializeField] private int DaysConversedForMineOption;
+    [SerializeField] private int DaysConversedForThirdOption;
 
     [SerializeField] private int InitialHealth;
     [SerializeField] private int HealthPenaltyForWater;
@@ -84,6 +85,12 @@ public class DayManager : MonoBehaviour
         transientData = new PlantHealthTransientData();
     }
 
+    // Water
+    public void Water()
+    {
+        transientData.WasWateredToday = true;
+    }
+
     public bool HasBeenWateredToday()
     {
         return transientData.WasWateredToday;
@@ -99,6 +106,12 @@ public class DayManager : MonoBehaviour
         return persistentData.DaysWateredStreak > DaysWithWaterToBeDrowning;
     }
 
+    // Light
+    public void SetLightIncrementForToday(int lightIncrement)
+    {
+        transientData.LightGettingToday = lightIncrement;
+    }
+
     public bool HasTooMuchLight()
     {
         return persistentData.AccumulatedLight > TooMuchLightThreshold;
@@ -107,6 +120,40 @@ public class DayManager : MonoBehaviour
     public bool HasNotEnoughLight()
     {
         return persistentData.AccumulatedLight < NotEnoughLightThreshold;
+    }
+
+
+    // Talking
+    public void Talk()
+    {
+        transientData.HaveConversedToday = true;
+    }
+
+    public bool HasEverConversed()
+    {
+        return persistentData.DaysConversed > 0;
+    }
+
+    public bool HasMineOption()
+    {
+        return persistentData.DaysConversed >= DaysConversedForMineOption;
+    }
+
+    public bool HasThirdOption()
+    {
+        return persistentData.DaysConversed >= DaysConversedForThirdOption;
+    }
+
+
+    // Dimensions
+    public float GetMaxHeightOfSection()
+    {
+        return PlantPot.height / TotalNumDays;
+    }
+
+    public float GetMaxDistanceFromPotCenter()
+    {
+        return PlantPot.distanceFromCenter;
     }
 }
 

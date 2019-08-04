@@ -428,13 +428,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plant: {fileID: 0}
+  PlantPot: {fileID: 0}
   TotalNumDays: 5
   DaysWithoutWaterToBeThirsty: 1
   DaysWithWaterToBeDrowning: 3
   TooMuchLightThreshold: 3
   NotEnoughLightThreshold: 0
-  DaysConversedForNeitherAnswer: 3
-  DaysConversedForBothAnswer: 5
+  DaysConversedForMineOption: 3
+  DaysConversedForThirdOption: 5
   InitialHealth: 3
   HealthPenaltyForWater: 2
   HealthPenaltyForLight: 2

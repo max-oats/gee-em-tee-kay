@@ -6073,6 +6073,10 @@ PrefabInstance:
       propertyPath: Plant
       value: 
       objectReference: {fileID: 1557597305}
+    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: PlantPot
+      value: 
+      objectReference: {fileID: 628624978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}
 --- !u!1001 &3711965824708137006
