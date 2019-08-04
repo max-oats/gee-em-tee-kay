@@ -22,6 +22,8 @@ public class StemSection : MonoBehaviour
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
 
+    [SerializeField] private bool DrawGizmos = false;
+
     [SerializeField] private GameObject endPointMarker;
 
     public void SetColour(Color inColor)
@@ -31,12 +33,16 @@ public class StemSection : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Vector3 p = transform.position;
-        Gizmos.DrawSphere(p, 0.1f);
-        Gizmos.DrawSphere(p + startTangent, 0.1f);
-        Gizmos.DrawSphere(p + endTangent, 0.1f);
-        Gizmos.DrawSphere(p + endPoint, 0.1f);
+        if (DrawGizmos)
+        {
+            Vector3 p = transform.position;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(p, 0.1f);
+            Gizmos.DrawSphere(p + endPoint, 0.1f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(p + startTangent, 0.1f);
+            Gizmos.DrawSphere(p + endTangent, 0.1f);
+        }
     }
 
     void Start()

@@ -40,6 +40,7 @@ public class Plant : MonoBehaviour
         // TODO use Color for Stem
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
+        initialSection.transform.position = inRootPosition - new Vector3(0, 0.3f, 0);
         initialSection.startTangent = new Vector3(0,0.1f,0);
         initialSection.endTangent = new Vector3(0,0.2f,0);
         initialSection.endPoint = new Vector3(0,0.3f,0);
@@ -60,8 +61,10 @@ public class Plant : MonoBehaviour
             return;
         }
 
+        Vector3 ToNextPoint = new Vector3(0, dm.GetMaxHeightOfSection(), 0);
+
         // Debug
-        AddSection(nextEndPointOffsetTEST);
+        AddSection(ToNextPoint);
     }
 
     void SetColourBasedOnHealth(float param)
