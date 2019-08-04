@@ -50,4 +50,9 @@ public class CamController : MonoBehaviour
     {
         screenShakeDamper.SetCurrent(strength);
     }
+
+    public void SetBackgroundColour(Color newColor)
+    {
+        GetComponent<Camera>().backgroundColor = (newColor);
+    }
 }
