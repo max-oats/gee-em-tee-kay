@@ -16,7 +16,7 @@ public class Plant : MonoBehaviour
     private GameObject FlowerPrefab;
     private float FlowerHue;
     private GameObject LeafPrefab;
-    private Texture2D StemMaterial;
+    private Material StemMaterial;
 
     private List<StemSection> sections;
     private float time = 0;
@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
         sections = new List<StemSection>();
     }
 
-    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Texture2D inStemMaterial, Vector3 inRootPosition)
+    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Material inStemMaterial, Vector3 inRootPosition)
     {
         FlowerPrefab = inFlowerPrefab;
         FlowerHue = inFlowerHue;
@@ -92,6 +92,8 @@ public class Plant : MonoBehaviour
         newSection.startTangent = p1;
         newSection.endTangent = p2;
         newSection.endPoint = p3;
+
+        newSection.SetMaterial(StemMaterial);
 
         sections.Add(newSection);
     }
