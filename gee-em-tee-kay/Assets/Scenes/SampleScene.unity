@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6517,15 +6517,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: lightSettings.Array.data[2].skyboxColour.r
-      value: 0.30744925
+      value: 0.14978641
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: lightSettings.Array.data[2].skyboxColour.g
-      value: 0.34526557
+      value: 0.16628951
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: lightSettings.Array.data[2].skyboxColour.b
-      value: 0.4433962
+      value: 0.20754719
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: rainObject
