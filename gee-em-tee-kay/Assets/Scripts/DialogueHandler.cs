@@ -301,9 +301,6 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         Debug.Log ("Dialogue starting!");
         inDialogue = true;
 
-        // Disable movement input during dialogue
-        Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
-
         yield break;
     }
 
@@ -312,9 +309,6 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     {
         Debug.Log ("Complete!");
         inDialogue = false;
-
-        // Re-enable movement input
-        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 
         yield break;
     }

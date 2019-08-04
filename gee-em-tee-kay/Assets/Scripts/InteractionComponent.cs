@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class InteractionComponent : MonoBehaviour
 {
+    public delegate void SelectedMenuOption(string option);
+    public SelectedMenuOption selectedMenuOption;
+
     public bool bIsAbleToInteract = false;
+
+    public List<string> menuOptions;
 
     private SpeechBubbleImage speechBubble = null;
 
@@ -84,115 +89,130 @@ public class InteractionComponent : MonoBehaviour
         }
     }
 
-    // IEnumerator SetUpBubble()
-    // {
-    //     // todo: account for multiple lines
-    //     // Find out the width of the longest option
-    //     float longestOption = 0f;
-    //     foreach (string optionString in optionsCollection.options)
-    //     {
-    //         if (optionString.Length > longestOption)
-    //         {
-    //             longestOption = optionString.Length;
-    //         }
-    //     }
-    //     float longestWidth = (longestOption * letterWidth) + (widthPadding*2f);
+    public void SetUpMenu()
+    {
+        StartCoroutine(SetUpBubbles());
+    }
 
-    //     // Grab the handler for the UI side
-    //     SpeechBubbleHandler friendSpeechHandler = playerSpeechHandler;
+    IEnumerator SetUpBubbles()
+    {
+        // Disable movement input during dialogue
+        Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
 
-    //     float offsetOption = ((letterHeight + (heightPadding*2f) + optionOffset) * (optionsCollection.options.Count));
+        // todo: account for multiple lines
+        // Find out the width of the longest option
+        float longestOption = 0f;
+        foreach (string optionString in menuOptions)
+        {
+            if (optionString.Length > longestOption)
+            {
+                longestOption = optionString.Length;
+            }
+        }
+        float longestWidth = (longestOption * Global.dialogueHandler.letterWidth) + (Global.dialogueHandler.widthPadding*2f);
 
-    //     offsetOption -= (letterHeight + (heightPadding*2f) + optionOffset);
+        // Grab the handler for the UI side
+        SpeechBubbleHandler friendSpeechHandler = Global.dialogueHandler.playerSpeechHandler;
 
-    //     yield return new WaitForSeconds(0.1f);
+        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset) * (menuOptions.Count));
 
-    //     // Display each option in a button, and make it visible
-    //     int j = 0;
-    //     foreach (var optionString in optionsCollection.options) 
-    //     {
-    //         GameObject speechgo = Instantiate(speechBubPfb, friendSpeechHandler.transform);
-    //         SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
+        offsetOption -= (Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset);
 
-    //         friendSpeechHandler.buttons.Add(button);
+        yield return new WaitForSeconds(0.1f);
 
-    //         if (j == 0)
-    //             button.SelectButton(false);
-    //         else
-    //             button.DeselectButton();
+        // Display each option in a button, and make it visible
+        int j = 0;
+        foreach (var optionString in menuOptions) 
+        {
+            GameObject speechgo = Instantiate(Global.dialogueHandler.speechBubPfb, friendSpeechHandler.transform);
+            SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
 
-    //         string finalString = optionString.ToLower();
+            friendSpeechHandler.buttons.Add(button);
 
-    //         // Grab the length of the contents
-    //         int contentsLength = finalString.Length;
+            if (j == 0)
+                button.SelectButton(false);
+            else
+                button.DeselectButton();
 
-    //         float buttonWidth = (contentsLength * letterWidth) + widthPadding*2f;
+            string finalString = optionString.ToLower();
 
-    //         // Resize/reposition 
-    //         button.SetSizeAndOffset(buttonWidth, (letterHeight) + heightPadding*2f, -((longestWidth-buttonWidth)/2f), offsetOption);
-    //         button.ShowBubble();
-    //         button.GrowBubble();
+            // Grab the length of the contents
+            int contentsLength = finalString.Length;
+
+            float buttonWidth = (contentsLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f;
+
+            // Resize/reposition 
+            button.SetSizeAndOffset(buttonWidth, (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f, -((longestWidth-buttonWidth)/2f), offsetOption);
+            button.ShowBubble();
+            button.GrowBubble();
             
-    //         float tempXLocation = Global.dialogueHandler.defaultInset.x;
-    //         float tempYLocation = Global.dialogueHandler.defaultInset.y;
+            float tempXLocation = Global.dialogueHandler.defaultInset.x;
+            float tempYLocation = Global.dialogueHandler.defaultInset.y;
 
-    //         foreach (char c in finalString)
-    //         {
-    //             DialogueCharacter dc = new DialogueCharacter();
-    //             dc.character = c;
+            foreach (char c in finalString)
+            {
+                DialogueCharacter dc = new DialogueCharacter();
+                dc.character = c;
 
-    //             float delay = 0f;
-    //             button.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
-    //                                                                         button.transform, 
-    //                                                                         new Vector2(tempXLocation, tempYLocation),  
-    //                                                                         out delay));
-    //             // Update X location
-    //             tempXLocation += Global.dialogueHandler.letterWidth;
-    //         }
+                float delay = 0f;
+                button.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
+                                                                            button.transform, 
+                                                                            new Vector2(tempXLocation, tempYLocation),  
+                                                                            out delay));
+                // Update X location
+                tempXLocation += Global.dialogueHandler.letterWidth;
+            }
 
-    //         offsetOption -= (letterHeight + heightPadding + optionOffset);
+            offsetOption -= (Global.dialogueHandler.letterHeight + Global.dialogueHandler.heightPadding + Global.dialogueHandler.optionOffset);
 
-    //         j++;
+            j++;
 
-    //         yield return new WaitForSeconds(0.1f);
-    //     }
+            yield return new WaitForSeconds(0.1f);
+        }
 
-    //     // Record that we're using it
-    //     SetSelectedOption = optionChooser;
+        int selected = 0;
+        bool optionSelected = false;
 
-    //     int selected = 0;
+        // Wait until the chooser has been used and then removed (see SetOption below)
+        while (!optionSelected) 
+        {
+            if (Global.input.GetButtonDown("Talk"))
+            {
+                if (selectedMenuOption != null)
+                {
+                    selectedMenuOption(menuOptions[selected]);
 
-    //     // Wait until the chooser has been used and then removed (see SetOption below)
-    //     while (SetSelectedOption != null) 
-    //     {
-    //         if (Global.input.GetButtonDown("Talk"))
-    //         {
-    //             SetOption(selected);
-    //         }
-    //         else if (Global.input.GetButtonDown("UI|Up"))
-    //         {
-    //             friendSpeechHandler.buttons[selected].DeselectButton();
+                    optionSelected = true;
+                }
+            }
+            else if (Global.input.GetButtonDown("UI|Up"))
+            {
+                friendSpeechHandler.buttons[selected].DeselectButton();
 
-    //             if (selected > 0)
-    //             {
-    //                 selected--;
-    //             }
+                if (selected > 0)
+                {
+                    selected--;
+                }
 
-    //             friendSpeechHandler.buttons[selected].SelectButton();
-    //         }
-    //         else if (Global.input.GetButtonDown("UI|Down"))
-    //         {
-    //             friendSpeechHandler.buttons[selected].DeselectButton();
+                friendSpeechHandler.buttons[selected].SelectButton();
+            }
+            else if (Global.input.GetButtonDown("UI|Down"))
+            {
+                friendSpeechHandler.buttons[selected].DeselectButton();
 
-    //             if (selected < optionsCollection.options.Count-1)
-    //             {
-    //                 selected++;
-    //             }
+                if (selected < menuOptions.Count-1)
+                {
+                    selected++;
+                }
 
-    //             friendSpeechHandler.buttons[selected].SelectButton();
-    //         }
+                friendSpeechHandler.buttons[selected].SelectButton();
+            }
 
-    //         yield return null;
-    //     }
-    // }
+            yield return null;
+        }
+        
+        // Re-enable movement input
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+        
+    }
 }
