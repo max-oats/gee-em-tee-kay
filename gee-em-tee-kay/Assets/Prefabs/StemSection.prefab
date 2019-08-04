@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 307330046233775399}
   - component: {fileID: 307330046233775392}
   m_Layer: 0
-  m_Name: TestLine
+  m_Name: TestFlowerSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307330046233775394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.29}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+  - {fileID: 2100000, guid: b3f95405b2a9bf14aa2270f3f042160c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,8 +140,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 0
-  startPoint: {x: 0, y: 2.1299086, z: -5.111246}
-  endPoint: {x: 0, y: -0.86382914, z: -5}
-  startTangent: {x: 0, y: 1.0561433, z: -3.1896286}
-  endTangent: {x: 0, y: 1.615684, z: -6.3649}
+  startPoint: {x: 0, y: 0, z: 0}
+  endPoint: {x: 0, y: 0, z: 0}
+  startTangent: {x: 0, y: 0, z: 0}
+  endTangent: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 307330046233775399}
+  startPointOffset: 0
+  endPointOffset: 0

@@ -9,6 +9,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private float maxHeightOfPlant;
     [SerializeField] private int maxNumberOfLeavesPerDay;
+    [SerializeField] private Color DeadColor;
 
     [SerializeField] private float segmentOffsetIncrease;
     [SerializeField] private float initialMultiplier;
@@ -19,7 +20,7 @@ public class Plant : MonoBehaviour
     private GameObject FlowerPrefab;
     private float FlowerHue;
     private GameObject LeafPrefab;
-    private Material StemMaterial;
+    private Color StemColor;
 
     private List<StemSection> sections;
     private float time = 0;
@@ -29,13 +30,13 @@ public class Plant : MonoBehaviour
         sections = new List<StemSection>();
     }
 
-    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Material inStemMaterial, Vector3 inRootPosition)
+    public void Setup(GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
     {
         FlowerPrefab = inFlowerPrefab;
         FlowerHue = inFlowerHue;
         LeafPrefab = inLeafPrefab;
-        StemMaterial = inStemMaterial;
-        // TODO use Material for Stem
+        StemColor = inStemColor;
+        // TODO use Color for Stem
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
         initialSection.endPoint = inRootPosition;
@@ -50,6 +51,17 @@ public class Plant : MonoBehaviour
     {
         // TODO Implement
         Debug.Log("Adding Sections for Day");
+
+        // Debug
+        AddSection(nextEndPointOffsetTEST);
+    }
+
+    void SetColourBasedOnHealth(float param)
+    {
+        foreach (StemSection section in sections)
+        {
+            section.SetColour(Color.Lerp(StemColor, DeadColor, param));
+        }
     }
 
     void Update()
@@ -72,6 +84,8 @@ public class Plant : MonoBehaviour
             segmentOffset += segmentOffsetIncrease;
             section.endPointOffset = offset;
         }
+
+        SetColourBasedOnHealth(Mathf.PingPong(Time.time, 1));
     }
 
     public void AddSection(Vector3 endPointOffset)
@@ -95,8 +109,6 @@ public class Plant : MonoBehaviour
         newSection.startTangent = p1;
         newSection.endTangent = p2;
         newSection.endPoint = p3;
-
-        newSection.SetMaterial(StemMaterial);
 
         sections.Add(newSection);
     }
