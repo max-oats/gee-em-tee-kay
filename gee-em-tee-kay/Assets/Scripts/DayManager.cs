@@ -62,11 +62,20 @@ public class DayManager : MonoBehaviour
 
     public void StartNewDay()
     {
+        if (currentDay == 5)
+        {
+            Application.Quit();
+        }
+
         StartCoroutine(StartDayFade());
 
         if (currentDay == 0)
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+        }
+        else if (currentDay == 4)
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
         }
 
         if (currentDay == 2)
@@ -237,21 +246,7 @@ public class DayManager : MonoBehaviour
 
     public string SelectNode()
     {
-        string nodeName = "";
-        if (IsThirsty())
-        {
-
-        }
-        else if (IsDrowning())
-        {
-
-        }
-        else
-        {
-            return "Day" + (persistentData.DaysConversed+1) +  ".Talk";
-        }
-
-        return nodeName;
+        return "Day" + (persistentData.DaysConversed+1) +  ".Talk";
     }
 
     public bool HasEverConversed()
