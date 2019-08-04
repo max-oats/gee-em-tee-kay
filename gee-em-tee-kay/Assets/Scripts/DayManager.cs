@@ -20,6 +20,8 @@ public class DayManager : MonoBehaviour
     [SerializeField] private int DaysConversedForMineOption;
     [SerializeField] private int DaysConversedForThirdOption;
 
+    [SerializeField] private int MaxHealth;
+    [SerializeField] private int HealthThresholdToLookUnhealthy;
     [SerializeField] private int InitialHealth;
     [SerializeField] private int HealthPenaltyForWater;
     [SerializeField] private int HealthPenaltyForLight;
@@ -165,6 +167,8 @@ public class DayManager : MonoBehaviour
 
         Plant.AddSectionsForDay();
 
+        persistentData.DayNumber++;
+
         transientData = new PlantHealthTransientData();
 
         currentDay++;
@@ -266,6 +270,23 @@ public class DayManager : MonoBehaviour
     }
 
 
+    // Health
+    public bool PlantIsDead()
+    {
+        return persistentData.GeneralHealth < 0;
+    }
+
+    public bool PlantIsUnhealthy()
+    {
+        return persistentData.GeneralHealth < HealthThresholdToLookUnhealthy;
+    }
+
+    public float CurrentHealthPercentage()
+    {
+        return (float)persistentData.GeneralHealth / MaxHealth;
+    }
+
+
     // Dimensions
     public float GetMaxHeightOfSection()
     {
@@ -276,6 +297,13 @@ public class DayManager : MonoBehaviour
     {
         return PlantPot.distanceFromCenter;
     }
+
+
+    // Progression
+    public int GetPlantProgressionDay()
+    {
+        return persistentData.DayNumber;
+    }
 }
 
 public class PlantHealthPersistentData
@@ -285,6 +313,7 @@ public class PlantHealthPersistentData
     public int AccumulatedLight = 0;
     public int GeneralHealth;
     public int DaysConversed = 0;
+    public int DayNumber = 0;
 }
 
 public class PlantHealthTransientData

@@ -45,6 +45,13 @@ public class StemSection : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        endPointMarker = new GameObject("EndPoint");
+        endPointMarker.transform.parent = gameObject.transform;
+        EndPoint = endPointMarker.transform;
+    }
+
     void Start()
     {
         if (!lineRenderer)
@@ -52,10 +59,6 @@ public class StemSection : MonoBehaviour
             lineRenderer = gameObject.GetComponent<LineRenderer>();
         }
         lineRenderer.sortingLayerID = layerOrder;
-
-        endPointMarker = new GameObject("EndPoint");
-        endPointMarker.transform.parent = gameObject.transform;
-        EndPoint = endPointMarker.transform;
     }
 
     void Update()
