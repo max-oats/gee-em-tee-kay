@@ -500,15 +500,24 @@ MonoBehaviour:
   diaHandler: {fileID: 1193051568}
   theDayManager: {fileID: 2032892916}
   potPositions:
-  - {x: -2.16, y: -1, z: 0.61}
-  - {x: 0, y: -1, z: 0.61}
-  - {x: 2.16, y: -1, z: 0.61}
-  - {x: -2.16, y: -1, z: -2.125}
-  - {x: 0, y: -1, z: -2.125}
-  - {x: 2.16, y: -1, z: -2.125}
-  - {x: -2.16, y: -1, z: -4.68}
-  - {x: 0, y: -1, z: -4.68}
-  - {x: 2.16, y: -1, z: -4.68}
+  - Position: {x: -2.16, y: -1, z: 0.61}
+    LightGainedHere: -2
+  - Position: {x: 0, y: -1, z: 0.61}
+    LightGainedHere: 3
+  - Position: {x: 2.16, y: -1, z: 0.61}
+    LightGainedHere: -2
+  - Position: {x: -2.16, y: -1, z: -2.125}
+    LightGainedHere: 1
+  - Position: {x: 0, y: -1, z: -2.125}
+    LightGainedHere: 2
+  - Position: {x: 2.16, y: -1, z: -2.125}
+    LightGainedHere: 1
+  - Position: {x: -2.16, y: -1, z: -4.68}
+    LightGainedHere: -1
+  - Position: {x: 0, y: -1, z: -4.68}
+    LightGainedHere: 0
+  - Position: {x: 2.16, y: -1, z: -4.68}
+    LightGainedHere: -1
 --- !u!114 &2032892916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +539,8 @@ MonoBehaviour:
   NotEnoughLightThreshold: 0
   DaysConversedForMineOption: 3
   DaysConversedForThirdOption: 5
+  MaxHealth: 0
+  HealthThresholdToLookUnhealthy: 0
   InitialHealth: 3
   HealthPenaltyForWater: 2
   HealthPenaltyForLight: 2
