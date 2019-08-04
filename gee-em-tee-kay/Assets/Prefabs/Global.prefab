@@ -223,7 +223,7 @@ MonoBehaviour:
   variableStorage: {fileID: 1193051569}
   dialogueUI: {fileID: 1193051568}
   startNode: Day1.Intro
-  startAutomatically: 1
+  startAutomatically: 0
   automaticCommands: 1
 --- !u!114 &1193051569
 MonoBehaviour:
@@ -546,9 +546,9 @@ MonoBehaviour:
     skyboxColour: {r: 0.36862746, g: 0.21960784, b: 0.18039216, a: 0}
     shadowStrength: 1
     ambientLightIntensity: 0.99
-  - ambientLight: {r: 0.6509804, g: 0.43137255, b: 0.3764706, a: 1}
-    sunlight: {r: 0.8509804, g: 0.52156866, b: 0.37254903, a: 1}
-    skyboxColour: {r: 0.36862746, g: 0.21960784, b: 0.18039216, a: 0}
+  - ambientLight: {r: 0.2746084, g: 0.32476413, b: 0.4811321, a: 1}
+    sunlight: {r: 0.5790762, g: 0.6992891, b: 0.8584906, a: 1}
+    skyboxColour: {r: 0.30744925, g: 0.34526557, b: 0.4433962, a: 0}
     shadowStrength: 1
     ambientLightIntensity: 0.99
   - ambientLight: {r: 0.6509804, g: 0.43137255, b: 0.3764706, a: 1}
@@ -564,9 +564,10 @@ MonoBehaviour:
   ambientLight: {fileID: 0}
   sunLight: {fileID: 0}
   faderObject: {fileID: 998884867}
-  fadeTime: 1
-  fadedInColor: {r: 1, g: 1, b: 1, a: 1}
-  fadedOutColor: {r: 1, g: 1, b: 1, a: 1}
+  rainObject: {fileID: 0}
+  fadeTime: 2
+  fadedInColor: {r: 0.19607845, g: 0.19215688, b: 0.19215688, a: 0}
+  fadedOutColor: {r: 0.19607845, g: 0.19215688, b: 0.19215688, a: 1}
 --- !u!1 &1613103414783073682
 GameObject:
   m_ObjectHideFlags: 0

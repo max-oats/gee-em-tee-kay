@@ -29,6 +29,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private Light sunLight;
 
     [SerializeField] private GameObject faderObject;
+    [SerializeField] private GameObject rainObject;
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private Color fadedInColor = Color.white;
     [SerializeField] private Color fadedOutColor = Color.white;
@@ -62,6 +63,15 @@ public class DayManager : MonoBehaviour
         if (currentDay == 0)
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+        }
+
+        if (currentDay == 2)
+        {
+            rainObject.SetActive(true);
+        }
+        else
+        {
+            rainObject.SetActive(false);
         }
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
