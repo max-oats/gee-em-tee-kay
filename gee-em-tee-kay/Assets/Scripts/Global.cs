@@ -14,6 +14,7 @@ public class Global : MonoBehaviour
     public CamController camController;
     public DialogueHandler diaHandler;
     public DayManager theDayManager;
+    public PlantManager thePlantManager;
 
     public List<PotPosition> potPositions;
 
@@ -22,6 +23,7 @@ public class Global : MonoBehaviour
     public static DayManager dayManager;
     public static CamController cameraController;
     public static DialogueHandler dialogueHandler;
+    public static PlantManager plantManager;
 
     public static string plantName;
 
@@ -39,6 +41,7 @@ public class Global : MonoBehaviour
             cameraController = camController;
             dialogueHandler = diaHandler;
             dayManager = theDayManager;
+            plantManager = thePlantManager;
         }
     }
 

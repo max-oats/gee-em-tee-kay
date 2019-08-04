@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6275,6 +6275,11 @@ PrefabInstance:
       propertyPath: camController
       value: 
       objectReference: {fileID: 1439283895}
+    - target: {fileID: 1613103414316031208, guid: daefe09352c81c642b917c74c38e0431,
+        type: 3}
+      propertyPath: thePlantManager
+      value: 
+      objectReference: {fileID: 3711965824708137007}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: playerAnimator
       value: 
@@ -6384,6 +6389,18 @@ PrefabInstance:
       objectReference: {fileID: 628624978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf80fa9c72b0f4aeda2df514c57bd04c, type: 3}
+--- !u!114 &3711965824708137007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3711965824708137006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa12aad898ab430fb28f89020768d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4258158762469802141
 PrefabInstance:
   m_ObjectHideFlags: 0
