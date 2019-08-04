@@ -6,6 +6,7 @@ public class EventReciever : MonoBehaviour
 {
     public Transform rightFeet;
     public Transform leftFeet;
+    public Transform waterBottle;
 
     public GameObject rightAudio;
     public GameObject leftAudio;
@@ -14,6 +15,7 @@ public class EventReciever : MonoBehaviour
     public GameObject leftStompAudio;
 
     public GameObject stompParticle;
+    public GameObject waterParticle;
 
     public void LeftStep()
     {
@@ -47,5 +49,11 @@ public class EventReciever : MonoBehaviour
         Destroy(audiogo, 1.0f);
 
         Global.cameraController.ScreenShake();
+    }
+
+    public void Spray()
+    {
+        GameObject go = Instantiate(waterParticle, waterBottle);
+        Destroy(go, 1.0f);
     }
 }

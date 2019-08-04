@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public GameObject stompParticle;
     public GameObject stompSound;
 
+    public GameObject waterBottle;
+
     /** ----- Private variables ----- */
     private const float onGroundSpeedY = -1f; /** The initial fall speed */
     private float speedY = onGroundSpeedY; /** The default vertical speed */
@@ -97,6 +99,26 @@ public class PlayerController : MonoBehaviour
         animator.CrossFadeInFixedTime("IdleWalk", 0.5f);
     }
 
+    public IEnumerator Water()
+    {
+        Global.input.controllers.maps.SetMapsEnabled(false, "Movement");
+
+        yield return new WaitForSeconds(0.1f);
+        waterBottle.SetActive(true);
+
+        animator.CrossFadeInFixedTime("Water", 0.1f);
+        
+        yield return new WaitForSeconds(2.0f);
+
+        waterBottle.SetActive(false);
+        
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+
+        animator.CrossFadeInFixedTime("IdleWalk", 0.1f);
+
+        interactionComponent.BumpCollider();
+    }
+
     public void SelectedMenuOption(string selectedMenuOption)
     {
         if (selectedMenuOption == "talk")
@@ -105,6 +127,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (selectedMenuOption == "water")
         {
+            StartCoroutine(Water());
             Global.dayManager.Water();
         }
         else if (selectedMenuOption == "move")
