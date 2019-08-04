@@ -9,7 +9,7 @@ public class DayManager : MonoBehaviour
 
     [SerializeField] private Plant Plant;
     [SerializeField] private PlantPot PlantPot;
-    
+
     [SerializeField] private int TotalNumDays;
     [SerializeField] private int DaysWithoutWaterToBeThirsty;
     [SerializeField] private int DaysWithWaterToBeDrowning;
@@ -32,7 +32,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private Color fadedInColor = Color.white;
     [SerializeField] private Color fadedOutColor = Color.white;
-    
+
     private int currentDay = 0;
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
@@ -63,7 +63,7 @@ public class DayManager : MonoBehaviour
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
         }
-        
+
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }
 
@@ -158,10 +158,10 @@ public class DayManager : MonoBehaviour
         currentDay++;
 
         // Update lighting settings
-        ambientLight.color = lightSettings[currentDay].ambientLight; 
+        ambientLight.color = lightSettings[currentDay].ambientLight;
         ambientLight.intensity = lightSettings[currentDay].ambientLightIntensity;
 
-        sunLight.color = lightSettings[currentDay].sunlight; 
+        sunLight.color = lightSettings[currentDay].sunlight;
         sunLight.shadowStrength = lightSettings[currentDay].shadowStrength;
 
         Global.cameraController.SetBackgroundColour(lightSettings[currentDay].skyboxColour);
@@ -197,6 +197,7 @@ public class DayManager : MonoBehaviour
     // Light
     public void SetLightIncrementForToday(int lightIncrement)
     {
+        Debug.Log("Setting light to " + lightIncrement);
         transientData.LightGettingToday = lightIncrement;
     }
 

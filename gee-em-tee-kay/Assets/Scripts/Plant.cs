@@ -7,7 +7,6 @@ public class Plant : MonoBehaviour
     public Vector3 nextEndPointOffsetTEST;
     public int sectionsToSplitInto = 1;
 
-    // Move To DayManager
     [SerializeField] private float MaxHorizontalDistance;
 
     [SerializeField] private GameObject stemSectionPrefab;
@@ -65,20 +64,28 @@ public class Plant : MonoBehaviour
 
         if (!dm.HasEverConversed())
         {
-            //return;
+            return;
         }
 
-        Debug.Log("Start Calculation");
+        Vector3 ToNextPoint = GetMaxHorizontalMovement();
+        ToNextPoint += new Vector3(0, dm.GetMaxHeightOfSection(), 0);
+        if (dm.IsThirsty() || dm.IsDrowning())
+        {
+            ToNextPoint *= 0.5f;
+        }
+
+        AddSection(ToNextPoint);
+    }
+
+    private Vector3 GetMaxHorizontalMovement()
+    {
         Vector3 e = GetLastSectionEndPos() - transform.position;
         Vector3 w = WindowLocation.position - GetLastSectionEndPos();
         w.y = 0;
         w.Normalize();
 
-        Debug.Log(e);
-        Debug.Log(w);
 
-        float r = dm.GetMaxDistanceFromPotCenter();
-        Debug.Log(r);
+        float r = Global.dayManager.GetMaxDistanceFromPotCenter();
         float a = w.x*w.x + w.z*w.z;
         float b = 2*e.x*w.x + 2*e.z*w.z;
         float c = e.x*e.x + e.z*e.z - r*r;
@@ -100,16 +107,10 @@ public class Plant : MonoBehaviour
         }
 
         float t = top / 2*a;
-        Debug.Log(t);
 
         float Scale = Mathf.Min(t, MaxHorizontalDistance);
-        Debug.Log(Scale);
 
-        Vector3 ToNextPoint = w * Scale;
-        ToNextPoint += new Vector3(0, dm.GetMaxHeightOfSection(), 0);
-        Debug.Log(ToNextPoint);
-
-        AddSection(ToNextPoint);
+        return w * Scale;
     }
 
     void SetColourBasedOnHealth(float param)

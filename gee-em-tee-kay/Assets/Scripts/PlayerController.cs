@@ -107,11 +107,11 @@ public class PlayerController : MonoBehaviour
         waterBottle.SetActive(true);
 
         animator.CrossFadeInFixedTime("Water", 0.1f);
-        
+
         yield return new WaitForSeconds(2.0f);
 
         waterBottle.SetActive(false);
-        
+
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 
         animator.CrossFadeInFixedTime("IdleWalk", 0.1f);
@@ -160,14 +160,17 @@ public class PlayerController : MonoBehaviour
         Vector3 potPosition = holder.heldObject.transform.position;
 
         Vector3 finalPos = Vector3.zero;
-        foreach (Vector3 v3 in Global.instance.potPositions)
+        PotPosition finalPosition = new PotPosition();
+        foreach (PotPosition pP in Global.instance.potPositions)
         {
+            Vector3 v3 = pP.Position;
             float checkDistance = (potPosition - v3).magnitude;
 
             if (checkDistance < minDistance)
             {
                 minDistance = checkDistance;
                 finalPos = v3;
+                finalPosition = pP;
             }
         }
 
@@ -180,6 +183,7 @@ public class PlayerController : MonoBehaviour
         Destroy(goaudio, 1.0f);
 
         Global.cameraController.ScreenShake(0.2f);
+        Global.dayManager.SetLightIncrementForToday(finalPosition.LightGainedHere);
 
         interactionComponent.BumpCollider();
     }
