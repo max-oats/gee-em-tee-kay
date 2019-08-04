@@ -56,10 +56,7 @@ public class SpeechBubbleImage : MonoBehaviour
         // Grab elements
         imageElement = GetComponent<Image>();
         rt = GetComponent<RectTransform>();
-    }
 
-    public void Start()
-    {
         // Disable image by default
         imageElement.enabled = false;
 

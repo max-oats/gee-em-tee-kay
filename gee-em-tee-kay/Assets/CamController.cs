@@ -30,7 +30,7 @@ public class CamController : MonoBehaviour
 
         if (Global.dialogueHandler.inDialogue)
         {
-            cameraYSmoother.SetDesired(playerToFollow.position.z / closenessToCenter);
+            cameraYSmoother.SetDesired(playerToFollow.position.z + 10.0f / closenessToCenter);
         }
         else
         {

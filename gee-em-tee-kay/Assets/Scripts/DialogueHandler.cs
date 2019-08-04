@@ -13,6 +13,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     private Yarn.OptionChooser SetSelectedOption;
 
     public GameObject textPfb;
+    public GameObject speechBubPfb;
 
     /// How quickly to show the text, in seconds per character
     [Tooltip("How quickly to show the text, in seconds per character")]
@@ -163,16 +164,14 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
                 longestOption = optionString.Length;
             }
         }
-        float longestWidth = (longestOption * letterWidth) + widthPadding;
+        float longestWidth = (longestOption * letterWidth) + (widthPadding*2f);
 
         // Grab the handler for the UI side
         SpeechBubbleHandler friendSpeechHandler = playerSpeechHandler;
 
-        List<SpeechBubbleImage> buttons = friendSpeechHandler.buttons;
+        float offsetOption = ((letterHeight + (heightPadding*2f) + optionOffset) * (optionsCollection.options.Count));
 
-        float offsetOption = ((letterHeight + heightPadding + optionOffset) * (optionsCollection.options.Count));
-
-        offsetOption -= (letterHeight + heightPadding + optionOffset);
+        offsetOption -= (letterHeight + (heightPadding*2f) + optionOffset);
 
         yield return new WaitForSeconds(0.1f);
 
@@ -180,34 +179,43 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         int j = 0;
         foreach (var optionString in optionsCollection.options) 
         {
-            if (j == 0)
-                buttons[j].SelectButton(false);
+            GameObject speechgo = Instantiate(speechBubPfb, friendSpeechHandler.transform);
+            SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
 
-            string finalString = optionString.ToUpper();
+            friendSpeechHandler.buttons.Add(button);
+
+            if (j == 0)
+                button.SelectButton(false);
+            else
+                button.DeselectButton();
+
+            string finalString = optionString.ToLower();
 
             // Grab the length of the contents
             int contentsLength = finalString.Length;
 
-            float buttonWidth = (contentsLength * letterWidth) + widthPadding;
-            
+            float buttonWidth = (contentsLength * letterWidth) + widthPadding*2f;
+
             // Resize/reposition 
-            buttons[j].SetSizeAndOffset(buttonWidth, (letterHeight) + heightPadding, -((longestWidth-buttonWidth)/2f), offsetOption);
-            buttons[j].ShowBubble();
-            buttons[j].GrowBubble();
+            button.SetSizeAndOffset(buttonWidth, (letterHeight) + heightPadding*2f, -((longestWidth-buttonWidth)/2f), offsetOption);
+            button.ShowBubble();
+            button.GrowBubble();
             
-            float tempXLocation = 0f;
-            float tempYLocation = 0f;
+            float tempXLocation = Global.dialogueHandler.defaultInset.x;
+            float tempYLocation = Global.dialogueHandler.defaultInset.y;
 
             foreach (char c in finalString)
             {
-                GameObject go = Instantiate(textPfb, buttons[j].transform);
-                Text textObject = go.GetComponent<Text>();
-                textObject.rectTransform.anchoredPosition = new Vector2(tempXLocation, tempYLocation) + defaultInset;
-                textObject.text = c.ToString();
+                DialogueCharacter dc = new DialogueCharacter();
+                dc.character = c;
 
-                buttons[j].AddText(textObject);
-
-                tempXLocation += letterWidth;
+                float delay = 0f;
+                button.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
+                                                                            button.transform, 
+                                                                            new Vector2(tempXLocation, tempYLocation),  
+                                                                            out delay));
+                // Update X location
+                tempXLocation += Global.dialogueHandler.letterWidth;
             }
 
             offsetOption -= (letterHeight + heightPadding + optionOffset);
@@ -231,36 +239,37 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             }
             else if (Global.input.GetButtonDown("UI|Up"))
             {
-                buttons[selected].DeselectButton();
+                friendSpeechHandler.buttons[selected].DeselectButton();
 
                 if (selected > 0)
                 {
                     selected--;
                 }
 
-                buttons[selected].SelectButton();
+                friendSpeechHandler.buttons[selected].SelectButton();
             }
             else if (Global.input.GetButtonDown("UI|Down"))
             {
-                buttons[selected].DeselectButton();
+                friendSpeechHandler.buttons[selected].DeselectButton();
 
                 if (selected < optionsCollection.options.Count-1)
                 {
                     selected++;
                 }
 
-                buttons[selected].SelectButton();
+                friendSpeechHandler.buttons[selected].SelectButton();
             }
 
             yield return null;
         }
 
         // Hide all the buttons
-        foreach (var button in buttons) 
+        foreach (var button in friendSpeechHandler.buttons) 
         {
             button.DeselectButton();
             button.KillTextElements();
             button.HideBubble();
+            Destroy(button, 1.0f);
         }
 
         yield break;

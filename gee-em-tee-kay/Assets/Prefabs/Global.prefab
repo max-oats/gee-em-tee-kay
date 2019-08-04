@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPfb: {fileID: 9172904301534774897, guid: 7df07f65ac57bc044b62b7f6af2b1374, type: 3}
+  speechBubPfb: {fileID: 8563041433594134032, guid: 80aa33e00a21ea4428c27fe9a2973578,
+    type: 3}
   textSpeed: 0.05
   speedyTextMultiplier: 0.3
   defaultInset: {x: 20, y: -20}
@@ -168,7 +170,7 @@ MonoBehaviour:
   letterHeight: 40
   letterWidth: 20
   letterOffset: 0.05
-  optionOffset: 10
+  optionOffset: 30
   optionDelay: 0.1
   cameraUpOffset: -2
   lineLength: 20
