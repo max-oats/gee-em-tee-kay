@@ -1,10 +1,24 @@
 title: Day1.Intro
 tags:
 ---
-Player: cool.
-Player: the moving van isn't bringing the furniture for another \w5 days\w.
-Player: and the apartment comes with\d002.\d002.\d002. a plant pot.
-Player: cool.
+Player: yeah,\d002 i'm walking into the new place as we speak!
+Player: well, its\d002.\d002.\d002. cozy
+Player: but i couldn't stay\d003 \jthere.
+Player: haha, do we have to talk about it?
+Player: well... obviously it was...
+[[her fault|Day1.Intro2]]
+[[her fault|Day1.Intro2]]
+===
+
+title: Day1.Intro2
+tags:
+---
+Player: \jit was\d003 her fault.
+Player: i'll be okay.\d002 thank you though.
+Player: yeah, the moving van isn't bringing the furniture for another \w5 days\w.
+Player: but don't worry. i've got a plant pot.
+Player: and exactly \c001£1.50\c000 to my name.
+Player: \whahaha\w.\d002 okay man.\d002 thanks for checking in.
 ===
 
 title: Day1.Talk1
