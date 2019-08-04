@@ -40,11 +40,11 @@ public class Plant : MonoBehaviour
         // TODO use Color for Stem
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
-        initialSection.endPoint = inRootPosition;
-        initialSection.endTangent = inRootPosition - new Vector3(0,1,0);
-        initialSection.startTangent = inRootPosition - new Vector3(0,2,0);
-        initialSection.startPoint = inRootPosition - new Vector3(0,3,0);
+        initialSection.startTangent = new Vector3(0,0.1f,0);
+        initialSection.endTangent = new Vector3(0,0.2f,0);
+        initialSection.endPoint = new Vector3(0,0.3f,0);
         initialSection.gameObject.GetComponent<LineRenderer>().enabled = false;
+        initialSection.gameObject.transform.parent = gameObject.transform;
         sections.Add(initialSection);
     }
 
@@ -105,9 +105,13 @@ public class Plant : MonoBehaviour
 
         StemSection lastSection = sections[sections.Count-1];
 
-        Vector3 p0 = lastSection.endPoint;
+        Vector3 op0 = lastSection.gameObject.transform.position;
+        Vector3 op2 = op0 + lastSection.endTangent;
+        Vector3 op3 = op0 + lastSection.endPoint;
+
+        Vector3 p0 = op3;
         Vector3 p3 = p0 + endPointOffset;
-        Vector3 d = (p0 - lastSection.endTangent).normalized;
+        Vector3 d = (p0 - op2).normalized;
         float scale = (p3 - p0).magnitude / 3;
         Vector3 p1 = p0 + scale * d;
         Vector3 m = (p1 + p3) / 2;
@@ -127,18 +131,18 @@ public class Plant : MonoBehaviour
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
-            AddSection(ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3]);
+            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3]);
         }
     }
 
-    private void AddSection(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    private void AddSection(Transform Attachment, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
     {
-        StemSection newSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
+        StemSection newSection = Instantiate(stemSectionPrefab, Attachment).GetComponent<StemSection>();
 
-        newSection.startPoint = p0;
-        newSection.startTangent = p1;
-        newSection.endTangent = p2;
-        newSection.endPoint = p3;
+        newSection.gameObject.transform.position = p0;
+        newSection.startTangent = p1 - p0;
+        newSection.endTangent = p2 - p0;
+        newSection.endPoint = p3 - p0;
 
         sections.Add(newSection);
     }

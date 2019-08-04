@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307330046233775393}
-  - component: {fileID: 307330046233775399}
   - component: {fileID: 307330046233775392}
+  - component: {fileID: 384674372257537835}
   m_Layer: 0
-  m_Name: TestFlowerSection
+  m_Name: StemSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &307330046233775399
+--- !u!114 &307330046233775392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307330046233775394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4568bd3c312734fff847e017b11d297e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0
+  endPoint: {x: 0, y: 0, z: 0}
+  startTangent: {x: 0, y: 0, z: 0}
+  endTangent: {x: 0, y: 0, z: 0}
+  lineRenderer: {fileID: 384674372257537835}
+  startPointOffset: 0
+  endPointOffset: 0
+--- !u!120 &384674372257537835
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,8 +98,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.2843132
+        time: 0.0295372
+        value: 0.1428566
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -127,23 +146,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &307330046233775392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307330046233775394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4568bd3c312734fff847e017b11d297e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 0
-  startPoint: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
-  startTangent: {x: 0, y: 0, z: 0}
-  endTangent: {x: 0, y: 0, z: 0}
-  lineRenderer: {fileID: 307330046233775399}
-  startPointOffset: 0
-  endPointOffset: 0

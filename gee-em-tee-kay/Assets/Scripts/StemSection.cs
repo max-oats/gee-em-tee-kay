@@ -7,10 +7,12 @@ using UnityEditor;
 public class StemSection : MonoBehaviour
 {
     public float height;
-    public Vector3 startPoint;
+
     public Vector3 endPoint;
     public Vector3 startTangent;
     public Vector3 endTangent;
+
+    public Transform EndPoint;
 
     public LineRenderer lineRenderer;
 
@@ -20,9 +22,21 @@ public class StemSection : MonoBehaviour
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
 
+    [SerializeField] private GameObject endPointMarker;
+
     public void SetColour(Color inColor)
     {
         lineRenderer.material.color = inColor;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Vector3 p = transform.position;
+        Gizmos.DrawSphere(p, 0.1f);
+        Gizmos.DrawSphere(p + startTangent, 0.1f);
+        Gizmos.DrawSphere(p + endTangent, 0.1f);
+        Gizmos.DrawSphere(p + endPoint, 0.1f);
     }
 
     void Start()
@@ -32,19 +46,25 @@ public class StemSection : MonoBehaviour
             lineRenderer = gameObject.GetComponent<LineRenderer>();
         }
         lineRenderer.sortingLayerID = layerOrder;
+
+        endPointMarker = new GameObject("EndPoint");
+        endPointMarker.transform.parent = gameObject.transform;
+        EndPoint = endPointMarker.transform;
     }
 
     void Update()
     {
         DrawCurve();
+        EndPoint.transform.position = gameObject.transform.position + endPoint + new Vector3(endPointOffset,0,0);
     }
 
     void DrawCurve()
     {
+        Vector3 p = gameObject.transform.position;
         for (int i = 0; i <= SEGMENT_COUNT; i++)
         {
             float t = i / (float)SEGMENT_COUNT;
-            Vector3 pixel = BezierUtils.CalculateCubicBezierPoint(t, startPoint + new Vector3(startPointOffset,0,0), startTangent + new Vector3(startPointOffset,0,0), endTangent + new Vector3(endPointOffset,0,0), endPoint + new Vector3(endPointOffset,0,0));
+            Vector3 pixel = BezierUtils.CalculateCubicBezierPoint(t, p + new Vector3(startPointOffset,0,0), p + startTangent + new Vector3(startPointOffset,0,0), p + endTangent + new Vector3(endPointOffset,0,0), p + endPoint + new Vector3(endPointOffset,0,0));
             lineRenderer.positionCount = i+1;
             lineRenderer.SetPosition(i, pixel);
         }
