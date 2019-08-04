@@ -164,6 +164,7 @@ MonoBehaviour:
     type: 3}
   _audioSource: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
     type: 3}
+  playerAnimator: {fileID: 0}
   textSpeed: 0.05
   timeBetweenBleeps: 0.1
   speedyTextMultiplier: 0.3
@@ -172,13 +173,13 @@ MonoBehaviour:
   widthPadding: 40
   letterHeight: 40
   letterWidth: 20
-  letterOffset: 0.05
+  letterOffset: -0.15
   optionOffset: 30
   optionDelay: 0.1
   cameraUpOffset: -2
   lineLength: 20
   lineLengthMultiplier: 0.85
-  offsetAddition: 0.1
+  offsetAddition: 0.3
   screenShakeMultiplier: 0.6
   playerSpeechHandler: {fileID: 0}
   normalColours: []

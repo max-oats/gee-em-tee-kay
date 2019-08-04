@@ -1,8 +1,8 @@
 #ffffff
-#a72461
-#dc5353
-#ff935c
-#f9e090
+#aefff0
+#f2e3c9
+#ef4b4b
+#e0f5b9
 #a72461
 #dc5353
 #ff935c
