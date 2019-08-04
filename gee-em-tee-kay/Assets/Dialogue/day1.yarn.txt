@@ -5,6 +5,7 @@ Player: yeah,\d002 i'm walking into the new place as we speak!
 Player: well, its\d002.\d002.\d002. cozy
 Player: but i couldn't stay\d003 \jthere.
 Player: haha, do we have to talk about it?
+Player: well... obviously it was...
 [[her fault|Day1.Intro2]]
 [[her fault|Day1.Intro2]]
 ===
