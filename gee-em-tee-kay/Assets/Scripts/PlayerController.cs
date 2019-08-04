@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInteract()
     {
-        if (Global.input.GetButtonDown("Interact"))
+        if (Global.input.GetButtonDown("Interact") && !Global.dialogueHandler.inDialogue)
         {
             if (bIsCarrying)
             {

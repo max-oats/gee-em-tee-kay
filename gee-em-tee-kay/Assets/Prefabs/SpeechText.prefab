@@ -161,3 +161,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _audioSource: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
+    type: 3}

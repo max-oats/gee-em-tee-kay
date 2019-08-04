@@ -112,28 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &24600074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8945416015880663019, guid: c17d7d233611ffa48ac04f465a63513c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8945416016104776445}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &24600077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24600074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e5eaa5d151fe548abe256b903d0811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightFeet: {fileID: 684549011}
-  leftFeet: {fileID: 879364289}
-  stompParticle: {fileID: 6986923231519268130, guid: 3835f04f78756e3488c881f3fe139bcb,
-    type: 3}
 --- !u!108 &170076734 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
@@ -177,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628624975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -4.42}
+  m_LocalPosition: {x: 0, y: -1, z: -2.125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094030317}
@@ -6327,7 +6305,9 @@ PrefabInstance:
       propertyPath: defaultInset.y
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 313993583, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+    - {fileID: 1613103413806348284, guid: daefe09352c81c642b917c74c38e0431, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}
 --- !u!1001 &4258158762469802141
 PrefabInstance:
@@ -6515,7 +6495,8 @@ PrefabInstance:
       propertyPath: field of view
       value: 84.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 807829423, guid: 647c2826553fbea4ea67bbff76243fba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 647c2826553fbea4ea67bbff76243fba, type: 3}
 --- !u!1001 &8945416016104776445
 PrefabInstance:
@@ -6598,6 +6579,34 @@ PrefabInstance:
     - target: {fileID: 378105643277118565, guid: c17d7d233611ffa48ac04f465a63513c,
         type: 3}
       propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 24600077, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: leftAudio
+      value: 
+      objectReference: {fileID: 5723108230827763314, guid: 837f198495622f84a9703e880211b131,
+        type: 3}
+    - target: {fileID: 24600077, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: rightAudio
+      value: 
+      objectReference: {fileID: 5723108230827763314, guid: 837f198495622f84a9703e880211b131,
+        type: 3}
+    - target: {fileID: 24600077, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: leftStompAudio
+      value: 
+      objectReference: {fileID: 5723108230827763314, guid: ece33c9b463ed6a478c4971ebe3930d8,
+        type: 3}
+    - target: {fileID: 24600077, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: rightStompAudio
+      value: 
+      objectReference: {fileID: 5723108230827763314, guid: ece33c9b463ed6a478c4971ebe3930d8,
+        type: 3}
+    - target: {fileID: 684549011, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 879364289, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
+      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

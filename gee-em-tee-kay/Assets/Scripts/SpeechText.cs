@@ -13,6 +13,8 @@ public class SpeechText : MonoBehaviour
     
     public AnimationCurve introCurve;
     public AnimationCurve bigCurve;
+
+    public GameObject _audioSource;
     
     private Vector2 initialPosition = new Vector2();
     private bool bIsWavey = false;
@@ -91,6 +93,9 @@ public class SpeechText : MonoBehaviour
         bIsActive = true;
 
         bIsBig = isBig;
+
+        GameObject go = Instantiate(_audioSource);
+        Destroy(go, 1.0f);
     }
 
     public void SetWavey(float newOffset)
