@@ -1,6 +1,7 @@
-title: Day2.Intro
+title: Day2.Talk
 tags:
 ---
+Player: you've grown already!
 Player: ...
 Player: i, uh, came out to my coworkers today
 Player: i didn't really mean to
@@ -10,4 +11,38 @@ Player: and i said \j"no, Chris is short for Christina, but also... yes?"
 Player: and then explained the whole \rbisexual\r thing
 Player: ...
 Player: had all the usual questions too
+[["does this mean you have the horn for everyone?"|Day2.Horny]]
+[["was your ex jealous?"|Day2.Jealous]]
+[["have you ever dated men?"|Day2.Men]]
+===
+
+title: Day2.Horny
+tags:
+---
+Player: \w"does this mean you have the horn for everyone???"\w
+Player: no, in the same way that you're not attracted to \bEVERY\b woman, \c004\i\d001j\d001e\d001f\d001f\i\c000.
+Player: \w"that's what you think."\w
+Player: ...
+Player: fuckin jeff
+===
+
+title: Day2.Jealous
+tags:
+---
+Player: \w"was your ex jealous since she had more people to worry about?"\w
+Player: no, \c004\i\d001k\d001a\d001r\d001e\d001n\i\c000, she wasn't.
+Player: we had some bigger issues than that.
+Player: but those are not for karen's extremely irritating ears.
+===
+
+title: Day2.Men
+tags:
+---
+Player: \w"so have you ever actually dated a man?"
+Player: this one is the \jworst one.
+Player: i could barely get the word \d002"\d002no" out of my mouth
+Player: before \c004\i\d001g\d001a\d001r\d001y\i\c000 jumped on it like a goose on the last seed
+Player: \w"ooooooooooh"\w
+Player: \w"i'm gary and i don't think bisexual people in heterosexual relationships are valid"\w
+Player: \w"oooooooooooooooooh"\w
 ===

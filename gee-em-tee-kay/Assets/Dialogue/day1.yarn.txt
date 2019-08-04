@@ -13,7 +13,7 @@ Player: well... obviously it was...
 title: Day1.Intro2
 tags:
 ---
-Player: it was\d001 her fault.
+Player: there's \jonly one\j of us who's at fault here.\d002 her.
 Player: i'll be okay.\d002 thank you though.
 Player: yeah, the moving van isn't bringing the furniture for another \w\b5 days\w!!!!!!!
 Player: but don't worry. 
