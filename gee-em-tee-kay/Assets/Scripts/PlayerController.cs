@@ -93,6 +93,12 @@ public class PlayerController : MonoBehaviour
         interactionComponent.BumpCollider();
     }
 
+    [Yarn.Unity.YarnCommand("phoneOn")]
+    public void SwitchPhoneOn()
+    {
+        animator.CrossFadeInFixedTime("Phone", 0f);
+    }
+
     [Yarn.Unity.YarnCommand("phoneOff")]
     public void SwitchPhoneOff()
     {

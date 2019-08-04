@@ -1,20 +1,61 @@
 title: Day5.Intro
 tags:
 ---
+<<phoneOn Player>>
 Player: yeah,\d002 my furniture comes tomorrow!
-Player: they left a \c004plant pot\c000 here
-Player: which i guess is my bed now?
-Player: ... do we have to talk about the break-up?
-Player: well... obviously it was...
+Player: i'll have a TV again!!!!
+Player: which means i can stop talking to my plant i guess.
+Player: i've actually been thinking a lot about \jthe break-up.
+Player: i think...
 [[her fault|Day5.Intro2]]
 [[my fault|Day5.Intro3]]
 [[both at fault|Day5.Intro4]]
 ===
 
+title: Day5.Intro2
+tags:
+---
+Player: ... i still think its her fault.
+Player: she wasn't doing enough for me. its that simple.
+Player: but... at least i have PLANTNAME now.
+Player: yeah, i know. i appreciate that.
+Player: okay. i'll see you soon, mum.
+<<phoneOff Player>>
+===
+
+title: Day5.Intro3
+tags:
+---
+Player: ... its my fault we broke up.
+Player: \ji pushed her away.
+Player: i couldn't understand that she'd love me.
+Player: \ji should've tried harder.
+Player: but... at least i have PLANTNAME now.
+Player: yeah, i know. i appreciate that.
+Player: okay. i'll see you soon, mum.
+<<phoneOff Player>>
+===
+
+title: Day5.Intro4
+tags:
+---
+Player: really\d002.\d002.\d002. it was neither of us.
+Player: we were just incompatible
+Player: which was something i didn't really think was possible.
+Player: that might be the \jsaddest part of all.
+Player: having nobody to blame \jmakes this a lot harder.
+Player: but... at least i have PLANTNAME now.
+Player: yeah, i know. i appreciate that.
+Player: okay. i'll see you soon, mum.
+<<phoneOff Player>>
+===
+
 title: Day5.Talk
 tags:
 ---
-Player: hmmm.
-Player: ...
-Player: i'm not gonna talk to you, you know.
+Player: i promise i'll still talk to you when i have other furniture, PLANTNAME.
+Player: as long as you promise not to get jealous.
+Player: i'm sorry i was mean to you at the start of the week.
+Player: it's\d002.\d002.\d002. been a rough week for me.
+Player: thank you for everything.
 ===
