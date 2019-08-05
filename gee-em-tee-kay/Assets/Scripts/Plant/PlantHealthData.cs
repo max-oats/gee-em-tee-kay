@@ -32,6 +32,18 @@ public class PlantHealthData : MonoBehaviour
         transientData = new PlantHealthTransientData();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ReviewDay();
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            Talk();
+        }
+    }
+
     public void ReviewDay()
     {
         if (transientData.WasWateredToday)
@@ -105,7 +117,6 @@ public class PlantHealthData : MonoBehaviour
     // Light
     public void SetLightIncrementForToday(int lightIncrement)
     {
-        Debug.Log("Setting light to " + lightIncrement);
         transientData.LightGettingToday = lightIncrement;
     }
 
@@ -123,13 +134,18 @@ public class PlantHealthData : MonoBehaviour
     // Talking
     public void Talk()
     {
-        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(SelectNode());
+        Debug.Log("Debug Talking!");
         transientData.HaveConversedToday = true;
     }
 
-    private string SelectNode()
+    public string SelectDialogueNode()
     {
         return "Day" + (persistentData.DaysConversed+1) +  ".Talk";
+    }
+
+    public bool HaveConversedToday()
+    {
+        return transientData.HaveConversedToday;
     }
 
     public bool HasEverConversed()

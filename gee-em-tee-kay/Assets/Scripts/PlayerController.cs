@@ -129,7 +129,12 @@ public class PlayerController : MonoBehaviour
     {
         if (selectedMenuOption == "talk")
         {
-            Global.plantHealthData.Talk();
+            PlantHealthData data = Global.plantHealthData;
+            if (!data.HaveConversedToday())
+            {
+                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+                data.Talk();
+            }
         }
         else if (selectedMenuOption == "water")
         {
