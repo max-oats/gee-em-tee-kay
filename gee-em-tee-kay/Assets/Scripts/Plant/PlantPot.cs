@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class PlantPot : MonoBehaviour
 {
-    public float distanceFromCenter = 1.0f;
-    public float height = 1.0f;
-    public float bottomOfPlantOffset = 0f;
+    [SerializeField] private float distanceFromCenter;
+    [SerializeField] private float height;
+    [SerializeField] private float bottomOfPlantOffset;
+
+    public float GetDistanceFromCenter()
+    {
+        return distanceFromCenter;
+    }
+
+    public float GetPlantHeightLimit()
+    {
+        return height;
+    }
+
+    public float GetBottomOfPlantOffset()
+    {
+        return bottomOfPlantOffset;
+    }
 
     void OnDrawGizmos()
     {

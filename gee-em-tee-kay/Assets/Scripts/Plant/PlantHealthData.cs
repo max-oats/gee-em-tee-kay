@@ -187,12 +187,12 @@ public class PlantHealthData : MonoBehaviour
     // Dimensions
     public float GetMaxHeightOfSection()
     {
-        return PlantPot.height / Global.dayManager.GetTotalNumDays();
+        return PlantPot.GetPlantHeightLimit() / Global.dayManager.GetTotalNumDays();
     }
 
     public float GetMaxDistanceFromPotCenter()
     {
-        return PlantPot.distanceFromCenter;
+        return PlantPot.GetDistanceFromCenter();
     }
 }
 
