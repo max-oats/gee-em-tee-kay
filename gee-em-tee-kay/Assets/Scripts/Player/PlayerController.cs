@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Global.dialogueHandler.dialogueEnd += DialogueEnd;
-        Global.dayManager.dayEnded += ResetOnDay;
+        Global.dayManager.dayStarted += ResetOnDay;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         UpdateFacing();
     }
 
-    public void ResetOnDay()
+    public void ResetOnDay(int dayNo)
     {
         if (Global.dayManager.currentDay == 4)
         {  

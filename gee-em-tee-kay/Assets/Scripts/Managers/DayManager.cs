@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    public delegate void DayEnded();
-    public DayEnded dayEnded;
+    public delegate void DayStarted(int dayNo);
+    public DayStarted dayStarted;
 
     public bool seedPlanted = false;
 
@@ -14,13 +14,7 @@ public class DayManager : MonoBehaviour
     // ~End Debug
 
     [SerializeField] private int TotalNumDays;
-
-    [SerializeField] private List<LightSettings> lightSettings = new List<LightSettings>();
-    [SerializeField] private Light ambientLight;
-    [SerializeField] private Light sunLight;
-
     [SerializeField] private GameObject faderObject;
-    [SerializeField] private GameObject rainObject;
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private Color fadedInColor = Color.white;
     [SerializeField] private Color fadedOutColor = Color.white;
@@ -39,10 +33,8 @@ public class DayManager : MonoBehaviour
 
     public void StartNewDay()
     {
-        if (currentDay == 5)
-        {
-            Application.Quit();
-        }
+        // Invoke delegate
+        dayStarted?.Invoke(currentDay);
 
         StartCoroutine(StartDayFade());
 
@@ -53,15 +45,6 @@ public class DayManager : MonoBehaviour
         else if (currentDay == 4 && !skipIntros)
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
-        }
-
-        if (currentDay == 2)
-        {
-            rainObject.SetActive(true);
-        }
-        else
-        {
-            rainObject.SetActive(false);
         }
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
@@ -119,34 +102,8 @@ public class DayManager : MonoBehaviour
 
         currentDay++;
 
-        // Update lighting settings
-        ambientLight.color = lightSettings[currentDay].ambientLight;
-        ambientLight.intensity = lightSettings[currentDay].ambientLightIntensity;
-
-        sunLight.color = lightSettings[currentDay].sunlight;
-        sunLight.shadowStrength = lightSettings[currentDay].shadowStrength;
-
-        Global.cameraController.SetBackgroundColour(lightSettings[currentDay].skyboxColour);
-
-        dayEnded?.Invoke();
-
         yield return new WaitForSeconds(1.0f);
 
         StartNewDay();
     }
-}
-
-[System.Serializable]
-public class LightSettings
-{
-    public Color ambientLight;
-    public Color sunlight;
-
-    public Color skyboxColour;
-
-    [Range(0.0f, 1.0f)]
-    public float shadowStrength;
-
-    [Range(0.0f, 2.0f)]
-    public float ambientLightIntensity;
 }
