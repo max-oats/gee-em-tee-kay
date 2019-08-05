@@ -9,6 +9,10 @@ public class DayManager : MonoBehaviour
 
     public bool seedPlanted = false;
 
+    // ~Begin Debug
+    [SerializeField] private bool skipIntros;
+    // ~End Debug
+
     [SerializeField] private int TotalNumDays;
 
     [SerializeField] private List<LightSettings> lightSettings = new List<LightSettings>();
@@ -42,11 +46,11 @@ public class DayManager : MonoBehaviour
 
         StartCoroutine(StartDayFade());
 
-        if (currentDay == 0)
+        if (currentDay == 0 && !skipIntros)
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
         }
-        else if (currentDay == 4)
+        else if (currentDay == 4 && !skipIntros)
         {
             FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
         }
