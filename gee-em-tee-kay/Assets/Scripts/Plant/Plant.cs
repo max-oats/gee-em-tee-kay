@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public Vector3 nextEndPointOffsetTEST;
-    public int sectionsToSplitIntoTEST = 1;
+    // ~Begin Debug
+    [SerializeField] private Vector3 nextEndPointOffsetTEST;
+    [SerializeField] private int sectionsToSplitIntoTEST = 1;
+    // ~End Debug
 
     [SerializeField] private float MaxHorizontalDistance;
 
-    [SerializeField] private GameObject leafPrefab;
     [SerializeField] private GameObject stemSectionPrefab;
-    [SerializeField] private float maxHeightOfPlant;
     [SerializeField] private int maxNumberOfLeavesPerDay;
     [SerializeField] private Color DeadColor;
-
-    [SerializeField] private float segmentOffsetIncrease;
-    [SerializeField] private float initialMultiplier;
-    [SerializeField] private float multiplierIncrement;
 
     [SerializeField] private Transform WindowLocation;
 
@@ -194,7 +190,7 @@ public class Plant : MonoBehaviour
 
         if (ShouldAddLeaf)
         {
-            GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
+            GameObject newLeaf = Instantiate(LeafPrefab, newSection.EndPoint);
             newLeaf.transform.position = newSection.EndPoint.position;
             newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
