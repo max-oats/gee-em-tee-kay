@@ -1,0 +1,30 @@
+title: Node1
+tags: ignorethis
+---
+Player: dialogue goes here
+Player: if you want to do a choice, you do it like so
+[[choice text here|Node2]]
+[[other choice text here|Node3]]
+===
+
+title: Node2
+tags: ignorethis
+---
+Player: the first choice takes you here
+===
+
+title: Node3
+tags: ignorethis
+---
+Player: the second choice takes you here
+Player: additionally, there are the following tags
+Player: \wthis is how you do wavey text\w it acts as a toggle
+Player: \bthis is how you do bold text\b its also a toggle
+Player: \ithis is how you do italics\i also a toggle
+Player: \jthis is the jittery text\j toggle
+Player: \sthis is screen shake. its not a toggle, it just happens on the character you put it before
+Player: \c001this is a series of colours. i think there's seven?\c000 toggle, when you want to switch it off just return to c000
+Player: \d001this is a series of delays, from 1-3 in ascending times. its not a toggle, just on the character you use it on
+Player: and i think that's it?
+Player: \roh also this is the bi rainbow text\r also a toggle
+===

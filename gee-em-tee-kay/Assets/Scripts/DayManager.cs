@@ -38,7 +38,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private Color fadedInColor = Color.white;
     [SerializeField] private Color fadedOutColor = Color.white;
 
-    private int currentDay = 0;
+    public int currentDay = 0;
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
 

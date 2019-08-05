@@ -67,7 +67,14 @@ public class PlayerController : MonoBehaviour
 
     public void ResetOnDay()
     {
-        animator.CrossFadeInFixedTime("IdleWalk", 0.0f);
+        if (Global.dayManager.currentDay == 4)
+        {  
+            animator.CrossFadeInFixedTime("IdlePhone", 0.0f);
+        }
+        else
+        {
+            animator.CrossFadeInFixedTime("IdleWalk", 0.0f);
+        }
         rotationSmoother.SetDesired(0);
         transform.position = new Vector3(0, -1.14f, -5.7f);
     }
