@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public enum State
-    {
-        Ground,
-        Jump,
-        JumpFall,
-    }
-
     /** ----- Balancing variables ----- */
     public float groundSpeed; /** The ground movement speed */
     public float carryingSpeed; /** The carrying movement speed */
-
-    public float jumpPower; /** Jump impulse */
-    public float gravity; /** Gravity default */
 
     public SmoothDamper rotationSmoother;
 
@@ -28,10 +18,9 @@ public class PlayerController : MonoBehaviour
     public GameObject waterBottle;
 
     /** ----- Private variables ----- */
-    private const float onGroundSpeedY = -1f; /** The initial fall speed */
-    private float speedY = onGroundSpeedY; /** The default vertical speed */
     private Vector3 localInput;
-    private State state;
+
+    // Caches
     private Entity entity;
     private Animator animator;
     private bool bIsCarrying = false;
@@ -349,72 +338,8 @@ public class PlayerController : MonoBehaviour
             entity.SlideMove(move, fromPos, ref toPos);
         }
 
-        // Apply half of the gravity here
-        if (state != State.Ground)
-        {
-            speedY += gravity * Time.deltaTime * .5f;
-        }
-
-        // Set first half of transform position
-        transform.position = toPos;
-
-        /** ----- VERTICAL ----- */
-        // Reset from+to positions
-        fromPos = transform.position;
-        toPos = fromPos;
-
-        // Calculate the vertical movement vector
-        Vector3 moveY = Time.deltaTime * speedY * Vector3.up;
-
-        // Test moving down
-        if (!entity.MoveY(moveY, fromPos, ref toPos))
-        {
-            // If the vertical movement is not successful
-            if (moveY.y < 0f)
-            {
-                // If not currently set to "on the ground"
-                if (state != State.Ground)
-                {
-                    // Set state
-                    SetState(State.Ground);
-                }
-
-                // Make sure we have a little bit of down speed set always for when we run off an edge next
-                speedY = onGroundSpeedY;
-            }
-            else
-            {
-                // If movement is not successful and the speed
-                if (speedY > 0f)
-                {
-                    speedY = 0f;
-                }
-            }
-        }
-        else
-        {
-            // if we're falling down, we must not be on the ground anymore
-            if (moveY.y < 0f && state == State.Ground)
-            {
-                SetState(State.JumpFall);
-            }
-        }
-
         // Actually set position now that it's tested
         transform.position = toPos;
-
-        // If not on ground, handle gravity
-        if (state != State.Ground)
-        {
-            // Add vertical velocity
-            speedY += gravity * Time.deltaTime * .5f;
-
-            if (speedY < 0f)
-            {
-                // Begin falling
-                SetState(State.JumpFall);
-            }
-        }
     }
 
     private void UpdateFacing()
@@ -428,25 +353,5 @@ public class PlayerController : MonoBehaviour
         // Rotate player
         Vector3 eulerAngles = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(eulerAngles.x, rotationSmoother.Smooth(), eulerAngles.z);
-    }
-
-    private void SetState(State newState)
-    {
-        // Update state
-        state = newState;
-
-        // Set state to grounded
-        if (state == State.Ground)
-        {
-            // animate
-        }
-        else if (state == State.Jump)
-        {
-            // animate
-        }
-        else if (state == State.JumpFall)
-        {
-            // animate
-        }
     }
 }

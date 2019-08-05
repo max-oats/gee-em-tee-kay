@@ -4900,12 +4900,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightFeet: {fileID: 684549011}
   leftFeet: {fileID: 879364289}
+  waterBottle: {fileID: 0}
   rightAudio: {fileID: 0}
   leftAudio: {fileID: 0}
   rightStompAudio: {fileID: 0}
   leftStompAudio: {fileID: 0}
   stompParticle: {fileID: 6986923231519268130, guid: 3835f04f78756e3488c881f3fe139bcb,
     type: 3}
+  waterParticle: {fileID: 0}
 --- !u!1 &8945416016642556375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,7 +4938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945416016642556375}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.14, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8945416015881155531}
@@ -4959,8 +4961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundSpeed: 5
   carryingSpeed: 2
-  jumpPower: 0
-  gravity: -9.8
   rotationSmoother:
     smoothTime: 0.1
     defaultDesired: 0
@@ -4971,6 +4971,7 @@ MonoBehaviour:
     type: 3}
   stompSound: {fileID: 5723108230827763314, guid: ece33c9b463ed6a478c4971ebe3930d8,
     type: 3}
+  waterBottle: {fileID: 0}
 --- !u!114 &8945416016642556368
 MonoBehaviour:
   m_ObjectHideFlags: 0
