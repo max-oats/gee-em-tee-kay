@@ -129,12 +129,12 @@ public class PlayerController : MonoBehaviour
     {
         if (selectedMenuOption == "talk")
         {
-            Global.dayManager.Talk();
+            Global.plantHealthData.Talk();
         }
         else if (selectedMenuOption == "water")
         {
             StartCoroutine(Water());
-            Global.dayManager.Water();
+            Global.plantHealthData.Water();
         }
         else if (selectedMenuOption == "move")
         {
@@ -163,14 +163,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public IEnumerator NamePlant()
-    { 
+    {
         GameObject go = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform);
         SpeechBubbleImage speechBubble = go.GetComponent<SpeechBubbleImage>();
         string interactString = "";
         int maxLength = 10;
-        speechBubble.SetSize((maxLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f, 
+        speechBubble.SetSize((maxLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f,
                     (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f);
-        
+
         speechBubble.ShowBubble();
         speechBubble.GrowBubble();
 
@@ -199,9 +199,9 @@ public class PlayerController : MonoBehaviour
                 dc.character = c;
 
                 float delay = 0.0f;
-                speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
-                                                                                speechBubble.transform, 
-                                                                                new Vector2(tempXLocation, tempYLocation),  
+                speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc,
+                                                                                speechBubble.transform,
+                                                                                new Vector2(tempXLocation, tempYLocation),
                                                                                 out delay));
                 // Update X location
                 tempXLocation += Global.dialogueHandler.letterWidth;
@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
         Destroy(goaudio, 1.0f);
 
         Global.cameraController.ScreenShake(0.2f);
-        Global.dayManager.SetLightIncrementForToday(finalPosition.LightGainedHere);
+        Global.plantHealthData.SetLightIncrementForToday(finalPosition.LightGainedHere);
 
         interactionComponent.BumpCollider();
     }

@@ -459,6 +459,7 @@ GameObject:
   - component: {fileID: 1613103414316031209}
   - component: {fileID: 1613103414316031208}
   - component: {fileID: 2032892916}
+  - component: {fileID: 8483429003090843365}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -500,6 +501,7 @@ MonoBehaviour:
   diaHandler: {fileID: 1193051568}
   theDayManager: {fileID: 2032892916}
   thePlantManager: {fileID: 0}
+  thePlantHealthData: {fileID: 8483429003090843365}
   potPositions:
   - Position: {x: -2.16, y: -1, z: 0.61}
     LightGainedHere: -2
@@ -532,22 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedPlanted: 0
-  Plant: {fileID: 0}
-  PlantPot: {fileID: 0}
   TotalNumDays: 5
-  DaysWithoutWaterToBeThirsty: 1
-  DaysWithWaterToBeDrowning: 3
-  TooMuchLightThreshold: 3
-  NotEnoughLightThreshold: 0
-  DaysConversedForMineOption: 3
-  DaysConversedForThirdOption: 5
-  MaxHealth: 5
-  HealthThresholdToLookUnhealthy: 2
-  InitialHealth: 5
-  HealthPenaltyForWater: 2
-  HealthPenaltyForLight: 2
-  HealthRewardForGoodDay: 1
-  HealthRewardForTalkingToday: 1
   lightSettings:
   - ambientLight: {r: 0.6509804, g: 0.43137255, b: 0.3764706, a: 1}
     sunlight: {r: 0.8509804, g: 0.52156866, b: 0.37254903, a: 1}
@@ -581,6 +568,33 @@ MonoBehaviour:
   fadeTime: 2
   fadedInColor: {r: 0.19607845, g: 0.19215688, b: 0.19215688, a: 0}
   fadedOutColor: {r: 0.19607845, g: 0.19215688, b: 0.19215688, a: 1}
+--- !u!114 &8483429003090843365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613103414316031214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5495d5611224131b0b43a9ed4d32e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Plant: {fileID: 0}
+  PlantPot: {fileID: 0}
+  DaysWithoutWaterToBeThirsty: 2
+  DaysWithWaterToBeDrowning: 3
+  TooMuchLightThreshold: 5
+  NotEnoughLightThreshold: 0
+  DaysConversedForMineOption: 3
+  DaysConversedForThirdOption: 5
+  MaxHealth: 5
+  HealthThresholdToLookUnhealthy: 2
+  InitialHealth: 4
+  HealthPenaltyForWater: 2
+  HealthPenaltyForLight: 2
+  HealthRewardForGoodDay: 2
+  HealthRewardForTalkingToday: 1
 --- !u!1 &1613103414783073682
 GameObject:
   m_ObjectHideFlags: 0

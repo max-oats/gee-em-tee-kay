@@ -65,31 +65,31 @@ public class Plant : MonoBehaviour
             return;
         }
 
-        DayManager dm = Global.dayManager;
+        PlantHealthData plantHealth = Global.plantHealthData;
 
-        if (!dm.HasEverConversed())
+        if (!plantHealth.HasEverConversed())
         {
             return;
         }
 
-        if (dm.PlantIsDead())
+        if (plantHealth.PlantIsDead())
         {
-            SetColourBasedOnHealth(dm.CurrentHealthPercentage());
+            SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
             return;
         }
 
         Vector3 ToNextPoint = GetMaxHorizontalMovement();
-        ToNextPoint += new Vector3(0, dm.GetMaxHeightOfSection(), 0);
-        if (dm.IsThirsty() || dm.IsDrowning())
+        ToNextPoint += new Vector3(0, plantHealth.GetMaxHeightOfSection(), 0);
+        if (plantHealth.IsThirsty() || plantHealth.IsDrowning())
         {
             ToNextPoint *= 0.5f;
         }
 
-        int LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, dm.CurrentHealthPercentage());
+        int LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
 
-        AddSection(ToNextPoint, LeavesToAdd, dm.HasTooMuchLight());
+        AddSection(ToNextPoint, LeavesToAdd, plantHealth.HasTooMuchLight());
 
-        SetColourBasedOnHealth(dm.CurrentHealthPercentage());
+        SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
     }
 
     private Vector3 GetMaxHorizontalMovement()
@@ -99,7 +99,7 @@ public class Plant : MonoBehaviour
         w.y = 0;
         w.Normalize();
 
-        float r = Global.dayManager.GetMaxDistanceFromPotCenter();
+        float r = Global.plantHealthData.GetMaxDistanceFromPotCenter();
         float a = w.x*w.x + w.z*w.z;
         float b = 2*e.x*w.x + 2*e.z*w.z;
         float c = e.x*e.x + e.z*e.z - r*r;
