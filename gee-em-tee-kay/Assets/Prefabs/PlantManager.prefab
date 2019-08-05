@@ -45,7 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Plant: {fileID: 0}
   PlantPot: {fileID: 0}
-  LeafPrefabOptions: []
+  LeafPrefabOptions:
+  - {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3, type: 3}
   FlowerPrefabOptions: []
   PlantName: 
   MinStemRed: 0
