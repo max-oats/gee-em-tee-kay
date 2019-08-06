@@ -94,7 +94,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveMultiplier: 6
   waveSpeed: 8
-  jitterMultiplier: 2
+  jitterMultiplier: 3
+  jitterEveryThisFrame: 2
   introCurve:
     serializedVersion: 2
     m_Curve:

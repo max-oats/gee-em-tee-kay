@@ -9,10 +9,6 @@ public class DayManager : MonoBehaviour
 
     public bool seedPlanted = false;
 
-    // ~Begin Debug
-    [SerializeField] private bool skipIntros;
-    // ~End Debug
-
     [SerializeField] private int TotalNumDays;
     [SerializeField] private GameObject faderObject;
     [SerializeField] private float fadeTime = 1.0f;
@@ -37,7 +33,7 @@ public class DayManager : MonoBehaviour
         dayStarted?.Invoke(currentDay);
 
         StartCoroutine(StartDayFade());
-        
+
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }
 

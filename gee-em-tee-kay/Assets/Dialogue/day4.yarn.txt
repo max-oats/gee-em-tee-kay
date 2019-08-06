@@ -1,14 +1,5 @@
 title: Day4.Talk
 tags:
 ---
-Player: hey PLANTNAME!!!!!
-Player: yes i \bam\b in a good mood today. how did you know?
-Player: well get this:
-Player: (and i really need you to brace yourself for this)
-Player: i found another pound coin!!!!!!
-Player: which means i am \bthis close\b to getting you a friend.
-Player: and i am \bthis close\b to being a billionaire.
-Player: so\d002.\d002.\d002. admittedly not that close.
-Player: but then i'd have to \weat myself\w anyway.
-Player: its not worth the trouble.
+Player: shit sux
 ===

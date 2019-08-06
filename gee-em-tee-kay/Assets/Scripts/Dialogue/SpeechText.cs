@@ -10,6 +10,7 @@ public class SpeechText : MonoBehaviour
     public float waveSpeed = 10.0f;
 
     public float jitterMultiplier = 10.0f;
+    public int jitterEveryThisFrame = 2;
     
     public AnimationCurve introCurve;
     public AnimationCurve bigCurve;
@@ -31,6 +32,8 @@ public class SpeechText : MonoBehaviour
     private bool bIsActive = false;
     private float initTime = 0f;
 
+    private int jitterCounter = 0;
+
     public void Awake()
     {
         text = GetComponent<RectTransform>();
@@ -49,7 +52,12 @@ public class SpeechText : MonoBehaviour
 
             if (bIsJittery)
             {
-                finalPos = finalPos + (Random.insideUnitCircle*jitterMultiplier);
+                jitterCounter++;
+                if (jitterCounter == jitterEveryThisFrame)
+                {
+                    finalPos = finalPos + (Random.insideUnitCircle*jitterMultiplier);
+                    jitterCounter = 0;
+                }
             }
 
             if (bIsSwirly)
