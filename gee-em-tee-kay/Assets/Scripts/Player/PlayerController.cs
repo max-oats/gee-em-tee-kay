@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
         GameObject go = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform);
         SpeechBubbleImage speechBubble = go.GetComponent<SpeechBubbleImage>();
         string interactString = "";
-        int maxLength = 10;
+        int maxLength = 18;
         speechBubble.SetSize((maxLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f,
                     (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f);
 
