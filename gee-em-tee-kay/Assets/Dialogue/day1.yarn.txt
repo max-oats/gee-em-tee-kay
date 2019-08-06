@@ -28,6 +28,6 @@ tags:
 ---
 Player: ...
 Player: i'm not gonna talk to you,\d002 PLANTNAME.
-Player: even if your name is incredibly cursed
+Player: and it's not just because of your \b\jincredibly cursed\j\b name
 Player: its just\d002.\d002.\d002. she used to talk to plants.
 ===
