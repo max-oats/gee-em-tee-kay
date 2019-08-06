@@ -17,6 +17,8 @@ public class EventReciever : MonoBehaviour
     public GameObject stompParticle;
     public GameObject waterParticle;
 
+    public PlayerController player;
+
     public void LeftStep()
     {
         GameObject go = Instantiate(leftAudio);
@@ -38,6 +40,8 @@ public class EventReciever : MonoBehaviour
         Destroy(audiogo, 1.0f);
 
         Global.cameraController.ScreenShake();
+        
+        player.SetStompDesiredVelocity(player.carryingSpeed);
     }
 
     public void RightStomp()
@@ -49,6 +53,13 @@ public class EventReciever : MonoBehaviour
         Destroy(audiogo, 1.0f);
 
         Global.cameraController.ScreenShake();
+
+        player.SetStompDesiredVelocity(player.carryingSpeed);
+    }
+
+    public void Arc()
+    {
+        player.SetStompDesiredVelocity(0.0f);
     }
 
     public void Spray()

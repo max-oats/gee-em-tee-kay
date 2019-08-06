@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float carryingSpeed; /** The carrying movement speed */
 
     public SmoothDamper rotationSmoother;
+    public SmoothDamper stompVelocitySmoother;
 
     public ParticleSystem sweatParticles;
 
@@ -54,16 +55,13 @@ public class PlayerController : MonoBehaviour
         UpdateFacing();
     }
 
+    public void SetStompDesiredVelocity(float desiredVeloity)
+    {
+        stompVelocitySmoother.SetDesired(desiredVeloity);
+    }
+
     public void ResetOnDay(int dayNo)
     {
-        if (Global.dayManager.currentDay == 4)
-        {  
-            animator.CrossFadeInFixedTime("IdlePhone", 0.0f);
-        }
-        else
-        {
-            animator.CrossFadeInFixedTime("IdleWalk", 0.0f);
-        }
         rotationSmoother.SetDesired(0);
         transform.position = new Vector3(0, -1.14f, -5.7f);
     }
@@ -329,9 +327,14 @@ public class PlayerController : MonoBehaviour
         // Calculate horizontal movement vector
         Vector3 move;
         if (!bIsCarrying)
+        {
             move = Time.deltaTime * groundSpeed * localInput;
+        }
         else
-            move = Time.deltaTime * carryingSpeed * localInput;
+        {
+            float currentSpeed = stompVelocitySmoother.Smooth();
+            move = Time.deltaTime * currentSpeed * localInput;
+        }
 
         /** ----- HORIZONTAL ----- */
         // If there is a movement input, attempt to move

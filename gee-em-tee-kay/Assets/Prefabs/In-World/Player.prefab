@@ -4908,6 +4908,7 @@ MonoBehaviour:
   stompParticle: {fileID: 6986923231519268130, guid: 3835f04f78756e3488c881f3fe139bcb,
     type: 3}
   waterParticle: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &8945416016642556375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,6 +4967,11 @@ MonoBehaviour:
     defaultDesired: 0
     angleSmooth: 1
     defaultDesiredVector: {x: 0, y: 0, z: 0}
+  stompVelocitySmoother:
+    smoothTime: 0.1
+    defaultDesired: 0
+    angleSmooth: 0
+    defaultDesiredVector: {x: 0, y: 0, z: 0}
   sweatParticles: {fileID: 574173482152455334}
   stompParticle: {fileID: 6986923231519268130, guid: cf1c78bdad02a934e88815f33d950139,
     type: 3}
@@ -5014,6 +5020,7 @@ MonoBehaviour:
   - neglect
   - bedtime
   theCollider: {fileID: 4879872831458779107}
+  ableToSleepWithoutTalking: 0
 --- !u!136 &4879872831458779107
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5199,7 +5206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.211
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: c22d35ea381ade7449ebe92902a65bca, type: 3}
       propertyPath: m_LocalPosition.z
