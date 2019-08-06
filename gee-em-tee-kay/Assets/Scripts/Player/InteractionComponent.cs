@@ -12,6 +12,10 @@ public class InteractionComponent : MonoBehaviour
     public List<string> menuOptions;
     public Collider theCollider;
 
+    // ~Begin Debug
+    [SerializeField] private bool ableToSleepWithoutTalking;
+    // ~End Debug
+
     private SpeechBubbleImage speechBubble = null;
 
     void Start()
@@ -94,7 +98,20 @@ public class InteractionComponent : MonoBehaviour
     {
         if (options == null)
         {
-            options = menuOptions;
+            options = new List<string>(menuOptions);
+
+            // Remove talk option if have talked today
+            if (Global.plantHealthData.HaveConversedToday())
+            {
+                options.RemoveAt(0);
+            }
+            else
+            {
+                if (!ableToSleepWithoutTalking)
+                {
+                    options.RemoveAt(options.Count-1);
+                }
+            }
         }
 
         HideInteract();

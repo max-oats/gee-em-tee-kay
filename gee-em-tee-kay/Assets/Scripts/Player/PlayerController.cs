@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     [Yarn.Unity.YarnCommand("phoneOn")]
     public void SwitchPhoneOn()
     {
-        animator.CrossFadeInFixedTime("IdlePhone", 0f);
+        animator.CrossFadeInFixedTime("IdlePhone", 0.5f);
     }
 
     [Yarn.Unity.YarnCommand("phoneOff")]
@@ -126,11 +126,9 @@ public class PlayerController : MonoBehaviour
         if (selectedMenuOption == "talk")
         {
             PlantHealthData data = Global.plantHealthData;
-            if (!data.HaveConversedToday())
-            {
-                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
-                data.Talk();
-            }
+
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+            data.Talk();
         }
         else if (selectedMenuOption == "water")
         {
