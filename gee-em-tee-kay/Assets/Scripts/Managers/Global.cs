@@ -26,6 +26,7 @@ public class Global : MonoBehaviour
     public static DialogueHandler dialogueHandler;
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
+    public static bool hasStarted;
 
     public static string plantName;
 
@@ -45,6 +46,8 @@ public class Global : MonoBehaviour
             dayManager = theDayManager;
             plantManager = thePlantManager;
             plantHealthData = thePlantHealthData;
+
+            hasStarted = true;
         }
     }
 

@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
     [Yarn.Unity.YarnCommand("phoneOn")]
     public void SwitchPhoneOn()
     {
-        animator.CrossFadeInFixedTime("Phone", 0f);
+        animator.CrossFadeInFixedTime("IdlePhone", 0f);
     }
 
     [Yarn.Unity.YarnCommand("phoneOff")]
