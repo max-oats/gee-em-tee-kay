@@ -38,10 +38,11 @@ public class PlantHealthData : MonoBehaviour
         {
             ReviewDay();
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        /*else if (Input.GetKeyDown(KeyCode.T))
         {
+            Debug.Log("Debug Talking!");
             Talk();
-        }
+        }*/
     }
 
     public void ReviewDay()
@@ -134,7 +135,6 @@ public class PlantHealthData : MonoBehaviour
     // Talking
     public void Talk()
     {
-        Debug.Log("Debug Talking!");
         transientData.HaveConversedToday = true;
     }
 
