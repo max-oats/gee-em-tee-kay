@@ -27,6 +27,7 @@ ModelImporter:
     2100010: None__MainTex_png
     2100012: Masked
     2100014: MainMaterial__WallTexture1_png
+    2100016: WallMaterialDark__WallTexture1_png
     2300000: //RootNode
     2300002: Cube
     2300004: Cube_001
