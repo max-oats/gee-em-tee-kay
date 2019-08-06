@@ -181,11 +181,11 @@ public class WeatherManager : MonoBehaviour
 
             // DO THUNDER STRIKE SOUND
             Global.cameraController.ScreenShake(0.1f);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
             Global.cameraController.ScreenShake(0.1f);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
             Global.cameraController.ScreenShake(0.1f);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
             Global.cameraController.ScreenShake(0.1f);
         }
     }

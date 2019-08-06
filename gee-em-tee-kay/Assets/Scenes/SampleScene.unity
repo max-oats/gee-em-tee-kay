@@ -6100,6 +6100,10 @@ PrefabInstance:
       propertyPath: lightSettings.Array.data[1].ambientLightIntensity
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: skipIntros
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: PlantPot
@@ -6218,17 +6222,17 @@ PrefabInstance:
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.3476133
+      value: 0.44552174
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.2990833
+      value: 0.7075472
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.4433962
+      value: 0.4038359
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6243,17 +6247,17 @@ PrefabInstance:
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.50980395
+      value: 0.8962264
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.52156866
+      value: 0.52499074
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.86666673
+      value: 0.33397114
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6338,22 +6342,22 @@ PrefabInstance:
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.95041484
+      value: 0.9781104
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.044107053
+      value: -0.0018143484
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15904489
+      value: 0.00853584
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.26357338
+      value: 0.20790374
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6544,6 +6548,101 @@ PrefabInstance:
       propertyPath: lightningWeather.yRotation
       value: -19
       objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: debugDaySelector
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[1].yRotation
+      value: -34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[1].xRotation
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].yRotation
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].xRotation
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].shadowStrength
+      value: 0.641
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].ambientLight.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].ambientLight.g
+      value: 0.40784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].ambientLight.b
+      value: 0.4558288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].sunlight.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].sunlight.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].sunlight.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].ambientLightIntensity
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].skyboxColour.r
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].skyboxColour.g
+      value: 0.3023763
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[2].skyboxColour.b
+      value: 0.32902762
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[4].yRotation
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[4].xRotation
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: weatherSettings.Array.data[1].isWindy
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728d19f4ac521f84cae90b9e0ac11e08, type: 3}
 --- !u!1001 &4732462856914695734
@@ -6621,7 +6720,7 @@ PrefabInstance:
     - target: {fileID: 998245326370375222, guid: f2228949b44c7c547a62443ef9e49d2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 998245324967828490, guid: f2228949b44c7c547a62443ef9e49d2c,
         type: 3}
