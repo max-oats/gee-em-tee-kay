@@ -137,8 +137,6 @@ public class Plant : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(gameObject.transform.parent.rotation);
-        Debug.Log(gameObject.transform);
         gameObject.transform.rotation = gameObject.transform.parent.rotation;
         foreach (StemSection section in sections)
         {
@@ -195,7 +193,6 @@ public class Plant : MonoBehaviour
             newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
             Leaf leaf = newLeaf.GetComponent<Leaf>();
-            Debug.Log(leaf);
             if (LeavesShouldBeSmall)
             {
                 leaf.SetScale(0.5f);

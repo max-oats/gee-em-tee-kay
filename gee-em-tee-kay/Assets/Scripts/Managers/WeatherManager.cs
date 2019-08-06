@@ -49,6 +49,11 @@ public class WeatherManager : MonoBehaviour
 
     void OnValidate()
     {
+        if (debugDaySelector < 1)
+        {
+            Debug.Log("Invalid OnValidate in WeatherManager!");
+            return;
+        }
         UpdateWeather(debugDaySelector - 1);
     }
 
