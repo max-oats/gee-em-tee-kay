@@ -37,16 +37,7 @@ public class DayManager : MonoBehaviour
         dayStarted?.Invoke(currentDay);
 
         StartCoroutine(StartDayFade());
-
-        if (currentDay == 0 && !skipIntros)
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
-        }
-        else if (currentDay == 4 && !skipIntros)
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
-        }
-
+        
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }
 

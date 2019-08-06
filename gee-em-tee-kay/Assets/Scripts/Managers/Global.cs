@@ -16,6 +16,7 @@ public class Global : MonoBehaviour
     public DayManager theDayManager;
     public PlantManager thePlantManager;
     public PlantHealthData thePlantHealthData;
+    public DebugStuff debugPublic;
 
     public List<PotPosition> potPositions;
 
@@ -27,6 +28,7 @@ public class Global : MonoBehaviour
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
     public static bool hasStarted;
+    public static DebugStuff debug;
 
     public static string plantName;
 
@@ -46,6 +48,7 @@ public class Global : MonoBehaviour
             dayManager = theDayManager;
             plantManager = thePlantManager;
             plantHealthData = thePlantHealthData;
+            debug = debugPublic;
 
             hasStarted = true;
         }

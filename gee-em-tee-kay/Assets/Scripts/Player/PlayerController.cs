@@ -64,6 +64,18 @@ public class PlayerController : MonoBehaviour
     {
         rotationSmoother.SetDesired(0);
         transform.position = new Vector3(0, -1.14f, -5.7f);
+
+        animator.CrossFadeInFixedTime("IdleWalk", 0f);
+
+        if (dayNo == 0 && !Global.debug.skipIntros)
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+        }
+        else if (dayNo == 4 && !Global.debug.skipIntros)
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
+        }
+
     }
 
     private void UpdateInteract()
