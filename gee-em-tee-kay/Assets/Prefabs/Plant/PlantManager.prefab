@@ -49,9 +49,9 @@ MonoBehaviour:
   - {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3, type: 3}
   FlowerPrefabOptions: []
   PlantName: 
-  MinStemRed: 0
-  MaxStemRed: 0.3
-  MinStemGreen: 0.5
+  MinStemRed: 0.3
+  MaxStemRed: 0.6
+  MinStemGreen: 0.8
   MaxStemGreen: 1
-  MinStemBlue: 0
-  MaxStemBlue: 0.3
+  MinStemBlue: 0.3
+  MaxStemBlue: 0.6
