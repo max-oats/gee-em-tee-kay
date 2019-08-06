@@ -6222,17 +6222,17 @@ PrefabInstance:
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.38431376
+      value: 0.44552174
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.23529413
+      value: 0.7075472
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.6784314
+      value: 0.4038359
       objectReference: {fileID: 0}
     - target: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6247,17 +6247,17 @@ PrefabInstance:
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.50980395
+      value: 0.8962264
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.52156866
+      value: 0.52499074
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.86666673
+      value: 0.33397114
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236117, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6342,22 +6342,22 @@ PrefabInstance:
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.92630106
+      value: 0.9781104
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07366088
+      value: -0.0018143484
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.26561257
+      value: 0.00853584
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.256886
+      value: 0.20790374
       objectReference: {fileID: 0}
     - target: {fileID: 4258158761962236116, guid: fae38f9c82fdc424d9618226690ef64a,
         type: 3}
@@ -6536,7 +6536,7 @@ PrefabInstance:
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
       propertyPath: lightningWeather.ambientLightIntensity
-      value: 2
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
@@ -6551,7 +6551,7 @@ PrefabInstance:
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
       propertyPath: debugDaySelector
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
@@ -6646,7 +6646,22 @@ PrefabInstance:
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
       propertyPath: weatherSettings.Array.data[3].yRotation
-      value: -32
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: lightningWeather.skyboxColour.r
+      value: 0.34669814
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: lightningWeather.skyboxColour.g
+      value: 0.3787998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: lightningWeather.skyboxColour.b
+      value: 0.46226418
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728d19f4ac521f84cae90b9e0ac11e08, type: 3}
@@ -6725,7 +6740,7 @@ PrefabInstance:
     - target: {fileID: 998245326370375222, guid: f2228949b44c7c547a62443ef9e49d2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 998245324967828490, guid: f2228949b44c7c547a62443ef9e49d2c,
         type: 3}
