@@ -41,6 +41,8 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private Light sunLight;
     [SerializeField] private GameObject rainObject;
     [SerializeField] private GameObject windObject;
+    [SerializeField] private GameObject normalLeaves;
+    [SerializeField] private GameObject windyLeaves;
 
     void Start()
     {
@@ -49,7 +51,10 @@ public class WeatherManager : MonoBehaviour
 
     void OnValidate()
     {
-        UpdateWeather(debugDaySelector - 1);
+        if (debugDaySelector > 0)
+        {
+            UpdateWeather(debugDaySelector - 1);
+        }
     }
 
     void UpdateWeather(int dayNo)
@@ -83,10 +88,14 @@ public class WeatherManager : MonoBehaviour
         if (weatherSettings[dayNo].isWindy)
         {
             windObject.SetActive(true);
+            windyLeaves.SetActive(true);
+            normalLeaves.SetActive(false); 
         }
         else
         {
             windObject.SetActive(false);
+            windyLeaves.SetActive(false);
+            normalLeaves.SetActive(true); 
         }
     }
 }

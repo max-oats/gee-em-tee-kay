@@ -43,8 +43,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fdf343457f6004d8cb9191094f2e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDaySelector: 0
-  weatherSettings: []
+  debugDaySelector: 2
+  weatherSettings:
+  - ambientLight: {r: 0.7075472, g: 0.44552174, b: 0.4038359, a: 1}
+    sunlight: {r: 0.8962264, g: 0.52499074, b: 0.33397114, a: 1}
+    skyboxColour: {r: 0.3301887, g: 0.17288181, b: 0.18599075, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.99
+    xRotation: 149
+    yRotation: -19
+    isRaining: 0
+    isThundering: 0
+    isWindy: 0
+  - ambientLight: {r: 0.2990833, g: 0.3476133, b: 0.4433962, a: 1}
+    sunlight: {r: 0.50980395, g: 0.52156866, b: 0.86666673, a: 1}
+    skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.99
+    xRotation: 149
+    yRotation: -19
+    isRaining: 1
+    isThundering: 1
+    isWindy: 0
+  - ambientLight: {r: 0.6156863, g: 0.3921569, b: 0.3529412, a: 1}
+    sunlight: {r: 0.8980393, g: 0.5254902, b: 0.33333334, a: 1}
+    skyboxColour: {r: 0.32941177, g: 0.17254902, b: 0.18431373, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.99
+    xRotation: 149
+    yRotation: -19
+    isRaining: 0
+    isThundering: 0
+    isWindy: 1
+  - ambientLight: {r: 0.23529413, g: 0.38431376, b: 0.6784314, a: 1}
+    sunlight: {r: 0.50980395, g: 0.52156866, b: 0.86666673, a: 1}
+    skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.99
+    xRotation: 149
+    yRotation: -19
+    isRaining: 1
+    isThundering: 0
+    isWindy: 0
+  - ambientLight: {r: 0.7075472, g: 0.44552174, b: 0.4038359, a: 1}
+    sunlight: {r: 0.8962264, g: 0.52499074, b: 0.33397114, a: 1}
+    skyboxColour: {r: 0.3301887, g: 0.17288181, b: 0.18599075, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.99
+    xRotation: 149
+    yRotation: -19
+    isRaining: 0
+    isThundering: 0
+    isWindy: 0
   ambientLight: {fileID: 0}
   sunLight: {fileID: 0}
   rainObject: {fileID: 0}
+  windObject: {fileID: 0}
+  normalLeaves: {fileID: 0}
+  windyLeaves: {fileID: 0}
