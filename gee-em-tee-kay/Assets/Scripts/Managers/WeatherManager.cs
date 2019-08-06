@@ -31,14 +31,25 @@ public class WeatherSettings
 
 public class WeatherManager : MonoBehaviour
 {
+    // ~ Begin debug
+    [Range(1,5)]
+    [SerializeField] private int debugDaySelector;
+    // ~ End debug
+
     [SerializeField] private List<WeatherSettings> weatherSettings = new List<WeatherSettings>();
     [SerializeField] private Light ambientLight;
     [SerializeField] private Light sunLight;
     [SerializeField] private GameObject rainObject;
+    [SerializeField] private GameObject windObject;
 
     void Start()
     {
         Global.dayManager.dayStarted += UpdateWeather;
+    }
+
+    void OnValidate()
+    {
+        UpdateWeather(debugDaySelector - 1);
     }
 
     void UpdateWeather(int dayNo)
@@ -51,8 +62,13 @@ public class WeatherManager : MonoBehaviour
         sunLight.color = weatherSettings[dayNo].sunlight;
         sunLight.shadowStrength = weatherSettings[dayNo].shadowStrength;
 
-        // Update skybox
-        Global.cameraController.SetBackgroundColour(weatherSettings[dayNo].skyboxColour);
+        sunLight.transform.eulerAngles = new Vector3(weatherSettings[dayNo].xRotation, weatherSettings[dayNo].yRotation, 0.0f);
+
+        // Update skybox if game has started
+        if (Global.cameraController != null)
+        {
+            Global.cameraController.SetBackgroundColour(weatherSettings[dayNo].skyboxColour);
+        }
 
         // Update weather things
         if (weatherSettings[dayNo].isRaining)
@@ -62,6 +78,15 @@ public class WeatherManager : MonoBehaviour
         else
         {
             rainObject.SetActive(false);
+        }
+
+        if (weatherSettings[dayNo].isWindy)
+        {
+            windObject.SetActive(true);
+        }
+        else
+        {
+            windObject.SetActive(false);
         }
     }
 }
