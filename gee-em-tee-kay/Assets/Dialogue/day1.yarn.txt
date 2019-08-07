@@ -33,6 +33,13 @@ Player: you are called PLANTNAME now.
 Player: it fills you with \jdetermination\j.
 ===
 
+title: Day1.NamePlant.Plant
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: wow, that is real original. good work, me.
+===
+
 title: Day1.Intro
 tags:
 ---
