@@ -83,6 +83,7 @@ public class Plant : MonoBehaviour
 
         int leavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
 
+        Debug.Log(toNextPoint);
         AddSection(toNextPoint, leavesToAdd, plantHealth.HasTooMuchLight());
 
         SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
@@ -144,8 +145,9 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool LeavesShouldBeSmall)
+    public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
     {
+        Debug.Log("Adding Section");
         if (sections.Count == 0)
         {
             return;
@@ -156,6 +158,7 @@ public class Plant : MonoBehaviour
         StemSection lastSection = sections[sections.Count-1];
 
         Vector3 op0 = lastSection.gameObject.transform.position;
+        Debug.Log(op0);
         Vector3 op2 = op0 + lastSection.endTangent;
         Vector3 op3 = op0 + lastSection.endPoint;
 
@@ -167,33 +170,34 @@ public class Plant : MonoBehaviour
         Vector3 m = (p1 + p3) / 2;
         Vector3 p2 = m + (p1-p0) / 2;
 
-        List<Vector3> ControlPointsToAdd = BezierUtils.SplitCubicBezierNWays(p0, p1, p2, p3, sectionsToSplitInto);
+        List<Vector3> controlPointsToAdd = BezierUtils.SplitCubicBezierNWays(p0, p1, p2, p3, sectionsToSplitInto);
 
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
-            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3], i < leavesToAdd, LeavesShouldBeSmall);
+            AddSection(lastSection.EndPoint, controlPointsToAdd[initialIndex], controlPointsToAdd[initialIndex+1], controlPointsToAdd[initialIndex+2], controlPointsToAdd[initialIndex+3], i < leavesToAdd, leavesShouldBeSmall);
         }
     }
 
-    private void AddSection(Transform Attachment, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, bool ShouldAddLeaf, bool LeavesShouldBeSmall)
+    private void AddSection(Transform attachment, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, bool shouldAddLeaf, bool leavesShouldBeSmall)
     {
-        StemSection newSection = Instantiate(stemSectionPrefab, Attachment).GetComponent<StemSection>();
+        StemSection newSection = Instantiate(stemSectionPrefab, attachment).GetComponent<StemSection>();
 
-        newSection.OriginPoint = Attachment;
+        Debug.Log("Attachment: " + attachment);
+        newSection.OriginPoint = attachment;
         newSection.gameObject.transform.position = p0;
         newSection.startTangent = p1 - p0;
         newSection.endTangent = p2 - p0;
         newSection.endPoint = p3 - p0;
 
-        if (ShouldAddLeaf)
+        if (shouldAddLeaf)
         {
             GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
             newLeaf.transform.position = newSection.EndPoint.position;
             newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
             Leaf leaf = newLeaf.GetComponent<Leaf>();
-            if (LeavesShouldBeSmall)
+            if (leavesShouldBeSmall)
             {
                 leaf.SetScale(0.5f);
             }

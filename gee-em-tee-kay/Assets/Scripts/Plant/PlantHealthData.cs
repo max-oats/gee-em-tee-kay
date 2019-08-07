@@ -28,7 +28,7 @@ public class PlantHealthData : MonoBehaviour
     void Start()
     {
         persistentData = new PlantHealthPersistentData();
-        persistentData.GeneralHealth = initialHealth;
+        persistentData.generalHealth = initialHealth;
         transientData = new PlantHealthTransientData();
     }
 
@@ -47,43 +47,43 @@ public class PlantHealthData : MonoBehaviour
 
     public void ReviewDay()
     {
-        if (transientData.WasWateredToday)
+        if (transientData.wasWateredToday)
         {
-            persistentData.DaysWateredStreak++;
-            persistentData.DaysNotWateredStreak = 0;
+            persistentData.daysWateredStreak++;
+            persistentData.daysNotWateredStreak = 0;
         }
         else
         {
-            persistentData.DaysWateredStreak = 0;
-            persistentData.DaysNotWateredStreak++;
+            persistentData.daysWateredStreak = 0;
+            persistentData.daysNotWateredStreak++;
         }
 
-        persistentData.AccumulatedLight += transientData.LightGettingToday;
+        persistentData.accumulatedLight += transientData.lightGettingToday;
 
         bool hasBeenDamaged = false;
         if (IsThirsty() || IsDrowning())
         {
-            persistentData.GeneralHealth -= healthPenaltyForWater;
+            persistentData.generalHealth -= healthPenaltyForWater;
             hasBeenDamaged = true;
         }
         if (HasTooMuchLight() || HasNotEnoughLight())
         {
-            persistentData.GeneralHealth -= healthPenaltyForLight;
+            persistentData.generalHealth -= healthPenaltyForLight;
             hasBeenDamaged = true;
         }
 
         if (!hasBeenDamaged)
         {
-            persistentData.GeneralHealth += healthRewardForGoodDay;
+            persistentData.generalHealth += healthRewardForGoodDay;
         }
 
-        if (transientData.HaveConversedToday)
+        if (transientData.haveConversedToday)
         {
-            persistentData.DaysConversed++;
-            persistentData.GeneralHealth += healthRewardForTalkingToday;
+            persistentData.daysConversed++;
+            persistentData.generalHealth += healthRewardForTalkingToday;
         }
 
-        persistentData.GeneralHealth = Mathf.Clamp(persistentData.GeneralHealth, 0, maxHealth);
+        persistentData.generalHealth = Mathf.Clamp(persistentData.generalHealth, 0, maxHealth);
 
         plant.AddSectionsForDay();
 
@@ -95,87 +95,87 @@ public class PlantHealthData : MonoBehaviour
     // Water
     public void Water()
     {
-        transientData.WasWateredToday = true;
+        transientData.wasWateredToday = true;
     }
 
     public bool HasBeenWateredToday()
     {
-        return transientData.WasWateredToday;
+        return transientData.wasWateredToday;
     }
 
     public bool IsThirsty()
     {
-        return persistentData.DaysNotWateredStreak > daysWithoutWaterToBeThirsty;
+        return persistentData.daysNotWateredStreak > daysWithoutWaterToBeThirsty;
     }
 
     public bool IsDrowning()
     {
-        return persistentData.DaysWateredStreak > daysWithWaterToBeDrowning;
+        return persistentData.daysWateredStreak > daysWithWaterToBeDrowning;
     }
 
     // Light
     public void SetLightIncrementForToday(int lightIncrement)
     {
-        transientData.LightGettingToday = lightIncrement;
+        transientData.lightGettingToday = lightIncrement;
     }
 
     public bool HasTooMuchLight()
     {
-        return persistentData.AccumulatedLight > tooMuchLightThreshold;
+        return persistentData.accumulatedLight > tooMuchLightThreshold;
     }
 
     public bool HasNotEnoughLight()
     {
-        return persistentData.AccumulatedLight < notEnoughLightThreshold;
+        return persistentData.accumulatedLight < notEnoughLightThreshold;
     }
 
 
     // Talking
     public void Talk()
     {
-        transientData.HaveConversedToday = true;
+        transientData.haveConversedToday = true;
     }
 
     public string SelectDialogueNode()
     {
-        return "Day" + (persistentData.DaysConversed+1) +  ".Talk";
+        return "Day" + (persistentData.daysConversed+1) +  ".Talk";
     }
 
     public bool HaveConversedToday()
     {
-        return transientData.HaveConversedToday;
+        return transientData.haveConversedToday;
     }
 
     public bool HasEverConversed()
     {
-        return persistentData.DaysConversed > 0;
+        return persistentData.daysConversed > 0;
     }
 
     public bool HasMineOption()
     {
-        return persistentData.DaysConversed >= daysConversedForMineOption;
+        return persistentData.daysConversed >= daysConversedForMineOption;
     }
 
     public bool HasThirdOption()
     {
-        return persistentData.DaysConversed >= daysConversedForThirdOption;
+        return persistentData.daysConversed >= daysConversedForThirdOption;
     }
 
 
     // Health
     public bool PlantIsDead()
     {
-        return persistentData.GeneralHealth < 0;
+        return persistentData.generalHealth < 0;
     }
 
     public bool PlantIsUnhealthy()
     {
-        return persistentData.GeneralHealth < healthThresholdToLookUnhealthy;
+        return persistentData.generalHealth < healthThresholdToLookUnhealthy;
     }
 
     public float CurrentHealthPercentage()
     {
-        return (float)persistentData.GeneralHealth / maxHealth;
+        return (float)persistentData.generalHealth / maxHealth;
     }
 
 
@@ -193,17 +193,16 @@ public class PlantHealthData : MonoBehaviour
 
 public class PlantHealthPersistentData
 {
-    public int DaysWateredStreak = 0;
-    public int DaysNotWateredStreak = 0;
-    public int AccumulatedLight = 0;
-    public int GeneralHealth;
-    public int DaysConversed = 0;
-    public int DayNumber = 0;
+    public int daysWateredStreak = 0;
+    public int daysNotWateredStreak = 0;
+    public int accumulatedLight = 0;
+    public int generalHealth;
+    public int daysConversed = 0;
 }
 
 public class PlantHealthTransientData
 {
-    public bool WasWateredToday = false;
-    public int LightGettingToday = 0;
-    public bool HaveConversedToday = false;
+    public bool wasWateredToday = false;
+    public int lightGettingToday = 0;
+    public bool haveConversedToday = false;
 }

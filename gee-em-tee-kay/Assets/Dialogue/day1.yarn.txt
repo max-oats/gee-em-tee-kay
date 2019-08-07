@@ -8,20 +8,13 @@ Player: i'm so sorry.
 title: Day1.Intro
 tags:
 ---
+<<phoneOn Player>>
 Player: yeah,\d002 i'm walking into the new place right now!
 Player: well, its\d002.\d002.\d002. cozy.
 Player: they left a \c004plant pot\c000 here
 Player: which i guess is my bed now?
-Player: ... do we have to talk about the break-up?
-Player: well... obviously it was...
-[[her fault|Day1.Intro2]]
-===
-
-title: Day1.Intro2
-tags:
----
-Player: there's \jonly one\j of us who's at fault here.\d002 her.
-Player: i'll be okay.\d002 thank you though.
+Player: bud!!!!\d002 i am totally fine!
+Player: it was \btotally\b mutual.
 Player: yeah, the moving van isn't bringing the furniture for another \w\b5 days\w!!!!!!!
 Player: but don't worry. 
 Player: i spent my remaining £2 on a seed for my plant pot!!!!!
@@ -35,5 +28,6 @@ tags:
 ---
 Player: ...
 Player: i'm not gonna talk to you,\d002 PLANTNAME.
-Player: \d002.\d002.\d002.she used to talk to plants.
+Player: and it's not just because of your \b\jincredibly cursed\j\b name
+Player: its just\d002.\d002.\d002. she used to talk to plants.
 ===

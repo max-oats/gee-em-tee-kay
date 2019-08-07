@@ -43,7 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fdf343457f6004d8cb9191094f2e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDaySelector: 2
+  debugDaySelector: 1
+  lightningTimeRange: {x: 8, y: 10}
+  timeBetweenThunderAndLightning: 3
+  lightningLerpTime: 0.1
   weatherSettings:
   - ambientLight: {r: 0.7075472, g: 0.44552174, b: 0.4038359, a: 1}
     sunlight: {r: 0.8962264, g: 0.52499074, b: 0.33397114, a: 1}
@@ -60,18 +63,18 @@ MonoBehaviour:
     skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
     shadowStrength: 1
     ambientLightIntensity: 0.99
-    xRotation: 149
-    yRotation: -19
+    xRotation: 131
+    yRotation: -34
     isRaining: 1
     isThundering: 1
-    isWindy: 0
-  - ambientLight: {r: 0.6156863, g: 0.3921569, b: 0.3529412, a: 1}
-    sunlight: {r: 0.8980393, g: 0.5254902, b: 0.33333334, a: 1}
-    skyboxColour: {r: 0.32941177, g: 0.17254902, b: 0.18431373, a: 1}
-    shadowStrength: 1
-    ambientLightIntensity: 0.99
-    xRotation: 149
-    yRotation: -19
+    isWindy: 1
+  - ambientLight: {r: 0.62352943, g: 0.40784314, b: 0.4558288, a: 1}
+    sunlight: {r: 1, g: 1, b: 1, a: 1}
+    skyboxColour: {r: 0.4245283, g: 0.3023763, b: 0.32902762, a: 1}
+    shadowStrength: 0.641
+    ambientLightIntensity: 0.67
+    xRotation: 156
+    yRotation: -12
     isRaining: 0
     isThundering: 0
     isWindy: 1
@@ -81,7 +84,7 @@ MonoBehaviour:
     shadowStrength: 1
     ambientLightIntensity: 0.99
     xRotation: 149
-    yRotation: -19
+    yRotation: 16
     isRaining: 1
     isThundering: 0
     isWindy: 0
@@ -90,6 +93,17 @@ MonoBehaviour:
     skyboxColour: {r: 0.3301887, g: 0.17288181, b: 0.18599075, a: 1}
     shadowStrength: 1
     ambientLightIntensity: 0.99
+    xRotation: 156
+    yRotation: -1
+    isRaining: 0
+    isThundering: 0
+    isWindy: 0
+  lightningWeather:
+    ambientLight: {r: 1, g: 1, b: 1, a: 1}
+    sunlight: {r: 1, g: 1, b: 1, a: 1}
+    skyboxColour: {r: 0.34669814, g: 0.3787998, b: 0.46226418, a: 1}
+    shadowStrength: 1
+    ambientLightIntensity: 0.65
     xRotation: 149
     yRotation: -19
     isRaining: 0

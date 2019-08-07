@@ -26,6 +26,8 @@ ModelImporter:
     2100008: MainMaterial__MainTex_png
     2100010: None__MainTex_png
     2100012: Masked
+    2100014: MainMaterial__WallTexture1_png
+    2100016: WallMaterialDark__WallTexture1_png
     2300000: //RootNode
     2300002: Cube
     2300004: Cube_001
@@ -57,6 +59,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: MainMaterial__MainTex_png
     second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainMaterial__WallTexture1_png
+    second: {fileID: 2100000, guid: 8a706827106afc64faee4e6823791882, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodMaterial__ColourAtlas_png
+    second: {fileID: 2100000, guid: da4c066665361484b868ee64895db0d5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

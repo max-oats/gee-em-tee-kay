@@ -9,10 +9,6 @@ public class DayManager : MonoBehaviour
 
     public bool seedPlanted = false;
 
-    // ~Begin Debug
-    [SerializeField] private bool skipIntros;
-    // ~End Debug
-
     [SerializeField] private int totalNumDays;
     [SerializeField] private GameObject faderObject;
     [SerializeField] private float fadeTime = 1.0f;
@@ -37,15 +33,6 @@ public class DayManager : MonoBehaviour
         dayStarted?.Invoke(currentDay);
 
         StartCoroutine(StartDayFade());
-
-        if (currentDay == 0 && !skipIntros)
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
-        }
-        else if (currentDay == 4 && !skipIntros)
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
-        }
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }

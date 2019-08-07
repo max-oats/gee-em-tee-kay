@@ -185,15 +185,17 @@ public class WeatherManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenThunderAndLightning);
 
             // DO THUNDER STRIKE SOUND
+            Global.cameraController.ScreenShake(0.05f);
+            yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.1f);
-            yield return new WaitForSeconds(0.2f);
-            Global.cameraController.ScreenShake(0.15f);
-            yield return new WaitForSeconds(0.2f);
-            Global.cameraController.ScreenShake(0.2f);
-            yield return new WaitForSeconds(0.2f);
-            Global.cameraController.ScreenShake(0.15f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.1f);
+            yield return new WaitForSeconds(0.15f);
+            Global.cameraController.ScreenShake(0.1f);
+            yield return new WaitForSeconds(0.15f);
+            Global.cameraController.ScreenShake(0.1f);
+            yield return new WaitForSeconds(0.15f);
+            Global.cameraController.ScreenShake(0.05f);
         }
     }
 }
