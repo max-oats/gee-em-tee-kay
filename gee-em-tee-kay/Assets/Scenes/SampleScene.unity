@@ -1402,6 +1402,11 @@ PrefabInstance:
       propertyPath: playerSpeechHandler
       value: 
       objectReference: {fileID: 939850913}
+    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
+        type: 3}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: plant
@@ -1720,6 +1725,11 @@ PrefabInstance:
       objectReference: {fileID: 1132330662}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
+      propertyPath: lightningObject
+      value: 
+      objectReference: {fileID: 1102590654}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
       propertyPath: rainObject
       value: 
       objectReference: {fileID: 440612985}
@@ -1740,103 +1750,18 @@ PrefabInstance:
       objectReference: {fileID: 2123037681}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
-      propertyPath: lightningWeather.ambientLightIntensity
-      value: 1.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: debugDaySelector
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: weatherSettings.Array.data[1].yRotation
-      value: -13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: weatherSettings.Array.data[1].xRotation
-      value: 153
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningWeather.xRotation
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningWeather.yRotation
-      value: -13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningWeather.ambientLight.r
-      value: 0.2932983
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningWeather.ambientLight.g
-      value: 0.3204351
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningWeather.ambientLight.b
-      value: 0.3679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningObject
-      value: 
-      objectReference: {fileID: 1102590654}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningStrengthRange.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningStrengthRange.y
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningAngleRange.x
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningAngleRange.y
-      value: 220
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningLerpTime
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningTimeRange.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
-      propertyPath: lightningTimeRange.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
-        type: 3}
       propertyPath: treeAnimator
       value: 
       objectReference: {fileID: 2031676013}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
-      propertyPath: treeWindMinMax.x
-      value: 0.1
+      propertyPath: lightningTimeRange.x
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
-      propertyPath: treeWindMinMax.y
-      value: 1
+      propertyPath: lightningTimeRange.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728d19f4ac521f84cae90b9e0ac11e08, type: 3}

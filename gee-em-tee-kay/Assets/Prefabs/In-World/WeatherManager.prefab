@@ -43,11 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fdf343457f6004d8cb9191094f2e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDaySelector: 1
+  debugDaySelector: 2
   lightningTimeRange: {x: 8, y: 10}
   timeBetweenThunderAndLightning: 3
-  lightningLerpTime: 0.1
+  lightningLerpTime: 0.08
   lightningLerpOutTime: 0.5
+  lightningStrengthRange: {x: 2.5, y: 3.5}
+  lightningAngleRange: {x: 120, y: 220}
+  treeWindMinMax: {x: 0.1, y: 1}
   weatherSettings:
   - ambientLight: {r: 0.7075472, g: 0.44552174, b: 0.4038359, a: 1}
     sunlight: {r: 0.8962264, g: 0.52499074, b: 0.33397114, a: 1}
@@ -64,8 +67,8 @@ MonoBehaviour:
     skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
     shadowStrength: 1
     ambientLightIntensity: 0.99
-    xRotation: 131
-    yRotation: -34
+    xRotation: 153
+    yRotation: -13
     isRaining: 1
     isThundering: 1
     isWindy: 1
@@ -100,19 +103,21 @@ MonoBehaviour:
     isThundering: 0
     isWindy: 0
   lightningWeather:
-    ambientLight: {r: 0.25882354, g: 0.30588236, b: 0.38823533, a: 1}
+    ambientLight: {r: 0.2932983, g: 0.3204351, b: 0.3679245, a: 1}
     sunlight: {r: 1, g: 1, b: 1, a: 1}
     skyboxColour: {r: 0.34669814, g: 0.3787998, b: 0.46226418, a: 1}
     shadowStrength: 1
-    ambientLightIntensity: 0.22
-    xRotation: 131
-    yRotation: -34
+    ambientLightIntensity: 1.17
+    xRotation: 116
+    yRotation: -13
     isRaining: 0
     isThundering: 0
     isWindy: 0
   ambientLight: {fileID: 0}
   sunLight: {fileID: 0}
+  lightningObject: {fileID: 0}
   rainObject: {fileID: 0}
   windObject: {fileID: 0}
   normalLeaves: {fileID: 0}
   windyLeaves: {fileID: 0}
+  treeAnimator: {fileID: 0}
