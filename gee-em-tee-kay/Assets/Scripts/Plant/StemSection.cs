@@ -6,26 +6,20 @@ using UnityEditor;
 [RequireComponent(typeof(LineRenderer))]
 public class StemSection : MonoBehaviour
 {
-    public float height;
-
-    public Vector3 endPoint;
+    public Vector3 end;
     public Vector3 startTangent;
     public Vector3 endTangent;
 
-    public Transform OriginPoint;
-    public Transform EndPoint;
+    public Transform originPoint;
+    public Transform endPoint;
 
-    public LineRenderer lineRenderer;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private GameObject endPointMarker;
 
-    public float startPointOffset = 0;
-    public float endPointOffset = 0;
+    [SerializeField] private bool drawGizmos = false;
 
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 50;
-
-    [SerializeField] private bool DrawGizmos = false;
-
-    [SerializeField] private GameObject endPointMarker;
 
     public void SetColour(Color inColor)
     {
@@ -34,17 +28,17 @@ public class StemSection : MonoBehaviour
 
     public void Realign()
     {
-        gameObject.transform.rotation = OriginPoint.rotation;
+        gameObject.transform.rotation = originPoint.rotation;
     }
 
     void OnDrawGizmos()
     {
-        if (DrawGizmos)
+        if (drawGizmos)
         {
             Vector3 p = transform.position;
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(p, 0.1f);
-            Gizmos.DrawSphere(p + endPoint, 0.1f);
+            Gizmos.DrawSphere(p + end, 0.1f);
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(p + startTangent, 0.1f);
             Gizmos.DrawSphere(p + endTangent, 0.1f);
@@ -53,9 +47,9 @@ public class StemSection : MonoBehaviour
 
     void Awake()
     {
-        endPointMarker = new GameObject("EndPoint");
+        endPointMarker = new GameObject("endPoint");
         endPointMarker.transform.parent = gameObject.transform;
-        EndPoint = endPointMarker.transform;
+        endPoint = endPointMarker.transform;
     }
 
     void Start()
@@ -70,7 +64,7 @@ public class StemSection : MonoBehaviour
     void Update()
     {
         DrawCurve();
-        EndPoint.transform.position = gameObject.transform.position + endPoint + new Vector3(endPointOffset,0,0);
+        endPoint.transform.position = gameObject.transform.position + end;
     }
 
     void DrawCurve()
@@ -79,7 +73,7 @@ public class StemSection : MonoBehaviour
         for (int i = 0; i <= SEGMENT_COUNT; i++)
         {
             float t = i / (float)SEGMENT_COUNT;
-            Vector3 pixel = BezierUtils.CalculateCubicBezierPoint(t, p + new Vector3(startPointOffset,0,0), p + startTangent + new Vector3(startPointOffset,0,0), p + endTangent + new Vector3(endPointOffset,0,0), p + endPoint + new Vector3(endPointOffset,0,0));
+            Vector3 pixel = BezierUtils.CalculateCubicBezierPoint(t, p, p + startTangent, p + endTangent, p + end);
             lineRenderer.positionCount = i+1;
             lineRenderer.SetPosition(i, pixel);
         }

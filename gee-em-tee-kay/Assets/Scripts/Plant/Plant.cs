@@ -41,11 +41,11 @@ public class Plant : MonoBehaviour
         stemColor = inStemColor;
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
-        initialSection.OriginPoint = transform;
+        initialSection.originPoint = transform;
         initialSection.transform.position = inRootPosition - new Vector3(0, 0.3f, 0);
         initialSection.startTangent = new Vector3(0,0.1f,0);
         initialSection.endTangent = new Vector3(0,0.2f,0);
-        initialSection.endPoint = new Vector3(0,0.3f,0);
+        initialSection.end = new Vector3(0,0.3f,0);
         initialSection.gameObject.GetComponent<LineRenderer>().enabled = false;
         initialSection.gameObject.transform.parent = gameObject.transform;
 
@@ -157,7 +157,7 @@ public class Plant : MonoBehaviour
 
         Vector3 op0 = lastSection.gameObject.transform.position;
         Vector3 op2 = op0 + lastSection.endTangent;
-        Vector3 op3 = op0 + lastSection.endPoint;
+        Vector3 op3 = op0 + lastSection.end;
 
         Vector3 p0 = op3;
         Vector3 p3 = p0 + endPointOffset;
@@ -172,7 +172,7 @@ public class Plant : MonoBehaviour
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
-            AddSection(lastSection.EndPoint, controlPointsToAdd[initialIndex], controlPointsToAdd[initialIndex+1], controlPointsToAdd[initialIndex+2], controlPointsToAdd[initialIndex+3], i < leavesToAdd, leavesShouldBeSmall);
+            AddSection(lastSection.endPoint, controlPointsToAdd[initialIndex], controlPointsToAdd[initialIndex+1], controlPointsToAdd[initialIndex+2], controlPointsToAdd[initialIndex+3], i < leavesToAdd, leavesShouldBeSmall);
         }
     }
 
@@ -180,16 +180,16 @@ public class Plant : MonoBehaviour
     {
         StemSection newSection = Instantiate(stemSectionPrefab, attachment).GetComponent<StemSection>();
 
-        newSection.OriginPoint = attachment;
+        newSection.originPoint = attachment;
         newSection.gameObject.transform.position = p0;
         newSection.startTangent = p1 - p0;
         newSection.endTangent = p2 - p0;
-        newSection.endPoint = p3 - p0;
+        newSection.end = p3 - p0;
 
         if (shouldAddLeaf)
         {
-            GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
-            newLeaf.transform.position = newSection.EndPoint.position;
+            GameObject newLeaf = Instantiate(leafPrefab, newSection.endPoint);
+            newLeaf.transform.position = newSection.endPoint.position;
             newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
             Leaf leaf = newLeaf.GetComponent<Leaf>();
@@ -212,6 +212,6 @@ public class Plant : MonoBehaviour
     private Transform GetLastSectionEndPos()
     {
         StemSection lastSection = sections[sections.Count-1];
-        return lastSection.EndPoint;
+        return lastSection.endPoint;
     }
 }
