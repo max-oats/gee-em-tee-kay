@@ -73,6 +73,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
     public List<SpecialName> specialNames;
 
+    [SerializeField] private Yarn.Unity.DialogueRunner dialogueRunner;
+
     private bool currentlyRunningLine = false;
     private float delayTimeMultiplier = 1f;
 
@@ -349,6 +351,11 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         dialogueEnd?.Invoke();
 
         yield break;
+    }
+
+    public void StartDialogue(string nodeName)
+    {
+        dialogueRunner.StartDialogue(nodeName);
     }
 
 }

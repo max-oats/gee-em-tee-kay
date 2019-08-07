@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
 
         if (dayNo == 0 && !Global.debug.skipIntros)
         {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+            Global.dialogueHandler.StartDialogue("Day1.Intro");
         }
         else if (dayNo == 4 && !Global.debug.skipIntros)
         {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
+            Global.dialogueHandler.StartDialogue("Day5.Intro");
         }
 
     }
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
             if (!Global.debug.skipDailyDialogue)
             {
-                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+                Global.dialogueHandler.StartDialogue(data.SelectDialogueNode());
             }
             data.Talk();
         }
@@ -257,7 +257,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(nodeName);
+        Global.dialogueHandler.StartDialogue(nodeName);
     }
 
     private void Interact()
