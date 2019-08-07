@@ -27,7 +27,7 @@ public class Global : MonoBehaviour
     public static DialogueHandler dialogueHandler;
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
-    public static bool hasStarted;
+    public static bool hasStarted = false;
     public static DebugStuff debug;
 
     public static string plantName;
