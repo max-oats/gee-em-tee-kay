@@ -22,16 +22,16 @@ public class BezierUtils
 
     public static List<Vector3> SplitCubicBezierNWays(Vector3 p0i, Vector3 p1i, Vector3 p2i, Vector3 p3i, int n)
     {
-        List<Vector3> ControlPoints = new List<Vector3>();
+        List<Vector3> controlPoints = new List<Vector3>();
 
         if (n == 1)
         {
             // degenerate case
-            ControlPoints.Add(p0i);
-            ControlPoints.Add(p1i);
-            ControlPoints.Add(p2i);
-            ControlPoints.Add(p3i);
-            return ControlPoints;
+            controlPoints.Add(p0i);
+            controlPoints.Add(p1i);
+            controlPoints.Add(p2i);
+            controlPoints.Add(p3i);
+            return controlPoints;
         }
 
         // Points for the current curve being split
@@ -41,17 +41,17 @@ public class BezierUtils
         Vector3 p3 = p3i;
 
         // Create the split points
-        List<float> Z = new List<float>();
+        List<float> zs = new List<float>();
         for (int i = 1; i < n; i++)
         {
-            Z.Add((float)i/n);
+            zs.Add((float)i/n);
         }
 
-        while (Z.Count > 0)
+        while (zs.Count > 0)
         {
-            float z = Z[0];
+            float z = zs[0];
             float zi = 1-z;
-            Z.RemoveAt(0);
+            zs.RemoveAt(0);
 
             // Define points required to figure out new sections
             Vector3 q0 = zi*p0 + z*p1;
@@ -62,18 +62,18 @@ public class BezierUtils
             Vector3 s0 = zi*r0 + z*r1;
 
             // First Section
-            ControlPoints.Add(p0);
-            ControlPoints.Add(q0);
-            ControlPoints.Add(r0);
-            ControlPoints.Add(s0);
+            controlPoints.Add(p0);
+            controlPoints.Add(q0);
+            controlPoints.Add(r0);
+            controlPoints.Add(s0);
 
-            if (Z.Count == 0)
+            if (zs.Count == 0)
             {
                 // Section section is last section!
-                ControlPoints.Add(s0);
-                ControlPoints.Add(r1);
-                ControlPoints.Add(q2);
-                ControlPoints.Add(p3);
+                controlPoints.Add(s0);
+                controlPoints.Add(r1);
+                controlPoints.Add(q2);
+                controlPoints.Add(p3);
             }
 
             // Setup points for next curve to be split
@@ -82,13 +82,13 @@ public class BezierUtils
             p2 = q2;
 
             // Otherwise, need to rebalance other z params
-            for (int index = 0; index < Z.Count; index++)
+            for (int index = 0; index < zs.Count; index++)
             {
-                float ithZ = Z[index];
-                Z[index] = (ithZ - z) / zi;
+                float ithZ = zs[index];
+                zs[index] = (ithZ - z) / zi;
             }
         }
 
-        return ControlPoints;
+        return controlPoints;
     }
 }
