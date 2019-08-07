@@ -55,6 +55,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private Animator treeAnimator;
     [SerializeField] private AudioSource rainSounds;
     [SerializeField] private AudioSource thunderSound;
+    [SerializeField] private AudioSource windSound;
 
     private Coroutine lightningCoroutine;
 
@@ -122,6 +123,8 @@ public class WeatherManager : MonoBehaviour
             normalLeaves.SetActive(false);
 
             treeAnimator.SetLayerWeight(1, treeWindMinMax.y);
+
+            StartCoroutine(AudioUtils.FadeIn(windSound, 2.0f, 0.2f));
         }
         else
         {
@@ -130,6 +133,8 @@ public class WeatherManager : MonoBehaviour
             normalLeaves.SetActive(true);
 
             treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
+            
+            StartCoroutine(AudioUtils.FadeOut(windSound, 0.5f));
         }
 
         if (Global.hasStarted)
