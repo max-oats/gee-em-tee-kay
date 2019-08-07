@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct PotPosition
-{
-    public Vector3 Position;
-    public int LightGainedHere;
-}
-
 public class Global : MonoBehaviour
 {
     public CamController camController;
@@ -16,9 +9,8 @@ public class Global : MonoBehaviour
     public DayManager theDayManager;
     public PlantManager thePlantManager;
     public PlantHealthData thePlantHealthData;
+    public PotPositionHolder thePotPositionHolder;
     public DebugStuff debugPublic;
-
-    public List<PotPosition> potPositions;
 
     public static Rewired.Player input;
     public static Global instance;
@@ -27,6 +19,7 @@ public class Global : MonoBehaviour
     public static DialogueHandler dialogueHandler;
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
+    public static PotPositionHolder potPositionHolder;
     public static bool hasStarted;
     public static DebugStuff debug;
 
@@ -48,18 +41,10 @@ public class Global : MonoBehaviour
             dayManager = theDayManager;
             plantManager = thePlantManager;
             plantHealthData = thePlantHealthData;
+            potPositionHolder = thePotPositionHolder;
             debug = debugPublic;
 
             hasStarted = true;
-        }
-    }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        foreach(PotPosition pP in potPositions)
-        {
-            Gizmos.DrawSphere(pP.Position, 0.1f);
         }
     }
 

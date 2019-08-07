@@ -268,9 +268,9 @@ public class PlayerController : MonoBehaviour
 
         Vector3 finalPos = Vector3.zero;
         PotPosition finalPosition = new PotPosition();
-        foreach (PotPosition pP in Global.instance.potPositions)
+        foreach (PotPosition pP in Global.potPositionHolder.potPositions)
         {
-            Vector3 v3 = pP.Position;
+            Vector3 v3 = pP.position;
             float checkDistance = (potPosition - v3).magnitude;
 
             if (checkDistance < minDistance)
@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
         Destroy(goaudio, 1.0f);
 
         Global.cameraController.ScreenShake(0.2f);
-        Global.plantHealthData.SetLightIncrementForToday(finalPosition.LightGainedHere);
+        Global.plantHealthData.SetLightIncrementForToday(finalPosition.lightGainedHere);
 
         interactionComponent.BumpCollider();
     }
