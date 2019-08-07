@@ -19,7 +19,7 @@ public class StemSection : MonoBehaviour
     [SerializeField] private bool drawGizmos = false;
 
     private int layerOrder = 0;
-    private int SEGMENT_COUNT = 50;
+    private int SEGMENT_COUNT = 5;
 
     public void SetColour(Color inColor)
     {

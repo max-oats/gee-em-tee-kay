@@ -10,8 +10,6 @@ public class PlantManager : MonoBehaviour
     [SerializeField] private GameObject[] leafPrefabOptions;
     [SerializeField] private GameObject[] flowerPrefabOptions;
 
-    [SerializeField] private string plantName;
-
     [SerializeField] private float minStemRed;
     [SerializeField] private float maxStemRed;
     [SerializeField] private float minStemGreen;
