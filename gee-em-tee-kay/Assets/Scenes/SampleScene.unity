@@ -5444,7 +5444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393356431236154470, guid: abde5a30b4fc441eabab6f338c1406da,
         type: 3}
-      propertyPath: WindowLocation
+      propertyPath: windowLocation
       value: 
       objectReference: {fileID: 755169667}
     m_RemovedComponents: []

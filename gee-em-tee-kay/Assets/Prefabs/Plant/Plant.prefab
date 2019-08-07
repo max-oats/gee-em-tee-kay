@@ -45,15 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextEndPointOffsetTEST: {x: 0, y: 0, z: 0}
   sectionsToSplitIntoTEST: 1
-  MaxHorizontalDistance: 0.5
-  leafPrefab: {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3,
-    type: 3}
+  maxHorizontalDistance: 0.5
   stemSectionPrefab: {fileID: 307330046233775394, guid: 481002490aa85465cb461412d707e5c7,
     type: 3}
-  maxHeightOfPlant: 0
   maxNumberOfLeavesPerDay: 3
-  DeadColor: {r: 0, g: 0, b: 0, a: 1}
-  segmentOffsetIncrease: -0.1
-  initialMultiplier: 0
-  multiplierIncrement: 0
-  WindowLocation: {fileID: 0}
+  deadColor: {r: 0, g: 0, b: 0, a: 1}
+  windowLocation: {fileID: 0}

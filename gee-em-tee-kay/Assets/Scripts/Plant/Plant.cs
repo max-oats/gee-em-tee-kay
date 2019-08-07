@@ -9,18 +9,18 @@ public class Plant : MonoBehaviour
     [SerializeField] private int sectionsToSplitIntoTEST = 1;
     // ~End Debug
 
-    [SerializeField] private float MaxHorizontalDistance;
+    [SerializeField] private float maxHorizontalDistance;
 
     [SerializeField] private GameObject stemSectionPrefab;
     [SerializeField] private int maxNumberOfLeavesPerDay;
-    [SerializeField] private Color DeadColor;
+    [SerializeField] private Color deadColor;
 
-    [SerializeField] private Transform WindowLocation;
+    [SerializeField] private Transform windowLocation;
 
-    private GameObject FlowerPrefab;
-    private float FlowerHue;
-    private GameObject LeafPrefab;
-    private Color StemColor;
+    private GameObject flowerPrefab;
+    private float flowerHue;
+    private GameObject leafPrefab;
+    private Color stemColor;
 
     private List<StemSection> sections;
     private List<Leaf> leaves;
@@ -35,10 +35,10 @@ public class Plant : MonoBehaviour
     public void Setup(int seed, GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
     {
         Random.InitState(seed);
-        FlowerPrefab = inFlowerPrefab;
-        FlowerHue = inFlowerHue;
-        LeafPrefab = inLeafPrefab;
-        StemColor = inStemColor;
+        flowerPrefab = inFlowerPrefab;
+        flowerHue = inFlowerHue;
+        leafPrefab = inLeafPrefab;
+        stemColor = inStemColor;
 
         StemSection initialSection = Instantiate(stemSectionPrefab, transform).GetComponent<StemSection>();
         initialSection.OriginPoint = transform;
@@ -74,16 +74,16 @@ public class Plant : MonoBehaviour
             return;
         }
 
-        Vector3 ToNextPoint = GetMaxHorizontalMovement();
-        ToNextPoint += new Vector3(0, plantHealth.GetMaxHeightOfSection(), 0);
+        Vector3 toNextPoint = GetMaxHorizontalMovement();
+        toNextPoint += new Vector3(0, plantHealth.GetMaxHeightOfSection(), 0);
         if (plantHealth.IsThirsty() || plantHealth.IsDrowning())
         {
-            ToNextPoint *= 0.5f;
+            toNextPoint *= 0.5f;
         }
 
-        int LeavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
+        int leavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
 
-        AddSection(ToNextPoint, LeavesToAdd, plantHealth.HasTooMuchLight());
+        AddSection(toNextPoint, leavesToAdd, plantHealth.HasTooMuchLight());
 
         SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
     }
@@ -91,7 +91,7 @@ public class Plant : MonoBehaviour
     private Vector3 GetMaxHorizontalMovement()
     {
         Vector3 e = GetLastSectionEndPos().position - transform.position;
-        Vector3 w = WindowLocation.position - GetLastSectionEndPos().position;
+        Vector3 w = windowLocation.position - GetLastSectionEndPos().position;
         w.y = 0;
         w.Normalize();
 
@@ -118,20 +118,20 @@ public class Plant : MonoBehaviour
 
         float t = top / 2*a;
 
-        float Scale = Mathf.Min(t, MaxHorizontalDistance);
+        float scale = Mathf.Min(t, maxHorizontalDistance);
 
-        return w * Scale;
+        return w * scale;
     }
 
     void SetColourBasedOnHealth(float param)
     {
         foreach (StemSection section in sections)
         {
-            section.SetColour(Color.Lerp(DeadColor, StemColor, param));
+            section.SetColour(Color.Lerp(deadColor, stemColor, param));
         }
         foreach(Leaf leaf in leaves)
         {
-            leaf.SetColor(Color.Lerp(DeadColor, StemColor, param));
+            leaf.SetColor(Color.Lerp(deadColor, stemColor, param));
         }
     }
 
@@ -144,14 +144,14 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPointOffset, int LeavesToAdd, bool LeavesShouldBeSmall)
+    public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool LeavesShouldBeSmall)
     {
         if (sections.Count == 0)
         {
             return;
         }
 
-        int sectionsToSplitInto = LeavesToAdd + 1;
+        int sectionsToSplitInto = leavesToAdd + 1;
 
         StemSection lastSection = sections[sections.Count-1];
 
@@ -172,7 +172,7 @@ public class Plant : MonoBehaviour
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
-            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3], i < LeavesToAdd, LeavesShouldBeSmall);
+            AddSection(lastSection.EndPoint, ControlPointsToAdd[initialIndex], ControlPointsToAdd[initialIndex+1], ControlPointsToAdd[initialIndex+2], ControlPointsToAdd[initialIndex+3], i < leavesToAdd, LeavesShouldBeSmall);
         }
     }
 
@@ -188,7 +188,7 @@ public class Plant : MonoBehaviour
 
         if (ShouldAddLeaf)
         {
-            GameObject newLeaf = Instantiate(LeafPrefab, newSection.EndPoint);
+            GameObject newLeaf = Instantiate(leafPrefab, newSection.EndPoint);
             newLeaf.transform.position = newSection.EndPoint.position;
             newLeaf.transform.rotation = Quaternion.Euler(0, Random.value * 360f, 0);
 
@@ -205,7 +205,7 @@ public class Plant : MonoBehaviour
 
     private void GeneralSectionSetup(StemSection inSection)
     {
-        inSection.SetColour(StemColor);
+        inSection.SetColour(stemColor);
         sections.Add(inSection);
     }
 
