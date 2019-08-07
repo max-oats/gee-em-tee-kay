@@ -6078,6 +6078,10 @@ PrefabInstance:
       propertyPath: PlantPot
       value: 
       objectReference: {fileID: 628624978}
+    - target: {fileID: 1101326264, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: skipIntros
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}
 --- !u!1001 &3711965824708137006
@@ -6500,7 +6504,7 @@ PrefabInstance:
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
       propertyPath: lightningWeather.ambientLightIntensity
-      value: 1.26
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
         type: 3}
@@ -6626,6 +6630,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lightningWeather.skyboxColour.b
       value: 0.46226418
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: lightningWeather.sunlight.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098849654627774359, guid: 728d19f4ac521f84cae90b9e0ac11e08,
+        type: 3}
+      propertyPath: lightningWeather.shadowStrength
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728d19f4ac521f84cae90b9e0ac11e08, type: 3}
