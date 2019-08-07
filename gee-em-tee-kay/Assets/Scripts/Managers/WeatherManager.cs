@@ -54,6 +54,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private GameObject windyLeaves;
     [SerializeField] private Animator treeAnimator;
     [SerializeField] private AudioSource rainSounds;
+    [SerializeField] private AudioSource thunderSound;
 
     private Coroutine lightningCoroutine;
 
@@ -183,9 +184,12 @@ public class WeatherManager : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(timeBetweenThunderAndLightning);
+            yield return new WaitForSeconds(timeBetweenThunderAndLightning - 1.0f);
 
-            // DO THUNDER STRIKE SOUND
+            // Start thunder noise
+            StartCoroutine(AudioUtils.FadeIn(thunderSound, 1.0f, 0.2f));
+
+            yield return new WaitForSeconds(1.0f);
             Global.cameraController.ScreenShake(0.05f);
             yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.1f);
@@ -197,6 +201,8 @@ public class WeatherManager : MonoBehaviour
             Global.cameraController.ScreenShake(0.1f);
             yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.05f);
+
+            StartCoroutine(AudioUtils.FadeOut(thunderSound, 2.0f));
         }
     }
 }

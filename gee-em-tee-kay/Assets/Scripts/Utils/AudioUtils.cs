@@ -18,16 +18,18 @@ public static class AudioUtils
         audioSource.Stop();
     }
     
-    public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime) 
+    public static IEnumerator FadeIn(AudioSource audioSource, float FadeTime, float maxVolume = 1) 
     {
         audioSource.Play();
         audioSource.volume = 0f;
 
-        while (audioSource.volume < 1) 
+        while (audioSource.volume < maxVolume) 
         {
             audioSource.volume += Time.deltaTime / FadeTime;
             yield return null;
         }
+
+        audioSource.volume = maxVolume;
     }
 
 }
