@@ -124,3 +124,5 @@ MonoBehaviour:
     nodeName: Flowey
   - plantName: max
     nodeName: MaxHandsome
+  - plantName: plant
+    nodeName: Plant
