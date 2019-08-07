@@ -42,6 +42,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private float lightningLerpOutTime;
     [SerializeField] private Vector2 lightningStrengthRange;
     [SerializeField] private Vector2 lightningAngleRange;
+    [SerializeField] private Vector2 treeWindMinMax;
     [SerializeField] private List<WeatherSettings> weatherSettings = new List<WeatherSettings>();
     [SerializeField] private WeatherSettings lightningWeather;
     [SerializeField] private Light ambientLight;
@@ -51,6 +52,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private GameObject windObject;
     [SerializeField] private GameObject normalLeaves;
     [SerializeField] private GameObject windyLeaves;
+    [SerializeField] private Animator treeAnimator;
 
     private Coroutine lightningCoroutine;
 
@@ -112,12 +114,16 @@ public class WeatherManager : MonoBehaviour
             windObject.SetActive(true);
             windyLeaves.SetActive(true);
             normalLeaves.SetActive(false);
+
+            treeAnimator.SetLayerWeight(1, treeWindMinMax.y);
         }
         else
         {
             windObject.SetActive(false);
             windyLeaves.SetActive(false);
             normalLeaves.SetActive(true);
+
+            treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
         }
 
         if (Global.hasStarted)
