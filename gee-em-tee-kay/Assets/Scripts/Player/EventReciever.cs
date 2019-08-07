@@ -65,6 +65,6 @@ public class EventReciever : MonoBehaviour
     public void Spray()
     {
         GameObject go = Instantiate(waterParticle, waterBottle);
-        Destroy(go, 1.0f);
+        Destroy(go, 2.0f);
     }
 }

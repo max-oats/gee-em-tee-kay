@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         animator.CrossFadeInFixedTime("Water", 0.1f);
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
 
         waterBottle.SetActive(false);
 
@@ -125,6 +125,16 @@ public class PlayerController : MonoBehaviour
         animator.CrossFadeInFixedTime("IdleWalk", 0.1f);
 
         interactionComponent.BumpCollider();
+    }
+
+    public void TurnTowards(Transform other)
+    {
+        Vector3 positionOfObject = other.position;
+        
+        Vector3 targetDirection = positionOfObject - (transform.position);
+
+        // Find X angle
+        rotationSmoother.SetDesired(Vector3.SignedAngle(Vector3.forward, targetDirection, Vector3.up));
     }
 
     public void SelectedMenuOption(string selectedMenuOption)
@@ -141,6 +151,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (selectedMenuOption == "water")
         {
+            TurnTowards(GameObject.Find("Plant Pot").transform);
+
             StartCoroutine(Water());
             Global.plantHealthData.Water();
         }

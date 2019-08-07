@@ -498,7 +498,7 @@ ModelImporter:
       name: Player_Water
       takeName: Player_Water
       firstFrame: 0
-      lastFrame: 46
+      lastFrame: 64
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -518,7 +518,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5455923
+      - time: 0.40679106
         functionName: Spray
         data: 
         objectReferenceParameter: {instanceID: 0}
