@@ -53,6 +53,7 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private GameObject normalLeaves;
     [SerializeField] private GameObject windyLeaves;
     [SerializeField] private Animator treeAnimator;
+    [SerializeField] private AudioSource rainSounds;
 
     private Coroutine lightningCoroutine;
 
@@ -103,10 +104,14 @@ public class WeatherManager : MonoBehaviour
         if (weatherSettings[dayNo].isRaining)
         {
             rainObject.SetActive(true);
+
+            StartCoroutine(AudioUtils.FadeIn(rainSounds, 2.0f));
         }
         else
         {
             rainObject.SetActive(false);
+
+            StartCoroutine(AudioUtils.FadeOut(rainSounds, 0.5f));
         }
 
         if (weatherSettings[dayNo].isWindy)
