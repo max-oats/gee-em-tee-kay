@@ -39,14 +39,23 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private Vector2 lightningTimeRange;
     [SerializeField] private float timeBetweenThunderAndLightning;
     [SerializeField] private float lightningLerpTime;
+    [SerializeField] private float lightningLerpOutTime;
+    [SerializeField] private Vector2 lightningStrengthRange;
+    [SerializeField] private Vector2 lightningAngleRange;
+    [SerializeField] private Vector2 treeWindMinMax;
     [SerializeField] private List<WeatherSettings> weatherSettings = new List<WeatherSettings>();
     [SerializeField] private WeatherSettings lightningWeather;
     [SerializeField] private Light ambientLight;
     [SerializeField] private Light sunLight;
+    [SerializeField] private Light lightningObject;
     [SerializeField] private GameObject rainObject;
     [SerializeField] private GameObject windObject;
     [SerializeField] private GameObject normalLeaves;
     [SerializeField] private GameObject windyLeaves;
+    [SerializeField] private Animator treeAnimator;
+    [SerializeField] private AudioSource rainSounds;
+    [SerializeField] private AudioSource thunderSound;
+    [SerializeField] private AudioSource windSound;
 
     private Coroutine lightningCoroutine;
 
@@ -62,6 +71,7 @@ public class WeatherManager : MonoBehaviour
             && sunLight != null
             && rainObject != null
             && windObject != null
+            && lightningObject != null
             && normalLeaves != null
             && windyLeaves != null)
         {
@@ -96,10 +106,14 @@ public class WeatherManager : MonoBehaviour
         if (weatherSettings[dayNo].isRaining)
         {
             rainObject.SetActive(true);
+
+            StartCoroutine(AudioUtils.FadeIn(rainSounds, 2.0f));
         }
         else
         {
             rainObject.SetActive(false);
+
+            StartCoroutine(AudioUtils.FadeOut(rainSounds, 0.5f));
         }
 
         if (weatherSettings[dayNo].isWindy)
@@ -107,19 +121,29 @@ public class WeatherManager : MonoBehaviour
             windObject.SetActive(true);
             windyLeaves.SetActive(true);
             normalLeaves.SetActive(false);
+
+            treeAnimator.SetLayerWeight(1, treeWindMinMax.y);
+
+            StartCoroutine(AudioUtils.FadeIn(windSound, 2.0f, 0.2f));
         }
         else
         {
             windObject.SetActive(false);
             windyLeaves.SetActive(false);
             normalLeaves.SetActive(true);
+
+            treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
+            
+            StartCoroutine(AudioUtils.FadeOut(windSound, 0.5f));
         }
 
         if (Global.hasStarted)
         {
             if (weatherSettings[dayNo].isThundering)
             {
-                lightningCoroutine = StartCoroutine(LightningStrikes(dayNo));
+                lightningObject.enabled = true;
+                lightningObject.intensity = 0f;
+                lightningCoroutine = StartCoroutine(LightningStrikes());
             }
             else
             {
@@ -127,64 +151,50 @@ public class WeatherManager : MonoBehaviour
                 {
                     StopCoroutine(lightningCoroutine);
                 }
+
+                lightningObject.enabled = false;
+                lightningObject.intensity = 0f;
             }
         }
     }
 
-    IEnumerator LightningStrikes(int dayNo)
+    IEnumerator LightningStrikes()
     {
-        while (true)
+        while (Global.hasStarted)
         {
             yield return new WaitForSeconds(Random.Range(lightningTimeRange.x, lightningTimeRange.y));
 
             float timeCounter = 0f;
+
+            float finalLighteningStrength = Random.Range(lightningStrengthRange.x, lightningStrengthRange.y);
+            lightningObject.transform.eulerAngles = new Vector3(lightningObject.transform.eulerAngles.x, Random.Range(lightningAngleRange.x, lightningAngleRange.y),lightningObject.transform.eulerAngles.z);
+
             while (timeCounter < lightningLerpTime)
             {
                 timeCounter += Time.deltaTime;
 
-                // Update ambient light
-                ambientLight.color = Color.Lerp(weatherSettings[dayNo].ambientLight, lightningWeather.ambientLight, timeCounter/lightningLerpTime);
-                ambientLight.intensity = Mathf.Lerp(weatherSettings[dayNo].ambientLightIntensity, lightningWeather.ambientLightIntensity, timeCounter/lightningLerpTime);
-
-                // Update sunlight
-                sunLight.color = Color.Lerp(weatherSettings[dayNo].sunlight, lightningWeather.sunlight, timeCounter/lightningLerpTime);
-                sunLight.shadowStrength = Mathf.Lerp(weatherSettings[dayNo].shadowStrength, lightningWeather.shadowStrength, timeCounter/lightningLerpTime);
-
-                // Update skybox if game has started
-                if (Global.cameraController != null)
-                {
-                    Global.cameraController.SetBackgroundColour(Color.Lerp(weatherSettings[dayNo].skyboxColour, lightningWeather.skyboxColour, timeCounter/lightningLerpTime));
-                }
+                lightningObject.intensity = Mathf.Lerp(0.0f, finalLighteningStrength, timeCounter/lightningLerpTime);
 
                 yield return null;
             }
 
-            timeCounter = lightningLerpTime;
+            timeCounter = lightningLerpOutTime;
 
             while (timeCounter > 0)
             {
                 timeCounter -= Time.deltaTime;
 
-                // Update ambient light
-                ambientLight.color = Color.Lerp(weatherSettings[dayNo].ambientLight, lightningWeather.ambientLight, timeCounter/lightningLerpTime);
-                ambientLight.intensity = Mathf.Lerp(weatherSettings[dayNo].ambientLightIntensity, lightningWeather.ambientLightIntensity, timeCounter/lightningLerpTime);
-
-                // Update sunlight
-                sunLight.color = Color.Lerp(weatherSettings[dayNo].sunlight, lightningWeather.sunlight, timeCounter/lightningLerpTime);
-                sunLight.shadowStrength = Mathf.Lerp(weatherSettings[dayNo].shadowStrength, lightningWeather.shadowStrength, timeCounter/lightningLerpTime);
-
-                // Update skybox if game has started
-                if (Global.cameraController != null)
-                {
-                    Global.cameraController.SetBackgroundColour(Color.Lerp(weatherSettings[dayNo].skyboxColour, lightningWeather.skyboxColour, timeCounter/lightningLerpTime));
-                }
+                lightningObject.intensity = Mathf.Lerp(0.0f, finalLighteningStrength, timeCounter/lightningLerpOutTime);
 
                 yield return null;
             }
 
-            yield return new WaitForSeconds(timeBetweenThunderAndLightning);
+            yield return new WaitForSeconds(timeBetweenThunderAndLightning - 1.0f);
 
-            // DO THUNDER STRIKE SOUND
+            // Start thunder noise
+            StartCoroutine(AudioUtils.FadeIn(thunderSound, 1.0f, 0.2f));
+
+            yield return new WaitForSeconds(1.0f);
             Global.cameraController.ScreenShake(0.05f);
             yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.1f);
@@ -196,6 +206,8 @@ public class WeatherManager : MonoBehaviour
             Global.cameraController.ScreenShake(0.1f);
             yield return new WaitForSeconds(0.15f);
             Global.cameraController.ScreenShake(0.05f);
+
+            StartCoroutine(AudioUtils.FadeOut(thunderSound, 2.0f));
         }
     }
 }

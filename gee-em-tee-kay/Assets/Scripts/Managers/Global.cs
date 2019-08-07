@@ -20,7 +20,7 @@ public class Global : MonoBehaviour
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
     public static PotPositionHolder potPositionHolder;
-    public static bool hasStarted;
+    public static bool hasStarted = false;
     public static DebugStuff debug;
 
     public static string plantName;
