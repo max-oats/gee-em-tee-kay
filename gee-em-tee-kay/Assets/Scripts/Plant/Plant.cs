@@ -83,7 +83,6 @@ public class Plant : MonoBehaviour
 
         int leavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
 
-        Debug.Log(toNextPoint);
         AddSection(toNextPoint, leavesToAdd, plantHealth.HasTooMuchLight());
 
         SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
@@ -147,7 +146,6 @@ public class Plant : MonoBehaviour
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
     {
-        Debug.Log("Adding Section");
         if (sections.Count == 0)
         {
             return;
@@ -158,7 +156,6 @@ public class Plant : MonoBehaviour
         StemSection lastSection = sections[sections.Count-1];
 
         Vector3 op0 = lastSection.gameObject.transform.position;
-        Debug.Log(op0);
         Vector3 op2 = op0 + lastSection.endTangent;
         Vector3 op3 = op0 + lastSection.endPoint;
 
@@ -183,7 +180,6 @@ public class Plant : MonoBehaviour
     {
         StemSection newSection = Instantiate(stemSectionPrefab, attachment).GetComponent<StemSection>();
 
-        Debug.Log("Attachment: " + attachment);
         newSection.OriginPoint = attachment;
         newSection.gameObject.transform.position = p0;
         newSection.startTangent = p1 - p0;
