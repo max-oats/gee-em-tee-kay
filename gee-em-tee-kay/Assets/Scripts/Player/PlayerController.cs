@@ -244,7 +244,22 @@ public class PlayerController : MonoBehaviour
         speechBubble.ShrinkBubble();
         Destroy(speechBubble.gameObject, 1.0f);
 
-        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlant");
+        if (Global.plantName == "max turnbull")
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantMax");
+        }
+        else if (Global.plantName == "robin mcfarland")
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantRobin");
+        }
+        else if (Global.plantName == "flowey")
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantFlowey");
+        }
+        else
+        {
+            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlant");
+        }
     }
 
     private void Interact()

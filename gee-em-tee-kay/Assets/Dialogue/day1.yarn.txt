@@ -5,6 +5,27 @@ Player: you are called PLANTNAME now.
 Player: i'm so sorry.
 ===
 
+title: Day1.NamePlantMax
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: \j\blmaoooooo what a dang loser!!!!!!!!\b\j
+===
+
+title: Day1.NamePlantRobin
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: which means you're gonna go to cambridge!! that's so exciting!
+===
+
+title: Day1.NamePlantFlowey
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: it fills you with \jdetermination\j.
+===
+
 title: Day1.Intro
 tags:
 ---
