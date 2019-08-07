@@ -539,8 +539,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plant: {fileID: 0}
   plantPot: {fileID: 0}
-  daysWithoutWaterToBeThirsty: 2
-  daysWithWaterToBeDrowning: 3
+  tooMuchWaterThreshold: 2
+  notEnoughWaterThreshold: 0
+  waterLostPerDay: 2
   tooMuchLightThreshold: 5
   notEnoughLightThreshold: 0
   daysConversedForMineOption: 3

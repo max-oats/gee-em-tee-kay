@@ -7,8 +7,9 @@ public class PlantHealthData : MonoBehaviour
     [SerializeField] private Plant plant;
     [SerializeField] private PlantPot plantPot;
 
-    [SerializeField] private int daysWithoutWaterToBeThirsty;
-    [SerializeField] private int daysWithWaterToBeDrowning;
+    [SerializeField] private int tooMuchWaterThreshold;
+    [SerializeField] private int notEnoughWaterThreshold;
+    [SerializeField] private int waterLostPerDay;
     [SerializeField] private int tooMuchLightThreshold;
     [SerializeField] private int notEnoughLightThreshold;
     [SerializeField] private int daysConversedForMineOption;
@@ -47,17 +48,14 @@ public class PlantHealthData : MonoBehaviour
 
     public void ReviewDay()
     {
-        if (transientData.wasWateredToday)
+        if (transientData.waterGettingToday > 0)
         {
-            persistentData.daysWateredStreak++;
-            persistentData.daysNotWateredStreak = 0;
+            persistentData.accumulatedWater += transientData.waterGettingToday;
         }
         else
         {
-            persistentData.daysWateredStreak = 0;
-            persistentData.daysNotWateredStreak++;
+            persistentData.accumulatedWater -= waterLostPerDay;
         }
-
         persistentData.accumulatedLight += transientData.lightGettingToday;
 
         bool hasBeenDamaged = false;
@@ -95,22 +93,17 @@ public class PlantHealthData : MonoBehaviour
     // Water
     public void Water()
     {
-        transientData.wasWateredToday = true;
-    }
-
-    public bool HasBeenWateredToday()
-    {
-        return transientData.wasWateredToday;
+        transientData.waterGettingToday++;
     }
 
     public bool IsThirsty()
     {
-        return persistentData.daysNotWateredStreak > daysWithoutWaterToBeThirsty;
+        return persistentData.accumulatedWater < notEnoughWaterThreshold;
     }
 
     public bool IsDrowning()
     {
-        return persistentData.daysWateredStreak > daysWithWaterToBeDrowning;
+        return persistentData.accumulatedWater > tooMuchWaterThreshold;
     }
 
     // Light
@@ -193,8 +186,7 @@ public class PlantHealthData : MonoBehaviour
 
 public class PlantHealthPersistentData
 {
-    public int daysWateredStreak = 0;
-    public int daysNotWateredStreak = 0;
+    public int accumulatedWater = 0;
     public int accumulatedLight = 0;
     public int generalHealth;
     public int daysConversed = 0;
@@ -202,7 +194,7 @@ public class PlantHealthPersistentData
 
 public class PlantHealthTransientData
 {
-    public bool wasWateredToday = false;
+    public int waterGettingToday = 0;
     public int lightGettingToday = 0;
     public bool haveConversedToday = false;
 }
