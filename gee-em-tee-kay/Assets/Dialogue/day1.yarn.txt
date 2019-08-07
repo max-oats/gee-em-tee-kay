@@ -5,21 +5,28 @@ Player: you are called PLANTNAME now.
 Player: i'm so sorry.
 ===
 
-title: Day1.NamePlantMax
+title: Day1.NamePlant.Max
 tags:
 ---
 Player: you are called PLANTNAME now.
 Player: \j\blmaoooooo what a dang loser!!!!!!!!\b\j
 ===
 
-title: Day1.NamePlantRobin
+title: Day1.NamePlant.MaxHandsome
+tags:
+---
+Player: you are called PLANTNAME now.
+Player: that is one \ihandsome\i name.
+===
+
+title: Day1.NamePlant.Robin
 tags:
 ---
 Player: you are called PLANTNAME now.
 Player: which means you're gonna go to cambridge!! that's so exciting!
 ===
 
-title: Day1.NamePlantFlowey
+title: Day1.NamePlant.Flowey
 tags:
 ---
 Player: you are called PLANTNAME now.

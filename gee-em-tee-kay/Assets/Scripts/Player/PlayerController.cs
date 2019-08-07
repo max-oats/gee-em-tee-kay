@@ -244,22 +244,17 @@ public class PlayerController : MonoBehaviour
         speechBubble.ShrinkBubble();
         Destroy(speechBubble.gameObject, 1.0f);
 
-        if (Global.plantName == "max turnbull")
+        string nodeName = "Day1.NamePlant";
+        
+        foreach (SpecialName sn in Global.dialogueHandler.specialNames)
         {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantMax");
+            if (Global.plantName == sn.plantName)
+            {
+                nodeName += "." + sn.nodeName;
+            }
         }
-        else if (Global.plantName == "robin mcfarland")
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantRobin");
-        }
-        else if (Global.plantName == "flowey")
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlantFlowey");
-        }
-        else
-        {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.NamePlant");
-        }
+
+        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(nodeName);
     }
 
     private void Interact()

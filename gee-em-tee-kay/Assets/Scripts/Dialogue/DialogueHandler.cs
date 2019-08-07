@@ -4,6 +4,14 @@ using UnityEngine.UI;
 using System.Text;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class SpecialName
+{
+    public string plantName;
+
+    public string nodeName;
+}
+
 /** Dialogue Handler. */
 public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 {
@@ -62,6 +70,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public string delayFile = "/DialogueData/delays.txt";
 
     public bool inDialogue = false;
+
+    public List<SpecialName> specialNames;
 
     private bool currentlyRunningLine = false;
     private float delayTimeMultiplier = 1f;
