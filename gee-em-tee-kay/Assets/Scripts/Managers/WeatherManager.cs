@@ -126,20 +126,22 @@ public class WeatherManager : MonoBehaviour
             {
                 lightningObject.enabled = true;
                 lightningObject.intensity = 0f;
-                lightningCoroutine = StartCoroutine(LightningStrikes(dayNo));
+                lightningCoroutine = StartCoroutine(LightningStrikes());
             }
             else
             {
                 if (lightningCoroutine != null)
                 {
                     StopCoroutine(lightningCoroutine);
-                    lightningObject.enabled = false;
                 }
+
+                lightningObject.enabled = false;
+                lightningObject.intensity = 0f;
             }
         }
     }
 
-    IEnumerator LightningStrikes(int dayNo)
+    IEnumerator LightningStrikes()
     {
         while (Global.hasStarted)
         {
