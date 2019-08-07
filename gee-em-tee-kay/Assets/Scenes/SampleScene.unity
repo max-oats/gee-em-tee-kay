@@ -6057,67 +6057,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 939850913}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: Plant
-      value: 
-      objectReference: {fileID: 1557597305}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: PlantPot
-      value: 
-      objectReference: {fileID: 628624978}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: ambientLight
-      value: 
-      objectReference: {fileID: 170076734}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: sunLight
-      value: 
-      objectReference: {fileID: 1132330662}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: rainObject
-      value: 
-      objectReference: {fileID: 440612985}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.g
-      value: 0.43137258
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLight.b
-      value: 0.37647063
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.r
-      value: 0.85098046
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.g
-      value: 0.52156866
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].sunlight.b
-      value: 0.37254903
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: lightSettings.Array.data[1].ambientLightIntensity
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: skipIntros
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: totalNumDays
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
-      propertyPath: PlantPot
-      value: 
-      objectReference: {fileID: 628624978}
-    - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
-        type: 3}
-      propertyPath: Plant
+      propertyPath: plant
       value: 
       objectReference: {fileID: 1557597305}
+    - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
+        type: 3}
+      propertyPath: plantPot
+      value: 
+      objectReference: {fileID: 628624978}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}
 --- !u!1001 &3711965824708137006

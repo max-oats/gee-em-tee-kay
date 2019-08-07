@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlantHealthData : MonoBehaviour
 {
-    [SerializeField] private Plant Plant;
-    [SerializeField] private PlantPot PlantPot;
+    [SerializeField] private Plant plant;
+    [SerializeField] private PlantPot plantPot;
 
-    [SerializeField] private int DaysWithoutWaterToBeThirsty;
-    [SerializeField] private int DaysWithWaterToBeDrowning;
-    [SerializeField] private int TooMuchLightThreshold;
-    [SerializeField] private int NotEnoughLightThreshold;
-    [SerializeField] private int DaysConversedForMineOption;
-    [SerializeField] private int DaysConversedForThirdOption;
+    [SerializeField] private int daysWithoutWaterToBeThirsty;
+    [SerializeField] private int daysWithWaterToBeDrowning;
+    [SerializeField] private int tooMuchLightThreshold;
+    [SerializeField] private int notEnoughLightThreshold;
+    [SerializeField] private int daysConversedForMineOption;
+    [SerializeField] private int daysConversedForThirdOption;
 
-    [SerializeField] private int MaxHealth;
-    [SerializeField] private int HealthThresholdToLookUnhealthy;
-    [SerializeField] private int InitialHealth;
-    [SerializeField] private int HealthPenaltyForWater;
-    [SerializeField] private int HealthPenaltyForLight;
-    [SerializeField] private int HealthRewardForGoodDay;
-    [SerializeField] private int HealthRewardForTalkingToday;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int healthThresholdToLookUnhealthy;
+    [SerializeField] private int initialHealth;
+    [SerializeField] private int healthPenaltyForWater;
+    [SerializeField] private int healthPenaltyForLight;
+    [SerializeField] private int healthRewardForGoodDay;
+    [SerializeField] private int healthRewardForTalkingToday;
 
     private PlantHealthPersistentData persistentData;
     private PlantHealthTransientData transientData;
@@ -28,7 +28,7 @@ public class PlantHealthData : MonoBehaviour
     void Start()
     {
         persistentData = new PlantHealthPersistentData();
-        persistentData.GeneralHealth = InitialHealth;
+        persistentData.GeneralHealth = initialHealth;
         transientData = new PlantHealthTransientData();
     }
 
@@ -60,34 +60,32 @@ public class PlantHealthData : MonoBehaviour
 
         persistentData.AccumulatedLight += transientData.LightGettingToday;
 
-        bool HasBeenDamaged = false;
+        bool hasBeenDamaged = false;
         if (IsThirsty() || IsDrowning())
         {
-            persistentData.GeneralHealth -= HealthPenaltyForWater;
-            HasBeenDamaged = true;
+            persistentData.GeneralHealth -= healthPenaltyForWater;
+            hasBeenDamaged = true;
         }
         if (HasTooMuchLight() || HasNotEnoughLight())
         {
-            persistentData.GeneralHealth -= HealthPenaltyForLight;
-            HasBeenDamaged = true;
+            persistentData.GeneralHealth -= healthPenaltyForLight;
+            hasBeenDamaged = true;
         }
 
-        if (!HasBeenDamaged)
+        if (!hasBeenDamaged)
         {
-            persistentData.GeneralHealth += HealthRewardForGoodDay;
+            persistentData.GeneralHealth += healthRewardForGoodDay;
         }
 
         if (transientData.HaveConversedToday)
         {
             persistentData.DaysConversed++;
-            persistentData.GeneralHealth += HealthRewardForTalkingToday;
+            persistentData.GeneralHealth += healthRewardForTalkingToday;
         }
 
-        persistentData.GeneralHealth = Mathf.Clamp(persistentData.GeneralHealth, 0, MaxHealth);
+        persistentData.GeneralHealth = Mathf.Clamp(persistentData.GeneralHealth, 0, maxHealth);
 
-        Plant.AddSectionsForDay();
-
-        persistentData.DayNumber++;
+        plant.AddSectionsForDay();
 
         transientData = new PlantHealthTransientData();
     }
@@ -107,12 +105,12 @@ public class PlantHealthData : MonoBehaviour
 
     public bool IsThirsty()
     {
-        return persistentData.DaysNotWateredStreak > DaysWithoutWaterToBeThirsty;
+        return persistentData.DaysNotWateredStreak > daysWithoutWaterToBeThirsty;
     }
 
     public bool IsDrowning()
     {
-        return persistentData.DaysWateredStreak > DaysWithWaterToBeDrowning;
+        return persistentData.DaysWateredStreak > daysWithWaterToBeDrowning;
     }
 
     // Light
@@ -123,12 +121,12 @@ public class PlantHealthData : MonoBehaviour
 
     public bool HasTooMuchLight()
     {
-        return persistentData.AccumulatedLight > TooMuchLightThreshold;
+        return persistentData.AccumulatedLight > tooMuchLightThreshold;
     }
 
     public bool HasNotEnoughLight()
     {
-        return persistentData.AccumulatedLight < NotEnoughLightThreshold;
+        return persistentData.AccumulatedLight < notEnoughLightThreshold;
     }
 
 
@@ -155,12 +153,12 @@ public class PlantHealthData : MonoBehaviour
 
     public bool HasMineOption()
     {
-        return persistentData.DaysConversed >= DaysConversedForMineOption;
+        return persistentData.DaysConversed >= daysConversedForMineOption;
     }
 
     public bool HasThirdOption()
     {
-        return persistentData.DaysConversed >= DaysConversedForThirdOption;
+        return persistentData.DaysConversed >= daysConversedForThirdOption;
     }
 
 
@@ -172,27 +170,24 @@ public class PlantHealthData : MonoBehaviour
 
     public bool PlantIsUnhealthy()
     {
-        return persistentData.GeneralHealth < HealthThresholdToLookUnhealthy;
+        return persistentData.GeneralHealth < healthThresholdToLookUnhealthy;
     }
 
     public float CurrentHealthPercentage()
     {
-        Debug.Log((float)persistentData.GeneralHealth);
-        Debug.Log(MaxHealth);
-        Debug.Log((float)persistentData.GeneralHealth / MaxHealth);
-        return (float)persistentData.GeneralHealth / MaxHealth;
+        return (float)persistentData.GeneralHealth / maxHealth;
     }
 
 
     // Dimensions
     public float GetMaxHeightOfSection()
     {
-        return PlantPot.GetPlantHeightLimit() / Global.dayManager.GetTotalNumDays();
+        return plantPot.GetPlantHeightLimit() / Global.dayManager.GetTotalNumDays();
     }
 
     public float GetMaxDistanceFromPotCenter()
     {
-        return PlantPot.GetDistanceFromCenter();
+        return plantPot.GetDistanceFromCenter();
     }
 }
 
