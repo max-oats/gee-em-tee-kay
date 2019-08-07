@@ -450,7 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1259965ccd669b34faa0dcc7d32ff6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntros: 1
+  skipIntros: 0
+  skipDailyDialogue: 0
 --- !u!1 &1613103414783073682
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,11 +638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613103414316031209}
     m_Modifications:
-    - target: {fileID: 8767601287247738657, guid: f45064da0f945f146a206f0fec21e131,
-        type: 3}
-      propertyPath: m_Name
-      value: Rewired Input Manager
-      objectReference: {fileID: 0}
     - target: {fileID: 1405918702259620831, guid: f45064da0f945f146a206f0fec21e131,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -697,6 +693,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8767601287247738657, guid: f45064da0f945f146a206f0fec21e131,
+        type: 3}
+      propertyPath: m_Name
+      value: Rewired Input Manager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45064da0f945f146a206f0fec21e131, type: 3}
 --- !u!4 &423398418396147570 stripped
@@ -712,11 +713,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613103414316031209}
     m_Modifications:
-    - target: {fileID: 8273743799936857762, guid: f856c5c6ac2b60c4d8e570f49205b600,
-        type: 3}
-      propertyPath: m_Name
-      value: DialogueManager
-      objectReference: {fileID: 0}
     - target: {fileID: 8273743799936857763, guid: f856c5c6ac2b60c4d8e570f49205b600,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -771,6 +767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273743799936857762, guid: f856c5c6ac2b60c4d8e570f49205b600,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f856c5c6ac2b60c4d8e570f49205b600, type: 3}

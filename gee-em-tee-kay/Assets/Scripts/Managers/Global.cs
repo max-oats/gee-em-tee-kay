@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
-    public CamController camController;
-    public DialogueHandler diaHandler;
-    public DayManager theDayManager;
-    public PlantManager thePlantManager;
-    public PlantHealthData thePlantHealthData;
-    public PotPositionHolder thePotPositionHolder;
-    public DebugStuff debugPublic;
-
     public static Rewired.Player input;
     public static Global instance;
     public static DayManager dayManager;
@@ -24,6 +16,14 @@ public class Global : MonoBehaviour
     public static DebugStuff debug;
 
     public static string plantName;
+
+    [SerializeField] private CamController camController;
+    [SerializeField] private DialogueHandler diaHandler;
+    [SerializeField] private DayManager theDayManager;
+    [SerializeField] private PlantManager thePlantManager;
+    [SerializeField] private PlantHealthData thePlantHealthData;
+    [SerializeField] private PotPositionHolder thePotPositionHolder;
+    [SerializeField] private DebugStuff debugPublic;
 
     // Start is called before the first frame update
     void Awake()

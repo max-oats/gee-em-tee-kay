@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DebugStuff : MonoBehaviour
 {
-
     public bool skipIntros = false;
-
+    public bool skipDailyDialogue = false;
 }

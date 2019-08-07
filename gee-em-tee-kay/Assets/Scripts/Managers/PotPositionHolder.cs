@@ -5,8 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public struct PotPosition
 {
-    public Vector3 position;
-    public int lightGainedHere;
+    [SerializeField] private Vector3 position;
+    [SerializeField] private int lightGainedHere;
+
+    public Vector3 GetPosition() { return position; }
+    public int GetLightGainedHere() { return lightGainedHere; }
 }
 
 public class PotPositionHolder : MonoBehaviour
@@ -18,7 +21,7 @@ public class PotPositionHolder : MonoBehaviour
         Gizmos.color = Color.white;
         foreach(PotPosition pP in potPositions)
         {
-            Gizmos.DrawSphere(pP.position, 0.1f);
+            Gizmos.DrawSphere(pP.GetPosition(), 0.1f);
         }
     }
 }

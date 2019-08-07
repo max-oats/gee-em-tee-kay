@@ -133,7 +133,10 @@ public class PlayerController : MonoBehaviour
         {
             PlantHealthData data = Global.plantHealthData;
 
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+            if (!Global.debug.skipDailyDialogue)
+            {
+                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+            }
             data.Talk();
         }
         else if (selectedMenuOption == "water")
@@ -245,7 +248,7 @@ public class PlayerController : MonoBehaviour
         Destroy(speechBubble.gameObject, 1.0f);
 
         string nodeName = "Day1.NamePlant";
-        
+
         foreach (SpecialName sn in Global.dialogueHandler.specialNames)
         {
             if (Global.plantName == sn.plantName)
@@ -280,7 +283,7 @@ public class PlayerController : MonoBehaviour
         PotPosition finalPosition = new PotPosition();
         foreach (PotPosition pP in Global.potPositionHolder.potPositions)
         {
-            Vector3 v3 = pP.position;
+            Vector3 v3 = pP.GetPosition();
             float checkDistance = (potPosition - v3).magnitude;
 
             if (checkDistance < minDistance)
@@ -300,7 +303,7 @@ public class PlayerController : MonoBehaviour
         Destroy(goaudio, 1.0f);
 
         Global.cameraController.ScreenShake(0.2f);
-        Global.plantHealthData.SetLightIncrementForToday(finalPosition.lightGainedHere);
+        Global.plantHealthData.SetLightIncrementForToday(finalPosition.GetLightGainedHere());
 
         interactionComponent.BumpCollider();
     }
