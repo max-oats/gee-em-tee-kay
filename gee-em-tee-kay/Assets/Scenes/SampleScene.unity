@@ -6102,7 +6102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: skipIntros
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: totalNumDays
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}

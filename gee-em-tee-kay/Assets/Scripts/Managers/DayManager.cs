@@ -13,7 +13,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private bool skipIntros;
     // ~End Debug
 
-    [SerializeField] private int TotalNumDays;
+    [SerializeField] private int totalNumDays;
     [SerializeField] private GameObject faderObject;
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private Color fadedInColor = Color.white;
@@ -28,7 +28,7 @@ public class DayManager : MonoBehaviour
 
     public int GetTotalNumDays()
     {
-        return TotalNumDays;
+        return totalNumDays;
     }
 
     public void StartNewDay()
