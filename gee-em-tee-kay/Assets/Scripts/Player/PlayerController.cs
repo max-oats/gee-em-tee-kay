@@ -133,7 +133,10 @@ public class PlayerController : MonoBehaviour
         {
             PlantHealthData data = Global.plantHealthData;
 
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+            if (!Global.debug.skipDailyDialogue)
+            {
+                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+            }
             data.Talk();
         }
         else if (selectedMenuOption == "water")
@@ -245,7 +248,7 @@ public class PlayerController : MonoBehaviour
         Destroy(speechBubble.gameObject, 1.0f);
 
         string nodeName = "Day1.NamePlant";
-        
+
         foreach (SpecialName sn in Global.dialogueHandler.specialNames)
         {
             if (Global.plantName == sn.plantName)
