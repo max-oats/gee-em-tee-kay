@@ -6058,7 +6058,7 @@ PrefabInstance:
       objectReference: {fileID: 939850913}
     - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: skipIntros
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
@@ -6141,6 +6141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
         type: 3}
+      propertyPath: leafPrefabOptions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
       propertyPath: Plant
       value: 
       objectReference: {fileID: 1557597305}
@@ -6149,6 +6154,32 @@ PrefabInstance:
       propertyPath: PlantPot
       value: 
       objectReference: {fileID: 628624978}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: plantPot
+      value: 
+      objectReference: {fileID: 628624978}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: plant
+      value: 
+      objectReference: {fileID: 1557597305}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: leafPrefabOptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3,
+        type: 3}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: minStemGreen
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711965825964334194, guid: bf80fa9c72b0f4aeda2df514c57bd04c,
+        type: 3}
+      propertyPath: maxStemGreen
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf80fa9c72b0f4aeda2df514c57bd04c, type: 3}
 --- !u!114 &3711965824708137007 stripped

@@ -43,15 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa12aad898ab430fb28f89020768d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plant: {fileID: 0}
-  PlantPot: {fileID: 0}
-  LeafPrefabOptions:
+  plant: {fileID: 0}
+  plantPot: {fileID: 0}
+  leafPrefabOptions:
   - {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3, type: 3}
-  FlowerPrefabOptions: []
-  PlantName: 
-  MinStemRed: 0
-  MaxStemRed: 0.3
-  MinStemGreen: 0.5
-  MaxStemGreen: 1
-  MinStemBlue: 0
-  MaxStemBlue: 0.3
+  flowerPrefabOptions: []
+  plantName: 
+  minStemRed: 0
+  maxStemRed: 0.3
+  minStemGreen: 0.5
+  maxStemGreen: 1
+  minStemBlue: 0
+  maxStemBlue: 0.3

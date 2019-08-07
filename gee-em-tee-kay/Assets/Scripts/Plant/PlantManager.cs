@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class PlantManager : MonoBehaviour
 {
-    [SerializeField] private Plant Plant;
-    [SerializeField] private PlantPot PlantPot;
+    [SerializeField] private Plant plant;
+    [SerializeField] private PlantPot plantPot;
 
-    [SerializeField] private GameObject[] LeafPrefabOptions;
-    [SerializeField] private GameObject[] FlowerPrefabOptions;
+    [SerializeField] private GameObject[] leafPrefabOptions;
+    [SerializeField] private GameObject[] flowerPrefabOptions;
 
-    [SerializeField] private string PlantName;
+    [SerializeField] private string plantName;
 
-    [SerializeField] private float MinStemRed;
-    [SerializeField] private float MaxStemRed;
-    [SerializeField] private float MinStemGreen;
-    [SerializeField] private float MaxStemGreen;
-    [SerializeField] private float MinStemBlue;
-    [SerializeField] private float MaxStemBlue;
+    [SerializeField] private float minStemRed;
+    [SerializeField] private float maxStemRed;
+    [SerializeField] private float minStemGreen;
+    [SerializeField] private float maxStemGreen;
+    [SerializeField] private float minStemBlue;
+    [SerializeField] private float maxStemBlue;
 
     public void CreatePlant(int seed)
     {
-        Vector3 FlowerOriginOffset = new Vector3(0,PlantPot.GetBottomOfPlantOffset(),0);
-        Plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), Plant.transform.position + FlowerOriginOffset);
+        Vector3 flowerOriginOffset = new Vector3(0,plantPot.GetBottomOfPlantOffset(),0);
+        plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), plant.transform.position + flowerOriginOffset);
     }
 
     private float GetFlowerHue(int seed)
@@ -33,38 +33,38 @@ public class PlantManager : MonoBehaviour
 
     private GameObject GetLeafPrefab(int seed)
     {
-        if (LeafPrefabOptions.Length == 0)
+        if (leafPrefabOptions.Length == 0)
         {
             return null;
         }
 
-        int index = Mathf.Abs(seed * 13) % LeafPrefabOptions.Length;
-        return LeafPrefabOptions[index];
+        int index = Mathf.Abs(seed * 13) % leafPrefabOptions.Length;
+        return leafPrefabOptions[index];
     }
 
     private GameObject GetFlowerPrefab(int seed)
     {
-        if (FlowerPrefabOptions.Length == 0)
+        if (flowerPrefabOptions.Length == 0)
         {
             return null;
         }
 
-        int index = Mathf.Abs(seed * 17) % FlowerPrefabOptions.Length;
-        return FlowerPrefabOptions[index];
+        int index = Mathf.Abs(seed * 17) % flowerPrefabOptions.Length;
+        return flowerPrefabOptions[index];
     }
 
     private Color GetStemColour(int seed)
     {
-        float RedAlpha = (Mathf.Abs(seed * 7) / 64f) % 1;
-        float Red = Mathf.Lerp(MinStemRed, MaxStemRed, RedAlpha);
+        float redAlpha = (Mathf.Abs(seed * 7) / 64f) % 1;
+        float red = Mathf.Lerp(minStemRed, maxStemRed, redAlpha);
 
-        float GreenAlpha = (Mathf.Abs(seed * 11) / 64f) % 1;
-        float Green = Mathf.Lerp(MinStemGreen, MaxStemGreen, GreenAlpha);
+        float greenAlpha = (Mathf.Abs(seed * 11) / 64f) % 1;
+        float green = Mathf.Lerp(minStemGreen, maxStemGreen, greenAlpha);
 
-        float BlueAlpha = (Mathf.Abs(seed * 13) / 64f) % 1;
-        float Blue = Mathf.Lerp(MinStemBlue, MaxStemBlue, BlueAlpha);
+        float blueAlpha = (Mathf.Abs(seed * 13) / 64f) % 1;
+        float blue = Mathf.Lerp(minStemBlue, maxStemBlue, blueAlpha);
 
-        Debug.Log(string.Format("Selected Color: {0}, {1}, {2}", Red, Green, Blue));
-        return new Color(Red,Green,Blue);
+        Debug.Log(string.Format("Selected Color: {0}, {1}, {2}", red, green, blue));
+        return new Color(red,green,blue);
     }
 }
