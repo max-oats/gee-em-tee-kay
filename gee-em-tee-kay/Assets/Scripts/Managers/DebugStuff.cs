@@ -6,4 +6,5 @@ public class DebugStuff : MonoBehaviour
 {
     public bool skipIntros = false;
     public bool skipDailyDialogue = false;
+    public bool cycleStemColour = false;
 }

@@ -26,7 +26,6 @@ public class Plant : MonoBehaviour
 
     private List<StemSection> sections;
     private List<Leaf> leaves;
-    private float time = 0;
 
     void Start()
     {
@@ -138,11 +137,29 @@ public class Plant : MonoBehaviour
         }
     }
 
+    void SetStemColor(Color inColor)
+    {
+        foreach (StemSection section in sections)
+        {
+            section.SetColour(inColor);
+        }
+        foreach(Leaf leaf in leaves)
+        {
+            leaf.SetColor(inColor);
+        }
+    }
+
     void Update()
     {
-        //DebugStuff
-        Color flowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, initialFlowerColorVal);
-        //TODO apply colour to stem
+        // DebugStuff
+
+        if (Global.debug.cycleStemColour)
+        {
+            float alpha = Mathf.PingPong(Time.time, 1);
+            SetColourBasedOnHealth(alpha);
+        }
+        //Color flowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, initialFlowerColorVal);
+
     }
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
