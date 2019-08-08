@@ -48,10 +48,11 @@ MonoBehaviour:
   leafPrefabOptions:
   - {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3, type: 3}
   flowerPrefabOptions: []
-  plantName: 
   minStemRed: 0
   maxStemRed: 0.3
   minStemGreen: 0.5
   maxStemGreen: 1
   minStemBlue: 0
   maxStemBlue: 0.3
+  initialFlowerColorSat: 1
+  initialFlowerColorVal: 1

@@ -17,16 +17,20 @@ public class PlantManager : MonoBehaviour
     [SerializeField] private float minStemBlue;
     [SerializeField] private float maxStemBlue;
 
+    [SerializeField] private float initialFlowerColorSat;
+    [SerializeField] private float initialFlowerColorVal;
+
     public void CreatePlant(int seed)
     {
+        Random.InitState(seed);
         Vector3 flowerOriginOffset = new Vector3(0,plantPot.GetBottomOfPlantOffset(),0);
-        plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerHue(seed), GetLeafPrefab(seed), GetStemColour(seed), plant.transform.position + flowerOriginOffset);
+        plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerColorHue(), initialFlowerColorSat, initialFlowerColorVal, GetLeafPrefab(seed), GetStemColour(seed), plant.transform.position + flowerOriginOffset);
     }
 
-    private float GetFlowerHue(int seed)
+    private float GetFlowerColorHue()
     {
-        //TODO Implement
-        return 0f;
+        // TODO Restrict green maybe?
+        return Random.value;
     }
 
     private GameObject GetLeafPrefab(int seed)

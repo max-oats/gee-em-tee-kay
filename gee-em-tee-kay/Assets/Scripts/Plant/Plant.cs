@@ -18,7 +18,9 @@ public class Plant : MonoBehaviour
     [SerializeField] private Transform windowLocation;
 
     private GameObject flowerPrefab;
-    private float flowerHue;
+    private float initialFlowerColorHue;
+    private float initialFlowerColorSat;
+    private float initialFlowerColorVal;
     private GameObject leafPrefab;
     private Color stemColor;
 
@@ -32,11 +34,12 @@ public class Plant : MonoBehaviour
         leaves = new List<Leaf>();
     }
 
-    public void Setup(int seed, GameObject inFlowerPrefab, float inFlowerHue, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
+    public void Setup(int seed, GameObject inFlowerPrefab, float inFlowerColorHue, float inFlowerColorSat, float inFlowerColorVal, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
     {
-        Random.InitState(seed);
         flowerPrefab = inFlowerPrefab;
-        flowerHue = inFlowerHue;
+        initialFlowerColorHue = inFlowerColorHue;
+        initialFlowerColorSat = inFlowerColorSat;
+        initialFlowerColorVal = inFlowerColorVal;
         leafPrefab = inLeafPrefab;
         stemColor = inStemColor;
 
@@ -137,11 +140,9 @@ public class Plant : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.rotation = gameObject.transform.parent.rotation;
-        foreach (StemSection section in sections)
-        {
-            section.Realign();
-        }
+        //DebugStuff
+        Color flowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, initialFlowerColorVal);
+        //TODO apply colour to stem
     }
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
