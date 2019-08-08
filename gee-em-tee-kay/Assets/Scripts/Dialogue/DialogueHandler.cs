@@ -121,7 +121,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
         // Pull the contents
 		string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
-        stringContents = stringContents.Replace("PLANTNAME", "\\c004" + Global.plantName + "\\c000");
+        stringContents = stringContents.Replace("PLANTNAME", "\\c002" + Global.plantName + "\\c000");
         
         // Create the string using the Dialogue Util and add LineBreaks
         DialogueString dialogueString = new DialogueString(stringContents);
