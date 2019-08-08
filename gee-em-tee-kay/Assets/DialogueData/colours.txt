@@ -1,9 +1,9 @@
 #ffffff
-#aefff0
-#f2e3c9
-#ef4b4b
-#e0f5b9
-#a72461
-#dc5353
+#ACB2FF
+#BDE78D
+#E37070
+#DBA46D
+#D773B4
+#B185CB
 #ff935c
 #f9e090

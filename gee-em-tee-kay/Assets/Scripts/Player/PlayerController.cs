@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
 
         if (dayNo == 0 && !Global.debug.skipIntros)
         {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day1.Intro");
+            Global.dialogueHandler.StartDialogue("Day1.Intro");
         }
         else if (dayNo == 4 && !Global.debug.skipIntros)
         {
-            FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue("Day5.Intro");
+            Global.dialogueHandler.StartDialogue("Day5.Intro");
         }
 
     }
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
         animator.CrossFadeInFixedTime("Water", 0.1f);
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
 
         waterBottle.SetActive(false);
 
@@ -127,6 +127,16 @@ public class PlayerController : MonoBehaviour
         interactionComponent.BumpCollider();
     }
 
+    public void TurnTowards(Transform other)
+    {
+        Vector3 positionOfObject = other.position;
+        
+        Vector3 targetDirection = positionOfObject - (transform.position);
+
+        // Find X angle
+        rotationSmoother.SetDesired(Vector3.SignedAngle(Vector3.forward, targetDirection, Vector3.up));
+    }
+
     public void SelectedMenuOption(string selectedMenuOption)
     {
         if (selectedMenuOption == "talk")
@@ -135,12 +145,14 @@ public class PlayerController : MonoBehaviour
 
             if (!Global.debug.skipDailyDialogue)
             {
-                FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(data.SelectDialogueNode());
+                Global.dialogueHandler.StartDialogue(data.SelectDialogueNode());
             }
             data.Talk();
         }
         else if (selectedMenuOption == "water")
         {
+            TurnTowards(GameObject.Find("Plant Pot").transform);
+
             StartCoroutine(Water());
             Global.plantHealthData.Water();
         }
@@ -257,7 +269,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        FindObjectOfType<Yarn.Unity.DialogueRunner>().StartDialogue(nodeName);
+        Global.dialogueHandler.StartDialogue(nodeName);
     }
 
     private void Interact()

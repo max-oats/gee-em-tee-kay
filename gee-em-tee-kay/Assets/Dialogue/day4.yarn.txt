@@ -1,5 +1,19 @@
 title: Day4.Talk
 tags:
 ---
-Player: shit sux
+Player: hey,\d002 PLANTNAME.
+Player: uh
+Player: today was a bad one.
+Player: you know \c003Linda\c000 (from Accounting)?
+Player: well, she brought in her new baby today
+Player: so she came over to introduce him to \c004Debra\c000 (from Sales),\d001 \c005Other Linda\c000 (from Accounting)\d001 and myself
+Player: and \c005Other Linda\c000 (from Accounting), said
+Player: \w"ooooooo so handsome, he's gonna break all the girl's hearts!"
+Player: which is already a \b\jweird\b\j thing to say about a child???
+Player: but then she glanced at me and said
+Player: "oh-- or \jboys\j."
+Player: like\d002.\d002.\d002. i never expected \jjeff\j or \jgary\j to keep it a secret
+Player: but now i don't know who knows and who doesn't
+Player: which left me having a \bfour hour long anxiety attack
+Player: **tinder bleep**
 ===
