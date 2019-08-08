@@ -152,14 +152,30 @@ public class Plant : MonoBehaviour
     void Update()
     {
         // DebugStuff
-
+        float debugCycleSpeed = Global.debug.debugCycleSpeed;
         if (Global.debug.cycleStemColour)
         {
-            float alpha = Mathf.PingPong(Time.time, 1);
+            float alpha = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
             SetColourBasedOnHealth(alpha);
         }
-        //Color flowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, initialFlowerColorVal);
-
+        else if(Global.debug.cyclePossibleFlowerColours)
+        {
+            float hue = (Time.time * debugCycleSpeed) % 1f;
+            Color newFlowerColor = Color.HSVToRGB(hue, initialFlowerColorSat, initialFlowerColorVal);
+            SetStemColor(newFlowerColor);
+        }
+        else if (Global.debug.cycleFlowerColourSat)
+        {
+            float sat = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
+            Color newFlowerColor = Color.HSVToRGB(initialFlowerColorHue, sat, initialFlowerColorVal);
+            SetStemColor(newFlowerColor);
+        }
+        else if (Global.debug.cycleFlowerColourValue)
+        {
+            float val = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
+            Color newFlowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, val);
+            SetStemColor(newFlowerColor);
+        }
     }
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
