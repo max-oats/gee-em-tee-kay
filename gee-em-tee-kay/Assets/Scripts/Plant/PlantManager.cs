@@ -40,7 +40,7 @@ public class PlantManager : MonoBehaviour
             return null;
         }
 
-        int index = Mathf.Abs(seed * 13) % leafPrefabOptions.Length;
+        int index = Random.Range(0, leafPrefabOptions.Length);
         return leafPrefabOptions[index];
     }
 
@@ -51,22 +51,16 @@ public class PlantManager : MonoBehaviour
             return null;
         }
 
-        int index = Mathf.Abs(seed * 17) % flowerPrefabOptions.Length;
+        int index = Random.Range(0, flowerPrefabOptions.Length);
         return flowerPrefabOptions[index];
     }
 
     private Color GetStemColour(int seed)
     {
-        float redAlpha = (Mathf.Abs(seed * 7) / 64f) % 1;
-        float red = Mathf.Lerp(minStemRed, maxStemRed, redAlpha);
+        float red = Mathf.Lerp(minStemRed, maxStemRed, Random.value);
+        float green = Mathf.Lerp(minStemGreen, maxStemGreen, Random.value);
+        float blue = Mathf.Lerp(minStemBlue, maxStemBlue, Random.value);
 
-        float greenAlpha = (Mathf.Abs(seed * 11) / 64f) % 1;
-        float green = Mathf.Lerp(minStemGreen, maxStemGreen, greenAlpha);
-
-        float blueAlpha = (Mathf.Abs(seed * 13) / 64f) % 1;
-        float blue = Mathf.Lerp(minStemBlue, maxStemBlue, blueAlpha);
-
-        Debug.Log(string.Format("Selected Color: {0}, {1}, {2}", red, green, blue));
         return new Color(red,green,blue);
     }
 }
