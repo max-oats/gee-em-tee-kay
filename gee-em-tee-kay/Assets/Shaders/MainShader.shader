@@ -74,7 +74,7 @@
                     float2  uv          : TEXCOORD0;
                     fixed3 diff : COLOR0;
                     fixed3 ambient : COLOR1;
-                    LIGHTING_COORDS(0,1)
+                    //LIGHTING_COORDS(0,1)
                 };
  
                 v2f vert (appdata_tan v)

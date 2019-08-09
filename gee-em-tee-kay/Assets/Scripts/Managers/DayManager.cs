@@ -7,6 +7,12 @@ public class DayManager : MonoBehaviour
     public delegate void DayStarted(int dayNo);
     public DayStarted dayStarted;
 
+    public delegate void GameStarted(int dayNo);
+    public GameStarted gameStarted;
+
+    public delegate void StartPressed();
+    public StartPressed startPressed;
+
     public bool seedPlanted = false;
 
     [SerializeField] private int totalNumDays;
@@ -19,6 +25,8 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
+        gameStarted?.Invoke(0);
+        
         StartCoroutine(GameStartCoroutine());
     }
 
@@ -28,6 +36,8 @@ public class DayManager : MonoBehaviour
         {
             yield return null;
         }
+
+        startPressed?.Invoke();
 
         Global.cameraController.MoveCamera();
 

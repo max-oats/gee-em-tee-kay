@@ -26,6 +26,20 @@ ModelImporter:
     100040: Bone_007
     100042: Bone_008
     100044: Bone_009
+    100046: Bone_010
+    100048: Bone_011
+    100050: Bone_012
+    100052: Bone_013
+    100054: Bone_014
+    100056: Bone_015
+    100058: Bone_016
+    100060: Bone_017
+    100062: Bone_018
+    100064: Bone_019
+    100066: Bone_020
+    100068: Bone_021
+    100070: Bone_022
+    100072: Bone_023
     400000: Cylinder
     400002: Icosphere
     400004: Icosphere_001
@@ -49,6 +63,20 @@ ModelImporter:
     400040: Bone_007
     400042: Bone_008
     400044: Bone_009
+    400046: Bone_010
+    400048: Bone_011
+    400050: Bone_012
+    400052: Bone_013
+    400054: Bone_014
+    400056: Bone_015
+    400058: Bone_016
+    400060: Bone_017
+    400062: Bone_018
+    400064: Bone_019
+    400066: Bone_020
+    400068: Bone_021
+    400070: Bone_022
+    400072: Bone_023
     2100000: Masked__MainTex_png
     2300000: Cylinder
     2300002: Icosphere
@@ -85,8 +113,10 @@ ModelImporter:
     4300020: Cylinder
     7400000: Default Take
     7400002: ArmatureAction
+    7400004: ArmatureAction_001
     9500000: //RootNode
     13700000: Cylinder
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -121,10 +151,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ArmatureAction
-      takeName: ArmatureAction
+      name: ArmatureAction_001
+      takeName: ArmatureAction_001
       firstFrame: 0
-      lastFrame: 102
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

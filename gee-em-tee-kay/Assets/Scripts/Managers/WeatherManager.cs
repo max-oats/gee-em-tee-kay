@@ -64,114 +64,124 @@ public class WeatherManager : MonoBehaviour
 
     private Coroutine lightningCoroutine;
 
+    private int day = -1;
+
     void Start()
     {
+        Global.dayManager.gameStarted += UpdateWeather;
         Global.dayManager.dayStarted += UpdateWeather;
+
+        day = -1;
     }
 
     void OnValidate()
     {
-        if (debugDaySelector > 0
-            && ambientLight != null
-            && sunLight != null
-            && rainObject != null
-            && windObject != null
-            && lightningObject != null
-            && normalLeaves != null
-            && windyLeaves != null)
-        {
-            UpdateWeather(debugDaySelector - 1);
-        }
-        else
-        {
-            Debug.Log("Invalid OnValidate in WeatherManager!");
-            return;
-        }
+        // if (debugDaySelector > 0
+        //     && ambientLight != null
+        //     && sunLight != null
+        //     && rainObject != null
+        //     && windObject != null
+        //     && lightningObject != null
+        //     && normalLeaves != null
+        //     && windyLeaves != null)
+        // {
+        //     UpdateWeather(debugDaySelector - 1);
+        // }
+        // else
+        // {
+        //     Debug.Log("Invalid OnValidate in WeatherManager!");
+        //     return;
+        // }
     }
 
     void UpdateWeather(int dayNo)
     {
-        // Update ambient light
-        ambientLight.color = weatherSettings[dayNo].ambientLight;
-        ambientLight.intensity = weatherSettings[dayNo].ambientLightIntensity;
-
-        // Update sunlight
-        sunLight.color = weatherSettings[dayNo].sunlight;
-        sunLight.shadowStrength = weatherSettings[dayNo].shadowStrength;
-
-        sunLight.transform.eulerAngles = new Vector3(weatherSettings[dayNo].xRotation, weatherSettings[dayNo].yRotation, 0.0f);
-
-        // Update skybox if game has started
-        if (Global.cameraController != null)
+        if (dayNo != day)
         {
-            Global.cameraController.SetBackgroundColour(weatherSettings[dayNo].skyboxColour);
-        }
+            // Update ambient light
+            ambientLight.color = weatherSettings[dayNo].ambientLight;
+            ambientLight.intensity = weatherSettings[dayNo].ambientLightIntensity;
 
-        // Update weather things
-        if (weatherSettings[dayNo].isRaining)
-        {
-            rainObject.SetActive(true);
+            // Update sunlight
+            sunLight.color = weatherSettings[dayNo].sunlight;
+            sunLight.shadowStrength = weatherSettings[dayNo].shadowStrength;
 
-            StartCoroutine(AudioUtils.FadeIn(rainSounds, 2.0f));
-        }
-        else
-        {
-            rainObject.SetActive(false);
+            sunLight.transform.eulerAngles = new Vector3(weatherSettings[dayNo].xRotation, weatherSettings[dayNo].yRotation, 0.0f);
 
-            StartCoroutine(AudioUtils.FadeOut(rainSounds, 0.5f));
-        }
-
-        if (weatherSettings[dayNo].isWindy)
-        {
-            windObject.SetActive(true);
-            windyLeaves.SetActive(true);
-            normalLeaves.SetActive(false);
-
-            treeAnimator.SetLayerWeight(1, treeWindMinMax.y);
-
-            StartCoroutine(AudioUtils.FadeIn(windSound, 2.0f, 0.2f));
-        }
-        else
-        {
-            windObject.SetActive(false);
-            windyLeaves.SetActive(false);
-            normalLeaves.SetActive(true);
-
-            treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
-            
-            StartCoroutine(AudioUtils.FadeOut(windSound, 0.5f));
-        }
-
-        if (weatherSettings[dayNo].isWindowOpen)
-        {
-            window.position = windowOpenPosition;
-            apartmentAnimator.SetLayerWeight(1, 1.0f);
-        }
-        else
-        {
-            window.position = windowClosedPosition;
-            apartmentAnimator.SetLayerWeight(1, 0.0f);
-        }
-
-        if (Global.hasStarted)
-        {
-            if (weatherSettings[dayNo].isThundering)
+            // Update skybox if game has started
+            if (Global.cameraController != null)
             {
-                lightningObject.enabled = true;
-                lightningObject.intensity = 0f;
-                lightningCoroutine = StartCoroutine(LightningStrikes());
+                Global.cameraController.SetBackgroundColour(weatherSettings[dayNo].skyboxColour);
+            }
+
+            // Update weather things
+            if (weatherSettings[dayNo].isRaining)
+            {
+                rainObject.SetActive(true);
+
+                StartCoroutine(AudioUtils.FadeIn(rainSounds, 2.0f));
             }
             else
             {
-                if (lightningCoroutine != null)
-                {
-                    StopCoroutine(lightningCoroutine);
-                }
+                rainObject.SetActive(false);
 
-                lightningObject.enabled = false;
-                lightningObject.intensity = 0f;
+                StartCoroutine(AudioUtils.FadeOut(rainSounds, 0.5f));
+            }
+
+            if (weatherSettings[dayNo].isWindy)
+            {
+                windObject.SetActive(true);
+                windyLeaves.SetActive(true);
+                normalLeaves.SetActive(false);
+
+                treeAnimator.SetLayerWeight(1, treeWindMinMax.y);
+
+                StartCoroutine(AudioUtils.FadeIn(windSound, 2.0f, 0.2f));
+            }
+            else
+            {
+                windObject.SetActive(false);
+                windyLeaves.SetActive(false);
+                normalLeaves.SetActive(true);
+
+                treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
+                
+                StartCoroutine(AudioUtils.FadeOut(windSound, 0.5f));
+            }
+
+            if (weatherSettings[dayNo].isWindowOpen)
+            {
+                window.position = windowOpenPosition;
+                apartmentAnimator.SetLayerWeight(1, 1.0f);
+            }
+            else
+            {
+                window.position = windowClosedPosition;
+                apartmentAnimator.SetLayerWeight(1, 0.0f);
+            }
+
+            if (Global.hasStarted)
+            {
+                if (weatherSettings[dayNo].isThundering)
+                {
+                    lightningObject.enabled = true;
+                    lightningObject.intensity = 0f;
+                    lightningCoroutine = StartCoroutine(LightningStrikes());
+                }
+                else
+                {
+                    if (lightningCoroutine != null)
+                    {
+                        StopCoroutine(lightningCoroutine);
+                    }
+
+                    lightningObject.enabled = false;
+                    lightningObject.intensity = 0f;
+                }
             }
         }
+
+        day = dayNo;
     }
 
     IEnumerator LightningStrikes()

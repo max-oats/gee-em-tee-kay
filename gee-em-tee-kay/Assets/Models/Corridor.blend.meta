@@ -11,6 +11,19 @@ ModelImporter:
     100010: Empty
     100012: Text
     100014: Sphere
+    100016: Cube_003
+    100018: Cube_004
+    100020: Cube_005
+    100022: Cube_006
+    100024: Cylinder_001
+    100026: Cylinder_002
+    100028: Empty_001
+    100030: Empty_002
+    100032: Sphere_001
+    100034: Sphere_002
+    100036: Text_001
+    100038: Text_002
+    100040: Text_003
     400000: //RootNode
     400002: Cube
     400004: Cube_001
@@ -19,6 +32,19 @@ ModelImporter:
     400010: Empty
     400012: Text
     400014: Sphere
+    400016: Cube_003
+    400018: Cube_004
+    400020: Cube_005
+    400022: Cube_006
+    400024: Cylinder_001
+    400026: Cylinder_002
+    400028: Empty_001
+    400030: Empty_002
+    400032: Sphere_001
+    400034: Sphere_002
+    400036: Text_001
+    400038: Text_002
+    400040: Text_003
     2100000: unnamed
     2100002: Walls__WallTexture1_png
     2100004: Walls
@@ -32,6 +58,17 @@ ModelImporter:
     2300008: Cylinder
     2300010: Text
     2300012: Sphere
+    2300014: Cube_003
+    2300016: Cube_004
+    2300018: Cube_005
+    2300020: Cube_006
+    2300022: Cylinder_001
+    2300024: Cylinder_002
+    2300026: Sphere_001
+    2300028: Sphere_002
+    2300030: Text_001
+    2300032: Text_002
+    2300034: Text_003
     3300000: //RootNode
     3300002: Cube
     3300004: Cube_001
@@ -39,12 +76,34 @@ ModelImporter:
     3300008: Cylinder
     3300010: Text
     3300012: Sphere
+    3300014: Cube_003
+    3300016: Cube_004
+    3300018: Cube_005
+    3300020: Cube_006
+    3300022: Cylinder_001
+    3300024: Cylinder_002
+    3300026: Sphere_001
+    3300028: Sphere_002
+    3300030: Text_001
+    3300032: Text_002
+    3300034: Text_003
     4300000: Cube
     4300002: Cube_002
     4300004: Cube_001
     4300006: Text
     4300008: Cylinder
     4300010: Sphere
+    4300012: Sphere_002
+    4300014: Cube_005
+    4300016: Cube_004
+    4300018: Sphere_001
+    4300020: Cube_006
+    4300022: Text_002
+    4300024: Cylinder_002
+    4300026: Cube_003
+    4300028: Cylinder_001
+    4300030: Text_001
+    4300032: Text_003
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
