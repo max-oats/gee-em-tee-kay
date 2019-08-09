@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject waterBottle;
 
+    [SerializeField] private GameObject phone;
+
     /** ----- Private variables ----- */
     private Vector3 localInput;
 
@@ -99,12 +101,23 @@ public class PlayerController : MonoBehaviour
     public void SwitchPhoneOn()
     {
         animator.CrossFadeInFixedTime("IdlePhone", 0.5f);
+
+        StartCoroutine(AttachPhone(true));
     }
 
     [Yarn.Unity.YarnCommand("phoneOff")]
     public void SwitchPhoneOff()
     {
         animator.CrossFadeInFixedTime("IdleWalk", 0.5f);
+
+        StartCoroutine(AttachPhone(false));
+    }
+
+    public IEnumerator AttachPhone(bool onOff)
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        phone.SetActive(onOff);
     }
 
     public IEnumerator Water()
