@@ -27,6 +27,8 @@ public class WeatherSettings
     public bool isThundering;
 
     public bool isWindy;
+    
+    public bool isWindowOpen;
 }
 
 public class WeatherManager : MonoBehaviour
@@ -44,7 +46,6 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private Vector2 lightningAngleRange;
     [SerializeField] private Vector2 treeWindMinMax;
     [SerializeField] private List<WeatherSettings> weatherSettings = new List<WeatherSettings>();
-    [SerializeField] private WeatherSettings lightningWeather;
     [SerializeField] private Light ambientLight;
     [SerializeField] private Light sunLight;
     [SerializeField] private Light lightningObject;
@@ -56,6 +57,10 @@ public class WeatherManager : MonoBehaviour
     [SerializeField] private AudioSource rainSounds;
     [SerializeField] private AudioSource thunderSound;
     [SerializeField] private AudioSource windSound;
+    [SerializeField] private Transform window;
+    [SerializeField] private Vector3 windowOpenPosition;
+    [SerializeField] private Vector3 windowClosedPosition;
+    [SerializeField] private Animator apartmentAnimator;
 
     private Coroutine lightningCoroutine;
 
@@ -135,6 +140,17 @@ public class WeatherManager : MonoBehaviour
             treeAnimator.SetLayerWeight(1, treeWindMinMax.x);
             
             StartCoroutine(AudioUtils.FadeOut(windSound, 0.5f));
+        }
+
+        if (weatherSettings[dayNo].isWindowOpen)
+        {
+            window.position = windowOpenPosition;
+            apartmentAnimator.SetLayerWeight(1, 1.0f);
+        }
+        else
+        {
+            window.position = windowClosedPosition;
+            apartmentAnimator.SetLayerWeight(1, 0.0f);
         }
 
         if (Global.hasStarted)

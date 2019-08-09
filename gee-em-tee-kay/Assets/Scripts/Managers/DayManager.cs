@@ -19,7 +19,21 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
-        StartNewDay();
+        StartCoroutine(GameStartCoroutine());
+    }
+
+    IEnumerator GameStartCoroutine()
+    {
+        while (!Global.input.GetButtonDown("Start"))
+        {
+            yield return null;
+        }
+
+        Global.cameraController.MoveCamera();
+
+        yield return new WaitForSeconds(1.0f);
+
+        StartNewDay(false);
     }
 
     public int GetTotalNumDays()
@@ -27,12 +41,15 @@ public class DayManager : MonoBehaviour
         return totalNumDays;
     }
 
-    public void StartNewDay()
+    public void StartNewDay(bool fadeIn = true)
     {
         // Invoke delegate
         dayStarted?.Invoke(currentDay);
 
-        StartCoroutine(StartDayFade());
+        if (fadeIn)
+        {
+            StartCoroutine(StartDayFade());
+        }
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
     }

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8695104313844669481}
   - component: {fileID: 7098849654627774359}
+  - component: {fileID: 559757661}
+  - component: {fileID: 559757662}
   m_Layer: 0
   m_Name: WeatherManager
   m_TagString: Untagged
@@ -45,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fdf343457f6004d8cb9191094f2e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDaySelector: 2
+  debugDaySelector: 1
   lightningTimeRange: {x: 8, y: 10}
   timeBetweenThunderAndLightning: 3
   lightningLerpTime: 0.08
@@ -64,6 +66,7 @@ MonoBehaviour:
     isRaining: 0
     isThundering: 0
     isWindy: 0
+    isWindowOpen: 1
   - ambientLight: {r: 0.2990833, g: 0.3476133, b: 0.4433962, a: 1}
     sunlight: {r: 0.50980395, g: 0.52156866, b: 0.86666673, a: 1}
     skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
@@ -74,6 +77,7 @@ MonoBehaviour:
     isRaining: 1
     isThundering: 1
     isWindy: 1
+    isWindowOpen: 0
   - ambientLight: {r: 0.62352943, g: 0.40784314, b: 0.4558288, a: 1}
     sunlight: {r: 1, g: 1, b: 1, a: 1}
     skyboxColour: {r: 0.4245283, g: 0.3023763, b: 0.32902762, a: 1}
@@ -84,6 +88,7 @@ MonoBehaviour:
     isRaining: 0
     isThundering: 0
     isWindy: 1
+    isWindowOpen: 0
   - ambientLight: {r: 0.23529413, g: 0.38431376, b: 0.6784314, a: 1}
     sunlight: {r: 0.50980395, g: 0.52156866, b: 0.86666673, a: 1}
     skyboxColour: {r: 0.19215688, g: 0.21176472, b: 0.2627451, a: 1}
@@ -94,6 +99,7 @@ MonoBehaviour:
     isRaining: 1
     isThundering: 0
     isWindy: 0
+    isWindowOpen: 0
   - ambientLight: {r: 0.7075472, g: 0.44552174, b: 0.4038359, a: 1}
     sunlight: {r: 0.8962264, g: 0.52499074, b: 0.33397114, a: 1}
     skyboxColour: {r: 0.3301887, g: 0.17288181, b: 0.18599075, a: 1}
@@ -104,17 +110,7 @@ MonoBehaviour:
     isRaining: 0
     isThundering: 0
     isWindy: 0
-  lightningWeather:
-    ambientLight: {r: 0.2932983, g: 0.3204351, b: 0.3679245, a: 1}
-    sunlight: {r: 1, g: 1, b: 1, a: 1}
-    skyboxColour: {r: 0.34669814, g: 0.3787998, b: 0.46226418, a: 1}
-    shadowStrength: 1
-    ambientLightIntensity: 1.17
-    xRotation: 116
-    yRotation: -13
-    isRaining: 0
-    isThundering: 0
-    isWindy: 0
+    isWindowOpen: 1
   ambientLight: {fileID: 0}
   sunLight: {fileID: 0}
   lightningObject: {fileID: 0}
@@ -123,9 +119,132 @@ MonoBehaviour:
   normalLeaves: {fileID: 0}
   windyLeaves: {fileID: 0}
   treeAnimator: {fileID: 0}
-  rainSounds: {fileID: 0}
+  rainSounds: {fileID: 559757661}
   thunderSound: {fileID: 5520917081857703685}
   windSound: {fileID: 4397277869640348134}
+  window: {fileID: 0}
+  windowOpenPosition: {x: -0.04837151, y: 0.96, z: 2.080299}
+  windowClosedPosition: {x: -0.04837151, y: 0.19, z: 2.080299}
+  apartmentAnimator: {fileID: 0}
+--- !u!82 &559757661
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269334188895024317}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9f7dfa5ee799b834baf58ce38f160e22, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!164 &559757662
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269334188895024317}
+  m_Enabled: 1
+  m_DryLevel: -670
+  m_Room: -1000
+  m_RoomHF: -100
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.83
+  m_ReflectionsLevel: -2602
+  m_ReverbLevel: 200
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 27
 --- !u!1 &1769217170665269083
 GameObject:
   m_ObjectHideFlags: 0
