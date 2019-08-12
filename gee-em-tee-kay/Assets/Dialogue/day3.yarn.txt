@@ -1,3 +1,29 @@
+title: Day3.Thirsty
+tags:
+---
+Player: whoa hey
+Player: lookin a little thirsty there, bud
+[[Day3.Talk]]
+===
+
+title: Day3.Overwatered
+tags:
+---
+Player: oh! looking a \ibit\i too watered.
+Player: but still looking fresh
+Player: phresh, if you will
+[[Day3.Talk]]
+===
+
+title: Day3.Drowning
+tags:
+---
+Player: hmm... did i give you too much water?
+Player: i guess i just loved you too much
+Player: ...
+Player: that is \jnot\j a metaphor for my relationship!
+===
+
 title: Day3.Talk
 tags:
 ---

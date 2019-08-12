@@ -1,8 +1,19 @@
+title: Day2.Drowning
+tags:
+---
+Player: oh
+Player: i thought the plant would've have\d002.\d002.\d002. absorbed some of the water by now
+Player: um
+Player: well at least i wasn't attached to it yet
+===
+
 title: Day2.Talk
 tags:
 ---
-Player: you've grown already!
 Player: ...
+Player: wow, it's grown already!
+Player: ...
+Player: \d002.\d002.\d002.
 Player: i, uh, came out to my coworkers today
 Player: i didn't really mean to
 Player: i told them about Chris
@@ -24,6 +35,7 @@ Player: no, in the same way that you're not attracted to \bEVERY\b woman, \c004\
 Player: \w"that's what you think."\w
 Player: ...
 Player: fuckin jeff
+[[Day2.Anyway]]
 ===
 
 title: Day2.Jealous
@@ -33,6 +45,7 @@ Player: \w"was your ex jealous since she had more people to worry about?"\w
 Player: no, \c004\i\d001k\d001a\d001r\d001e\d001n\i\c000, she wasn't.
 Player: we had some bigger issues than that.
 Player: but those are not for karen's extremely irritating ears.
+[[Day2.Anyway]]
 ===
 
 title: Day2.Men
@@ -45,4 +58,12 @@ Player: before \c004\i\d001g\d001a\d001r\d001y\i\c000 jumped on it like a goose 
 Player: \w"ooooooooooh"\w
 Player: \w"i'm gary and i don't think bisexual people in heterosexual relationships are valid"\w
 Player: \w"oooooooooooooooooh"\w
+[[Day2.Anyway]]
+===
+
+title: Day2.Anyway
+tags:
+---
+Player: anyway 
+Player: i told them not to tell anyone
 ===

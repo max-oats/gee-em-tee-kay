@@ -62,7 +62,7 @@ title: Day1.Talk
 tags:
 ---
 Player: ...
-Player: i'm not gonna talk to you,\d002 PLANTNAME.
-Player: and it's not just because of your \b\jincredibly cursed\j\b name
+Player: ok.\d002 i'm not gonna talk to PLANTNAME.
+Player: and it's not just because of i gave it an \b\jincredibly cursed\j\b name
 Player: its just\d002.\d002.\d002. she used to talk to plants.
 ===
