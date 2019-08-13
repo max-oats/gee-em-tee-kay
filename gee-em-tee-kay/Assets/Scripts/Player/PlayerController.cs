@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
         interactionComponent = GetComponent<InteractionComponent>();
         interactionComponent.selectedMenuOption += SelectedMenuOption;
         holder = GetComponent<Holder>();
-        Global.dialogueHandler.dialogueEnd += DialogueEnd;
-        Global.dayManager.dayStarted += ResetOnDay;
+        //Global.dialogueHandler.dialogueEnd += DialogueEnd;
+        //Global.dayManager.dayStarted += ResetOnDay;
     }
 
     // Update is called once per frame
@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     public void TurnTowards(Transform other)
     {
         Vector3 positionOfObject = other.position;
-        
+
         Vector3 targetDirection = positionOfObject - (transform.position);
 
         // Find X angle

@@ -47,7 +47,11 @@ MonoBehaviour:
   plantPot: {fileID: 0}
   leafPrefabOptions:
   - {fileID: 2650671117610616767, guid: 38ddfec35b2d642418702a763d46fff3, type: 3}
-  flowerPrefabOptions: []
+  flowerPrefabOptions:
+  - {fileID: 6799160808030964475, guid: 7be28ce45bbf048ff984007ba7b35893, type: 3}
+  - {fileID: 2500925792568257979, guid: 2a54b9b0ac1dc41de9dd0220d2eda51d, type: 3}
+  - {fileID: 1251716073450624117, guid: 701ec66f568ae4860a6b0d4f4c9a6a17, type: 3}
+  - {fileID: 8191702274918798105, guid: 84ed30a72776b47ec99916101273be1c, type: 3}
   minStemRed: 0
   maxStemRed: 0.3
   minStemGreen: 0.5
