@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8136656225338103622}
   - component: {fileID: 2856598322493508951}
   m_Layer: 0
-  m_Name: Flower4
+  m_Name: Flower0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005d1df3d96bac74493933ef64fe7e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005d1df3d96bac74493933ef64fe7e7c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005d1df3d96bac74493933ef64fe7e7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 005d1df3d96bac74493933ef64fe7e7c, type: 3}
       propertyPath: m_LocalRotation.x
