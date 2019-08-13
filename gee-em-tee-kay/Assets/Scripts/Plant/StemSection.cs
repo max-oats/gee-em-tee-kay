@@ -19,22 +19,22 @@ public class StemSection : MonoBehaviour
 
     public Transform GetStartPoint()
     {
-        return transform.position;
+        return transform;
     }
 
     public Transform GetStartTangent()
     {
-        return startTangentMarker.transform.position;
+        return startTangentMarker.transform;
     }
 
     public Transform GetEndTangent()
     {
-        return endTangentMarker.transform.position;
+        return endTangentMarker.transform;
     }
 
     public Transform GetEndPoint()
     {
-        return endPointMarker.transform.position;
+        return endPointMarker.transform;
     }
 
     public void SetStartPoint(Vector3 inStartPoint)
