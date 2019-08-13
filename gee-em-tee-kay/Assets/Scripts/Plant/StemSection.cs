@@ -7,12 +7,12 @@ using UnityEditor;
 public class StemSection : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
-
-    [SerializeField] private GameObject startTangentMarker;
-    [SerializeField] private GameObject endTangentMarker;
-    [SerializeField] private GameObject endPointMarker;
-
+    
     [SerializeField] private bool drawGizmos = false;
+
+    private GameObject startTangentMarker;
+    private GameObject endTangentMarker;
+    private GameObject endPointMarker;
 
     private int layerOrder = 0;
     private int SEGMENT_COUNT = 5;
@@ -84,6 +84,10 @@ public class StemSection : MonoBehaviour
         startTangentMarker.transform.parent = transform;
         endTangentMarker.transform.parent = transform;
         endPointMarker.transform.parent = transform;
+
+        startTangentMarker.transform.position = transform.position;
+        endTangentMarker.transform.position = transform.position;
+        endPointMarker.transform.position = transform.position;
     }
 
     void Start()
