@@ -210,7 +210,13 @@ public class Plant : MonoBehaviour
 
         if (shouldSpawnFlower)
         {
-            GameObject flowerObject = Instantiate(flowerPrefab, GetLastSectionEndPos());
+            StemSection mostRecentSection = sections[sections.Count-1];
+            GameObject flowerObject = Instantiate(flowerPrefab, mostRecentSection.GetEndPoint());
+            Vector3 stemEndPoint = mostRecentSection.GetEndPoint().position;
+            Vector3 stemEndTangent = mostRecentSection.GetEndTangent().position;
+            Vector3 flowerPointDirection = stemEndPoint - stemEndTangent;
+            Quaternion flowerRotation = Quaternion.LookRotation(flowerPointDirection, Vector3.up);
+            flowerObject.transform.rotation = flowerRotation;
         }
     }
 
