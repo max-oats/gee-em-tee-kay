@@ -37,8 +37,12 @@ public class PlayerController : MonoBehaviour
         interactionComponent = GetComponent<InteractionComponent>();
         interactionComponent.selectedMenuOption += SelectedMenuOption;
         holder = GetComponent<Holder>();
-        //Global.dialogueHandler.dialogueEnd += DialogueEnd;
-        //Global.dayManager.dayStarted += ResetOnDay;
+    }
+
+    void Start()
+    {
+        Global.dialogueHandler.dialogueEnd += DialogueEnd;
+        Global.dayManager.dayStarted += ResetOnDay;
     }
 
     // Update is called once per frame
