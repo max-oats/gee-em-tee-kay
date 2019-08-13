@@ -26,7 +26,7 @@ public class DayManager : MonoBehaviour
     void Start()
     {
         gameStarted?.Invoke(0);
-        
+
         StartCoroutine(GameStartCoroutine());
     }
 
@@ -112,12 +112,20 @@ public class DayManager : MonoBehaviour
 
         Debug.Log("Ending Day");
 
-        Global.plantHealthData.ReviewDay();
+        Global.plantHealthData.ReviewDay(ShouldSpawnFlower());
 
         currentDay++;
 
         yield return new WaitForSeconds(1.0f);
 
         StartNewDay();
+    }
+
+    bool ShouldSpawnFlower()
+    {
+        // We check this before we update the day counter, so we want to know
+        // whether TOMORROW will be the last day. Then, there is the off-by-one
+        // consideration due to "indexing the totalNumDays list with currentDay"
+        return currentDay + 1 == totalNumDays - 1;
     }
 }

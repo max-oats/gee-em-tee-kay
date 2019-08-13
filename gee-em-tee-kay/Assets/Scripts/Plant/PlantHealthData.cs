@@ -37,7 +37,7 @@ public class PlantHealthData : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            ReviewDay();
+            ReviewDay(false);
         }
         /*else if (Input.GetKeyDown(KeyCode.T))
         {
@@ -46,7 +46,7 @@ public class PlantHealthData : MonoBehaviour
         }*/
     }
 
-    public void ReviewDay()
+    public void ReviewDay(bool shouldSpawnFlower)
     {
         if (transientData.waterGettingToday > 0)
         {
@@ -81,9 +81,9 @@ public class PlantHealthData : MonoBehaviour
             persistentData.generalHealth += healthRewardForTalkingToday;
         }
 
-        persistentData.generalHealth = Mathf.Clamp(persistentData.generalHealth, 0, maxHealth);
+        persistentData.generalHealth = Mathf.Min(persistentData.generalHealth, maxHealth);
 
-        plant.AddSectionsForDay();
+        plant.AddSectionsForDay(shouldSpawnFlower);
 
         transientData = new PlantHealthTransientData();
     }

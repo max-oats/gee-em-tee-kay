@@ -7,6 +7,7 @@ public class Plant : MonoBehaviour
     // ~Begin Debug
     [SerializeField] private Vector3 nextEndPointOffsetTEST;
     [SerializeField] private int sectionsToSplitIntoTEST = 1;
+    [SerializeField] private bool debugShouldSpawnFlower = false;
     // ~End Debug
 
     [SerializeField] private float maxHorizontalDistance;
@@ -53,12 +54,12 @@ public class Plant : MonoBehaviour
         GeneralSectionSetup(initialSection);
     }
 
-    public void AddSectionsForDay()
+    public void AddSectionsForDay(bool shouldSpawnFlower)
     {
         if (nextEndPointOffsetTEST != Vector3.zero)
         {
             // Debug
-            AddSection(nextEndPointOffsetTEST, sectionsToSplitIntoTEST, false);
+            AddSection(nextEndPointOffsetTEST, sectionsToSplitIntoTEST, false, debugShouldSpawnFlower);
             return;
         }
 
@@ -71,7 +72,7 @@ public class Plant : MonoBehaviour
 
         if (plantHealth.PlantIsDead())
         {
-            SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
+            SetColourBasedOnHealth(0);
             return;
         }
 
@@ -84,7 +85,7 @@ public class Plant : MonoBehaviour
 
         int leavesToAdd = (int)Mathf.Lerp(0, maxNumberOfLeavesPerDay, plantHealth.CurrentHealthPercentage());
 
-        AddSection(toNextPoint, leavesToAdd, plantHealth.HasTooMuchLight());
+        AddSection(toNextPoint, leavesToAdd, plantHealth.HasTooMuchLight(), shouldSpawnFlower);
 
         SetColourBasedOnHealth(plantHealth.CurrentHealthPercentage());
     }
@@ -177,7 +178,7 @@ public class Plant : MonoBehaviour
         }
     }
 
-    public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall)
+    public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall, bool shouldSpawnFlower)
     {
         if (sections.Count == 0)
         {
@@ -205,6 +206,11 @@ public class Plant : MonoBehaviour
         {
             int initialIndex = i * 4;
             AddSection(lastSection.GetEndPoint(), controlPointsToAdd[initialIndex], controlPointsToAdd[initialIndex+1], controlPointsToAdd[initialIndex+2], controlPointsToAdd[initialIndex+3], i < leavesToAdd, leavesShouldBeSmall);
+        }
+
+        if (shouldSpawnFlower)
+        {
+            GameObject flowerObject = Instantiate(flowerPrefab, GetLastSectionEndPos());
         }
     }
 
