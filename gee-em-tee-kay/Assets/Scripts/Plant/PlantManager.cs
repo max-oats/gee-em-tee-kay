@@ -39,6 +39,10 @@ public class PlantManager : MonoBehaviour
     [SerializeField] private float initialFlowerColorSat;
     [SerializeField] private float initialFlowerColorVal;
 
+    // Debug
+    [SerializeField] private int debugFlowerPrefabIndex = -1;
+    // ~Debug
+
     public void CreatePlant(int seed)
     {
         Random.InitState(seed);
@@ -79,6 +83,12 @@ public class PlantManager : MonoBehaviour
         if (flowerPrefabOptions.Length == 0)
         {
             return null;
+        }
+
+        if (debugFlowerPrefabIndex >= 0)
+        {
+            Debug.Log("Choosing flower prefab: " + debugFlowerPrefabIndex);
+            return flowerPrefabOptions[debugFlowerPrefabIndex];
         }
 
         int index = Random.Range(0, flowerPrefabOptions.Length);
