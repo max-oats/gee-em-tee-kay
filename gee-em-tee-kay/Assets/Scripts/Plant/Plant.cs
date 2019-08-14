@@ -19,9 +19,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private Transform windowLocation;
 
     private GameObject flowerPrefab;
-    private float initialFlowerColorHue;
-    private float initialFlowerColorSat;
-    private float initialFlowerColorVal;
+    private ColorHSV initialPrimaryFlowerColor;
+    private ColorHSV initialHighlightFlowerColor;
     private GameObject leafPrefab;
     private Color stemColor;
 
@@ -34,12 +33,13 @@ public class Plant : MonoBehaviour
         leaves = new List<Leaf>();
     }
 
-    public void Setup(int seed, GameObject inFlowerPrefab, float inFlowerColorHue, float inFlowerColorSat, float inFlowerColorVal, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
+    public void Setup(int seed, GameObject inFlowerPrefab, ColorHSV inFlowerPrimaryColor, ColorHSV inFlowerHighlightColor, GameObject inLeafPrefab, Color inStemColor, Vector3 inRootPosition)
     {
         flowerPrefab = inFlowerPrefab;
-        initialFlowerColorHue = inFlowerColorHue;
-        initialFlowerColorSat = inFlowerColorSat;
-        initialFlowerColorVal = inFlowerColorVal;
+
+        initialPrimaryFlowerColor = inFlowerPrimaryColor;
+        initialHighlightFlowerColor = inFlowerHighlightColor;
+
         leafPrefab = inLeafPrefab;
         stemColor = inStemColor;
 
@@ -158,24 +158,24 @@ public class Plant : MonoBehaviour
             float alpha = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
             SetColourBasedOnHealth(alpha);
         }
-        else if(Global.debug.cyclePossibleFlowerColours)
+        /*else if(Global.debug.cyclePossibleFlowerColours)
         {
             float hue = (Time.time * debugCycleSpeed) % 1f;
-            Color newFlowerColor = Color.HSVToRGB(hue, initialFlowerColorSat, initialFlowerColorVal);
+            Color newFlowerColor = Color.HSVToRGB(hue, initialFlowerPrimaryColorSat, initialFlowerPrimaryColorVal);
             SetStemColor(newFlowerColor);
         }
         else if (Global.debug.cycleFlowerColourSat)
         {
             float sat = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
-            Color newFlowerColor = Color.HSVToRGB(initialFlowerColorHue, sat, initialFlowerColorVal);
+            Color newFlowerColor = Color.HSVToRGB(initialFlowerPrimaryColorHue, sat, initialFlowerPrimaryColorVal);
             SetStemColor(newFlowerColor);
         }
         else if (Global.debug.cycleFlowerColourValue)
         {
             float val = Mathf.PingPong(Time.time * debugCycleSpeed, 1);
-            Color newFlowerColor = Color.HSVToRGB(initialFlowerColorHue, initialFlowerColorSat, val);
+            Color newFlowerColor = Color.HSVToRGB(initialFlowerPrimaryColorHue, initialFlowerPrimaryColorSat, val);
             SetStemColor(newFlowerColor);
-        }
+        }*/
     }
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall, bool shouldSpawnFlower)
@@ -217,6 +217,9 @@ public class Plant : MonoBehaviour
             Vector3 flowerPointDirection = stemEndPoint - stemEndTangent;
             Quaternion flowerRotation = Quaternion.LookRotation(flowerPointDirection, Vector3.up);
             flowerObject.transform.rotation = flowerRotation;
+
+            Flower flower = flowerObject.GetComponent<Flower>();
+            flower.SetColors(initialPrimaryFlowerColor.ToRGB(), initialHighlightFlowerColor.ToRGB());
         }
     }
 

@@ -2,6 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct ColorHSV
+{
+    private float hue;
+    private float sat;
+    private float val;
+
+    public ColorHSV(float inHue, float inSat, float inVal)
+    {
+        hue = inHue;
+        sat = inSat;
+        val = inVal;
+    }
+
+    public Color ToRGB()
+    {
+        return Color.HSVToRGB(hue, sat, val);
+    }
+}
+
 public class PlantManager : MonoBehaviour
 {
     [SerializeField] private Plant plant;
@@ -24,12 +43,23 @@ public class PlantManager : MonoBehaviour
     {
         Random.InitState(seed);
         Vector3 flowerOriginOffset = new Vector3(0,plantPot.GetBottomOfPlantOffset(),0);
-        plant.Setup(seed, GetFlowerPrefab(seed), GetFlowerColorHue(), initialFlowerColorSat, initialFlowerColorVal, GetLeafPrefab(seed), GetStemColour(seed), plant.transform.position + flowerOriginOffset);
+        plant.Setup(seed,
+                    GetFlowerPrefab(seed),
+                    new ColorHSV(GetFlowerPrimaryColorHue(), initialFlowerColorSat, initialFlowerColorVal),
+                    new ColorHSV(GetFlowerHighlightColorHue(), initialFlowerColorSat, initialFlowerColorVal),
+                    GetLeafPrefab(seed),
+                    GetStemColour(seed),
+                    plant.transform.position + flowerOriginOffset);
     }
 
-    private float GetFlowerColorHue()
+    private float GetFlowerPrimaryColorHue()
     {
         // TODO Restrict green maybe?
+        return Random.value;
+    }
+
+    private float GetFlowerHighlightColorHue()
+    {
         return Random.value;
     }
 
