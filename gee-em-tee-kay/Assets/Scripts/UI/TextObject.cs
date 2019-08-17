@@ -28,11 +28,17 @@ public class TextObject : MonoBehaviour
     [Tooltip("The size of the font"), SerializeField]
     private int fontSize;
 
+    [Tooltip("The horizontal letter spacing of the font"), SerializeField]
+    private float extraKerning;
+
+    [Tooltip("The line spacing between in addition to the font size"), SerializeField]
+    private float lineSpacing;
+
     [Tooltip("Should the width of the object be used as the line length"), SerializeField]
     public bool useWidthAsLineLength;
     
     [Tooltip("The length of lines"), SerializeField]
-    private int lineLength = 0;
+    private int lineLength = 15;
 
     [Tooltip("The case format of the text"), SerializeField]
     private TextFormat textCaseFormatting = TextFormat.Standard;
@@ -56,6 +62,8 @@ public class TextObject : MonoBehaviour
     private List<float> delays;
 
     /** Privates */
+    private float fontWidth = 0f;
+    private int noOfLines = 0; // The number of lines in the text object
     private string parsedString; // The parsed string, only used if parseText==true
     private List<LetterObject> letterObjects = new List<LetterObject>(); // A list of the letter objects
 
@@ -83,6 +91,8 @@ public class TextObject : MonoBehaviour
             text = text.ToUpper();
         }
 
+        fontWidth = (float)fontSize * 0.6f;
+
         // Build new letters
         BuildLetters();
     }
@@ -94,7 +104,8 @@ public class TextObject : MonoBehaviour
         {
             UnityEditor.EditorApplication.delayCall+=()=>
             {
-                DestroyImmediate(letterObject.gameObject);
+                if (letterObject != null)
+                    DestroyImmediate(letterObject.gameObject);
             };
         }
 
@@ -120,6 +131,8 @@ public class TextObject : MonoBehaviour
         bool bIsSwirly = false;
         bool bIsShake = false;
         bool bIsRainbow = false;
+
+        noOfLines = 0;
 
         // Used to increment rainbow colours
         int rainbowCounter = 0;
@@ -296,7 +309,7 @@ public class TextObject : MonoBehaviour
                         }
                     }
 
-                    letterObject.InitText();
+                    letterObject.InitText(font, fontSize);
 
                     letterObjects.Add(letterObject);
 
@@ -320,16 +333,81 @@ public class TextObject : MonoBehaviour
 
                 letterObject.character = c;
 
-                letterObject.InitText();
+                letterObject.InitText(font, fontSize);
 
                 letterObjects.Add(letterObject);
             }
         }
+
+        if (lineLength > 0)
+        {
+            // Step through the final string, grabbing the nearest spaces
+            for (int i = lineLength; i < parsedString.Length; i += lineLength)
+            {
+                int spaceIndex = parsedString.LastIndexOf(" ", i);
+
+                if (spaceIndex != -1)
+                {
+                    // Found a space!
+                    i = spaceIndex;
+
+                    // Set to be a line break
+                    letterObjects[i].isLineBreak = true;
+
+                    // Increase number of lines
+                    noOfLines++;
+                }
+                else
+                {
+                    // If not found a space, just break on the line
+                    letterObjects[i].isLineBreak = true;
+                    noOfLines++;
+                }
+            }
+        }
+
+        // Place letters
+        Vector2 letterPlacement = Vector2.zero;
+
+        foreach (LetterObject letterObject in letterObjects)
+        {
+            // Set new position
+            letterObject.SetPosition(letterPlacement, fontSize);
+
+            // Update X location
+            letterPlacement.x += (fontWidth + extraKerning);
+
+            // Add linebreak if necessary
+            if (letterObject.isLineBreak)
+            {
+                // Update Y location
+                letterPlacement.y -= (fontSize + lineSpacing);
+                letterPlacement.x = 0f;
+            }
+        }
+
+        // Update size
     }
 
-    /** Editor script */
-    void OnValidate()
+    /** Debug editor script */
+    public void UpdateUIString()
     {
         SetText(text);
+    }
+}
+
+[CustomEditor(typeof(TextObject))]
+public class ObjectBuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        TextObject textObject = (TextObject)target;
+
+        if(GUILayout.Button("Update UI String"))
+        {
+            textObject.UpdateUIString();
+        }
+
+        DrawDefaultInspector();
     }
 }

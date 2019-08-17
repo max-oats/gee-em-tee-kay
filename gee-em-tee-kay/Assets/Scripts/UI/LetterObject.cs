@@ -14,6 +14,9 @@ public class LetterObject : MonoBehaviour
     [Tooltip("The text script"), SerializeField]
     private Text text;
 
+    [Tooltip("The rect transform"), SerializeField]
+    private RectTransform rt;
+
     [Tooltip("The strength of the wave effect"), SerializeField]
     private float waveStrength = 10.0f;
 
@@ -46,13 +49,37 @@ public class LetterObject : MonoBehaviour
     [HideInInspector] public bool isJittery;
     [HideInInspector] public bool isScreenShake;
     [HideInInspector] public bool isSwirly;
+    [HideInInspector] public bool isLineBreak;
 
     // Offset, used for swirl/wave/etc
     [HideInInspector] public float offset = 0f;
 
-    public void InitText()
+    public void InitText(Font newFont, int fontSize)
     {
         text.text = character.ToString();
+
+        text.fontSize = fontSize;
+        text.font = newFont;
+
+        if (isBold && isItalics)
+        {
+            text.fontStyle = FontStyle.BoldAndItalic;
+        }
+        else if (isBold)
+        {
+            text.fontStyle = FontStyle.Bold;
+        }
+        else if (isItalics)
+        {
+            text.fontStyle = FontStyle.Italic;
+        }
+    }
+
+    public void SetPosition(Vector2 newPos, float width)
+    {
+        rt.anchoredPosition = newPos;
+
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
     }
 
 }
