@@ -341,12 +341,19 @@ public class TextObject : MonoBehaviour
 
         if (lineLength > 0)
         {
+            int finalLineLength = lineLength;
+
+            if (useWidthAsLineLength)
+            {
+                finalLineLength = (int)(GetComponent<RectTransform>().sizeDelta.x / fontWidth);
+            }
+
             // Step through the final string, grabbing the nearest spaces
-            for (int i = lineLength; i < parsedString.Length; i += lineLength)
+            for (int i = finalLineLength; i < parsedString.Length; i += finalLineLength)
             {
                 int spaceIndex = parsedString.LastIndexOf(" ", i);
 
-                if (spaceIndex != -1)
+                if (spaceIndex != -1 && spaceIndex >= (i - finalLineLength))
                 {
                     // Found a space!
                     i = spaceIndex;
