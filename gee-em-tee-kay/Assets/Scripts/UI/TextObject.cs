@@ -31,6 +31,18 @@ public class TextObject : MonoBehaviour
     [Tooltip("The horizontal letter spacing of the font"), SerializeField]
     private float extraKerning;
 
+    [Tooltip("The horizontal letter spacing of the font"), SerializeField]
+    private string wideCharacters;
+    
+    [Tooltip("The horizontal letter spacing of the font"), SerializeField]
+    private float wideCharacterMultiplier = 1.1f;
+
+    [Tooltip("The horizontal letter spacing of the font"), SerializeField]
+    private string thinCharacters;
+
+    [Tooltip("The horizontal letter spacing of the font"), SerializeField]
+    private float thinCharacterMultiplier = 0.8f;
+
     [Tooltip("The line spacing between in addition to the font size"), SerializeField]
     private float lineSpacing;
 
@@ -63,7 +75,8 @@ public class TextObject : MonoBehaviour
 
     /** Privates */
     private float fontWidth = 0f;
-    private int noOfLines = 0; // The number of lines in the text object
+    private float longestLine = 0f;
+    private int noOfLines = 1; // The number of lines in the text object
     private string parsedString; // The parsed string, only used if parseText==true
     private List<LetterObject> letterObjects = new List<LetterObject>(); // A list of the letter objects
 
@@ -109,6 +122,18 @@ public class TextObject : MonoBehaviour
             };
         }
 
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<LetterObject>() != null)
+            {
+                UnityEditor.EditorApplication.delayCall+=()=>
+                {
+                    if (child != null)
+                        DestroyImmediate(child.gameObject);
+                };
+            }
+        }
+
         // Clear the letter objects
         letterObjects.Clear();
     }
@@ -131,8 +156,9 @@ public class TextObject : MonoBehaviour
         bool bIsSwirly = false;
         bool bIsShake = false;
         bool bIsRainbow = false;
+        bool bIsBig = false;
 
-        noOfLines = 0;
+        noOfLines = 1;
 
         // Used to increment rainbow colours
         int rainbowCounter = 0;
@@ -200,6 +226,10 @@ public class TextObject : MonoBehaviour
                     else if (listenedCharacter == 'a')
                     {
                         bIsSwirly = !bIsSwirly;
+                    }
+                    else if (listenedCharacter == 'e')
+                    {
+                        bIsBig = !bIsBig;
                     }
                 }
                 else if (bIsListeningForColour)
@@ -281,6 +311,7 @@ public class TextObject : MonoBehaviour
                     letterObject.isScreenShake = bIsShake;
                     letterObject.isWavey = bIsWavey;
                     letterObject.isSwirly = bIsSwirly;
+                    letterObject.isBig = bIsBig;
 
                     // Update offset if toggle
                     if (bIsWavey || bIsSwirly)
@@ -309,7 +340,7 @@ public class TextObject : MonoBehaviour
                         }
                     }
 
-                    letterObject.InitText(font, fontSize);
+                    letterObject.InitText(font, fontSize, visibleByDefault);
 
                     letterObjects.Add(letterObject);
 
@@ -333,7 +364,7 @@ public class TextObject : MonoBehaviour
 
                 letterObject.character = c;
 
-                letterObject.InitText(font, fontSize);
+                letterObject.InitText(font, fontSize, visibleByDefault);
 
                 letterObjects.Add(letterObject);
             }
@@ -375,14 +406,12 @@ public class TextObject : MonoBehaviour
 
         // Place letters
         Vector2 letterPlacement = Vector2.zero;
+        longestLine = 0f;
 
         foreach (LetterObject letterObject in letterObjects)
         {
             // Set new position
             letterObject.SetPosition(letterPlacement, fontSize);
-
-            // Update X location
-            letterPlacement.x += (fontWidth + extraKerning);
 
             // Add linebreak if necessary
             if (letterObject.isLineBreak)
@@ -391,9 +420,67 @@ public class TextObject : MonoBehaviour
                 letterPlacement.y -= (fontSize + lineSpacing);
                 letterPlacement.x = 0f;
             }
+            else
+            {
+                // Update X location
+                if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + wideCharacters + "]"))
+                {
+                    letterPlacement.x += ((fontWidth * wideCharacterMultiplier) + extraKerning);
+                }
+                else if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + thinCharacters + "]"))
+                {
+                    letterPlacement.x += ((fontWidth * thinCharacterMultiplier) + extraKerning);
+                }
+                else
+                {
+                    letterPlacement.x += (fontWidth + extraKerning);  
+                }
+
+                if (letterPlacement.x > longestLine)
+                {
+                    longestLine = letterPlacement.x;
+                }
+            }
         }
 
         // Update size
+    }
+
+    /**
+     * Attempt to show by index. Used for loop-based letter showing (dialogue for example)
+     * - Returns true if successful.
+     * - Also contains an out parameter.
+     */
+    public LetterObject GetLetterObject(int index)
+    {
+        if (index < letterObjects.Count && index >= 0)
+        {
+            return letterObjects[index];
+        }
+
+        Debug.LogError("Attempted to get a letter with index: " + index + ", index out of range.");
+
+        return null;
+    }
+
+    public List<LetterObject> GetLetterObjects()
+    {
+        return letterObjects;
+    }
+
+    public void SetPosition(Vector2 newPos)
+    {
+        GetComponent<RectTransform>().anchoredPosition = newPos;
+    }
+
+    public int GetLengthOfText()
+    {
+        return letterObjects.Count;
+    }
+
+    public Vector2 GetSize()
+    {
+        return new Vector2(longestLine, noOfLines * (fontSize + lineSpacing));
     }
 
     /** Debug editor script */

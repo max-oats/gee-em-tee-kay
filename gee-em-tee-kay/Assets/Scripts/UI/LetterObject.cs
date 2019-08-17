@@ -50,11 +50,71 @@ public class LetterObject : MonoBehaviour
     [HideInInspector] public bool isScreenShake;
     [HideInInspector] public bool isSwirly;
     [HideInInspector] public bool isLineBreak;
+    [HideInInspector] public bool isBig;
 
     // Offset, used for swirl/wave/etc
     [HideInInspector] public float offset = 0f;
 
-    public void InitText(Font newFont, int fontSize)
+    private Vector2 initialPosition;
+    private bool isActive;
+    private bool isGrowing;
+    private float initTime = 0f;
+    private int jitterCounter = 0;
+    private float waveCounter = 0f;
+
+    public void Update()
+    {
+        if (isActive)
+        {
+            if (isWavey || isJittery || isSwirly)
+            {
+                Vector2 finalPos = initialPosition;
+
+                if (isJittery)
+                {
+                    jitterCounter++;
+                    if (jitterCounter == jitterEveryThisFrame)
+                    {
+                        finalPos = finalPos + (Random.insideUnitCircle * jitterStrength);
+                        jitterCounter = 0;
+                    }
+                }
+
+                if (isSwirly)
+                {
+                    waveCounter = (Time.time + (offset/2)) * waveSpeed;
+                    finalPos = finalPos + new Vector2(waveStrength * Mathf.Cos(waveCounter), waveStrength * Mathf.Sin(waveCounter));
+                }
+                else if (isWavey)
+                {
+                    waveCounter = (Time.time + offset) * waveSpeed;
+                    finalPos = finalPos + new Vector2(0.0f, waveStrength * Mathf.Sin(waveCounter));
+                }
+
+                rt.anchoredPosition = finalPos;
+            }
+
+            if (isGrowing)
+            {
+                if (initTime < introCurve.length)
+                {
+                    if (!isBig)
+                        rt.localScale = Vector3.one * introCurve.Evaluate(initTime);
+                    else
+                        rt.localScale = Vector3.one * bigIntroCurve.Evaluate(initTime);
+                    
+                    initTime += Time.deltaTime;
+                }
+                else
+                {
+                    rt.localScale = Vector3.one;
+                    isGrowing = false;
+                }
+            }
+        }
+    }
+
+    public void InitText(Font newFont, int fontSize, bool showByDefault)
     {
         text.text = character.ToString();
 
@@ -73,6 +133,8 @@ public class LetterObject : MonoBehaviour
         {
             text.fontStyle = FontStyle.Italic;
         }
+
+        text.enabled = showByDefault;
     }
 
     public void SetPosition(Vector2 newPos, float width)
@@ -80,6 +142,20 @@ public class LetterObject : MonoBehaviour
         rt.anchoredPosition = newPos;
 
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+    }
+
+    public void Show(bool grow = false)
+    {
+        text.enabled = true;
+
+        initialPosition = rt.anchoredPosition;
+
+        isActive = true;
+
+        if (grow)
+        {
+            isGrowing = true;
+        }
     }
 
 }

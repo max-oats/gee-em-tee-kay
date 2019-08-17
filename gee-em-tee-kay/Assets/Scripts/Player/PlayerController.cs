@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator NamePlant()
     {
         GameObject go = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform);
-        SpeechBubbleImage speechBubble = go.GetComponent<SpeechBubbleImage>();
+        SpeechBubble speechBubble = go.GetComponent<SpeechBubble>();
         string interactString = "";
         int maxLength = 18;
         speechBubble.SetSize((maxLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f,
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
         bool plantNamed = false;
         while (!plantNamed)
         {
-            speechBubble.KillTextElements();
+            // speechBubble.KillTextElements();
 
             foreach (char c in System.Text.RegularExpressions.Regex.Replace(Input.inputString, @"[^A-Za-z0-9 ]+", ""))
             {
@@ -236,10 +236,10 @@ public class PlayerController : MonoBehaviour
                 dc.character = c;
 
                 float delay = 0.0f;
-                speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc,
-                                                                                speechBubble.transform,
-                                                                                new Vector2(tempXLocation, tempYLocation),
-                                                                                out delay));
+                // speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc,
+                //                                                                 speechBubble.transform,
+                //                                                                 new Vector2(tempXLocation, tempYLocation),
+                //                                                                 out delay));
                 // Update X location
                 tempXLocation += Global.dialogueHandler.letterWidth;
 
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 
-        speechBubble.KillTextElements();
+        // speechBubble.KillTextElements();
         speechBubble.ShrinkBubble();
         Destroy(speechBubble.gameObject, 1.0f);
 

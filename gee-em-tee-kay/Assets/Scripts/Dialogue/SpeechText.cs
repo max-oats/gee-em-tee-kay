@@ -23,7 +23,6 @@ public class SpeechText : MonoBehaviour
 
     private RectTransform text;
 
-    private float waveCounter = 0f;
 
     private float offset = 0f;
 
@@ -33,6 +32,7 @@ public class SpeechText : MonoBehaviour
     private float initTime = 0f;
 
     private int jitterCounter = 0;
+    private float waveCounter = 0f;
 
     public void Awake()
     {

@@ -31,11 +31,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &7115147645831789840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,10 +53,16 @@ MonoBehaviour:
   text: 
   parseText: 1
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  fontSize: 0
+  fontSize: 40
+  extraKerning: 2
+  wideCharacters: wm
+  wideCharacterMultiplier: 1.4
+  thinCharacters: itljfr
+  thinCharacterMultiplier: 0.6
+  lineSpacing: 0
   useWidthAsLineLength: 0
-  lineLength: 0
-  textCaseFormatting: 2
+  lineLength: 15
+  textCaseFormatting: 0
   visibleByDefault: 1
   textSpeed: 0.05
   offsetWhenWavey: 0.05

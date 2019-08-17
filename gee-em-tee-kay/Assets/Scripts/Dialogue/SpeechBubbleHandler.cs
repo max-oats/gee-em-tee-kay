@@ -6,14 +6,11 @@ using UnityEngine.UI;
 /** The script that handles the data within the Canvas itself */
 public class SpeechBubbleHandler : MonoBehaviour
 {
-    // Text prefab
-    public GameObject textPrefab;
-
-    // Main speech bubble. Can be used for any entity
-    public SpeechBubbleImage mainBubble;
+    // Speech bubble prefab
+    [SerializeField] private GameObject _speechBubble;
 
     // Dialogue option bubbles.
-    public List<SpeechBubbleImage> buttons;
+    public List<SpeechBubble> buttons;
 
     // Entity associated with the speech bubble
     private Entity entity;
@@ -22,5 +19,17 @@ public class SpeechBubbleHandler : MonoBehaviour
     {
         // Grab entity
         entity = GetComponentInParent<Entity>();
+    }
+
+    /**
+     * CreateSpeechBubble
+     * - Creates (and returns) a speech bubble.
+     */
+    public SpeechBubble CreateSpeechBubble()
+    {
+        GameObject go = Instantiate(_speechBubble, transform);
+        SpeechBubble sb = go.GetComponent<SpeechBubble>();
+
+        return sb;
     }
 }

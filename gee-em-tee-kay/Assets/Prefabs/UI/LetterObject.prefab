@@ -61,16 +61,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 7.289792
-      outSlope: 7.289792
+      value: 1
+      inSlope: 26.869543
+      outSlope: 26.869543
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.14471547
-      value: 1.0549457
+      time: 0.013243392
+      value: 1.3558439
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -78,10 +78,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.21292114
+      time: 0.13092041
       value: 1
-      inSlope: -0.80558854
-      outSlope: -0.80558854
+      inSlope: -3.0239031
+      outSlope: -3.0239031
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -94,16 +94,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 13.820222
-      outSlope: 13.820222
+      value: 1
+      inSlope: 164.83942
+      outSlope: 164.83942
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.14471547
-      value: 2
+      time: 0.010270283
+      value: 2.6929474
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -111,10 +111,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.21292114
-      value: 1
-      inSlope: -14.661538
-      outSlope: -14.661538
+      time: 0.12576294
+      value: 1.0236511
+      inSlope: -14.4537
+      outSlope: -14.4537
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -132,6 +132,7 @@ MonoBehaviour:
   isScreenShake: 0
   isSwirly: 0
   isLineBreak: 0
+  isBig: 0
   offset: 0
 --- !u!222 &3905003479098782902
 CanvasRenderer:
@@ -168,7 +169,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

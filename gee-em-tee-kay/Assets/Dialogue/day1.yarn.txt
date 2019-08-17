@@ -50,7 +50,7 @@ Player: they left a \c004plant pot\c000 here
 Player: which i guess is my bed now?
 Player: bud!!!!\d002 i am totally fine!
 Player: it was \btotally\b mutual.
-Player: yeah, the moving van isn't bringing the furniture for another \w\b5 days\w!!!!!!!
+Player: yeah, the moving van isn't bringing the furniture for another \e\b5 days!!!!!!!
 Player: but don't worry. 
 Player: i spent my remaining £2 on a seed for my plant pot!!!!!
 Player: \d002.\d002.\d002. hello?

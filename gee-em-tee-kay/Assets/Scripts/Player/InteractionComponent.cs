@@ -16,11 +16,11 @@ public class InteractionComponent : MonoBehaviour
     [SerializeField] private bool ableToSleepWithoutTalking;
     // ~End Debug
 
-    private SpeechBubbleImage speechBubble = null;
+    private SpeechBubble speechBubble = null;
 
     void Start()
     {
-        speechBubble = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform).GetComponent<SpeechBubbleImage>();
+        speechBubble = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform).GetComponent<SpeechBubble>();
     }
 
     void ShowInteract()
@@ -38,10 +38,10 @@ public class InteractionComponent : MonoBehaviour
             dc.character = c;
 
             float delay = 0.0f;
-            speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
-                                                                            speechBubble.transform, 
-                                                                            new Vector2(tempXLocation, tempYLocation),  
-                                                                            out delay));
+            // speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
+            //                                                                 speechBubble.transform, 
+            //                                                                 new Vector2(tempXLocation, tempYLocation),  
+            //                                                                 out delay));
             // Update X location
             tempXLocation += Global.dialogueHandler.letterWidth;
 
@@ -60,7 +60,7 @@ public class InteractionComponent : MonoBehaviour
 
     void HideInteract()
     {
-        speechBubble.KillTextElements();
+        // speechBubble.KillTextElements();
         speechBubble.ShrinkBubble();
     }
 
@@ -164,7 +164,7 @@ public class InteractionComponent : MonoBehaviour
         foreach (var optionString in options) 
         {
             GameObject speechgo = Instantiate(Global.dialogueHandler.speechBubPfb, friendSpeechHandler.transform);
-            SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
+            SpeechBubble button = speechgo.GetComponent<SpeechBubble>();
 
             friendSpeechHandler.buttons.Add(button);
 
@@ -194,10 +194,10 @@ public class InteractionComponent : MonoBehaviour
                 dc.character = c;
 
                 float delay = 0f;
-                button.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
-                                                                            button.transform, 
-                                                                            new Vector2(tempXLocation, tempYLocation),  
-                                                                            out delay));
+                // button.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
+                //                                                             button.transform, 
+                //                                                             new Vector2(tempXLocation, tempYLocation),  
+                //                                                             out delay));
                 // Update X location
                 tempXLocation += Global.dialogueHandler.letterWidth;
             }
@@ -252,7 +252,7 @@ public class InteractionComponent : MonoBehaviour
         foreach (var button in friendSpeechHandler.buttons) 
         {
             button.DeselectButton();
-            button.KillTextElements();
+            // button.KillTextElements();
             button.ShrinkBubble();
             Destroy(button, 1.0f);
         }

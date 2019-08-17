@@ -114,47 +114,44 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         // Grab the handler for the UI side
         SpeechBubbleHandler speechBubbleHandler = playerSpeechHandler;
 
-        // Show the bubble
-        speechBubbleHandler.mainBubble.ShowBubble();
+        // Grab the speech bubble
+        SpeechBubble speechBubble = speechBubbleHandler.CreateSpeechBubble();
+        if (speechBubble == null)
+        {
+            Debug.LogError("Attempted to create SpeechBubble in DialogueHandler, but returned null.");
 
-        speechBubbleHandler.mainBubble.GrowBubble();
+            yield break;
+        }
+
+        speechBubble.ShowBubble();
+        speechBubble.GrowBubble();
 
         // Pull the contents
 		string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
+
+        // Swap out plant name for the given plant name
         stringContents = stringContents.Replace("PLANTNAME", "\\c002" + Global.plantName + "\\c000");
         
-        // Create the string using the Dialogue Util and add LineBreaks
-        DialogueString dialogueString = new DialogueString(stringContents);
-        dialogueString.AddLineBreaks(lineLength);
+        // Sets the contents of the speech bubble
+        speechBubble.SetContents(stringContents);
 
-        speechBubbleHandler.mainBubble.SetSize((dialogueString.lineLength * letterWidth) + widthPadding*2f, (dialogueString.noOfLines * letterHeight) + heightPadding*2f);
-
-        // Create objects
-        float tempXLocation = Global.dialogueHandler.defaultInset.x;
-        float tempYLocation = Global.dialogueHandler.defaultInset.y;
-
+        // Set time counter
         float timeCounter = 0.0f;
-        foreach (DialogueCharacter dc in dialogueString.dialogue)
+
+        foreach (LetterObject lo in speechBubble.text.GetLetterObjects())
         {
             float delay = textSpeed;
-            speechBubbleHandler.mainBubble.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
-                                                                            speechBubbleHandler.mainBubble.transform, 
-                                                                            new Vector2(tempXLocation, tempYLocation),  
-                                                                            out delay));
-            // Update X location
-            tempXLocation += Global.dialogueHandler.letterWidth;
 
-            // Add linebreak if necessary
-            if (dc.isLineBreak)
-            {
-                // Update Y location
-                tempYLocation -= Global.dialogueHandler.letterHeight;
-                tempXLocation = Global.dialogueHandler.defaultInset.x;
-            }
+            // Show letter object
+            lo.Show(true);
+
+            // Set delay
+            delay = lo.postDelay;
         
+            // Do bleep if needed
             if (timeCounter >= timeBetweenBleeps)
             {
-                if ((dc.character != '.' && dc.character != ' '))
+                if ((lo.character != '.' && lo.character != ' '))
                 {
                     GameObject go = Instantiate(_audioSource);
                     Destroy(go, 1.0f);
@@ -176,8 +173,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         }
 
         // Kill the text elements
-        speechBubbleHandler.mainBubble.KillTextElements();
-        speechBubbleHandler.mainBubble.ShrinkBubble();
+        speechBubble.ShrinkBubble();
 
         // Line is OVER
         currentlyRunningLine = false;
@@ -216,7 +212,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         foreach (var optionString in optionsCollection.options) 
         {
             GameObject speechgo = Instantiate(speechBubPfb, friendSpeechHandler.transform);
-            SpeechBubbleImage button = speechgo.GetComponent<SpeechBubbleImage>();
+            SpeechBubble button = speechgo.GetComponent<SpeechBubble>();
 
             friendSpeechHandler.buttons.Add(button);
 
@@ -246,10 +242,10 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
                 dc.character = c;
 
                 float delay = 0f;
-                button.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
-                                                                            button.transform, 
-                                                                            new Vector2(tempXLocation, tempYLocation),  
-                                                                            out delay));
+                // button.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
+                //                                                             button.transform, 
+                //                                                             new Vector2(tempXLocation, tempYLocation),  
+                //                                                             out delay));
                 // Update X location
                 tempXLocation += Global.dialogueHandler.letterWidth;
             }
@@ -303,7 +299,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         foreach (var button in friendSpeechHandler.buttons) 
         {
             button.DeselectButton();
-            button.KillTextElements();
+            //button.KillTextElements();
             button.HideBubble();
             Destroy(button, 1.0f);
         }

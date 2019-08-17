@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeechBubbleImage : MonoBehaviour
+public class SpeechBubble : MonoBehaviour
 {   
+    public TextObject text;
+
     // Curves for rad tweening
     public AnimationCurve introCurve;
     public AnimationCurve outroCurve;
@@ -32,6 +34,9 @@ public class SpeechBubbleImage : MonoBehaviour
     // (Optional tail element)
     public Image tail;
 
+    [SerializeField] private float horizontalPadding = 10f;
+    [SerializeField] private float verticalPadding = 10f;
+
     // Initial Scale-- allows resetting to it after juicing operations
     private Vector3 initialScale;
 
@@ -45,9 +50,6 @@ public class SpeechBubbleImage : MonoBehaviour
     private Vector2 previousSize = new Vector2();
     private Vector2 desiredSize = new Vector2();
 
-    // A list of text elements associated with the bubble, used to kill off when needed
-    private List<Text> textElements = new List<Text>();
-
     // Coroutine used for the animation
     private IEnumerator animationCoroutine;
 
@@ -56,6 +58,8 @@ public class SpeechBubbleImage : MonoBehaviour
         // Grab elements
         imageElement = GetComponent<Image>();
         rt = GetComponent<RectTransform>();
+
+        text.SetPosition(new Vector2(horizontalPadding, -verticalPadding));
 
         // Disable image by default
         imageElement.enabled = false;
@@ -80,6 +84,15 @@ public class SpeechBubbleImage : MonoBehaviour
         // If option button, set to disabled option
         if (isDialogueOption)
             imageElement.color = new Color(imageElement.color.r, imageElement.color.g, imageElement.color.b, alpha*deselectedDialogueAlphaMultiplier);
+    }
+
+    public void SetContents(string newContents)
+    {
+        text.SetText(newContents);
+
+        Vector2 newSize = text.GetSize();
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (2 * horizontalPadding) + newSize.x);
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (3 * verticalPadding) + newSize.y);
     }
 
     /**
@@ -186,7 +199,7 @@ public class SpeechBubbleImage : MonoBehaviour
 
         if (postHide)
         {
-            HideBubble();
+            Destroy(gameObject);
         }
     }
 
@@ -241,29 +254,6 @@ public class SpeechBubbleImage : MonoBehaviour
     public float GetHalfHeight()
     {
         return (rt.rect.height * rt.localScale.y * 0.5f);
-    }
-    
-    /**
-     * AddText
-     * - Adds text to the list (to kill later)
-     */
-    public void AddText(Text newText)
-    {
-        textElements.Add(newText);
-    }
-
-    /**
-     * KillTextElements
-     * - Kill off all the text elements
-     */
-    public void KillTextElements()
-    {
-        foreach (Text text in textElements)
-        {
-            Destroy(text.gameObject);
-        }
-
-        textElements.Clear();
     }
 
     /**
