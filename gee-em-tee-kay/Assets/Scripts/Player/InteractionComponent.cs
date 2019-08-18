@@ -106,7 +106,7 @@ public class InteractionComponent : MonoBehaviour
         SpeechBubble nameBubble = go.GetComponent<SpeechBubble>();
         
         string interactString = "";
-        int maxLength = 18;
+        int maxLength = 30;
 
         nameBubble.ShowBubble();
         nameBubble.GrowBubble();
@@ -130,8 +130,11 @@ public class InteractionComponent : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
+                print("got here");
                 if (interactString.Length > 0)
                 {
+                    print("got here?");
+
                     plantNamed = true;
                     Global.plantName = interactString;
                     Global.plantManager.CreatePlant(interactString.GetHashCode());
@@ -155,12 +158,16 @@ public class InteractionComponent : MonoBehaviour
             yield return null;
         }
 
+        print("got here???");
+
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 
         // speechBubble.KillTextElements();
         nameBubble.ShrinkBubble();
 
         string nodeName = "Day1.NamePlant";
+
+        Global.AddName();
 
         foreach (SpecialName sn in Global.dialogueHandler.specialNames)
         {

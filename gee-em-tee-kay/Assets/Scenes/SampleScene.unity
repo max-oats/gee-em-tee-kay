@@ -2468,7 +2468,7 @@ PrefabInstance:
       objectReference: {fileID: 628624978}
     - target: {fileID: 1101326264, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: skipIntros
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1101326264, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: skipDailyDialogue

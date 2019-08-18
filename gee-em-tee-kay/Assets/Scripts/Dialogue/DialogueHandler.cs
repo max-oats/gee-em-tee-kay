@@ -150,6 +150,11 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
             // Set delay
             delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+
+            if (lo.isScreenShake)
+            {
+                Global.cameraController.ScreenShake(0.1f);
+            }
         
             // Do bleep if needed
             if (timeCounter >= timeBetweenBleeps)

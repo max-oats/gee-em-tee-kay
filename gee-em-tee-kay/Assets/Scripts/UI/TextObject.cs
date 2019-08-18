@@ -415,7 +415,7 @@ public class TextObject : MonoBehaviour
                 {
                     int spaceIndex = parsedString.LastIndexOf(" ", i);
 
-                    if (spaceIndex != -1 && spaceIndex >= (i - finalLineLength))
+                    if (spaceIndex != -1 && spaceIndex > (i - finalLineLength))
                     {
                         // Found a space!
                         i = spaceIndex;

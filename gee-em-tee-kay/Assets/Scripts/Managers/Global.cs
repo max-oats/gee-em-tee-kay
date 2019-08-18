@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Global : MonoBehaviour
 {
@@ -46,6 +47,15 @@ public class Global : MonoBehaviour
 
             hasStarted = true;
         }
+    }
+
+    public static void AddName()
+    {
+        var writer = new StreamWriter(Application.dataPath + "/namesList.txt", true);
+
+        writer.WriteLine("- " + plantName);
+
+        writer.Close();
     }
 
     public static void Quit()
