@@ -65,7 +65,7 @@ MonoBehaviour:
   textCaseFormatting: 0
   visibleByDefault: 1
   textSpeed: 0.05
-  offsetWhenWavey: 0.05
+  offsetWhenWavey: -0.2
   normalColours:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
