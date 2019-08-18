@@ -115,22 +115,38 @@ public class TextObject : MonoBehaviour
         // Destroy all existing letter objects
         foreach (LetterObject letterObject in letterObjects)
         {
-            UnityEditor.EditorApplication.delayCall+=()=>
+            if (Application.isPlaying)
             {
                 if (letterObject != null)
-                    DestroyImmediate(letterObject.gameObject);
-            };
+                    Destroy(letterObject.gameObject);
+            }
+            else
+            {
+                UnityEditor.EditorApplication.delayCall+=()=>
+                {
+                    if (letterObject != null)
+                        DestroyImmediate(letterObject.gameObject);
+                };
+            }            
         }
 
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<LetterObject>() != null)
+            if (Application.isPlaying)
             {
-                UnityEditor.EditorApplication.delayCall+=()=>
+                if (child.GetComponent<LetterObject>() != null)
+                    Destroy(child.gameObject);
+            }
+            else
+            {
+                if (child.GetComponent<LetterObject>() != null)
                 {
-                    if (child != null)
-                        DestroyImmediate(child.gameObject);
-                };
+                    UnityEditor.EditorApplication.delayCall+=()=>
+                    {
+                        if (child != null)
+                            DestroyImmediate(child.gameObject);
+                    };
+                }
             }
         }
 
@@ -379,27 +395,30 @@ public class TextObject : MonoBehaviour
                 finalLineLength = (int)(GetComponent<RectTransform>().sizeDelta.x / fontWidth);
             }
 
-            // Step through the final string, grabbing the nearest spaces
-            for (int i = finalLineLength; i < parsedString.Length; i += finalLineLength)
+            if (finalLineLength > 0)
             {
-                int spaceIndex = parsedString.LastIndexOf(" ", i);
-
-                if (spaceIndex != -1 && spaceIndex >= (i - finalLineLength))
+                // Step through the final string, grabbing the nearest spaces
+                for (int i = finalLineLength-1; i < parsedString.Length; i += finalLineLength)
                 {
-                    // Found a space!
-                    i = spaceIndex;
+                    int spaceIndex = parsedString.LastIndexOf(" ", i);
 
-                    // Set to be a line break
-                    letterObjects[i].isLineBreak = true;
+                    if (spaceIndex != -1 && spaceIndex >= (i - finalLineLength))
+                    {
+                        // Found a space!
+                        i = spaceIndex;
 
-                    // Increase number of lines
-                    noOfLines++;
-                }
-                else
-                {
-                    // If not found a space, just break on the line
-                    letterObjects[i].isLineBreak = true;
-                    noOfLines++;
+                        // Set to be a line break
+                        letterObjects[i].isLineBreak = true;
+
+                        // Increase number of lines
+                        noOfLines++;
+                    }
+                    else
+                    {
+                        // If not found a space, just break on the line
+                        letterObjects[i].isLineBreak = true;
+                        noOfLines++;
+                    }
                 }
             }
         }

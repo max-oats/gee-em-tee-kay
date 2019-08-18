@@ -5108,14 +5108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f903e96927dc475a996819328127ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsAbleToInteract: 0
+  canvas: {fileID: 2251053737746958826}
+  _speechBubble: {fileID: 0}
+  theCollider: {fileID: 4879872831458779107}
+  isAbleToInteract: 0
   menuOptions:
   - talk
   - water
   - move
   - neglect
   - bedtime
-  theCollider: {fileID: 4879872831458779107}
   ableToSleepWithoutTalking: 0
 --- !u!136 &4879872831458779107
 CapsuleCollider:

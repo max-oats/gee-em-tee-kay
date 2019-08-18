@@ -24,7 +24,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public DialogueEnd dialogueEnd;
 
     public GameObject textPfb;
-    public GameObject speechBubPfb;
+    public GameObject _speechBubble;
+    public GameObject _optionBubble;
     public GameObject _audioSource;
     public Animator playerAnimator;
 
@@ -37,6 +38,8 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public float speedyTextMultiplier = 0.3f;
 
     public Vector2 defaultInset = new Vector2(100f, -100f);
+
+    public float interactionMenuOptionGap = 10f;
 
     public float heightPadding = 100f;
     public float widthPadding = 100f;
@@ -186,9 +189,12 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public override IEnumerator RunOptions (Yarn.Options optionsCollection, 
                                             Yarn.OptionChooser optionChooser)
     {
+        List<SpeechBubble> optionButtons = new List<SpeechBubble>();
+
         // todo: account for multiple lines
         // Find out the width of the longest option
         float longestOption = 0f;
+
         foreach (string optionString in optionsCollection.options)
         {
             if (optionString.Length > longestOption)
@@ -196,14 +202,10 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
                 longestOption = optionString.Length;
             }
         }
-        float longestWidth = (longestOption * letterWidth) + (widthPadding*2f);
 
-        // Grab the handler for the UI side
-        SpeechBubbleHandler friendSpeechHandler = playerSpeechHandler;
+        float offsetOption = interactionMenuOptionGap * optionsCollection.options.Count;
 
-        float offsetOption = ((letterHeight + (heightPadding*2f) + optionOffset) * (optionsCollection.options.Count));
-
-        offsetOption -= (letterHeight + (heightPadding*2f) + optionOffset);
+        offsetOption -= interactionMenuOptionGap;
 
         yield return new WaitForSeconds(0.1f);
 
@@ -211,100 +213,79 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         int j = 0;
         foreach (var optionString in optionsCollection.options) 
         {
-            GameObject speechgo = Instantiate(speechBubPfb, friendSpeechHandler.transform);
-            SpeechBubble button = speechgo.GetComponent<SpeechBubble>();
+            GameObject go = Instantiate(_optionBubble, playerSpeechHandler.transform);
+            SpeechBubble button = go.GetComponent<SpeechBubble>();
 
-            friendSpeechHandler.buttons.Add(button);
+            button.SetHeight(offsetOption);
 
             if (j == 0)
                 button.SelectButton(false);
             else
                 button.DeselectButton();
 
-            string finalString = optionString.ToLower();
+            button.SetContents(optionString);
 
             // Grab the length of the contents
-            int contentsLength = finalString.Length;
+            int contentsLength = optionString.Length;
 
-            float buttonWidth = (contentsLength * letterWidth) + widthPadding*2f;
-
-            // Resize/reposition 
-            button.SetSizeAndOffset(buttonWidth, (letterHeight) + heightPadding*2f, -((longestWidth-buttonWidth)/2f), offsetOption);
             button.ShowBubble();
             button.GrowBubble();
-            
-            float tempXLocation = Global.dialogueHandler.defaultInset.x;
-            float tempYLocation = Global.dialogueHandler.defaultInset.y;
 
-            foreach (char c in finalString)
-            {
-                DialogueCharacter dc = new DialogueCharacter();
-                dc.character = c;
+            optionButtons.Add(button);
 
-                float delay = 0f;
-                // button.AddText(DialogueUtils.CreateTextObject(textPfb, dc, 
-                //                                                             button.transform, 
-                //                                                             new Vector2(tempXLocation, tempYLocation),  
-                //                                                             out delay));
-                // Update X location
-                tempXLocation += Global.dialogueHandler.letterWidth;
-            }
-
-            offsetOption -= (letterHeight + heightPadding + optionOffset);
+            offsetOption -= (Global.dialogueHandler.letterHeight + Global.dialogueHandler.heightPadding + Global.dialogueHandler.optionOffset);
 
             j++;
 
             yield return new WaitForSeconds(0.1f);
         }
 
-        // Record that we're using it
-        SetSelectedOption = optionChooser;
-
         int selected = 0;
+        bool optionSelected = false;
 
         // Wait until the chooser has been used and then removed (see SetOption below)
-        while (SetSelectedOption != null) 
+        while (!optionSelected) 
         {
             if (Global.input.GetButtonDown("Talk"))
             {
-                SetOption(selected);
+                optionSelected = true;
             }
             else if (Global.input.GetButtonDown("UI|Up"))
             {
-                friendSpeechHandler.buttons[selected].DeselectButton();
+                optionButtons[selected].DeselectButton();
 
                 if (selected > 0)
                 {
                     selected--;
                 }
 
-                friendSpeechHandler.buttons[selected].SelectButton();
+                optionButtons[selected].SelectButton();
             }
             else if (Global.input.GetButtonDown("UI|Down"))
             {
-                friendSpeechHandler.buttons[selected].DeselectButton();
+                optionButtons[selected].DeselectButton();
 
                 if (selected < optionsCollection.options.Count-1)
                 {
                     selected++;
                 }
 
-                friendSpeechHandler.buttons[selected].SelectButton();
+                optionButtons[selected].SelectButton();
             }
 
             yield return null;
         }
 
         // Hide all the buttons
-        foreach (var button in friendSpeechHandler.buttons) 
+        foreach (var button in optionButtons) 
         {
             button.DeselectButton();
-            //button.KillTextElements();
-            button.HideBubble();
-            Destroy(button, 1.0f);
+            button.ShrinkBubble();
         }
-        
-        friendSpeechHandler.buttons.Clear();
+
+        optionButtons.Clear();
+
+        optionChooser?.Invoke(selected);
 
         yield break;
     }

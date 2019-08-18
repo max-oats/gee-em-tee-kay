@@ -7,52 +7,28 @@ public class InteractionComponent : MonoBehaviour
     public delegate void SelectedMenuOption(string option);
     public SelectedMenuOption selectedMenuOption;
 
-    public bool bIsAbleToInteract = false;
+    /** Serialized fields */
+    [SerializeField] private Transform canvas;
+    [SerializeField] private GameObject _speechBubble;
+    [SerializeField] private Collider theCollider;
+    [SerializeField] private float interactionMenuOptionGap;
+
+    /** Non-inspector publics */
+    [HideInInspector] public bool isAbleToInteract = false;
 
     public List<string> menuOptions;
-    public Collider theCollider;
 
     // ~Begin Debug
     [SerializeField] private bool ableToSleepWithoutTalking;
     // ~End Debug
 
     private SpeechBubble speechBubble = null;
-
-    void Start()
-    {
-        speechBubble = Instantiate(Global.dialogueHandler.speechBubPfb, Global.dialogueHandler.playerSpeechHandler.transform).GetComponent<SpeechBubble>();
-    }
+    private List<SpeechBubble> optionButtons = new List<SpeechBubble>();
 
     void ShowInteract()
     {
-        string interactString = "interact";
-        speechBubble.SetSize((interactString.Length * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f, 
-                    (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f);
-
-        // Create objects
-        float tempXLocation = Global.dialogueHandler.defaultInset.x;
-        float tempYLocation = Global.dialogueHandler.defaultInset.y;
-        foreach (char c in interactString)
-        {
-            DialogueCharacter dc = new DialogueCharacter();
-            dc.character = c;
-
-            float delay = 0.0f;
-            // speechBubble.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
-            //                                                                 speechBubble.transform, 
-            //                                                                 new Vector2(tempXLocation, tempYLocation),  
-            //                                                                 out delay));
-            // Update X location
-            tempXLocation += Global.dialogueHandler.letterWidth;
-
-            // Add linebreak if necessary
-            if (dc.isLineBreak)
-            {
-                // Update Y location
-                tempYLocation -= Global.dialogueHandler.letterHeight;
-                tempXLocation = Global.dialogueHandler.defaultInset.x;
-            }
-        }
+        speechBubble = Instantiate(_speechBubble, canvas).GetComponent<SpeechBubble>();
+        speechBubble.SetContents("interact");
         
         speechBubble.ShowBubble();
         speechBubble.GrowBubble();
@@ -60,7 +36,6 @@ public class InteractionComponent : MonoBehaviour
 
     void HideInteract()
     {
-        // speechBubble.KillTextElements();
         speechBubble.ShrinkBubble();
     }
 
@@ -73,7 +48,7 @@ public class InteractionComponent : MonoBehaviour
         
         if (!Global.dialogueHandler.inDialogue)
         {
-            bIsAbleToInteract = true;
+            isAbleToInteract = true;
 
             ShowInteract();
         }
@@ -86,9 +61,9 @@ public class InteractionComponent : MonoBehaviour
             return;
         }
 
-        if (bIsAbleToInteract && !Global.dialogueHandler.inDialogue)
+        if (isAbleToInteract && !Global.dialogueHandler.inDialogue)
         {
-            bIsAbleToInteract = false;
+            isAbleToInteract = false;
 
             HideInteract();
         }
@@ -115,9 +90,87 @@ public class InteractionComponent : MonoBehaviour
         }
 
         HideInteract();
-        bIsAbleToInteract = false;
+        isAbleToInteract = false;
 
         StartCoroutine(SetUpBubbles(options));
+    }
+
+    public void NamePlant()
+    {
+        StartCoroutine(NamePlantCoroutine());
+    }
+
+    public IEnumerator NamePlantCoroutine()
+    {
+        GameObject go = Instantiate(_speechBubble, canvas);
+        SpeechBubble nameBubble = go.GetComponent<SpeechBubble>();
+        
+        string interactString = "";
+        int maxLength = 18;
+
+        nameBubble.ShowBubble();
+        nameBubble.GrowBubble();
+
+        bool plantNamed = false;
+        string previousString = "";
+
+        nameBubble.SetContents(interactString);
+
+        while (!plantNamed)
+        {
+            foreach (char c in System.Text.RegularExpressions.Regex.Replace(Input.inputString, @"[^A-Za-z0-9 ]+", ""))
+            {
+                if (interactString.Length < maxLength)
+                {
+                    interactString += c;
+                }
+            }
+
+            interactString = interactString.ToLower();
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                if (interactString.Length > 0)
+                {
+                    plantNamed = true;
+                    Global.plantName = interactString;
+                    Global.plantManager.CreatePlant(interactString.GetHashCode());
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Backspace))
+            {
+                if (interactString.Length > 0)
+                    interactString = interactString.Remove(interactString.Length-1);
+            }
+
+
+            if (!previousString.Equals(interactString))
+            {
+                nameBubble.SelectButton();
+                nameBubble.SetContents(interactString);
+            }
+
+            previousString = interactString;
+
+            yield return null;
+        }
+
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+
+        // speechBubble.KillTextElements();
+        nameBubble.ShrinkBubble();
+
+        string nodeName = "Day1.NamePlant";
+
+        foreach (SpecialName sn in Global.dialogueHandler.specialNames)
+        {
+            if (Global.plantName == sn.plantName)
+            {
+                nodeName += "." + sn.nodeName;
+            }
+        }
+
+        Global.dialogueHandler.StartDialogue(nodeName);
     }
 
     public void BumpCollider()
@@ -141,6 +194,7 @@ public class InteractionComponent : MonoBehaviour
         // todo: account for multiple lines
         // Find out the width of the longest option
         float longestOption = 0f;
+
         foreach (string optionString in options)
         {
             if (optionString.Length > longestOption)
@@ -148,14 +202,10 @@ public class InteractionComponent : MonoBehaviour
                 longestOption = optionString.Length;
             }
         }
-        float longestWidth = (longestOption * Global.dialogueHandler.letterWidth) + (Global.dialogueHandler.widthPadding*2f);
 
-        // Grab the handler for the UI side
-        SpeechBubbleHandler friendSpeechHandler = Global.dialogueHandler.playerSpeechHandler;
+        float offsetOption = interactionMenuOptionGap * options.Count;
 
-        float offsetOption = ((Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) - Global.dialogueHandler.optionOffset) * (options.Count));
-
-        offsetOption -= (Global.dialogueHandler.letterHeight + (Global.dialogueHandler.heightPadding*2f) + Global.dialogueHandler.optionOffset);
+        offsetOption -= interactionMenuOptionGap;
 
         yield return new WaitForSeconds(0.1f);
 
@@ -163,44 +213,25 @@ public class InteractionComponent : MonoBehaviour
         int j = 0;
         foreach (var optionString in options) 
         {
-            GameObject speechgo = Instantiate(Global.dialogueHandler.speechBubPfb, friendSpeechHandler.transform);
-            SpeechBubble button = speechgo.GetComponent<SpeechBubble>();
+            GameObject go = Instantiate(_speechBubble, canvas);
+            SpeechBubble button = go.GetComponent<SpeechBubble>();
 
-            friendSpeechHandler.buttons.Add(button);
+            button.SetHeight(offsetOption);
 
             if (j == 0)
                 button.SelectButton(false);
             else
                 button.DeselectButton();
 
-            string finalString = optionString.ToLower();
+            button.SetContents(optionString);
 
             // Grab the length of the contents
-            int contentsLength = finalString.Length;
+            int contentsLength = optionString.Length;
 
-            float buttonWidth = (contentsLength * Global.dialogueHandler.letterWidth) + Global.dialogueHandler.widthPadding*2f;
-
-            // Resize/reposition 
-            button.SetSizeAndOffset(buttonWidth, (Global.dialogueHandler.letterHeight) + Global.dialogueHandler.heightPadding*2f, -((longestWidth-buttonWidth)/2f), offsetOption);
             button.ShowBubble();
             button.GrowBubble();
-            
-            float tempXLocation = Global.dialogueHandler.defaultInset.x;
-            float tempYLocation = Global.dialogueHandler.defaultInset.y;
 
-            foreach (char c in finalString)
-            {
-                DialogueCharacter dc = new DialogueCharacter();
-                dc.character = c;
-
-                float delay = 0f;
-                // button.AddText(DialogueUtils.CreateTextObject(Global.dialogueHandler.textPfb, dc, 
-                //                                                             button.transform, 
-                //                                                             new Vector2(tempXLocation, tempYLocation),  
-                //                                                             out delay));
-                // Update X location
-                tempXLocation += Global.dialogueHandler.letterWidth;
-            }
+            optionButtons.Add(button);
 
             offsetOption -= (Global.dialogueHandler.letterHeight + Global.dialogueHandler.heightPadding + Global.dialogueHandler.optionOffset);
 
@@ -224,40 +255,38 @@ public class InteractionComponent : MonoBehaviour
             }
             else if (Global.input.GetButtonDown("UI|Up"))
             {
-                friendSpeechHandler.buttons[selected].DeselectButton();
+                optionButtons[selected].DeselectButton();
 
                 if (selected > 0)
                 {
                     selected--;
                 }
 
-                friendSpeechHandler.buttons[selected].SelectButton();
+                optionButtons[selected].SelectButton();
             }
             else if (Global.input.GetButtonDown("UI|Down"))
             {
-                friendSpeechHandler.buttons[selected].DeselectButton();
+                optionButtons[selected].DeselectButton();
 
                 if (selected < options.Count-1)
                 {
                     selected++;
                 }
 
-                friendSpeechHandler.buttons[selected].SelectButton();
+                optionButtons[selected].SelectButton();
             }
 
             yield return null;
         }
 
         // Hide all the buttons
-        foreach (var button in friendSpeechHandler.buttons) 
+        foreach (var button in optionButtons) 
         {
             button.DeselectButton();
-            // button.KillTextElements();
             button.ShrinkBubble();
-            Destroy(button, 1.0f);
         }
 
-        friendSpeechHandler.buttons.Clear();
+        optionButtons.Clear();
         
         // Re-enable movement input
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");

@@ -92,7 +92,12 @@ public class SpeechBubble : MonoBehaviour
 
         Vector2 newSize = text.GetSize();
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (2 * horizontalPadding) + newSize.x);
-        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (3 * verticalPadding) + newSize.y);
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (2 * verticalPadding) + newSize.y);
+    }
+
+    public void SetHeight(float newHeight)
+    {
+        rt.anchoredPosition = new Vector2(0f, newHeight);
     }
 
     /**

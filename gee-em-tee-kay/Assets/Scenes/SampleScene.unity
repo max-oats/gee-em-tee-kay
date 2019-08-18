@@ -2565,6 +2565,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8563041433594134032, guid: c2c7c891f4b0f434f8051a29e273320a,
         type: 3}
+    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: _speechBubble
+      value: 
+      objectReference: {fileID: 8563041433594134032, guid: 80aa33e00a21ea4428c27fe9a2973578,
+        type: 3}
+    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: _optionBubble
+      value: 
+      objectReference: {fileID: 7382099661454126469, guid: 6aee043c3b078284f887edc08b73e044,
+        type: 3}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: plant
@@ -3639,6 +3649,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5254459281507211269, guid: c17d7d233611ffa48ac04f465a63513c,
+        type: 3}
+      propertyPath: _speechBubble
+      value: 
+      objectReference: {fileID: 7382099661454126469, guid: 6aee043c3b078284f887edc08b73e044,
+        type: 3}
+    - target: {fileID: 5254459281507211269, guid: c17d7d233611ffa48ac04f465a63513c,
+        type: 3}
+      propertyPath: interactionMenuOptionGap
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 868244524000312787, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}
