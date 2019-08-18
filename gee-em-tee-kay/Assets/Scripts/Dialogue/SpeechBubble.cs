@@ -11,6 +11,7 @@ public class SpeechBubble : MonoBehaviour
     public AnimationCurve introCurve;
     public AnimationCurve outroCurve;
     public AnimationCurve interruptCurve;
+    public AnimationCurve bumpCurve;
     public AnimationCurve selectCurve;
 
     // If the image is an option button (used in dialogue)
@@ -168,6 +169,16 @@ public class SpeechBubble : MonoBehaviour
         StartCoroutine(animationCoroutine);
 
         imageElement.color = new Color(imageElement.color.r, imageElement.color.g, imageElement.color.b, alpha);
+    }
+
+    /**
+     * BumpButton
+     * - Bump the button
+     */
+    public void BumpButton(bool resetTime = true)
+    {
+        animationCoroutine = UpdateCoroutine(animationCoroutine, AnimateBubble(bumpCurve));
+        StartCoroutine(animationCoroutine);
     }
 
     /**

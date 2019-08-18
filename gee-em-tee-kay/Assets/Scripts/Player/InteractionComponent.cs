@@ -108,6 +108,10 @@ public class InteractionComponent : MonoBehaviour
         string interactString = "";
         int maxLength = 30;
 
+        float carriageReturnSpeed = 0.5f;
+        float carriageReturnCounter = carriageReturnSpeed;
+        bool carriageReturnOnOff = false;
+
         nameBubble.ShowBubble();
         nameBubble.GrowBubble();
 
@@ -130,11 +134,8 @@ public class InteractionComponent : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                print("got here");
                 if (interactString.Length > 0)
                 {
-                    print("got here?");
-
                     plantNamed = true;
                     Global.plantName = interactString;
                     Global.plantManager.CreatePlant(interactString.GetHashCode());
@@ -149,16 +150,53 @@ public class InteractionComponent : MonoBehaviour
 
             if (!previousString.Equals(interactString))
             {
-                nameBubble.SelectButton();
-                nameBubble.SetContents(interactString);
+                nameBubble.BumpButton();
+
+                string finalString = interactString;
+
+                if (interactString.Length < maxLength)
+                {
+                    if (carriageReturnOnOff)
+                    {
+                        finalString += "_";
+                    }
+                    else
+                    {
+                        finalString += " ";
+                    }
+                }
+
+                nameBubble.SetContents(finalString);
             }
 
             previousString = interactString;
 
+            carriageReturnCounter += Time.deltaTime;
+            if (carriageReturnCounter > carriageReturnSpeed)
+            {
+                carriageReturnCounter = 0f;
+
+                string finalString = interactString;
+
+                if (interactString.Length < maxLength)
+                {
+                    if (carriageReturnOnOff)
+                    {
+                        finalString += "_";
+                    }
+                    else
+                    {
+                        finalString += " ";
+                    }
+                }
+
+                nameBubble.SetContents(finalString);
+
+                carriageReturnOnOff = !carriageReturnOnOff;
+            }
+
             yield return null;
         }
-
-        print("got here???");
 
         Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
 

@@ -3155,12 +3155,12 @@ PrefabInstance:
     - target: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
         type: 3}
       propertyPath: startMenuPosition.x
-      value: 1.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800531364912115893, guid: 647c2826553fbea4ea67bbff76243fba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800531364912115893, guid: 647c2826553fbea4ea67bbff76243fba,
         type: 3}
