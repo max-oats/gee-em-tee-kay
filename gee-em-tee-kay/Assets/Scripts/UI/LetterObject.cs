@@ -134,6 +134,8 @@ public class LetterObject : MonoBehaviour
             text.fontStyle = FontStyle.Italic;
         }
 
+        text.color = color;
+
         text.enabled = showByDefault;
     }
 

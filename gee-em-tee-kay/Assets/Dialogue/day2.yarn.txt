@@ -53,8 +53,8 @@ tags:
 ---
 Player: \w"so have you ever actually dated a man?"
 Player: this one is the \jworst one.
-Player: i could barely get the word \d002"\d002no" out of my mouth
-Player: before \c004\i\d001g\d001a\d001r\d001y\i\c000 jumped on it like a goose on the last seed
+Player: i could barely get the word \d002"no\d000" out of my mouth
+Player: before \c004\i\d001gary\d000\i\c000 jumped on it like a goose on the last seed
 Player: \w"ooooooooooh"\w
 Player: \w"i'm gary and i don't think bisexual people in heterosexual relationships are valid"\w
 Player: \w"oooooooooooooooooh"\w

@@ -39,7 +39,7 @@ Player: okay. i'll see you soon, mum.
 title: Day5.Intro4
 tags:
 ---
-Player: really\d002.\d002.\d002. it was neither of us.
+Player: really\d002... \d000it was neither of us.
 Player: we were just incompatible
 Player: which was something i didn't really think was possible.
 Player: that might be the \jsaddest part of all.
@@ -56,6 +56,6 @@ tags:
 Player: i promise i'll still talk to you when i have other furniture, PLANTNAME.
 Player: as long as you promise not to get jealous.
 Player: i'm sorry i was mean to you at the start of the week.
-Player: it's\d002.\d002.\d002. been a rough week for me.
+Player: it's\d002... \d000been a rough week for me.
 Player: thank you for everything.
 ===

@@ -180,7 +180,7 @@ public class TextObject : MonoBehaviour
         int rainbowCounter = 0;
 
         Color color = Color.white; // Colour setting (default white)
-        float delay = textSpeed;
+        float delay = 0f;
 
         int counter = 0; // Counter used when building up a code
         string letterCode = ""; // Code built up when we're listening
@@ -500,6 +500,11 @@ public class TextObject : MonoBehaviour
     public Vector2 GetSize()
     {
         return new Vector2(longestLine, noOfLines * (fontSize + lineSpacing));
+    }
+
+    public float GetTextSpeed()
+    {
+        return textSpeed;
     }
 
     /** Debug editor script */

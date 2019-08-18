@@ -149,7 +149,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             lo.Show(true);
 
             // Set delay
-            delay = lo.postDelay;
+            delay = lo.postDelay + speechBubble.text.GetTextSpeed();
         
             // Do bleep if needed
             if (timeCounter >= timeBetweenBleeps)
