@@ -144,6 +144,7 @@ public class LetterObject : MonoBehaviour
         rt.anchoredPosition = newPos;
 
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, width * 1.7f);
     }
 
     public void Show(bool grow = false)

@@ -80,6 +80,19 @@ public class TextObject : MonoBehaviour
     private string parsedString; // The parsed string, only used if parseText==true
     private List<LetterObject> letterObjects = new List<LetterObject>(); // A list of the letter objects
 
+    public void Start()
+    {
+        if (parseText && visibleByDefault)
+        {
+            SetText(text);
+
+            foreach (LetterObject lo in letterObjects)
+            {
+                lo.Show();
+            }
+        }
+    }
+
     /**
      * SetText
      * - Updates the existing text.
