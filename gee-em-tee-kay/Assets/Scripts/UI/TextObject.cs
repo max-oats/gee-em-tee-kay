@@ -445,33 +445,31 @@ public class TextObject : MonoBehaviour
             // Set new position
             letterObject.SetPosition(letterPlacement, fontSize);
 
+            // Update X location
+            if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + wideCharacters + "]"))
+            {
+                letterPlacement.x += ((fontWidth * wideCharacterMultiplier) + extraKerning);
+            }
+            else if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + thinCharacters + "]"))
+            {
+                letterPlacement.x += ((fontWidth * thinCharacterMultiplier) + extraKerning);
+            }
+            else
+            {
+                letterPlacement.x += (fontWidth + extraKerning);  
+            }
+
+            if (letterPlacement.x > longestLine)
+            {
+                longestLine = letterPlacement.x;
+            }
+
             // Add linebreak if necessary
             if (letterObject.isLineBreak)
             {
                 // Update Y location
                 letterPlacement.y -= (fontSize + lineSpacing);
                 letterPlacement.x = 0f;
-            }
-            else
-            {
-                // Update X location
-                if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + wideCharacters + "]"))
-                {
-                    letterPlacement.x += ((fontWidth * wideCharacterMultiplier) + extraKerning);
-                }
-                else if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + thinCharacters + "]"))
-                {
-                    letterPlacement.x += ((fontWidth * thinCharacterMultiplier) + extraKerning);
-                }
-                else
-                {
-                    letterPlacement.x += (fontWidth + extraKerning);  
-                }
-
-                if (letterPlacement.x > longestLine)
-                {
-                    longestLine = letterPlacement.x;
-                }
             }
         }
 

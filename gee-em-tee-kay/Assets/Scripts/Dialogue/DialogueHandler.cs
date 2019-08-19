@@ -23,44 +23,48 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public delegate void DialogueEnd();
     public DialogueEnd dialogueEnd;
 
-    public GameObject _speechBubble;
-    public GameObject _optionBubble;
-    public GameObject _audioSource;
-    public Animator playerAnimator;
-    public TitleCanvas thoughtCanvas;
-
-    public SpeechBubbleHandler playerSpeechHandler;
-
-    public float timeBetweenBleeps;
-
-    public float speedyTextMultiplier = 0.3f;
-
-    public float interactionMenuOptionGap = 10f;
-
-    public float optionDelay = 0.1f;
-
-    public float cameraUpOffset = -2f;
+    /** Prefabs */
+    [Tooltip("Speech bubble prefab"), SerializeField] 
+    private GameObject _speechBubble;
     
-    public float offsetAddition = 0.1f;
+    [Tooltip("Option bubble prefab"), SerializeField] 
+    private GameObject _optionBubble;
 
-    public float screenShakeMultiplier = 0.6f;
+    [Tooltip("Prefab for the talk noise"), SerializeField] 
+    private GameObject _talkNoise;
 
+    /** Scene components */
+    [Tooltip("The animator for the player"), SerializeField] 
+    private Animator playerAnimator;
+
+    [Tooltip("Script used for the thoughts"), SerializeField] 
+    private TitleCanvas thoughtCanvas;
+
+    [Tooltip("Yarn Dialogue Runner"), SerializeField] 
+    private Yarn.Unity.DialogueRunner dialogueRunner;
+
+    [Tooltip("The speech bubble handler for the player"), SerializeField] 
+    private SpeechBubbleHandler playerSpeechHandler;
+
+    /** Balancing variables */
+    [SerializeField] private float timeBetweenBleeps;
+    [SerializeField] private float speedyTextMultiplier = 0.3f;
+    [SerializeField] private float interactionMenuOptionGap = 10f;
+    [SerializeField] private float optionDelay = 0.1f;
+    [SerializeField] private float cameraUpOffset = -2f;
+    [SerializeField] private float offsetAddition = 0.1f;
+    [SerializeField] private float screenShakeMultiplier = 0.6f;
+
+    /** Actual publics */
     public bool inDialogue = false;
-
     public List<SpecialName> specialNames;
 
-    [SerializeField] private Yarn.Unity.DialogueRunner dialogueRunner;
-
+    /** Actual privates */
     private bool currentlyRunningLine = false;
     private float delayTimeMultiplier = 1f;
 
     void Update()
     {
-        if (Global.input.GetButtonDown("Talk"))
-        {
-
-        }
-
         if (currentlyRunningLine && Global.input.GetButtonDown("Talk"))
         {
             delayTimeMultiplier = speedyTextMultiplier;
@@ -135,7 +139,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             {
                 if ((lo.character != '.' && lo.character != ' '))
                 {
-                    GameObject go = Instantiate(_audioSource);
+                    GameObject go = Instantiate(_talkNoise);
                     Destroy(go, 1.0f);
                     playerAnimator.CrossFadeInFixedTime("Talk", 0.05f);
 
@@ -213,7 +217,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             }
         }
 
-        float offsetOption = interactionMenuOptionGap * optionsCollection.options.Count;
+        float offsetOption = interactionMenuOptionGap * (optionsCollection.options.Count / 2);
 
         offsetOption -= interactionMenuOptionGap;
 

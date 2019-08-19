@@ -248,7 +248,7 @@ public class InteractionComponent : MonoBehaviour
             }
         }
 
-        float offsetOption = interactionMenuOptionGap * options.Count;
+        float offsetOption = interactionMenuOptionGap * (options.Count / 2);
 
         offsetOption -= interactionMenuOptionGap;
 

@@ -9,9 +9,6 @@ public class SpeechBubbleHandler : MonoBehaviour
     // Speech bubble prefab
     [SerializeField] private GameObject _speechBubble;
 
-    // Dialogue option bubbles.
-    public List<SpeechBubble> buttons;
-
     // Entity associated with the speech bubble
     private Entity entity;
 
