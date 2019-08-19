@@ -62,7 +62,6 @@ title: Day1.Talk
 tags:
 ---
 Player: ...
-Player: ok.\d002 \d000i'm not gonna talk to PLANTNAME.
-Player: and it's not just because of i gave it an \b\jincredibly cursed\j\b name
-Player: its just\d002... \d000she used to talk to plants.
+Player: ok.\d002 \d000i'm not gonna talk to you, PLANTNAME.
+Player: your name is \ifar too\i \b\jcursed.|and... she used to talk to plants.
 ===

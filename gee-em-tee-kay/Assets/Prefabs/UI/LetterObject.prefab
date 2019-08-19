@@ -54,7 +54,7 @@ MonoBehaviour:
   rt: {fileID: 8981391698449559286}
   waveStrength: 10
   waveSpeed: 10
-  jitterStrength: 10
+  jitterStrength: 4
   jitterEveryThisFrame: 2
   introCurve:
     serializedVersion: 2

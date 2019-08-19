@@ -28,6 +28,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public GameObject _optionBubble;
     public GameObject _audioSource;
     public Animator playerAnimator;
+    public TitleCanvas thoughtCanvas;
 
     /// How quickly to show the text, in seconds per character
     [Tooltip("How quickly to show the text, in seconds per character")]
@@ -134,6 +135,16 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
         // Swap out plant name for the given plant name
         stringContents = stringContents.Replace("PLANTNAME", "\\c002" + Global.plantName + "\\c000");
+
+        string[] splitString = stringContents.Split('|'); 
+        stringContents = splitString[0];
+
+        string thoughtText = "";
+
+        if (splitString.Length > 1)
+        {
+            thoughtText = splitString[1];
+        }
         
         // Sets the contents of the speech bubble
         speechBubble.SetContents(stringContents);
@@ -174,10 +185,43 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             yield return new WaitForSeconds(delay * delayTimeMultiplier);
         }
 
+        if (thoughtText.Length > 0)
+        {
+            yield return new WaitForSeconds(0.3f);
+
+            delayTimeMultiplier = 1f;
+
+            // Sets the contents of the speech bubble
+            List<LetterObject> letterObjects = thoughtCanvas.SetText("\\c008\\b\\j" + thoughtText);
+
+            foreach (LetterObject lo in letterObjects)
+            {
+                float delay = textSpeed;
+
+                // Show letter object
+                lo.Show(true);
+
+                // Set delay
+                delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+
+                if (lo.isScreenShake)
+                {
+                    Global.cameraController.ScreenShake(0.1f);
+                }
+
+                yield return new WaitForSeconds(delay * delayTimeMultiplier);
+            }
+        }
+
         // Wait for talk input
         while (Global.input.GetButtonDown("Talk") == false) 
         {
             yield return null;
+        }
+
+        if (thoughtText.Length > 0)
+        {
+            thoughtCanvas.FadeOut();
         }
 
         // Kill the text elements

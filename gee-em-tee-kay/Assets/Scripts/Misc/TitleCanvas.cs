@@ -9,29 +9,20 @@ public class TitleCanvas : MonoBehaviour
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private TextObject text;
 
+    private Coroutine coroutine;
+
     // Start is called before the first frame update
     void Start()
     {
-        Global.dayManager.startPressed += FadeOut;
+        //Global.dayManager.startPressed += FadeOut;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            StartCoroutine(SetText("\\c008\\b\\jhe's not."));
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(SetText("\\c008\\b\\jit wasn't."));
-        }
-    }
-
-    void FadeOut()
+    public void FadeOut()
     {
         if (shouldFade)
-            StartCoroutine(FadeOutRenderers());
+        {
+            coroutine = StartCoroutine(FadeOutRenderers());
+        }
     }
 
     IEnumerator FadeOutRenderers()
@@ -55,19 +46,23 @@ public class TitleCanvas : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    IEnumerator SetText(string newText)
+    public List<LetterObject> SetText(string newText)
     {
-        text.SetText(newText);
-
-        foreach (LetterObject lo in text.GetLetterObjects())
+        if (coroutine != null)
         {
-            float delay = 0.05f;
+            StopCoroutine(coroutine);
 
-            // Show letter object
-            lo.Show(true);
-
-            yield return new WaitForSeconds(delay);
+            coroutine = null;
         }
 
+        Text[] textObjects = GetComponentsInChildren<Text>();
+        text.SetText(newText);
+
+        foreach (Text textObject in textObjects)
+        {
+            textObject.color = new Color(textObject.color.r, textObject.color.g, textObject.color.b, 1.0f);
+        }
+
+        return text.GetLetterObjects();
     }
 }
