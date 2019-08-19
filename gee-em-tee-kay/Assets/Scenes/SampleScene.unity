@@ -2757,6 +2757,10 @@ PrefabInstance:
       propertyPath: thoughtCanvas
       value: 
       objectReference: {fileID: 538448635}
+    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
+      propertyPath: interactionMenuOptionGap
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: plant
@@ -3742,7 +3746,7 @@ PrefabInstance:
     - target: {fileID: 5254459281507211269, guid: c17d7d233611ffa48ac04f465a63513c,
         type: 3}
       propertyPath: interactionMenuOptionGap
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 868244524000312787, guid: c17d7d233611ffa48ac04f465a63513c, type: 3}

@@ -23,55 +23,27 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
     public delegate void DialogueEnd();
     public DialogueEnd dialogueEnd;
 
-    public GameObject textPfb;
     public GameObject _speechBubble;
     public GameObject _optionBubble;
     public GameObject _audioSource;
     public Animator playerAnimator;
     public TitleCanvas thoughtCanvas;
 
-    /// How quickly to show the text, in seconds per character
-    [Tooltip("How quickly to show the text, in seconds per character")]
-    public float textSpeed = 0.025f;
+    public SpeechBubbleHandler playerSpeechHandler;
 
     public float timeBetweenBleeps;
 
     public float speedyTextMultiplier = 0.3f;
 
-    public Vector2 defaultInset = new Vector2(100f, -100f);
-
     public float interactionMenuOptionGap = 10f;
 
-    public float heightPadding = 100f;
-    public float widthPadding = 100f;
-
-    public float letterHeight = 100f;
-    public float letterWidth = 100f;
-
-    public float letterOffset = 0.2f;
-
-    public float optionOffset = 10f;
     public float optionDelay = 0.1f;
 
     public float cameraUpOffset = -2f;
-
-    public int lineLength = 20;
-
-    public float lineLengthMultiplier = 0.85f;
     
     public float offsetAddition = 0.1f;
 
     public float screenShakeMultiplier = 0.6f;
-
-    public SpeechBubbleHandler playerSpeechHandler;
-
-    public List<Color> normalColours;
-    public List<float> delayCodes;
-    public List<Color> rainbowColours;
-
-    public string rainbowColourFile = "/DialogueData/rainbow.txt";
-    public string normalColourFile = "/DialogueData/colours.txt";
-    public string delayFile = "/DialogueData/delays.txt";
 
     public bool inDialogue = false;
 
@@ -81,13 +53,6 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
     private bool currentlyRunningLine = false;
     private float delayTimeMultiplier = 1f;
-
-    void Start()
-    {
-        rainbowColours = GeneralUtils.LoadColoursFromFile(rainbowColourFile);
-        normalColours = GeneralUtils.LoadColoursFromFile(normalColourFile);
-        delayCodes = GeneralUtils.LoadFloatsFromFile(delayFile);    
-    }
 
     void Update()
     {
@@ -154,13 +119,11 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
         foreach (LetterObject lo in speechBubble.text.GetLetterObjects())
         {
-            float delay = textSpeed;
-
             // Show letter object
             lo.Show(true);
 
             // Set delay
-            delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+            float delay = lo.postDelay + speechBubble.text.GetTextSpeed();
 
             if (lo.isScreenShake)
             {
@@ -196,13 +159,11 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
             foreach (LetterObject lo in letterObjects)
             {
-                float delay = textSpeed;
-
                 // Show letter object
                 lo.Show(true);
 
                 // Set delay
-                delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+                float delay = lo.postDelay + speechBubble.text.GetTextSpeed();
 
                 if (lo.isScreenShake)
                 {
@@ -282,7 +243,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
             optionButtons.Add(button);
 
-            offsetOption -= (Global.dialogueHandler.letterHeight + Global.dialogueHandler.heightPadding + Global.dialogueHandler.optionOffset);
+            offsetOption -= interactionMenuOptionGap;
 
             j++;
 

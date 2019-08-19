@@ -278,7 +278,7 @@ public class InteractionComponent : MonoBehaviour
 
             optionButtons.Add(button);
 
-            offsetOption -= (Global.dialogueHandler.letterHeight + Global.dialogueHandler.heightPadding + Global.dialogueHandler.optionOffset);
+            offsetOption -= interactionMenuOptionGap;
 
             j++;
 
