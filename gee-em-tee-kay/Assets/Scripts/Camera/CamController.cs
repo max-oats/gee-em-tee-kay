@@ -17,7 +17,7 @@ public class CamController : MonoBehaviour
     [SerializeField] private Vector3 initialPosition;
     [SerializeField] private Vector3 initialRotation;
 
-    private bool hasStarted = false;
+    private bool hasStarted = true;
 
     // Update is called once per frame
     void LateUpdate()

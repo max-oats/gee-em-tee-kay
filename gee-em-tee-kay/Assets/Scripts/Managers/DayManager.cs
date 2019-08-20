@@ -17,6 +17,7 @@ public class DayManager : MonoBehaviour
 
     [SerializeField] private int totalNumDays;
     [SerializeField] private GameObject faderObject;
+    [SerializeField] private GameObject titleObject;
     [SerializeField] private float fadeTime = 1.0f;
     [SerializeField] private Color fadedInColor = Color.white;
     [SerializeField] private Color fadedOutColor = Color.white;
@@ -32,18 +33,38 @@ public class DayManager : MonoBehaviour
 
     IEnumerator GameStartCoroutine()
     {
+        yield return new WaitForSeconds(3.0f);
+
         while (!Global.input.GetButtonDown("Start"))
         {
             yield return null;
         }
 
+        titleObject.GetComponent<Animator>().CrossFadeInFixedTime("TitleBack", 0f);
+
+        yield return new WaitForSeconds(8.0f);
+
         startPressed?.Invoke();
 
-        Global.cameraController.MoveCamera();
+        bool fadedOut = false;
+        float timeCounter = 0f;
+        while (!fadedOut)
+        {
+            if (timeCounter > fadeTime)
+            {
+                fadedOut = true;
+            }
+            else
+            {
+                timeCounter += Time.deltaTime;
+            }
 
-        yield return new WaitForSeconds(1.0f);
+            titleObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.white, new Color(1f, 1f, 1f, 0f), timeCounter/fadeTime);
 
-        StartNewDay(false);
+            yield return null;
+        }
+
+        StartNewDay();
     }
 
     public int GetTotalNumDays()

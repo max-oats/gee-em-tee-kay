@@ -42,8 +42,6 @@ public class TitleCanvas : MonoBehaviour
 
             yield return null;
         }
-
-        gameObject.SetActive(false);
     }
 
     public List<LetterObject> SetText(string newText)

@@ -48,8 +48,8 @@ Player: yeah,\d002 \d000i'm walking into the new place right now!
 Player: well, its\d002... \d000cozy.
 Player: they left a \c004plant pot\c000 here
 Player: which i guess is my bed now?
-Player: bud!!!!\d002 \d000i am totally fine!
-Player: it was \btotally\b mutual.
+Player: bud!!!!\d002 \d000i am totally fine!|toootally
+Player: it was \btotally\b mutual.|was that convincing?
 Player: yeah, the moving van isn't bringing the furniture for another \e\b5 days!!!!!!!
 Player: but don't worry. 
 Player: i spent my remaining £2 on a seed for my plant pot!!!!!
@@ -63,5 +63,5 @@ tags:
 ---
 Player: ...
 Player: ok.\d002 \d000i'm not gonna talk to you, PLANTNAME.
-Player: your name is \ifar too\i \b\jcursed.|and... she used to talk to plants.
+Player: your name is \ifar too\i \b\jcursed.|chris used to talk to plants.
 ===

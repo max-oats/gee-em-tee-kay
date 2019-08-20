@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 /// todo: pool letterobjects instead of constantly destroying/creating them
 
@@ -135,11 +134,11 @@ public class TextObject : MonoBehaviour
             }
             else
             {
-                UnityEditor.EditorApplication.delayCall+=()=>
-                {
-                    if (letterObject != null)
-                        DestroyImmediate(letterObject.gameObject);
-                };
+                // UnityEditor.EditorApplication.delayCall+=()=>
+                // {
+                //     if (letterObject != null)
+                //         DestroyImmediate(letterObject.gameObject);
+                // };
             }            
         }
 
@@ -154,11 +153,11 @@ public class TextObject : MonoBehaviour
             {
                 if (child.GetComponent<LetterObject>() != null)
                 {
-                    UnityEditor.EditorApplication.delayCall+=()=>
-                    {
-                        if (child != null)
-                            DestroyImmediate(child.gameObject);
-                    };
+                    // UnityEditor.EditorApplication.delayCall+=()=>
+                    // {
+                    //     if (child != null)
+                    //         DestroyImmediate(child.gameObject);
+                    // };
                 }
             }
         }
@@ -522,21 +521,5 @@ public class TextObject : MonoBehaviour
     public void UpdateUIString()
     {
         SetText(text);
-    }
-}
-
-[CustomEditor(typeof(TextObject))]
-public class ObjectBuilderEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        TextObject textObject = (TextObject)target;
-
-        if(GUILayout.Button("Update UI String"))
-        {
-            textObject.UpdateUIString();
-        }
-
-        DrawDefaultInspector();
     }
 }
