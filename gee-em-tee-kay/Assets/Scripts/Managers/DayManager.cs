@@ -101,7 +101,7 @@ public class DayManager : MonoBehaviour
                 timeCounter += Time.deltaTime;
             }
 
-            titleObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(1f, 1f, 1f, 0f), Color.white, timeCounter/fadeTime);
+            titleObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(1f, 1f, 1f, 0f), Color.white, timeCounter/0.5f);
 
             yield return null;
         }
