@@ -40,9 +40,34 @@ Player: sorry bud
 title: Day4.Talk
 tags:
 ---
-Player: hey, {d=0.2}uh, PLANTNAME.
-Player: uh
-Player: today was a bad one.
-Player: i'm telling my plant more than i tell my therapist
-Player: which i think means i should talking to my therapist more
+Player: PLANTNAME
+Player: PLANTNAME, PLANTNAME, PLANTNAME
+Player: listen, i don't mean to be [wavey]dramatic[/w] but
+Player: what exactly is the point?
+Player: ...
+Player: i had one (1) good thing
+Player: and i messed it up
+Player: chris was...
+Player: she was [bold]perfect[/b] for me
+Player: we just had so much in common
+Player: we liked all the same music, the same games
+Player: we even shared the same politics, like
+Player: we belonged together
+Player: we {d=0.1}[jittery]belong[/j]{d=0.1} together
+Player: there's no one else like her out there, there can't be
+Player: and god, PLANTNAME, she was so [j][e]beautiful[/e][/j]
+Player: i don't even know why i'm bothering with tinder
+Player: everyone on there is just so [b][j]boring[/b][/j]
+Player: and i don't want a chris 2.0
+Player: i just want her
+Player: and she's gone
+Player: ...
+Player: i'm sorry, you don't wanna hear about this
+Player: heck, you [i]can't[/i] hear this!
+Player: you're just a stupid plant
+Player: {d=0.8}.{d=0.8}.{d=0.8}.
+Player: i'm sorry
+Player: that was mean
+Player: i'm just having a [b][e]really[/b][/e] bad mental health day
+Player: you know how it is sometimes
 ===
