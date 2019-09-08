@@ -33,6 +33,13 @@ public class DayManager : MonoBehaviour
 
     IEnumerator GameStartCoroutine()
     {
+        if (Global.debug.skipTitleScreen)
+        {
+            titleObject.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
+            StartNewDay();
+            yield break;
+        }
+
         yield return new WaitForSeconds(3.0f);
 
         while (!Global.input.GetButtonDown("Start"))

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DebugStuff : MonoBehaviour
 {
-    public bool skipIntros = false;
+    public bool skipTitleScreen = false;
+    public bool skipIntroDialogue = false;
     public bool skipDailyDialogue = false;
     public float debugCycleSpeed = 1;
     public bool cycleStemColour = false;

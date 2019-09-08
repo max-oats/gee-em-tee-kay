@@ -69,11 +69,11 @@ public class PlayerController : MonoBehaviour
 
         animator.CrossFadeInFixedTime("IdleWalk", 0f);
 
-        if (dayNo == 0 && !Global.debug.skipIntros)
+        if (dayNo == 0 && !Global.debug.skipIntroDialogue)
         {
             Global.dialogueHandler.StartDialogue("Day1.Intro");
         }
-        else if (dayNo == 4 && !Global.debug.skipIntros)
+        else if (dayNo == 4 && !Global.debug.skipIntroDialogue)
         {
             Global.dialogueHandler.StartDialogue("Day5.Intro");
         }
