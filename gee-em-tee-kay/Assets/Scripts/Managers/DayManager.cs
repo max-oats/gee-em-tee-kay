@@ -10,13 +10,7 @@ public class DayManager : MonoBehaviour
     public delegate void DayStarted(int dayNo);
     public DayStarted dayStarted;
 
-    public delegate void GameStarted(int dayNo);
-    public GameStarted gameStarted;
-
-    public delegate void StartPressed();
-    public StartPressed startPressed;
-
-    public bool seedPlanted = false;
+    [HideInInspector] public bool seedPlanted = false;
 
     [SerializeField] private int totalNumDays;
     [SerializeField] private GameObject faderObject;
@@ -29,8 +23,6 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
-        gameStarted?.Invoke(0);
-
         StartCoroutine(GameStartCoroutine());
     }
 
@@ -54,35 +46,6 @@ public class DayManager : MonoBehaviour
 
         yield return new WaitForSeconds(10.0f);
 
-        startPressed?.Invoke();
-
-        StartNewDay();
-    }
-
-    public int GetTotalNumDays()
-    {
-        return totalNumDays;
-    }
-
-    public void StartNewDay(bool fadeIn = true)
-    {
-        if (fadeIn)
-        {
-            StartCoroutine(StartDayFade());
-        }
-        
-        // Invoke delegate
-        dayLoaded?.Invoke(currentDay);
-
-        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
-    }
-
-    public IEnumerator StartDayFade()
-    {
-        titleObject.GetComponent<Animator>().CrossFadeInFixedTime("Day" + (currentDay+1), 0f);
-
-        yield return new WaitForSeconds(3.0f);
-
         bool fadedOut = false;
         float timeCounter = 0f;
         while (!fadedOut)
@@ -96,11 +59,61 @@ public class DayManager : MonoBehaviour
                 timeCounter += Time.deltaTime;
             }
 
-            faderObject.GetComponent<Renderer>().material.color = Color.Lerp(fadedOutColor, fadedInColor, timeCounter/fadeTime);
             titleObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.white, new Color(1f, 1f, 1f, 0f), timeCounter/fadeTime);
 
             yield return null;
         }
+
+        StartNewDay();
+    }
+
+    public int GetTotalNumDays()
+    {
+        return totalNumDays;
+    }
+
+    public void StartNewDay(bool fadeIn = true)
+    {
+        // Invoke delegate
+        dayLoaded?.Invoke(currentDay);
+
+        if (fadeIn)
+        {
+            StartCoroutine(StartDayFade());
+        } 
+
+        Global.input.controllers.maps.SetMapsEnabled(true, "Movement");
+    }
+
+    public IEnumerator StartDayFade()
+    {
+        bool fadedOut = false;
+        float timeCounter = 0f;
+        titleObject.GetComponent<Animator>().CrossFadeInFixedTime("Day" + (currentDay+1), 0f);
+        while (!fadedOut)
+        {
+            if (timeCounter > 0.5f)
+            {
+                fadedOut = true;
+            }
+            else
+            {
+                timeCounter += Time.deltaTime;
+            }
+
+            titleObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(1f, 1f, 1f, 0f), Color.white, timeCounter/fadeTime);
+
+            yield return null;
+        }
+
+        titleObject.GetComponent<Renderer>().material.color = Color.white;
+
+        yield return new WaitForSeconds(3.0f);
+
+        // do sound effects here
+        
+        faderObject.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
+        titleObject.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0f);
 
         dayStarted?.Invoke(currentDay);
     }
@@ -126,7 +139,6 @@ public class DayManager : MonoBehaviour
             }
 
             faderObject.GetComponent<Renderer>().material.color = Color.Lerp(fadedInColor, fadedOutColor, timeCounter/fadeTime);
-            titleObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(1f, 1f, 1f, 0f), Color.white, timeCounter/fadeTime);
 
             yield return null;
         }
