@@ -9,7 +9,7 @@ Player: lookin a little thirsty there, bud
 title: Day3.Overwatered
 tags:
 ---
-Player: oh! looking a \ibit\i too watered.
+Player: oh! looking a [italics]bit[/i] too watered.
 Player: but still looking fresh
 Player: phresh, if you will
 [[Day3.Talk]]
@@ -21,7 +21,8 @@ tags:
 Player: hmm... did i give you too much water?
 Player: i guess i just loved you too much
 Player: ...
-Player: that is \jnot\j a metaphor for my relationship!
+Player: that is [jittery]not[/j] a metaphor for my relationship!
+[[Day3.Talk]]
 ===
 
 title: Day3.Talk
@@ -33,6 +34,6 @@ Player: but talking to you actually helped yesterday.
 Player: so i'm gonna try this out!
 Player: ...
 Player: uhhhhh
-Player: \juhhhhhhhhhhhhh\j
-Player: \j\bwhat do i say\b\j
+Player: [jittery]uhhhhhhhhhhhhh
+Player: [jittery][bold]what do i say
 ===

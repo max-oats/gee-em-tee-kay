@@ -1,8 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 /// todo: pool letterobjects instead of constantly destroying/creating them
+
+[System.Serializable]
+public class ColourPreset
+{  
+    public string name;
+
+    public Color color;
+}
 
 /**
  * TextObject
@@ -64,13 +73,10 @@ public class TextObject : MonoBehaviour
     private float offsetWhenWavey = 0.05f;
 
     [Tooltip("The list of colours used for colour settings"), SerializeField]
-    private List<Color> normalColours;
+    private List<ColourPreset> colourPresets;
 
     [Tooltip("The list of colours used for rainbow colour settings"), SerializeField]
     private List<Color> rainbowColours;
-
-    [Tooltip("The list of delays used for delay timing"), SerializeField]
-    private List<float> delays;
 
     /** Privates */
     private float fontWidth = 0f;
@@ -134,11 +140,11 @@ public class TextObject : MonoBehaviour
             }
             else
             {
-                // UnityEditor.EditorApplication.delayCall+=()=>
-                // {
-                //     if (letterObject != null)
-                //         DestroyImmediate(letterObject.gameObject);
-                // };
+                UnityEditor.EditorApplication.delayCall+=()=>
+                {
+                    if (letterObject != null)
+                        DestroyImmediate(letterObject.gameObject);
+                };
             }            
         }
 
@@ -153,11 +159,11 @@ public class TextObject : MonoBehaviour
             {
                 if (child.GetComponent<LetterObject>() != null)
                 {
-                    // UnityEditor.EditorApplication.delayCall+=()=>
-                    // {
-                    //     if (child != null)
-                    //         DestroyImmediate(child.gameObject);
-                    // };
+                    UnityEditor.EditorApplication.delayCall+=()=>
+                    {
+                        if (child != null)
+                            DestroyImmediate(child.gameObject);
+                    };
                 }
             }
         }
@@ -166,161 +172,291 @@ public class TextObject : MonoBehaviour
         letterObjects.Clear();
     }
 
+    void ParseTag(string tag)
+    {
+
+    }
+
     void BuildLetters()
     {
-        // Reset parsed string
-        parsedString = "";
+        parsedString = ""; // Reset parsed string
+        noOfLines = 1; // Reset number of lines
         
         // Listeners
-        bool bIsListening = false; // Used to check whether we are listening for the next character
-        bool bIsListeningForColour = false; // Checks whether we're listening for colour chars
-        bool bIsListeningForDelay = false; // Checks whether we're listening for delay chars
+        bool isListeningTag = false; // Used to check whether we are listening for the next character
+        bool isListeningAction = false; // Used to check whether we are listening for the next character
 
         // Toggles
-        bool bIsBold = false;
-        bool bIsItalics = false;
-        bool bIsWavey = false;
-        bool bIsJittery = false;
-        bool bIsSwirly = false;
-        bool bIsShake = false;
-        bool bIsRainbow = false;
-        bool bIsBig = false;
+        bool isBold = false;
+        bool isItalics = false;
+        bool isRainbow = false;
+        bool isBig = false;
 
-        noOfLines = 1;
-
-        // Used to increment rainbow colours
-        int rainbowCounter = 0;
-
+        // Different values
         Color color = Color.white; // Colour setting (default white)
-        float delay = 0f;
+        float waveStrength = 0f;
+        float jitterStrength = 0f;
+        float swirlStrength = 0f;
 
-        int counter = 0; // Counter used when building up a code
-        string letterCode = ""; // Code built up when we're listening
+        float delay = 0f;
+        float shakeStrength = 0f;
+
+        int rainbowCounter = 0;
 
         float offset = 0f;
 
         if (parseText)
         {
+            // Set up built tag
+            string builtTag = "";
+
             // Iterate through the text string and create an array of characters
             foreach (char c in text)
             {
-                if (c == '\\')
+                if (isListeningTag)
+                {
+                    if (c == ']')
+                    {
+                        // Stop listening
+                        isListeningTag = false;
+
+                        bool setTagTo = true;
+
+                        // Check tag and apply
+                        if (builtTag.Length > 0)
+                        {
+                            // Set to false if its an end tag
+                            if (builtTag[0] == '/')
+                            {
+                                setTagTo = false;
+                                builtTag = builtTag.Remove(0, 1);
+                            }
+
+                            // Check tag and apply
+                            if (builtTag.Length > 0)
+                            {
+                                // Grab multiple strings
+                                string[] tagStrings = builtTag.Split('=');
+                                
+                                // Set tag name to this
+                                string tagName = tagStrings[0];
+
+                                // Standard toggles
+                                if (tagName.Equals("bold") || tagName.Equals("b"))
+                                {
+                                    isBold = setTagTo;
+                                }
+                                else if (tagName.Equals("italics") || tagName.Equals("i"))
+                                {
+                                    isItalics = setTagTo;
+                                }
+                                else if (tagName.Equals("rainbow") || tagName.Equals("r"))
+                                {
+                                    isRainbow = setTagTo;
+                                }
+                                else if (tagName.Equals("big") || tagName.Equals("e"))
+                                {
+                                    isBig = setTagTo;
+                                }
+                                else
+                                {
+                                    // Set up param
+                                    string tagParam = "";
+                                    if (tagStrings.Length >= 2)
+                                    {
+                                        tagParam = tagStrings[1];
+                                    }
+
+                                    if (tagName.Equals("wavey") || tagName.Equals("wave") || tagName.Equals("w"))
+                                    {
+                                        if (setTagTo)
+                                        {
+                                            float outputStrength = 0f;
+                                            if (tagParam.Length > 0 && float.TryParse(tagParam, out outputStrength))
+                                            {
+                                                waveStrength = outputStrength;
+                                            }
+                                            else
+                                            {
+                                                waveStrength = 1f;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            waveStrength = 0f;
+                                        }
+                                    }
+                                    else if (tagName.Equals("jitter") || tagName.Equals("jittery") || tagName.Equals("j"))
+                                    {
+                                        if (setTagTo)
+                                        {
+                                            float outputStrength = 0f;
+                                            if (tagParam.Length > 0 && float.TryParse(tagParam, out outputStrength))
+                                            {
+                                                jitterStrength = outputStrength;
+                                            }
+                                            else
+                                            {
+                                                jitterStrength = 1f;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            jitterStrength = 0f;
+                                        }
+                                    }
+                                    else if (tagName.Equals("swirly") || tagName.Equals("a"))
+                                    {
+                                        if (setTagTo)
+                                        {
+                                            float outputStrength = 0f;
+                                            if (tagParam.Length > 0 && float.TryParse(tagParam, out outputStrength))
+                                            {
+                                                swirlStrength = outputStrength;
+                                            }
+                                            else
+                                            {
+                                                swirlStrength = 1f;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            swirlStrength = 0f;
+                                        }
+                                    }
+                                    else if (tagName.Equals("color") || tagName.Equals("colour") || tagName.Equals("c"))
+                                    {
+                                        color = Color.white;
+                                        Color newColor = Color.white;
+                                        if (setTagTo)
+                                        {
+                                            if (tagParam.Length > 0)
+                                            {
+                                                // Param exists. Time to select colour
+                                                if (tagParam[0] == '#')
+                                                {
+                                                    // Hex code
+                                                    if (ColorUtility.TryParseHtmlString(tagParam, out newColor))
+                                                    {
+                                                        color = newColor;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ColourPreset newColourPreset = colourPresets.Find(x => x.name == tagName);
+                                                    if (newColourPreset != null)
+                                                    {
+                                                        color = newColourPreset.color;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Debug.LogError("TEXT: Tag length with '/' removed = 0, text input: " + text);
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogError("TEXT: Tag length = 0, text input: " + text);
+                        }
+                        
+                        builtTag = "";
+                    }
+                    else
+                    {
+                        // Set to lower for listening purposes
+                        char listenedCharacter = char.ToLower(c);
+
+                        builtTag += listenedCharacter;
+                    }
+                }
+                else if (isListeningAction)
+                {
+                    if (c == '}')
+                    {
+                        isListeningAction = false;
+
+                        // Check tag and apply
+                        if (builtTag.Length > 0)
+                        {
+                            // Grab multiple strings
+                            string[] tagStrings = builtTag.Split('=');
+                            
+                            // Set tag name to this
+                            string tagName = tagStrings[0];
+
+                            // Set up param
+                            string tagParam = "";
+                            if (tagStrings.Length >= 2)
+                            {
+                                tagParam = tagStrings[1];
+                            }
+
+                            if (tagName.Equals("shake") || tagName.Equals("s"))
+                            {
+                                float outputStrength = 0f;
+                                if (tagParam.Length > 0 && float.TryParse(tagParam, out outputStrength))
+                                {
+                                    shakeStrength = outputStrength;
+                                }
+                                else
+                                {
+                                    shakeStrength = 1f;
+                                }
+                            }
+                            else if (tagName.Equals("delay") || tagName.Equals("d"))
+                            {
+                                float outputStrength = 0f;
+                                if (tagParam.Length > 0 && float.TryParse(tagParam, out outputStrength))
+                                {
+                                    delay = outputStrength;
+                                }
+                                else
+                                {
+                                    delay = 0.2f;
+                                }
+                            }
+
+                            // If we're not using any special character, we must be using the actual character
+                            GameObject go = Instantiate(_letterObject, transform);
+                            LetterObject letterObject = go.GetComponent<LetterObject>();
+
+                            letterObject.isActionCharacter = true;
+                            letterObject.screenShakeStrength = shakeStrength;
+                            letterObject.delay = delay;
+
+                            letterObjects.Add(letterObject);
+
+                            delay = 0f;
+                            shakeStrength = 0f;
+                        }
+                        else
+                        {
+                            Debug.LogError("TEXT: Tag length = 0, text input: " + text);
+                        }
+                        
+                        builtTag = "";
+                    }
+                    else
+                    {
+                        // Set to lower for listening purposes
+                        char listenedCharacter = char.ToLower(c);
+
+                        builtTag += listenedCharacter;
+                    }
+                }
+                else if (c == '{')
+                {
+                    isListeningAction = true;
+                }
+                else if (c == '[')
                 {
                     // Start listening for next character
-                    bIsListening = true;
-                }
-                else if (bIsListening)
-                {
-                    // Set to lower for listening purposes
-                    char listenedCharacter = char.ToLower(c);
-
-                    // Stop listening
-                    bIsListening = false;
-
-                    // Check the listened to character
-                    if (listenedCharacter == 'b') // BOLD
-                    {
-                        bIsBold = !bIsBold;
-                    }
-                    else if (listenedCharacter == 'i') // ITALICS
-                    {
-                        bIsItalics = !bIsItalics;
-                    }
-                    else if (listenedCharacter == 'c') // COLOURS
-                    {
-                        // Start listening for colour inputs
-                        bIsListeningForColour = true;
-                    }
-                    else if (listenedCharacter == 'w') // WAVEY
-                    {
-                        bIsWavey = !bIsWavey;
-                    }
-                    else if (listenedCharacter == 'd') // DELAY
-                    {
-                        bIsListeningForDelay = true;
-                    }
-                    else if (listenedCharacter == 's') // SCREEN SHAKE
-                    {
-                        bIsShake = true;
-                    }
-                    else if (listenedCharacter == 'r')
-                    {
-                        bIsRainbow = !bIsRainbow;
-                    }
-                    else if (listenedCharacter == 'j')
-                    {
-                        bIsJittery = !bIsJittery;
-                    }
-                    else if (listenedCharacter == 'a')
-                    {
-                        bIsSwirly = !bIsSwirly;
-                    }
-                    else if (listenedCharacter == 'e')
-                    {
-                        bIsBig = !bIsBig;
-                    }
-                }
-                else if (bIsListeningForColour)
-                {
-                    // Add colour code and increment counter
-                    letterCode += c;
-                    counter++;
-
-                    if (counter > 2)
-                    {
-                        // Reset colour
-                        color = Color.white;
-
-                        // Set current colour
-                        int colorCode = 0;
-
-                        // Attempt to parse colour code. If not, set to white by default
-                        if (int.TryParse(letterCode, out colorCode))
-                        {
-                            if (colorCode < normalColours.Count && colorCode >= 0)
-                            {
-                                color = normalColours[colorCode];
-                            }
-                        }
-
-                        // Reset colour stuff
-                        letterCode = "";
-                        counter = 0;
-
-                        // Stop listening
-                        bIsListeningForColour = false;
-                    }
-                }
-                else if (bIsListeningForDelay)
-                {
-                    // Add delay code and increment counter
-                    letterCode += c;
-                    counter++;
-
-                    if (counter > 2)
-                    {
-                        // Reset colour
-                        delay = 0f;
-
-                        // Set current colour
-                        int delayCode = 0;
-
-                        // Attempt to parse colour code. If not, set to white by default
-                        if (int.TryParse(letterCode, out delayCode))
-                        {
-                            if (delayCode < delays.Count && delayCode >= 0)
-                            {
-                                delay = delays[delayCode];
-                            }
-                        }
-
-                        // Reset delay stuff
-                        letterCode = "";
-                        counter = 0;
-
-                        // Stop listening
-                        bIsListeningForDelay = false;
-                    }
+                    isListeningTag = true;
                 }
                 else
                 {
@@ -330,19 +466,18 @@ public class TextObject : MonoBehaviour
 
                     letterObject.character = c;
                     letterObject.color = color;
-                    letterObject.postDelay = delay;
 
                     // Characteristics
-                    letterObject.isBold = bIsBold;
-                    letterObject.isItalics = bIsItalics;
-                    letterObject.isJittery = bIsJittery;
-                    letterObject.isScreenShake = bIsShake;
-                    letterObject.isWavey = bIsWavey;
-                    letterObject.isSwirly = bIsSwirly;
-                    letterObject.isBig = bIsBig;
+                    letterObject.isBold = isBold;
+                    letterObject.isItalics = isItalics;
+                    letterObject.isBig = isBig;
+
+                    letterObject.jitterStrength = jitterStrength;
+                    letterObject.waveStrength = waveStrength;
+                    letterObject.swirlStrength = swirlStrength;
 
                     // Update offset if toggle
-                    if (bIsWavey || bIsSwirly)
+                    if (waveStrength > 0f || swirlStrength > 0f)
                     {
                         if (c != ' ')
                         {
@@ -357,7 +492,7 @@ public class TextObject : MonoBehaviour
                     letterObject.offset = offset;
 
                     // Update rainbow stuff
-                    if (bIsRainbow && rainbowColours.Count > 0)
+                    if (isRainbow && rainbowColours.Count > 0)
                     {
                         letterObject.color = rainbowColours[rainbowCounter];
 
@@ -374,9 +509,6 @@ public class TextObject : MonoBehaviour
 
                     // Build up final string
                     parsedString += c;
-
-                    // Clean up "one-shot" settings
-                    bIsShake = false;
                 }
             }
         }
@@ -444,20 +576,23 @@ public class TextObject : MonoBehaviour
             // Set new position
             letterObject.SetPosition(letterPlacement, fontSize);
 
-            // Update X location
-            if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + wideCharacters + "]"))
+            // Update X location (if real character)
+            if (!letterObject.isActionCharacter)
             {
-                letterPlacement.x += ((fontWidth * wideCharacterMultiplier) + extraKerning);
+                if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + wideCharacters + "]"))
+                {
+                    letterPlacement.x += ((fontWidth * wideCharacterMultiplier) + extraKerning);
+                }
+                else if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + thinCharacters + "]"))
+                {
+                    letterPlacement.x += ((fontWidth * thinCharacterMultiplier) + extraKerning);
+                }
+                else
+                {
+                    letterPlacement.x += (fontWidth + extraKerning);  
+                }
             }
-            else if (System.Text.RegularExpressions.Regex.IsMatch(letterObject.character.ToString().ToLower(), "[" + thinCharacters + "]"))
-            {
-                letterPlacement.x += ((fontWidth * thinCharacterMultiplier) + extraKerning);
-            }
-            else
-            {
-                letterPlacement.x += (fontWidth + extraKerning);  
-            }
-
+            
             if (letterPlacement.x > longestLine)
             {
                 longestLine = letterPlacement.x;
@@ -521,5 +656,21 @@ public class TextObject : MonoBehaviour
     public void UpdateUIString()
     {
         SetText(text);
+    }
+}
+
+[CustomEditor(typeof(TextObject))]
+public class ObjectBuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        TextObject textObject = (TextObject)target;
+
+        if(GUILayout.Button("Update UI String"))
+        {
+            textObject.UpdateUIString();
+        }
+
+        DrawDefaultInspector();
     }
 }
