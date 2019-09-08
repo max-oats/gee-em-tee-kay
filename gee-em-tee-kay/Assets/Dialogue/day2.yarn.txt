@@ -31,7 +31,7 @@ title: Day2.Horny
 tags:
 ---
 Player: [wavey]"does this mean you have the horn for everyone???"
-Player: no, in the same way that you're not attracted to [b]EVERY[/b] woman, [color=#EFEFEF][italics]{d=0.1}jeff.
+Player: no, in the same way that you're not attracted to [b]EVERY[/b] woman, [color=!EFEFEF][italics]{d=0.1}jeff.
 Player: [wavey]"that's what you think."
 Player: ...
 Player: fuckin jeff
@@ -42,7 +42,7 @@ title: Day2.Jealous
 tags:
 ---
 Player: [wavey]"was your ex jealous since she had more people to worry about?"
-Player: no, {d=0.1}[color=#EFEFEF][italics]sharen, she wasn't.
+Player: no, {d=0.1}[color=!EFEFEF][italics]sharen, she wasn't.
 Player: we had some bigger issues than that.
 Player: but those are not for sharen's extremely irritating ears.
 [[Day2.Anyway]]
@@ -54,7 +54,7 @@ tags:
 Player: [wavey]"so have you ever actually dated a man?"
 Player: this one is the [jittery]worst one.
 Player: i could barely get the word {d=0.1}[jittery]"no"[/j] out of my mouth
-Player: before [color=#EFEFEF][italics]{d=0.1}gary[/i][/c] jumped on it like a goose on the last seed
+Player: before [color=!EFEFEF][italics]{d=0.1}gary[/i][/c] jumped on it like a goose on the last seed
 Player: [wavey]"ooooooooooh"
 Player: [wavey]"i'm gary and i don't think bisexual people in heterosexual relationships are valid"
 Player: [wavey]"oooooooooooooooooh"

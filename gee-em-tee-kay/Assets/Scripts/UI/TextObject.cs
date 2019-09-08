@@ -333,7 +333,7 @@ public class TextObject : MonoBehaviour
                                             if (tagParam.Length > 0)
                                             {
                                                 // Param exists. Time to select colour
-                                                if (tagParam[0] == '#')
+                                                if (tagParam[0] == '!')
                                                 {
                                                     // Hex code
                                                     if (ColorUtility.TryParseHtmlString(tagParam, out newColor))

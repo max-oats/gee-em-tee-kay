@@ -68,8 +68,7 @@ public class WeatherManager : MonoBehaviour
 
     void Start()
     {
-        Global.dayManager.gameStarted += UpdateWeather;
-        Global.dayManager.dayStarted += UpdateWeather;
+        Global.dayManager.dayLoaded += UpdateWeather;
 
         day = -1;
     }

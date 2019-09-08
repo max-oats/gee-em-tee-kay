@@ -103,7 +103,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 		string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
 
         // Swap out plant name for the given plant name
-        stringContents = stringContents.Replace("PLANTNAME", "[color=#10DF10]" + Global.plantName + "[/color]");
+        stringContents = stringContents.Replace("PLANTNAME", "[color=!10DF10]" + Global.plantName + "[/color]");
 
         string[] splitString = stringContents.Split('|'); 
         stringContents = splitString[0];
@@ -169,7 +169,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             delayTimeMultiplier = 1f;
 
             // Sets the contents of the speech bubble
-            List<LetterObject> letterObjects = thoughtCanvas.SetText("[color=#101010][b][jittery]" + thoughtText);
+            List<LetterObject> letterObjects = thoughtCanvas.SetText("[color=!101010][b][jittery]" + thoughtText);
 
             foreach (LetterObject letterObject in letterObjects)
             {
