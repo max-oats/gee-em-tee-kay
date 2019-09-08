@@ -1,22 +1,19 @@
 title: Day4.NoWater
 tags:
 ---
-Player: wow you are dryer than my last tinder convo \b\jknow what i'm sayin hahaha
+Player: wow you are dryer than my last tinder convo [bold][jittery]know what i'm sayin hahaha
 Player: but seriously i'm an asshole
 Player: like no water at all? for real?
 Player: i'd love to say this isn't a metaphor for my relationship but uhhhhhh
 Player: both you and my relationship are dead and i'm the common factor
-Player: \d002... \d000huh
 ===
 
 title: Day4.Thirsty
 tags:
 ---
-Player: oof lookin a lil\d002 \d000\bparched\b there PLANTNAME
-Player: can i offer you a selection of \wfine beverages\w
-Player: maybe a lovely\d002... \d000\b\smai thyme
-Player: or a delicious\d002... \d000\b\smoji-rose
-Player: or perhaps a tasteful\d002.\d002.\d002. \b\sdaiqu-weed
+Player: oof lookin a lil {d=0.1}[b]parched[/b] there PLANTNAME
+Player: can i offer you a selection of [wavey]fine beverages
+Player: maybe a lovely... {d=0.2}{shake}mai thyme
 Player: ... this is surprisingly difficult, leave me alone
 Player: ...
 [[Day4.Talk]]
@@ -34,7 +31,7 @@ Player: ...
 title: Day4.Drowning
 tags:
 ---
-Player: wait... are you \inot\i supposed to give plants eight glasses of water a day?
+Player: wait... are you [italics]not[/i] supposed to give plants eight glasses of water a day?
 Player: because you my friend are
 Player: straight up underwater
 Player: sorry bud
@@ -43,26 +40,9 @@ Player: sorry bud
 title: Day4.Talk
 tags:
 ---
-Player: hey,\d002 uh, PLANTNAME.
+Player: hey, {d=0.2}uh, PLANTNAME.
 Player: uh
 Player: today was a bad one.
-Player: you know \c003Linda\c000 (from Accounting)?
-Player: well, she brought in her new baby today
-Player: so she came over to introduce him to \c004Debra\c000 (from Sales),\d001 \d000\c005Other Linda\c000 (from Accounting)\d001 \d000and myself
-Player: and \c005Other Linda\c000 (from Accounting), said
-Player: \w"ooooooo so handsome, he's gonna break all the girl's hearts!"
-Player: which is, by the way, a \iweird\i thing to say about a \jc\shild!!!!
-Player: but then she glanced at me and said
-Player: "oh-- or \jboys\j."
-Player: like\d002... \d000i never expected \jjeff\j or \jgary\j to keep it a secret
-Player: but now i don't know who knows and who doesn't
-Player: which left me having a \bfour hour long anxiety attack
-Player: and i read so much into \jevery interaction\j i had
-Player: like when HR called me into their office
-Player: and literally just wanted to make sure my address was up to date!!!!!
-Player: and don't even get me \istarted\i on the \jmeatball incident\j.
-Player: anyway uh
-Player: \d002...
 Player: i'm telling my plant more than i tell my therapist
 Player: which i think means i should talking to my therapist more
 ===

@@ -2,7 +2,7 @@ title: Day2.Drowning
 tags:
 ---
 Player: oh
-Player: i thought the plant would've have\d002.\d002.\d002. absorbed some of the water by now
+Player: i thought the plant would've have.{d=0.1}.{d=0.1}.{d=0.1} absorbed some of the water by now
 Player: um
 Player: well at least i wasn't attached to it yet
 ===
@@ -13,13 +13,13 @@ tags:
 Player: ...
 Player: wow, it's grown already!
 Player: ...
-Player: \d002.\d002.\d002.
+Player: {d=0.1}.{d=0.1}.{d=0.1}.
 Player: i, uh, came out to my coworkers today
 Player: i didn't really mean to
 Player: i told them about Chris
-Player: and they said \w"Chris? oh, are you gay?"
-Player: and i said \j"no, Chris is short for Christina, but also... yes?"
-Player: and then explained the whole \rbisexual\r thing
+Player: and they said [wavey]"Chris? oh, are you gay?"
+Player: and i said [jittery]"no, Chris is short for Christina, but also... yes?"
+Player: and then explained the whole [r]bisexual[/r] thing
 Player: ...
 Player: had all the usual questions too
 [["does this mean you have the horn for everyone?"|Day2.Horny]]
@@ -30,9 +30,9 @@ Player: had all the usual questions too
 title: Day2.Horny
 tags:
 ---
-Player: \w"does this mean you have the horn for everyone???"\w
-Player: no, in the same way that you're not attracted to \bEVERY\b woman, \c004\i\d001j\d001e\d001f\d001f\i\c000.
-Player: \w"that's what you think."\w
+Player: [wavey]"does this mean you have the horn for everyone???"
+Player: no, in the same way that you're not attracted to [b]EVERY[/b] woman, [color=#EFEFEF][italics]{d=0.1}jeff.
+Player: [wavey]"that's what you think."
 Player: ...
 Player: fuckin jeff
 [[Day2.Anyway]]
@@ -41,23 +41,23 @@ Player: fuckin jeff
 title: Day2.Jealous
 tags:
 ---
-Player: \w"was your ex jealous since she had more people to worry about?"\w
-Player: no, \c004\i\d001k\d001a\d001r\d001e\d001n\i\c000, she wasn't.
+Player: [wavey]"was your ex jealous since she had more people to worry about?"
+Player: no, {d=0.1}[color=#EFEFEF][italics]sharen, she wasn't.
 Player: we had some bigger issues than that.
-Player: but those are not for karen's extremely irritating ears.
+Player: but those are not for sharen's extremely irritating ears.
 [[Day2.Anyway]]
 ===
 
 title: Day2.Men
 tags:
 ---
-Player: \w"so have you ever actually dated a man?"
-Player: this one is the \jworst one.
-Player: i could barely get the word \d002"no\d000" out of my mouth
-Player: before \c004\i\d001gary\d000\i\c000 jumped on it like a goose on the last seed
-Player: \w"ooooooooooh"\w
-Player: \w"i'm gary and i don't think bisexual people in heterosexual relationships are valid"\w
-Player: \w"oooooooooooooooooh"\w
+Player: [wavey]"so have you ever actually dated a man?"
+Player: this one is the [jittery]worst one.
+Player: i could barely get the word {d=0.1}[jittery]"no"[/j] out of my mouth
+Player: before [color=#EFEFEF][italics]{d=0.1}gary[/i][/c] jumped on it like a goose on the last seed
+Player: [wavey]"ooooooooooh"
+Player: [wavey]"i'm gary and i don't think bisexual people in heterosexual relationships are valid"
+Player: [wavey]"oooooooooooooooooh"
 [[Day2.Anyway]]
 ===
 
@@ -66,4 +66,5 @@ tags:
 ---
 Player: anyway 
 Player: i told them not to tell anyone
+Player: so that's probably fine now right
 ===

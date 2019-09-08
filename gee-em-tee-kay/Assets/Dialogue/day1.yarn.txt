@@ -9,14 +9,14 @@ title: Day1.NamePlant.Max
 tags:
 ---
 Player: you are called PLANTNAME now.
-Player: \j\blmaoooooo what a dang loser!!!!!!!!\b\j
+Player: [jitter][bold]lmaoooooo what a dang loser!!!!!!!!
 ===
 
 title: Day1.NamePlant.MaxHandsome
 tags:
 ---
 Player: you are called PLANTNAME now.
-Player: that is one \ihandsome\i name.
+Player: that is one [italics]handsome[/i] name.
 ===
 
 title: Day1.NamePlant.Robin
@@ -30,7 +30,7 @@ title: Day1.NamePlant.Flowey
 tags:
 ---
 Player: you are called PLANTNAME now.
-Player: it fills you with \jdetermination\j.
+Player: it fills you with [jittery]determination.
 ===
 
 title: Day1.NamePlant.Plant
@@ -44,16 +44,16 @@ title: Day1.Intro
 tags:
 ---
 <<phoneOn Player>>
-Player: yeah,\d002 \d000i'm walking into the new place right now!
-Player: well, its\d002... \d000cozy.
-Player: they left a \c004plant pot\c000 here
+Player: yeah, {delay=0.2}i'm walking into the new place right now!
+Player: well, its{delay=0.2}.{delay=0.2}.{delay=0.2}. cozy.
+Player: they left a [color=green]plant pot[/color] here
 Player: which i guess is my bed now?
-Player: bud!!!!\d002 \d000i am totally fine!|toootally
-Player: it was \btotally\b mutual.|was that convincing?
-Player: yeah, the moving van isn't bringing the furniture for another \e\b5 days!!!!!!!
+Player: bud!!!! {delay=0.2}i am totally fine!|toootally
+Player: it was [b]totally[/b] mutual.|was that convincing?
+Player: yeah, the moving van isn't bringing the furniture for another [e][b]5 days!!!!!!!
 Player: but don't worry. 
 Player: i spent my remaining £2 on a seed for my plant pot!!!!!
-Player: \d002... \d000hello?
+Player: {d=0.2}.{d=0.2}.{d=0.2}. hello?
 <<phoneOff Player>>
 Player: i think i'd hang up on me too.
 ===
@@ -62,6 +62,6 @@ title: Day1.Talk
 tags:
 ---
 Player: ...
-Player: ok.\d002 \d000i'm not gonna talk to you, PLANTNAME.
-Player: your name is \ifar too\i \b\jcursed.|chris used to talk to plants.
+Player: ok. {delay=0.2}i'm not gonna talk to you, PLANTNAME.
+Player: your name is [i]far too[/i] [b][j]cursed.[/b][/j]|chris used to talk to plants.
 ===

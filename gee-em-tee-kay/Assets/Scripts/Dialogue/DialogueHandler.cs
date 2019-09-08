@@ -103,7 +103,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 		string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
 
         // Swap out plant name for the given plant name
-        stringContents = stringContents.Replace("PLANTNAME", "\\c002" + Global.plantName + "\\c000");
+        stringContents = stringContents.Replace("PLANTNAME", "[color=#10DF10]" + Global.plantName + "[/color]");
 
         string[] splitString = stringContents.Split('|'); 
         stringContents = splitString[0];
@@ -121,23 +121,33 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         // Set time counter
         float timeCounter = 0.0f;
 
-        foreach (LetterObject lo in speechBubble.text.GetLetterObjects())
+        foreach (LetterObject letterObject in speechBubble.text.GetLetterObjects())
         {
             // Show letter object
-            lo.Show(true);
+            letterObject.Show(true);
 
             // Set delay
-            float delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+            float delay = speechBubble.text.GetTextSpeed();
 
-            if (lo.isScreenShake)
+            if (letterObject.isActionCharacter)
             {
-                Global.cameraController.ScreenShake(0.1f);
+                // No delay by default
+                delay = 0f;
+                
+                if (letterObject.screenShakeStrength > 0f)
+                {
+                    Global.cameraController.ScreenShake(screenShakeMultiplier * letterObject.screenShakeStrength);
+                }
+                else if (letterObject.delay > 0f)
+                {
+                    delay = letterObject.delay;
+                }
             }
         
             // Do bleep if needed
             if (timeCounter >= timeBetweenBleeps)
             {
-                if ((lo.character != '.' && lo.character != ' '))
+                if ((letterObject.character != '.' && letterObject.character != ' '))
                 {
                     GameObject go = Instantiate(_talkNoise);
                     Destroy(go, 1.0f);
@@ -159,19 +169,29 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             delayTimeMultiplier = 1f;
 
             // Sets the contents of the speech bubble
-            List<LetterObject> letterObjects = thoughtCanvas.SetText("\\c008\\b\\j" + thoughtText);
+            List<LetterObject> letterObjects = thoughtCanvas.SetText("[color=#101010][b][jittery]" + thoughtText);
 
-            foreach (LetterObject lo in letterObjects)
+            foreach (LetterObject letterObject in letterObjects)
             {
                 // Show letter object
-                lo.Show(true);
+                letterObject.Show(true);
 
                 // Set delay
-                float delay = lo.postDelay + speechBubble.text.GetTextSpeed();
+                float delay = speechBubble.text.GetTextSpeed();
 
-                if (lo.isScreenShake)
+                if (letterObject.isActionCharacter)
                 {
-                    Global.cameraController.ScreenShake(0.1f);
+                    // No delay by default
+                    delay = 0f;
+                    
+                    if (letterObject.screenShakeStrength > 0f)
+                    {
+                        Global.cameraController.ScreenShake(screenShakeMultiplier * letterObject.screenShakeStrength);
+                    }
+                    else if (letterObject.delay > 0f)
+                    {
+                        delay = letterObject.delay;
+                    }
                 }
 
                 yield return new WaitForSeconds(delay * delayTimeMultiplier);

@@ -18,13 +18,13 @@ tags: ignorethis
 ---
 Player: the second choice takes you here
 Player: additionally, there are the following tags
-Player: \wthis is how you do wavey text\w it acts as a toggle
-Player: \bthis is how you do bold text\b its also a toggle
-Player: \ithis is how you do italics\i also a toggle
-Player: \jthis is the jittery text\j toggle
-Player: \sthis is screen shake. its not a toggle, it just happens on the character you put it before
-Player: \c001this is a series of colours. i think there's seven?\c000 toggle, when you want to switch it off just return to c000
-Player: \d001this is a series of delays, from 1-3 in ascending times. its not a toggle, just on the character you use it on
+Player: [wavey]this is how you do wavey text[/w] it acts as a toggle
+Player: [bold]this is how you do bold text[/b] its also a toggle
+Player: [italics]this is how you do italics[/i] also a toggle
+Player: [jittery]this is the jittery text[/j] toggle
+Player: {shake=1.0}this is screen shake. its not a toggle, it just happens on the character you put it before. also works with or without parameters
+Player: [color=#13468b]this is the colour tag. it responds to presets and also hex codes?[/c] toggle
+Player: this is the {delay=0.2} tag. the parameter is the amount of seconds
 Player: and i think that's it?
-Player: \roh also this is the bi rainbow text\r also a toggle
+Player: [rainbow]oh also this is the bi rainbow text[/r] also a toggle
 ===
