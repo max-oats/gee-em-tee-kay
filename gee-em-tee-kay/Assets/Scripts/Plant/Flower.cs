@@ -10,7 +10,7 @@ public class Flower : MonoBehaviour
     {
         MeshRenderer meshRenderer = transform.Find("FlowerModel").GetComponent<MeshRenderer>();
         meshRenderer.materials[0].color = inPrimaryColor;
-        if (meshRenderer.materials.Length > 0)
+        if (meshRenderer.materials.Length > 1)
         {
             meshRenderer.materials[1].color = inHighlightColor;
         }
