@@ -335,6 +335,8 @@ public class TextObject : MonoBehaviour
                                                 // Param exists. Time to select colour
                                                 if (tagParam[0] == '!')
                                                 {
+                                                    tagParam = '#' + tagParam.Remove(0,1);
+
                                                     // Hex code
                                                     if (ColorUtility.TryParseHtmlString(tagParam, out newColor))
                                                     {
