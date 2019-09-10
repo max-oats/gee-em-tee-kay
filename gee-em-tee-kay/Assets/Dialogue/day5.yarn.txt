@@ -17,7 +17,7 @@ Player: so PLANTNAME!
 Player: hey...
 Player: ...
 Player: so you survived the whole week, huh?
-Player: hardy little fella, eh?
+Player: hardy little bugger, eh?
 Player: ...
 Player: man, it's been a [j]rough[/j] few days
 Player: and i'm sorry for the times that i got mad at you
@@ -150,6 +150,7 @@ Player: doesn't mean that you can change everything about it
 title: Day5.KeepOrChuckChoice
 tags:
 ---
+Player: ...
 Player: well
 Player: i don't how much all that stuff matters
 Player: i mean it definitely doesn't matter to you lmaooooo
@@ -179,14 +180,47 @@ Player: ...
 title: Day5.KeepPlant
 tags:
 ---
-Player: i'll keep you
-Player: whether you like it or not!
-Player: [b][e][w]MWAHAHAHAHAHAHAAAAAAA!
-Player: ahem
+Player: so i'm just running through all the things that are arriving tomorrow
+Player: and i really gotta ask myself
+Player: how many of them actually made me feel... good?
+Player: sure, some of it's really [wavey]comfy[/w]
+Player: but a lot of it's coming from our old place
+Player: ...
+Player: but with you in here with me
+Player: it's gonna feel [wavey]different[/w]
+Player: heh
+Player: it's like i'm sowing the seeds of change
+Player: ...{delay=0.5}?
+Player: nah that's dumb
 ===
 
 title: Day5.ChuckPlant
 tags:
 ---
-Player: [b][e][j]YEET
+Player: PLANTNAME...
+Player: i gotta be real with you
+Player: you changed my life
+Player: and not like in some awful [a]"going to africa for a week [b]changed my life[/b]!!!"[/a] kinda way
+Player: i'll be the first to admit i'm a pretentious sod
+Player: but i draw a line there
+Player: ...
+Player: when i first walked into this room and it was just so [jittery]empty[/j]
+Player: i could just feel that i...
+Player: i could just tell, i...
+Player: ...
+Player: in a very real way, PLANTNAME, you saved me
+Player: and i will never forget you
+Player: ...
+Player: i've given you so much of my pain
+Player: and now you can take it away with you
+Player: ...
+Player: i'll plant you somewhere, out there
+Player: and maybe you can make someone else's day?
+Player: maybe someone will be feeling alone
+Player: and they'll see how tall and bright you are
+Player: and they'll see what a good listener you are!
+Player: ...
+Player: i like that idea
+Player: thank you, PLANTNAME
+Player: thank you for everything
 ===
