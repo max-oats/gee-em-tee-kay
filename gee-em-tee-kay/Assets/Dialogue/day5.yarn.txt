@@ -5,9 +5,31 @@ tags:
 Player: yeah,{delay=0.1} my furniture comes tomorrow!
 Player: i'll have a TV again!!!!
 Player: which means i can stop talking to my plant i guess.
-Player: i've actually been thinking a lot about [jittery]the break-up.
+Player: ...{delay=1} yes, you heard that right {delay=0.2}...{delay=1} forget about it
+Player: so, i've actually been thinking a lot about [jittery]the break-up.
 Player: i think...
-Player: that this dialogue is [jittery=2.0]BAD AND ALWAYS HAS BEEN
+-> it was all her fault
+    << set $blame = "hers" >>
+    Player: yeah, i think i'm probably better off without her
+    Player: she was making me really unhappy
+-> it was my fault
+    << set $blame = "mine" >>
+    Player: i messed up
+    Player: real bad
+    Player: but next time i'll do better
+-> we were both at fault
+    << set $blame = "both" >>
+    Player: we both made mistakes
+    Player: i'll be alright!
+Player: it's been good to talk to you!
+Player: ...
+Player: i know, i'll come home soon
+Player: you haven't rented out my old room have you?
+Player: haha, i'm only kidding
+Player: yeah
+Player: i love you too mum
+Player: bye
+<<phoneOff Player>>
 ===
 
 title: Day5.Talk
@@ -45,18 +67,22 @@ Player: i think a lot of people think that they can control their lives
 Player: and i mean, you can do things to [a]change[/a] it but...
 Player: none of us are in control. not really.
 Player: ...
-Player: this relationship... what happened with chris
-Player: at the end of the day...
-[[it was her fault|Day5.HerFault]]
-[[it was my fault|Day5.MyFault]]
-[[we were both at fault|Day5.BothFault]]
+Player: when you start a relationship, it's a bit like buying a [color=green][wavey]seed[/color][/w]
+Player: and to turn that seed into a plant, you have to [wavey]nurture[/w] it
+<< if $blame == "hers" >>
+    [[Day5.HerFault]]
+<< elseif $blame == "mine" >>
+    [[Day5.MyFault]]
+<< elseif $blame == "both" >>
+    [[Day5.BothFault]]
+<< else >>
+    Player: [jittery]someone fucked up! robin? did you fuck up???!!!
+<< endif >>
 ===
 
 title: Day5.HerFault
 tags:
 ---
-Player: when you start a relationship, it's a bit like buying a [color=green][wavey]seed[/color][/w]
-Player: and to turn that seed into a plant, you have to [wavey]nurture[/w] it
 Player: so you do all the right things, you water it, you give it enough light
 Player: and sometimes
 Player: the plant still dies
@@ -81,8 +107,6 @@ Player: anyway
 title: Day5.MyFault
 tags:
 ---
-Player: when you start a relationship, it's a bit like buying a [color=green][wavey]seed[/color][/w]
-Player: and to turn that seed into a plant, you have to [wavey]nurture[/w] it
 Player: and you try your best, of course you do! you [b]want[/b] this lovely plant!
 Player: and then, maybe, you get complacent
 Player: you stop trying as hard
@@ -115,8 +139,6 @@ Player: and next time i'll do better
 title: Day5.BothFault
 tags:
 ---
-Player: when you start a relationship, it's a bit like buying a [color=green][wavey]seed[/color][/w]
-Player: and to turn that seed into a plant, you have to [wavey]nurture[/w] it
 Player: but at the end of the day, there's only so much you can [i]change[/i] about this plant
 Player: you can't take a seed for a [color=red]rose[/c] and grow a [color=yellow]daffodil[/c] from it.
 Player: there's so much you can affect though!
@@ -180,6 +202,7 @@ Player: ...
 title: Day5.KeepPlant
 tags:
 ---
+<<keepPlant>>
 Player: so i'm just running through all the things that are arriving tomorrow
 Player: and i really gotta ask myself
 Player: how many of them actually made me feel... good?
@@ -197,6 +220,7 @@ Player: nah that's dumb
 title: Day5.ChuckPlant
 tags:
 ---
+<<chuckPlant>>
 Player: PLANTNAME...
 Player: i gotta be real with you
 Player: you changed my life
