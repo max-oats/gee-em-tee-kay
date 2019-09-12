@@ -12,4 +12,5 @@ public class DebugStuff : MonoBehaviour
     public bool cyclePossibleFlowerColours = false;
     public bool cycleFlowerColourSat = false;
     public bool cycleFlowerColourValue = false;
+    public int dayToPlayDialogueFor_1Indexed = -1;
 }
