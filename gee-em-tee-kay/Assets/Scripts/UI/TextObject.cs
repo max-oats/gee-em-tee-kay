@@ -571,8 +571,6 @@ public class TextObject : MonoBehaviour
                         // Set to be a line break
                         letterObjects[parsedToCharacters[i]].isLineBreak = true;
 
-                        Debug.Log("Added line break @ character " + parsedString[i]);
-
                         // Increase number of lines
                         noOfLines++;
                     }
