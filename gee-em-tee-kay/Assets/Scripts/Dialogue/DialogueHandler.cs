@@ -103,7 +103,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 		string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
 
         // Swap out plant name for the given plant name
-        stringContents = stringContents.Replace("PLANTNAME", "[color=!10DF10]" + Global.plantName + "[/color]");
+        stringContents = stringContents.Replace("PLANTNAME", "[color=green]" + Global.plantName + "[/color]");
 
         string[] splitString = stringContents.Split('|'); 
         stringContents = splitString[0];
