@@ -52,9 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 3233172125472363179}
   rt: {fileID: 8981391698449559286}
-  waveStrength: 10
+  defaultWaveStrength: 10
   waveSpeed: 10
-  jitterStrength: 4
+  defaultJitterStrength: 4
   jitterEveryThisFrame: 2
   introCurve:
     serializedVersion: 2
@@ -123,16 +123,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   character: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
-  postDelay: 0
   isBold: 0
   isItalics: 0
-  isWavey: 0
-  isJittery: 0
-  isScreenShake: 0
-  isSwirly: 0
   isLineBreak: 0
   isBig: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  waveStrength: 10
+  jitterStrength: 4
+  swirlStrength: 0
+  isActionCharacter: 0
+  delay: 0
+  screenShakeStrength: 0
   offset: 0
 --- !u!222 &3905003479098782902
 CanvasRenderer:
