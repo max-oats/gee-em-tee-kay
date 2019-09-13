@@ -8,6 +8,7 @@ public class Plant : MonoBehaviour
     [SerializeField] private Vector3 nextEndPointOffsetTEST;
     [SerializeField] private int sectionsToSplitIntoTEST = 1;
     [SerializeField] private bool debugShouldSpawnFlower = false;
+    [SerializeField] private bool debugShouldSway = true;
     // ~End Debug
 
     [SerializeField] private float maxHorizontalDistance;
@@ -17,6 +18,9 @@ public class Plant : MonoBehaviour
     [SerializeField] private Color deadColor;
 
     [SerializeField] private Transform windowLocation;
+
+    [SerializeField] private float swayAmplitudeDegrees;
+    [SerializeField] private float swaySpeedScale;
 
     private GameObject flowerPrefab;
     private ColorHSV initialPrimaryFlowerColor;
@@ -176,6 +180,22 @@ public class Plant : MonoBehaviour
             Color newFlowerColor = Color.HSVToRGB(initialFlowerPrimaryColorHue, initialFlowerPrimaryColorSat, val);
             SetStemColor(newFlowerColor);
         }*/
+
+        if (sections.Count > 1)
+        {
+            if (debugShouldSway)
+            {
+                Vector3 forwardRelativeToScene = Quaternion.Inverse(transform.rotation) * Vector3.forward;
+                Transform transformToSpin = sections[1].transform;
+                Quaternion stemRotation = Quaternion.AngleAxis(swayAmplitudeDegrees * Mathf.Sin(swaySpeedScale * Time.time), forwardRelativeToScene);
+                transformToSpin.localRotation = stemRotation;
+            }
+            else
+            {
+                Transform transformToSpin = sections[1].transform;
+                transformToSpin.localRotation = new Quaternion();
+            }
+        }
     }
 
     public void AddSection(Vector3 endPointOffset, int leavesToAdd, bool leavesShouldBeSmall, bool shouldSpawnFlower)
@@ -205,6 +225,7 @@ public class Plant : MonoBehaviour
         for (int i = 0; i < sectionsToSplitInto; i++)
         {
             int initialIndex = i * 4;
+            lastSection = sections[sections.Count-1];
             AddSection(lastSection.GetEndPoint(), controlPointsToAdd[initialIndex], controlPointsToAdd[initialIndex+1], controlPointsToAdd[initialIndex+2], controlPointsToAdd[initialIndex+3], i < leavesToAdd, leavesShouldBeSmall);
         }
 
