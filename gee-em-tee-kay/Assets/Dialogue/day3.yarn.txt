@@ -40,19 +40,20 @@ Player: [jittery][bold]what do i say
 ===
 
 title: Day3.Questions
+tags:
 ---
-<<if not visited("Day3.HowAreYou")>>
+<<if visited("Day3.HowAreYou") == false>>
     [[how are you|Day3.HowAreYou]]
 <<endif>>
-<<if not visited("Day3.Weather")>>
+<<if visited("Day3.Weather") == false>>
     [[nice weather we're having|Day3.Weather]]
 <<endif>>
-<<if not visited("Day3.Podcasts")>>
+<<if visited("Day3.Podcasts") == false>>
     [[have you been listening to any good podcasts lately|Day3.Podcasts]]
 <<endif>>
-
-Player: uh
-[[Day3.NoUse]]
+<<if visited("Day3.HowAreYou") and visited("Day3.Weather") and visited("Day3.Podcasts")>>
+    [[Day3.NoUse]]
+<<endif>>
 ===
 
 title: Day3.HowAreYou
@@ -82,7 +83,6 @@ Player: oh i guess you can't see it
 Player: but if you're growing then you must be feeling it
 Player: its a bit [w]windy[/w]
 Player: and the ventilation in this room is not great
-Player: uh
 [[Day3.Questions]]
 ===
 

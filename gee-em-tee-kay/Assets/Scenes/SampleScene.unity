@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &167506636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1613103414543489553, guid: daefe09352c81c642b917c74c38e0431,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613103414381537501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1259965ccd669b34faa0dcc7d32ff6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!108 &170076734 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
@@ -1843,18 +1855,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a22deaf74ad20614f895edbe1810ae6b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46bfc1215eedd849b7b86aca1f4957d, type: 3}
---- !u!114 &1341391468 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1193051570, guid: daefe09352c81c642b917c74c38e0431,
-    type: 3}
-  m_PrefabInstance: {fileID: 1613103414381537501}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1439283895 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8298584434769695221, guid: 647c2826553fbea4ea67bbff76243fba,
@@ -2730,46 +2730,23 @@ PrefabInstance:
       propertyPath: thePlantManager
       value: 
       objectReference: {fileID: 3711965824708137007}
+    - target: {fileID: 1613103414316031208, guid: daefe09352c81c642b917c74c38e0431,
+        type: 3}
+      propertyPath: debugPublic
+      value: 
+      objectReference: {fileID: 167506636}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 2025038190}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: playerSpeechHandler
-      value: 
-      objectReference: {fileID: 939850913}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: dialogueRunner
-      value: 
-      objectReference: {fileID: 1341391468}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: speechBubPfb
-      value: 
-      objectReference: {fileID: 8563041433594134032, guid: c2c7c891f4b0f434f8051a29e273320a,
-        type: 3}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: _speechBubble
-      value: 
-      objectReference: {fileID: 8563041433594134032, guid: 80aa33e00a21ea4428c27fe9a2973578,
-        type: 3}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: _optionBubble
-      value: 
-      objectReference: {fileID: 7382099661454126469, guid: 6aee043c3b078284f887edc08b73e044,
-        type: 3}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: thoughtCanvas
       value: 
       objectReference: {fileID: 538448635}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: interactionMenuOptionGap
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: _talkNoise
+      propertyPath: playerSpeechHandler
       value: 
-      objectReference: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
-        type: 3}
+      objectReference: {fileID: 939850913}
     - target: {fileID: 8483429003090843365, guid: daefe09352c81c642b917c74c38e0431,
         type: 3}
       propertyPath: plant
@@ -2780,57 +2757,6 @@ PrefabInstance:
       propertyPath: plantPot
       value: 
       objectReference: {fileID: 628624978}
-    - target: {fileID: 1101326264, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: skipIntros
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1101326264, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: skipDailyDialogue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedInColor.r
-      value: 0.06666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedInColor.g
-      value: 0.098039225
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedInColor.b
-      value: 0.098039225
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedOutColor.r
-      value: 0.06666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedOutColor.g
-      value: 0.098039225
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadedOutColor.b
-      value: 0.098039225
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032892916, guid: daefe09352c81c642b917c74c38e0431, type: 3}
-      propertyPath: fadeTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613103413806348287, guid: daefe09352c81c642b917c74c38e0431,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.06666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613103413806348287, guid: daefe09352c81c642b917c74c38e0431,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.098039225
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613103413806348287, guid: daefe09352c81c642b917c74c38e0431,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.098039225
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daefe09352c81c642b917c74c38e0431, type: 3}
 --- !u!1001 &3711965824708137006
