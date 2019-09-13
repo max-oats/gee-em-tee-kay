@@ -131,7 +131,15 @@ public class PlantHealthData : MonoBehaviour
 
     public string SelectDialogueNode()
     {
-        return "Day" + (persistentData.daysConversed+1) +  ".Talk";
+        int dayNumber = persistentData.daysConversed+1;
+        int debugDayNumber = Global.debug.dayToPlayDialogueFor_1Indexed;
+        if (debugDayNumber >=1 || debugDayNumber <= 5)
+        {
+            dayNumber = debugDayNumber;
+            Global.debug.dayToPlayDialogueFor_1Indexed = -1;
+        }
+
+        return "Day" + dayNumber +  ".Talk";
     }
 
     public bool HaveConversedToday()
