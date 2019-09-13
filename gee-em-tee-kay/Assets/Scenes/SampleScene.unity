@@ -112,18 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &167506636 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1613103414543489553, guid: daefe09352c81c642b917c74c38e0431,
-    type: 3}
-  m_PrefabInstance: {fileID: 1613103414381537501}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1259965ccd669b34faa0dcc7d32ff6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &170076734 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 4258158762568313507, guid: fae38f9c82fdc424d9618226690ef64a,
@@ -2730,11 +2718,6 @@ PrefabInstance:
       propertyPath: thePlantManager
       value: 
       objectReference: {fileID: 3711965824708137007}
-    - target: {fileID: 1613103414316031208, guid: daefe09352c81c642b917c74c38e0431,
-        type: 3}
-      propertyPath: debugPublic
-      value: 
-      objectReference: {fileID: 167506636}
     - target: {fileID: 1193051568, guid: daefe09352c81c642b917c74c38e0431, type: 3}
       propertyPath: playerAnimator
       value: 
