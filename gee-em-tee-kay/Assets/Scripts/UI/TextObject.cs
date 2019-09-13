@@ -345,7 +345,7 @@ public class TextObject : MonoBehaviour
                                                 }
                                                 else
                                                 {
-                                                    ColourPreset newColourPreset = colourPresets.Find(x => x.name == tagName);
+                                                    ColourPreset newColourPreset = colourPresets.Find(x => x.name == tagParam);
                                                     if (newColourPreset != null)
                                                     {
                                                         color = newColourPreset.color;
