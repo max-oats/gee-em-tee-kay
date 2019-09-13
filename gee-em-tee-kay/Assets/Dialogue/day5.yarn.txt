@@ -8,16 +8,16 @@ Player: which means i can stop talking to my plant i guess.
 Player: ...{delay=1} yes, you heard that right {delay=0.2}...{delay=1} forget about it
 Player: so, i've actually been thinking a lot about [jittery]the break-up.
 Player: i think...
--> it was all her fault
+->it was all her fault
     << set $blame = "hers" >>
     Player: yeah, i think i'm probably better off without her
     Player: she was making me really unhappy
--> it was my fault
+->it was my fault
     << set $blame = "mine" >>
     Player: i messed up
     Player: real bad
     Player: but next time i'll do better
--> we were both at fault
+->we were both at fault
     << set $blame = "both" >>
     Player: we both made mistakes
     Player: i'll be alright!
