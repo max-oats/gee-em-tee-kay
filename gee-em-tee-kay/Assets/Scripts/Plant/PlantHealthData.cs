@@ -133,7 +133,7 @@ public class PlantHealthData : MonoBehaviour
     {
         int dayNumber = persistentData.daysConversed+1;
         int debugDayNumber = Global.debug.dayToPlayDialogueFor_1Indexed;
-        if (debugDayNumber >=1 || debugDayNumber <= 5)
+        if (debugDayNumber >=1 && debugDayNumber <= 5)
         {
             dayNumber = debugDayNumber;
             Global.debug.dayToPlayDialogueFor_1Indexed = -1;
