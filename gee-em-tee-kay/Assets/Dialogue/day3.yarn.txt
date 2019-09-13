@@ -36,4 +36,67 @@ Player: ...
 Player: uhhhhh
 Player: [jittery]uhhhhhhhhhhhhh
 Player: [jittery][bold]what do i say
+[[Day3.Questions]]
+===
+
+title: Day3.Questions
+---
+<<if not visited("Day3.HowAreYou")>>
+    [[how are you|Day3.HowAreYou]]
+<<endif>>
+<<if not visited("Day3.Weather")>>
+    [[nice weather we're having|Day3.Weather]]
+<<endif>>
+<<if not visited("Day3.Podcasts")>>
+    [[have you been listening to any good podcasts lately|Day3.Podcasts]]
+<<endif>>
+
+Player: uh
+[[Day3.NoUse]]
+===
+
+title: Day3.HowAreYou
+tags:
+---
+Player: so...{delay=0.2} how are you
+Player: how's, {delay=0.1}uh, {delay=0.1}life
+Player: ...
+Player: no way.
+Player: ...
+Player: [b]she didn't.
+Player: [b][big]with him????
+Player: ...
+Player: [big][b]SHUT{shake} THE FRONT DOOR.
+Player: ...
+Player: oh, dear
+Player: to shreds, you say?
+Player:
+[[Day3.Questions]]
+===
+
+title: Day3.Weather
+tags:
+---
+Player: nice weather we're having, ennit
+Player: oh i guess you can't see it
+Player: but if you're growing then you must be feeling it
+Player: its a bit [w]windy[/w]
+Player: and the ventilation in this room is not great
+Player: uh
+[[Day3.Questions]]
+===
+
+title: Day3.Podcasts
+tags:
+---
+Player: so, uh|no that question is dumb as shit
+[[Day3.Questions]]
+===
+
+title: Day3.NoUse
+tags:
+---
+Player: .{delay=0.1}.{delay=0.1}.
+Player: ah... {delay=0.2}this isn't helping.
+Player: sorry PLANTNAME. i know you mean well.
 ===
