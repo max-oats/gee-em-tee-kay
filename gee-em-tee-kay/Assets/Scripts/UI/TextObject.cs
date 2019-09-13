@@ -532,6 +532,21 @@ public class TextObject : MonoBehaviour
             }
         }
 
+        /** I HATE THIS */
+        Dictionary<int, int> parsedToCharacters = new Dictionary<int, int>();
+        int noOfActions = 0;
+        for(int i = 0; i < letterObjects.Count; ++i)
+        {
+            if (letterObjects[i].isActionCharacter)
+            {
+                noOfActions++;
+            }
+            else
+            {
+                parsedToCharacters.Add(i, i+noOfActions);
+            }
+        }
+
         if (lineLength > 0)
         {
             int finalLineLength = lineLength;
@@ -554,7 +569,9 @@ public class TextObject : MonoBehaviour
                         i = spaceIndex;
 
                         // Set to be a line break
-                        letterObjects[i].isLineBreak = true;
+                        letterObjects[parsedToCharacters[i]].isLineBreak = true;
+
+                        Debug.Log("Added line break @ character " + parsedString[i]);
 
                         // Increase number of lines
                         noOfLines++;
