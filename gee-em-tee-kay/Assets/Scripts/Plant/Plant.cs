@@ -217,8 +217,10 @@ public class Plant : MonoBehaviour
         Vector3 d = (p0 - op2).normalized;
         float scale = (p3 - p0).magnitude / 3;
         Vector3 p1 = p0 + scale * d;
-        Vector3 m = (p1 + p3) / 2;
-        Vector3 p2 = m + (p1-p0) / 3;
+
+        Vector3 windowToEnd = (p3 - windowLocation.position).normalized;
+        windowToEnd.y = (p1.y-p3.y)/2f;
+        Vector3 p2 = p3 + scale * windowToEnd;
 
         List<Vector3> controlPointsToAdd = BezierUtils.SplitCubicBezierNWays(p0, p1, p2, p3, sectionsToSplitInto);
 
