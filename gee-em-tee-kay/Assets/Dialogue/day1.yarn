@@ -1,37 +1,24 @@
 title: Day1.NamePlant
 ---
-Player: you are called {$plant_name} now.
-Player: i'm so sorry.
-===
-
-title: Day1.NamePlant.Max
----
-Player: you are called {$plant_name} now.
-Player: [jitter][bold]lmaoooooo what a dang loser!!!!!!!!
-===
-
-title: Day1.NamePlant.MaxHandsome
----
-Player: you are called {$plant_name} now.
-Player: that is one [italics]handsome[/i] name.
-===
-
-title: Day1.NamePlant.Robin
----
-Player: you are called {$plant_name} now.
-Player: which means you're gonna go to cambridge!! that's so exciting!
-===
-
-title: Day1.NamePlant.Flowey
----
-Player: you are called {$plant_name} now.
-Player: it fills you with [jittery]determination.
-===
-
-title: Day1.NamePlant.Plant
----
-Player: you are called {$plant_name} now.
-Player: wow, that is real original. good work, me.
+<<if $plant_name is "max turnbull">>
+    Player: you are called {$plant_name} now.
+    Player: [jitter][bold]lmaoooooo what a dang loser!!!!!!!!
+<<elseif $plant_name is "max">>
+    Player: you are called {$plant_name} now.
+    Player: that is one [italics]handsome[/i] name.
+<<elseif $plant_name is "robin mcfarland">>
+    Player: you are called {$plant_name} now.
+    Player: which means you're gonna go to cambridge!! that's so exciting!
+<<elseif $plant_name is "flowey">>
+    Player: you are called {$plant_name} now.
+    Player: it fills you with [jittery]determination.
+<<elseif $plant_name is "plant">>
+    Player: you are called {$plant_name} now.
+    Player: wow, that is real original. good work, me.
+<<else>>
+    Player: you are called {$plant_name} now.
+    Player: i'm so sorry.
+<<endif>>
 ===
 
 title: Day1.Intro

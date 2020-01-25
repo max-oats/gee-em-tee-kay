@@ -1,6 +1,6 @@
 title: Day5.Intro
 ---
-<<phoneOn Player>>
+<<Player phoneOn>>
 Player: yeah,{delay=0.1} my furniture comes tomorrow!
 Player: i'll have a TV again!!!!
 Player: which means i can stop talking to my plant i guess.
@@ -28,7 +28,7 @@ Player: haha, i'm only kidding
 Player: yeah
 Player: i love you too mum
 Player: bye
-<<phoneOff Player>>
+<<Player phoneOff>>
 ===
 
 title: Day5.Talk

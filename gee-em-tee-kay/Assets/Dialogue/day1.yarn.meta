@@ -13,16 +13,16 @@ ScriptedImporter:
   stringIDs:
   - day1-Day1.NamePlant-0
   - day1-Day1.NamePlant-1
-  - day1-Day1.NamePlant.Max-2
-  - day1-Day1.NamePlant.Max-3
-  - day1-Day1.NamePlant.MaxHandsome-4
-  - day1-Day1.NamePlant.MaxHandsome-5
-  - day1-Day1.NamePlant.Robin-6
-  - day1-Day1.NamePlant.Robin-7
-  - day1-Day1.NamePlant.Flowey-8
-  - day1-Day1.NamePlant.Flowey-9
-  - day1-Day1.NamePlant.Plant-10
-  - day1-Day1.NamePlant.Plant-11
+  - day1-Day1.NamePlant-2
+  - day1-Day1.NamePlant-3
+  - day1-Day1.NamePlant-4
+  - day1-Day1.NamePlant-5
+  - day1-Day1.NamePlant-6
+  - day1-Day1.NamePlant-7
+  - day1-Day1.NamePlant-8
+  - day1-Day1.NamePlant-9
+  - day1-Day1.NamePlant-10
+  - day1-Day1.NamePlant-11
   - day1-Day1.Intro-12
   - day1-Day1.Intro-13
   - day1-Day1.Intro-14
@@ -39,5 +39,5 @@ ScriptedImporter:
   - day1-Day1.Talk-25
   compilationStatus: 1
   isSuccesfullyCompiled: 1
-  compilationErrorMessage: "Error on line 6 at position 4:\nmismatched input '\\n\\n'
-    expecting ':'\r\n===\r\n   ^^"
+  compilationErrorMessage: "Error on line 3 at position 25:\nmissing '(' at 'turnbull'\r\n<<if
+    $plant_name is max turnbull>>\r\n                        ^^^^^^^^"

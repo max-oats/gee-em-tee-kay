@@ -203,19 +203,9 @@ public class InteractionComponent : MonoBehaviour
         // speechBubble.KillTextElements();
         nameBubble.ShrinkBubble();
 
-        string nodeName = "Day1.NamePlant";
-
         Global.AddName(Global.flagManager.GetFlag("$plant_name"));
-
-        foreach (SpecialName sn in Global.dialogueHandler.specialNames)
-        {
-            if (Global.flagManager.GetFlag("$plant_name") == sn.plantName)
-            {
-                nodeName += "." + sn.nodeName;
-            }
-        }
-
-        Global.dialogueHandler.StartDialogue(nodeName);
+        
+        Global.dialogueHandler.StartDialogue("Day1.NamePlant");
     }
 
     public void BumpCollider()
