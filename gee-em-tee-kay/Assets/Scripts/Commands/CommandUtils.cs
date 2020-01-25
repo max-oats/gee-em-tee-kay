@@ -45,17 +45,18 @@ public static class CommandUtils
             {
                 if (c == '}')
                 {
-                    isListening = false;
-
                     if (builtString.Length > 0 && builtString[0] == '$')
                     {
                         // we've found a tag!
-                        finalString += Global.flagManager.GetFlag(builtString.Substring(1));
+                        finalString += Global.flagManager.GetFlag(builtString);
                     }
                     else
                     {
                         finalString += '{' + builtString + '}';
                     }
+
+                    builtString = "";
+                    isListening = false;
                 }
                 else
                 {
