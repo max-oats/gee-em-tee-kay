@@ -1,0 +1,43 @@
+fileFormatVersion: 2
+guid: 63cff4fdefd94c0468df55acbc23ed2b
+ScriptedImporter:
+  fileIDToRecycleName:
+    4900000: Strings
+    11400000: Program
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en
+  stringIDs:
+  - day1-Day1.NamePlant-0
+  - day1-Day1.NamePlant-1
+  - day1-Day1.NamePlant.Max-2
+  - day1-Day1.NamePlant.Max-3
+  - day1-Day1.NamePlant.MaxHandsome-4
+  - day1-Day1.NamePlant.MaxHandsome-5
+  - day1-Day1.NamePlant.Robin-6
+  - day1-Day1.NamePlant.Robin-7
+  - day1-Day1.NamePlant.Flowey-8
+  - day1-Day1.NamePlant.Flowey-9
+  - day1-Day1.NamePlant.Plant-10
+  - day1-Day1.NamePlant.Plant-11
+  - day1-Day1.Intro-12
+  - day1-Day1.Intro-13
+  - day1-Day1.Intro-14
+  - day1-Day1.Intro-15
+  - day1-Day1.Intro-16
+  - day1-Day1.Intro-17
+  - day1-Day1.Intro-18
+  - day1-Day1.Intro-19
+  - day1-Day1.Intro-20
+  - day1-Day1.Intro-21
+  - day1-Day1.Intro-22
+  - day1-Day1.Talk-23
+  - day1-Day1.Talk-24
+  - day1-Day1.Talk-25
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: "Error on line 6 at position 4:\nmismatched input '\\n\\n'
+    expecting ':'\r\n===\r\n   ^^"

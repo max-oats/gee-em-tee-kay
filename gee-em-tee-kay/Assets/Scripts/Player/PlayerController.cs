@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Global.dialogueHandler.dialogueEnd += DialogueEnd;
+        Global.dialogueHandler.onDialogueEnd.AddListener(DialogueEnd);
         Global.dayManager.dayStarted += ResetOnDay;
     }
 
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         interactionComponent.BumpCollider();
     }
 
-    [Yarn.Unity.YarnCommand("phoneOn")]
+    [Command("phoneOn")]
     public void SwitchPhoneOn()
     {
         animator.CrossFadeInFixedTime("IdlePhone", 0.5f);
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(AttachPhone(true));
     }
 
-    [Yarn.Unity.YarnCommand("phoneOff")]
+    [Command("phoneOff")]
     public void SwitchPhoneOff()
     {
         animator.CrossFadeInFixedTime("IdleWalk", 0.5f);

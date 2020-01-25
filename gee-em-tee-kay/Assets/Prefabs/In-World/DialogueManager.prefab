@@ -42,23 +42,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 8273743799936857762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a8e41434b489bb4eb5ccf3975bc23d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceText:
-  - {fileID: 4900000, guid: 3bfbc395063ab9d4cba77c63472b8c48, type: 3}
-  - {fileID: 4900000, guid: 78680942abe51ab4399a2234ead85afb, type: 3}
-  - {fileID: 4900000, guid: 53aa70cc43d5a9c46911a51c090386d9, type: 3}
-  - {fileID: 4900000, guid: 26bf16c9deb10d14a8ee5aa38538c0ef, type: 3}
-  - {fileID: 4900000, guid: f0ff2c74d2d143041b4b284f2d453cf8, type: 3}
-  stringGroups: []
-  shouldOverrideLanguage: 0
-  overrideLanguage: 10
+  yarnScripts:
+  - {fileID: 11400000, guid: 63cff4fdefd94c0468df55acbc23ed2b, type: 3}
+  - {fileID: 11400000, guid: 2fa3497db2083a7488eafbf49ff99b82, type: 3}
+  - {fileID: 11400000, guid: fdaa043ac3e52154d866046e728692f6, type: 3}
+  - {fileID: 11400000, guid: 47d00a9c7fe751447a2b51acea124f29, type: 3}
+  - {fileID: 11400000, guid: bac979ba41262da41b48474a4ca3a155, type: 3}
+  - {fileID: 11400000, guid: 91d19c3e5cbfb58429c1a5b451acb76d, type: 3}
   variableStorage: {fileID: 8273743799936857789}
   dialogueUI: {fileID: 8273743799936857788}
-  startNode: Day1.Intro
+  startNode: Start
   startAutomatically: 0
   automaticCommands: 1
+  stringTables:
+  - {fileID: 4900000, guid: 63cff4fdefd94c0468df55acbc23ed2b, type: 3}
+  - {fileID: 4900000, guid: 2fa3497db2083a7488eafbf49ff99b82, type: 3}
+  - {fileID: 4900000, guid: fdaa043ac3e52154d866046e728692f6, type: 3}
+  - {fileID: 4900000, guid: 47d00a9c7fe751447a2b51acea124f29, type: 3}
+  - {fileID: 4900000, guid: bac979ba41262da41b48474a4ca3a155, type: 3}
+  - {fileID: 4900000, guid: 91d19c3e5cbfb58429c1a5b451acb76d, type: 3}
+  onNodeComplete:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Yarn.Unity.DialogueRunner+StringUnityEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &8273743799936857789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,11 +78,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8273743799936857762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bd8c77743454af47b9e92c2ea447725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVariables: []
-  debugTextView: {fileID: 0}
 --- !u!114 &8273743799936857788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,35 +93,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04317fce65da54f4997a5c4465b4e93c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textPfb: {fileID: 9172904301534774897, guid: 7df07f65ac57bc044b62b7f6af2b1374, type: 3}
-  speechBubPfb: {fileID: 8563041433594134032, guid: 80aa33e00a21ea4428c27fe9a2973578,
-    type: 3}
-  _audioSource: {fileID: 5723108230827763314, guid: f8d3696655626f64b9117a6b56bc4f3e,
-    type: 3}
+  onDialogueStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onLineStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onLineFinishDisplaying:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onLineUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Yarn.Unity.DialogueRunner+StringUnityEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onLineEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onOptionsStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onOptionsEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onCommand:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Yarn.Unity.DialogueRunner+StringUnityEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _speechBubble: {fileID: 0}
+  _optionBubble: {fileID: 0}
+  _talkNoise: {fileID: 0}
   playerAnimator: {fileID: 0}
-  textSpeed: 0.05
+  thoughtCanvas: {fileID: 0}
+  dialogueRunner: {fileID: 0}
+  playerSpeechHandler: {fileID: 0}
   timeBetweenBleeps: 0.08
   speedyTextMultiplier: 0.3
-  defaultInset: {x: 20, y: -20}
-  heightPadding: 20
-  widthPadding: 40
-  letterHeight: 40
-  letterWidth: 20
-  letterOffset: -0.15
-  optionOffset: 30
+  interactionMenuOptionGap: 10
   optionDelay: 0.1
   cameraUpOffset: -2
-  lineLength: 20
-  lineLengthMultiplier: 0.85
   offsetAddition: 0.3
   screenShakeMultiplier: 0.6
-  playerSpeechHandler: {fileID: 0}
-  normalColours: []
-  delayCodes: []
-  rainbowColours: []
-  rainbowColourFile: /DialogueData/rainbow.txt
-  normalColourFile: /DialogueData/colours.txt
-  delayFile: /DialogueData/delays.txt
   inDialogue: 0
   specialNames:
   - plantName: max turnbull

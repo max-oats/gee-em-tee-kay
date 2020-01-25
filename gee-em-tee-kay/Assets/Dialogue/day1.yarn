@@ -1,0 +1,59 @@
+title: Day1.NamePlant
+---
+Player: you are called PLANTNAME now.
+Player: i'm so sorry.
+===
+
+title: Day1.NamePlant.Max
+---
+Player: you are called PLANTNAME now.
+Player: [jitter][bold]lmaoooooo what a dang loser!!!!!!!!
+===
+
+title: Day1.NamePlant.MaxHandsome
+---
+Player: you are called PLANTNAME now.
+Player: that is one [italics]handsome[/i] name.
+===
+
+title: Day1.NamePlant.Robin
+---
+Player: you are called PLANTNAME now.
+Player: which means you're gonna go to cambridge!! that's so exciting!
+===
+
+title: Day1.NamePlant.Flowey
+---
+Player: you are called PLANTNAME now.
+Player: it fills you with [jittery]determination.
+===
+
+title: Day1.NamePlant.Plant
+---
+Player: you are called PLANTNAME now.
+Player: wow, that is real original. good work, me.
+===
+
+title: Day1.Intro
+---
+<<Player phoneOn>>
+Player: yeah, {delay=0.2}i'm walking into the new place right now!
+Player: well, it's{delay=0.2}.{delay=0.2}.{delay=0.2}. cozy.
+Player: they left a [color=green]plant pot[/color] here
+Player: which i guess is my bed now?
+Player: bud!!!! {delay=0.2}i am totally fine!|toootally
+Player: it was [b]totally[/b] mutual.|was that convincing?
+Player: yeah, the moving van isn't bringing the furniture for another [e][b]5 days!!!!!!!
+Player: but don't worry.
+Player: i spent my remaining £2 on a seed for my plant pot!!!!!
+Player: {d=0.2}.{d=0.2}.{d=0.2}. hello?
+<<Player phoneOff>>
+Player: i think i'd hang up on me too.
+===
+
+title: Day1.Talk
+---
+Player: ...
+Player: ok. {delay=0.2}i'm not gonna talk to you, PLANTNAME.
+Player: your name is [i]far too[/i] [b][j]cursed.[/b][/j]|chris used to talk to plants.
+===

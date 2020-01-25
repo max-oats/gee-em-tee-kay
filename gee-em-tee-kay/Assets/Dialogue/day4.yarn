@@ -1,0 +1,68 @@
+title: Day4.NoWater
+---
+Player: wow you are dryer than my last tinder convo [bold][jittery]know what i'm sayin hahaha
+Player: but seriously i'm an asshole
+Player: like no water at all? for real?
+Player: i'd love to say this isn't a metaphor for my relationship but uhhhhhh
+Player: both you and my relationship are dead and i'm the common factor
+===
+
+title: Day4.Thirsty
+---
+Player: oof lookin a lil {d=0.1}[b]parched[/b] there PLANTNAME
+Player: can i offer you a selection of [wavey]fine beverages
+Player: maybe a lovely... {d=0.2}{shake}mai thyme
+Player: ... this is surprisingly difficult, leave me alone
+Player: ...
+[[Day4.Talk]]
+===
+
+title: Day4.Overwatered
+---
+Player: oh hey it looks like you had a bit too much to drink last night
+Player: happens to the best of us mate
+Player: ...
+[[Day4.Talk]]
+===
+
+title: Day4.Drowning
+---
+Player: wait... are you [italics]not[/i] supposed to give plants eight glasses of water a day?
+Player: because you my friend are
+Player: straight up underwater
+Player: sorry bud
+===
+
+title: Day4.Talk
+---
+Player: PLANTNAME
+Player: PLANTNAME, PLANTNAME, PLANTNAME
+Player: listen, i don't mean to be [wavey]dramatic[/w] but
+Player: what exactly is the point?
+Player: ...
+Player: i had one (1) good thing
+Player: and i messed it up
+Player: chris was...
+Player: she was [bold]perfect[/b] for me
+Player: we just had so much in common
+Player: we liked all the same music, the same games
+Player: we even shared the same politics, like
+Player: we belonged together
+Player: we {d=0.1}[jittery]belong[/j]{d=0.1} together
+Player: there's no one else like her out there, there can't be
+Player: and god, PLANTNAME, she was so [j][e]beautiful[/e][/j]
+Player: i don't even know why i'm bothering with tinder
+Player: everyone on there is just so [b][j]boring[/b][/j]
+Player: and i don't want a chris 2.0
+Player: i just want her
+Player: and she's gone
+Player: ...
+Player: i'm sorry, you don't wanna hear about this
+Player: heck, you [i]can't[/i] hear this!
+Player: you're just a stupid plant
+Player: {d=0.8}.{d=0.8}.{d=0.8}.
+Player: i'm sorry
+Player: that was mean
+Player: i'm just having a [b][e]really[/b][/e] bad mental health day
+Player: you know how it is sometimes
+===
