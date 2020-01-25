@@ -35,15 +35,10 @@ public class PlantHealthData : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Global.debug.keyQGrowsPlant && Input.GetKeyDown(KeyCode.Q))
         {
             ReviewDay(false);
         }
-        /*else if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Debug Talking!");
-            Talk();
-        }*/
     }
 
     public void ReviewDay(bool shouldSpawnFlower)

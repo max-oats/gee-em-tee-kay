@@ -13,4 +13,5 @@ public class DebugStuff : MonoBehaviour
     public bool cycleFlowerColourSat = false;
     public bool cycleFlowerColourValue = false;
     public int dayToPlayDialogueFor_1Indexed = -1;
+    public bool keyQGrowsPlant = false;
 }
