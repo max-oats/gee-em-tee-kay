@@ -40,6 +40,40 @@ ModelImporter:
     100068: Bone_021
     100070: Bone_022
     100072: Bone_023
+    100074: Bone.001
+    100076: Bone.002
+    100078: Bone.003
+    100080: Bone.004
+    100082: Bone.005
+    100084: Bone.006
+    100086: Bone.007
+    100088: Bone.008
+    100090: Bone.009
+    100092: Bone.010
+    100094: Bone.011
+    100096: Bone.012
+    100098: Bone.013
+    100100: Bone.014
+    100102: Bone.015
+    100104: Bone.015_end
+    100106: Bone.016
+    100108: Bone.016_end
+    100110: Bone.017
+    100112: Bone.017_end
+    100114: Bone.018
+    100116: Bone.018_end
+    100118: Bone.019
+    100120: Bone.019_end
+    100122: Bone.020
+    100124: Bone.020_end
+    100126: Bone.021
+    100128: Bone.021_end
+    100130: Bone.022
+    100132: Bone.022_end
+    100134: Bone.023
+    100136: Bone.023_end
+    100138: Camera
+    100140: Lamp
     400000: Cylinder
     400002: Icosphere
     400004: Icosphere_001
@@ -77,7 +111,43 @@ ModelImporter:
     400068: Bone_021
     400070: Bone_022
     400072: Bone_023
+    400074: Bone.001
+    400076: Bone.002
+    400078: Bone.003
+    400080: Bone.004
+    400082: Bone.005
+    400084: Bone.006
+    400086: Bone.007
+    400088: Bone.008
+    400090: Bone.009
+    400092: Bone.010
+    400094: Bone.011
+    400096: Bone.012
+    400098: Bone.013
+    400100: Bone.014
+    400102: Bone.015
+    400104: Bone.015_end
+    400106: Bone.016
+    400108: Bone.016_end
+    400110: Bone.017
+    400112: Bone.017_end
+    400114: Bone.018
+    400116: Bone.018_end
+    400118: Bone.019
+    400120: Bone.019_end
+    400122: Bone.020
+    400124: Bone.020_end
+    400126: Bone.021
+    400128: Bone.021_end
+    400130: Bone.022
+    400132: Bone.022_end
+    400134: Bone.023
+    400136: Bone.023_end
+    400138: Camera
+    400140: Lamp
+    2000000: Camera
     2100000: Masked__MainTex_png
+    2100002: Masked
     2300000: Cylinder
     2300002: Icosphere
     2300004: Icosphere_001
@@ -115,6 +185,7 @@ ModelImporter:
     7400002: ArmatureAction
     7400004: ArmatureAction_001
     9500000: //RootNode
+    10800000: Lamp
     13700000: Cylinder
     2186277476908879412: ImportLogs
   externalObjects:
@@ -187,8 +258,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

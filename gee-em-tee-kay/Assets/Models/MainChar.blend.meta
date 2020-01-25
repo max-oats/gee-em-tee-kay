@@ -41,6 +41,43 @@ ModelImporter:
     100070: Sphere_006
     100072: Sphere_007
     100074: Cylinder
+    100076: Bone.001
+    100078: Bone.002
+    100080: Bone.003
+    100082: Bone.004
+    100084: Bone.005
+    100086: Bone.006
+    100088: Bone.006_end
+    100090: Bone.007
+    100092: Bone.008
+    100094: Bone.009
+    100096: Bone.009_end
+    100098: Bone.010
+    100100: Bone.011
+    100102: Bone.012
+    100104: Bone.012_end
+    100106: Bone.013
+    100108: Bone.014
+    100110: Bone.015
+    100112: Bone.016
+    100114: Bone.017
+    100116: Bone.018
+    100118: Bone.019
+    100120: Bone.020
+    100122: Bone.021
+    100124: Bone.021_end
+    100126: Bone.022
+    100128: Bone.022_end
+    100130: Cube.001
+    100132: Cube.002
+    100134: Cube.003
+    100136: Sphere.001
+    100138: Sphere.002
+    100140: Sphere.003
+    100142: Sphere.004
+    100144: Sphere.005
+    100146: Sphere.006
+    100148: Sphere.007
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -79,9 +116,47 @@ ModelImporter:
     400070: Sphere_006
     400072: Sphere_007
     400074: Cylinder
+    400076: Bone.001
+    400078: Bone.002
+    400080: Bone.003
+    400082: Bone.004
+    400084: Bone.005
+    400086: Bone.006
+    400088: Bone.006_end
+    400090: Bone.007
+    400092: Bone.008
+    400094: Bone.009
+    400096: Bone.009_end
+    400098: Bone.010
+    400100: Bone.011
+    400102: Bone.012
+    400104: Bone.012_end
+    400106: Bone.013
+    400108: Bone.014
+    400110: Bone.015
+    400112: Bone.016
+    400114: Bone.017
+    400116: Bone.018
+    400118: Bone.019
+    400120: Bone.020
+    400122: Bone.021
+    400124: Bone.021_end
+    400126: Bone.022
+    400128: Bone.022_end
+    400130: Cube.001
+    400132: Cube.002
+    400134: Cube.003
+    400136: Sphere.001
+    400138: Sphere.002
+    400140: Sphere.003
+    400142: Sphere.004
+    400144: Sphere.005
+    400146: Sphere.006
+    400148: Sphere.007
     2100000: MainMaterial__MainTex_png
     2100002: MainMaterial
     2100004: Material__MainTex_png
+    2100006: Material
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -119,6 +194,16 @@ ModelImporter:
     4300020: Sphere_007
     4300022: Sphere_006
     4300024: Cylinder
+    4300026: Sphere.007
+    4300028: Sphere.006
+    4300030: Sphere.005
+    4300032: Sphere.004
+    4300034: Cube.003
+    4300036: Sphere.003
+    4300038: Sphere.002
+    4300040: Cube.002
+    4300042: Cube.001
+    4300044: Sphere.001
     7400000: Default Take
     7400002: Player_Idle
     7400004: Player_Walk
@@ -143,6 +228,17 @@ ModelImporter:
     13700020: Sphere_006
     13700022: Sphere_007
     13700024: Cylinder
+    13700026: Cube.001
+    13700028: Cube.002
+    13700030: Cube.003
+    13700032: Sphere.001
+    13700034: Sphere.002
+    13700036: Sphere.003
+    13700038: Sphere.004
+    13700040: Sphere.005
+    13700042: Sphere.006
+    13700044: Sphere.007
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -153,6 +249,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MainMaterial__MainTex_png
+    second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
     second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
   - first:
       type: UnityEngine:Material
@@ -173,7 +274,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event Arc has a time (0.000000) outside the clip's valid
+      range (0.041667..1.666667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -538,8 +640,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

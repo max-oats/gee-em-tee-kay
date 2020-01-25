@@ -24,6 +24,22 @@ ModelImporter:
     100036: Text_001
     100038: Text_002
     100040: Text_003
+    100042: Camera
+    100044: Cube.001
+    100046: Cube.002
+    100048: Cube.003
+    100050: Cube.004
+    100052: Cube.005
+    100054: Cube.006
+    100056: Cylinder.001
+    100058: Cylinder.002
+    100060: Empty.001
+    100062: Empty.002
+    100064: Lamp
+    100066: Sphere.001
+    100068: Sphere.002
+    100070: Text.001
+    100072: Text.003
     400000: //RootNode
     400002: Cube
     400004: Cube_001
@@ -45,12 +61,30 @@ ModelImporter:
     400036: Text_001
     400038: Text_002
     400040: Text_003
+    400042: Camera
+    400044: Cube.001
+    400046: Cube.002
+    400048: Cube.003
+    400050: Cube.004
+    400052: Cube.005
+    400054: Cube.006
+    400056: Cylinder.001
+    400058: Cylinder.002
+    400060: Empty.001
+    400062: Empty.002
+    400064: Lamp
+    400066: Sphere.001
+    400068: Sphere.002
+    400070: Text.001
+    400072: Text.003
+    2000000: Camera
     2100000: unnamed
     2100002: Walls__WallTexture1_png
     2100004: Walls
     2100006: Wood
     2100008: Main__MainTex_png
     2100010: Main
+    2100012: No Name
     2300000: //RootNode
     2300002: Cube
     2300004: Cube_001
@@ -69,6 +103,18 @@ ModelImporter:
     2300030: Text_001
     2300032: Text_002
     2300034: Text_003
+    2300036: Cube.001
+    2300038: Cube.002
+    2300040: Cube.003
+    2300042: Cube.004
+    2300044: Cube.005
+    2300046: Cube.006
+    2300048: Cylinder.001
+    2300050: Cylinder.002
+    2300052: Sphere.001
+    2300054: Sphere.002
+    2300056: Text.001
+    2300058: Text.003
     3300000: //RootNode
     3300002: Cube
     3300004: Cube_001
@@ -87,6 +133,18 @@ ModelImporter:
     3300030: Text_001
     3300032: Text_002
     3300034: Text_003
+    3300036: Cube.001
+    3300038: Cube.002
+    3300040: Cube.003
+    3300042: Cube.004
+    3300044: Cube.005
+    3300046: Cube.006
+    3300048: Cylinder.001
+    3300050: Cylinder.002
+    3300052: Sphere.001
+    3300054: Sphere.002
+    3300056: Text.001
+    3300058: Text.003
     4300000: Cube
     4300002: Cube_002
     4300004: Cube_001
@@ -104,8 +162,21 @@ ModelImporter:
     4300028: Cylinder_001
     4300030: Text_001
     4300032: Text_003
+    4300034: Text.001
+    4300036: Text.003
+    4300038: Sphere.002
+    4300040: Cube.006
+    4300042: Cylinder.002
+    4300044: Cube.005
+    4300046: Cube.004
+    4300048: Cube.003
+    4300050: Cylinder.001
+    4300052: Sphere.001
+    4300054: Cube.001
+    4300056: Cube.002
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -168,8 +239,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

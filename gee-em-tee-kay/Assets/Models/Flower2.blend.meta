@@ -4,15 +4,26 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Lamp
+    100006: Sphere
     400000: //RootNode
+    400002: Camera
+    400004: Lamp
+    400006: Sphere
+    2000000: Camera
     2100000: Primary
     2100002: Primary__MainTex_png
     2100004: Secondary__MainTex_png
+    2100006: Secondary
     2300000: //RootNode
+    2300002: Sphere
     3300000: //RootNode
+    3300002: Sphere
     4300000: Sphere
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -65,8 +76,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
