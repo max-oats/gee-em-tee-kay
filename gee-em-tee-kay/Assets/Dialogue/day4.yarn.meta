@@ -1,0 +1,64 @@
+fileFormatVersion: 2
+guid: 47d00a9c7fe751447a2b51acea124f29
+ScriptedImporter:
+  fileIDToRecycleName:
+    4900000: Strings
+    11400000: Program
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en
+  stringIDs:
+  - day4-Day4.NoWater-0
+  - day4-Day4.NoWater-1
+  - day4-Day4.NoWater-2
+  - day4-Day4.NoWater-3
+  - day4-Day4.NoWater-4
+  - day4-Day4.Thirsty-5
+  - day4-Day4.Thirsty-6
+  - day4-Day4.Thirsty-7
+  - day4-Day4.Thirsty-8
+  - day4-Day4.Thirsty-9
+  - day4-Day4.Overwatered-10
+  - day4-Day4.Overwatered-11
+  - day4-Day4.Overwatered-12
+  - day4-Day4.Drowning-13
+  - day4-Day4.Drowning-14
+  - day4-Day4.Drowning-15
+  - day4-Day4.Drowning-16
+  - day4-Day4.Talk-17
+  - day4-Day4.Talk-18
+  - day4-Day4.Talk-19
+  - day4-Day4.Talk-20
+  - day4-Day4.Talk-21
+  - day4-Day4.Talk-22
+  - day4-Day4.Talk-23
+  - day4-Day4.Talk-24
+  - day4-Day4.Talk-25
+  - day4-Day4.Talk-26
+  - day4-Day4.Talk-27
+  - day4-Day4.Talk-28
+  - day4-Day4.Talk-29
+  - day4-Day4.Talk-30
+  - day4-Day4.Talk-31
+  - day4-Day4.Talk-32
+  - day4-Day4.Talk-33
+  - day4-Day4.Talk-34
+  - day4-Day4.Talk-35
+  - day4-Day4.Talk-36
+  - day4-Day4.Talk-37
+  - day4-Day4.Talk-38
+  - day4-Day4.Talk-39
+  - day4-Day4.Talk-40
+  - day4-Day4.Talk-41
+  - day4-Day4.Talk-42
+  - day4-Day4.Talk-43
+  - day4-Day4.Talk-44
+  - day4-Day4.Talk-45
+  - day4-Day4.Talk-46
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: "Error on line 9 at position 4:\nmismatched input '\\n\\n'
+    expecting ':'\r\n===\r\n   ^^"

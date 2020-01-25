@@ -1,0 +1,59 @@
+fileFormatVersion: 2
+guid: fdaa043ac3e52154d866046e728692f6
+ScriptedImporter:
+  fileIDToRecycleName:
+    4900000: Strings
+    11400000: Program
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en
+  stringIDs:
+  - day3-Day3.Thirsty-0
+  - day3-Day3.Thirsty-1
+  - day3-Day3.Overwatered-2
+  - day3-Day3.Overwatered-3
+  - day3-Day3.Overwatered-4
+  - day3-Day3.Drowning-5
+  - day3-Day3.Drowning-6
+  - day3-Day3.Drowning-7
+  - day3-Day3.Drowning-8
+  - day3-Day3.Talk-9
+  - day3-Day3.Talk-10
+  - day3-Day3.Talk-11
+  - day3-Day3.Talk-12
+  - day3-Day3.Talk-13
+  - day3-Day3.Talk-14
+  - day3-Day3.Talk-15
+  - day3-Day3.Talk-16
+  - day3-Day3.Questions-17
+  - day3-Day3.Questions-18
+  - day3-Day3.Questions-19
+  - day3-Day3.HowAreYou-20
+  - day3-Day3.HowAreYou-21
+  - day3-Day3.HowAreYou-22
+  - day3-Day3.HowAreYou-23
+  - day3-Day3.HowAreYou-24
+  - day3-Day3.HowAreYou-25
+  - day3-Day3.HowAreYou-26
+  - day3-Day3.HowAreYou-27
+  - day3-Day3.HowAreYou-28
+  - day3-Day3.HowAreYou-29
+  - day3-Day3.HowAreYou-30
+  - day3-Day3.HowAreYou-31
+  - day3-Day3.HowAreYou-32
+  - day3-Day3.Weather-33
+  - day3-Day3.Weather-34
+  - day3-Day3.Weather-35
+  - day3-Day3.Weather-36
+  - day3-Day3.Weather-37
+  - day3-Day3.Podcasts-38
+  - day3-Day3.NoUse-39
+  - day3-Day3.NoUse-40
+  - day3-Day3.NoUse-41
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: "Error on line 6 at position 14:\nmismatched input '\\n'
+    expecting ':'\r\n[[Day3.Talk]]\r\n             ^"

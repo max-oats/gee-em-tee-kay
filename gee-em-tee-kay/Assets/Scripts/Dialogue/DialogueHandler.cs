@@ -15,13 +15,27 @@ public class SpecialName
 /** Dialogue Handler. */
 public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 {
-    /// A delegate (ie a function-stored-in-a-variable) that
-    /// we call to tell the dialogue system about what option
-    /// the user selected
-    private Yarn.OptionChooser SetSelectedOption;
+    // When true, the DialogueRunner is waiting for the user to
+    // indicate that they want to proceed to the next line.
+    private bool waitingForLineContinue = false;
 
-    public delegate void DialogueEnd();
-    public DialogueEnd dialogueEnd;
+    // When true, the DialogueRunner is waiting for the user to press
+    // one of the option buttons.
+    private bool waitingForOptionSelection = false;      
+
+    public UnityEngine.Events.UnityEvent onDialogueStart;
+
+    public UnityEngine.Events.UnityEvent onDialogueEnd;  
+
+    public UnityEngine.Events.UnityEvent onLineStart;
+    public UnityEngine.Events.UnityEvent onLineFinishDisplaying;
+    public Yarn.Unity.DialogueRunner.StringUnityEvent onLineUpdate;
+    public UnityEngine.Events.UnityEvent onLineEnd;
+
+    public UnityEngine.Events.UnityEvent onOptionsStart;
+    public UnityEngine.Events.UnityEvent onOptionsEnd;
+
+    public Yarn.Unity.DialogueRunner.StringUnityEvent onCommand;
 
     /** Prefabs */
     [Tooltip("Speech bubble prefab"), SerializeField]
@@ -71,18 +85,28 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         }
     }
 
-    /// Show a line of dialogue, gradually
-    public override IEnumerator RunLine(Yarn.Line line)
+    public override Yarn.Dialogue.HandlerExecutionType RunLine (Yarn.Line line, IDictionary<string,string> strings, System.Action onComplete)
     {
-        // todo: add support for tags. at the start of line: [nc] (no camera), [ni] (no input)
-        // if (line.text[0] == "[")
-        //      there must be a tag. set variables here
+        // Start displaying the line; it will call onComplete later
+        // which will tell the dialogue to continue
+        StartCoroutine(DoRunLine(line, strings, onComplete));
+        return Yarn.Dialogue.HandlerExecutionType.PauseExecution;
+    }
 
+    /// Show a line of dialogue, gradually
+    private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string,string> strings, System.Action onComplete)
+    {
         // Let the system know that we're running a line
         currentlyRunningLine = true;
 
+        if (strings.TryGetValue(line.ID, out var text) == false) 
+        {
+            Debug.LogWarning($"Line {line.ID} doesn't have any localised text.");
+            text = line.ID;
+        }
+
         // Parse the friend from the line
-        string friendName = line.text.Substring(0, line.text.IndexOf(": "));
+        string friendName = text.Substring(0, text.IndexOf(": "));
 
         // Grab the handler for the UI side
         SpeechBubbleHandler speechBubbleHandler = playerSpeechHandler;
@@ -100,10 +124,10 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         speechBubble.GrowBubble();
 
         // Pull the contents
-        string stringContents = line.text.Substring(line.text.IndexOf(": ") + 2);
+        string stringContents = text.Substring(text.IndexOf(":") + 1).Trim();
 
         // Swap out plant name for the given plant name
-        stringContents = stringContents.Replace("PLANTNAME", "[color=green]" + Global.plantName + "[/color]");
+        stringContents = CommandUtils.FillInTags(stringContents);
 
         string[] splitString = stringContents.Split('|');
         stringContents = splitString[0];
@@ -198,6 +222,10 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             }
         }
 
+        waitingForLineContinue = true;
+
+        onLineFinishDisplaying?.Invoke();
+
         // Wait for talk input
         while (Global.input.GetButtonDown("Talk") == false)
         {
@@ -215,13 +243,25 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         // Line is OVER
         currentlyRunningLine = false;
         delayTimeMultiplier = 1f;
+
+        // Avoid skipping lines if textSpeed == 0
+        yield return new WaitForEndOfFrame();
+
+        // Hide the text and prompt
+        onLineEnd?.Invoke();
+
+        onComplete();
     }
 
-    /**
+        /**
      *  RUN OPTIONS
      */
-    public override IEnumerator RunOptions(Yarn.Options optionsCollection,
-                                            Yarn.OptionChooser optionChooser)
+    public override void RunOptions (Yarn.OptionSet optionsCollection, IDictionary<string,string> strings, System.Action<int> selectOption) 
+    {
+        StartCoroutine(DoRunOptions(optionsCollection, strings, selectOption));
+    }
+    
+    private IEnumerator DoRunOptions (Yarn.OptionSet optionsCollection, IDictionary<string,string> strings, System.Action<int> selectOption)
     {
         List<SpeechBubble> optionButtons = new List<SpeechBubble>();
 
@@ -229,15 +269,21 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         // Find out the width of the longest option
         float longestOption = 0f;
 
-        foreach (string optionString in optionsCollection.options)
+        foreach (var optionString in optionsCollection.Options)
         {
-            if (optionString.Length > longestOption)
+            if (strings.TryGetValue(optionString.Line.ID, out var optionText) == false) 
             {
-                longestOption = optionString.Length;
+                Debug.LogWarning($"Option {optionString.Line.ID} doesn't have any localised text");
+                optionText = optionString.Line.ID;
+            }
+
+            if (optionText.Length > longestOption)
+            {
+                longestOption = optionText.Length;
             }
         }
 
-        float offsetOption = interactionMenuOptionGap * (optionsCollection.options.Count / 2);
+        float offsetOption = interactionMenuOptionGap * (optionsCollection.Options.Length / 2);
 
         offsetOption -= interactionMenuOptionGap;
 
@@ -245,7 +291,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
         // Display each option in a button, and make it visible
         int j = 0;
-        foreach (var optionString in optionsCollection.options)
+        foreach (var optionString in optionsCollection.Options)
         {
             GameObject go = Instantiate(_optionBubble, playerSpeechHandler.transform);
             SpeechBubble button = go.GetComponent<SpeechBubble>();
@@ -253,14 +299,24 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             button.SetHeight(offsetOption);
 
             if (j == 0)
+            {
                 button.SelectButton(false);
+            }
             else
+            {
                 button.DeselectButton();
+            }
 
-            button.SetContents(optionString);
+            if (strings.TryGetValue(optionString.Line.ID, out var optionText) == false) 
+            {
+                Debug.LogWarning($"Option {optionString.Line.ID} doesn't have any localised text");
+                optionText = optionString.Line.ID;
+            }
+
+            button.SetContents(optionText);
 
             // Grab the length of the contents
-            int contentsLength = optionString.Length;
+            int contentsLength = optionText.Length;
 
             button.ShowBubble();
             button.GrowBubble();
@@ -275,14 +331,13 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
         }
 
         int selected = 0;
-        bool optionSelected = false;
 
         // Wait until the chooser has been used and then removed (see SetOption below)
-        while (!optionSelected)
+        while (waitingForOptionSelection)
         {
             if (Global.input.GetButtonDown("Talk"))
             {
-                optionSelected = true;
+                waitingForOptionSelection = false;
             }
             else if (Global.input.GetButtonDown("UI|Up"))
             {
@@ -299,7 +354,7 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             {
                 optionButtons[selected].DeselectButton();
 
-                if (selected < optionsCollection.options.Count - 1)
+                if (selected < optionsCollection.Options.Length - 1)
                 {
                     selected++;
                 }
@@ -310,6 +365,9 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
             yield return null;
         }
 
+        selectOption(optionsCollection.Options[selected].ID);
+        print("selected option: " + optionsCollection.Options[selected].ID);
+
         // Hide all the buttons
         foreach (var button in optionButtons)
         {
@@ -319,49 +377,51 @@ public class DialogueHandler : Yarn.Unity.DialogueUIBehaviour
 
         optionButtons.Clear();
 
-        optionChooser?.Invoke(selected);
+        // Avoid skipping lines if textSpeed == 0
+        yield return new WaitForEndOfFrame();
+        
+        onOptionsEnd?.Invoke();
 
         yield break;
-    }
-
-    /// Called by buttons to make a selection.
-    public void SetOption(int selectedOption)
-    {
-        // Call the delegate to tell the dialogue system that we've
-        // selected an option.
-        SetSelectedOption(selectedOption);
-
-        // Now remove the delegate so that the loop in RunOptions will exit
-        SetSelectedOption = null;
     }
 
     /// Run an internal command.
-    public override IEnumerator RunCommand(Yarn.Command command)
+    public override Yarn.Dialogue.HandlerExecutionType RunCommand (Yarn.Command command, System.Action onComplete) 
     {
-        // "Perform" the command
-        Debug.Log("Command: " + command.text);
+        StartCoroutine(DoRunCommand(command, onComplete));
 
-        yield break;
+        return Yarn.Dialogue.HandlerExecutionType.PauseExecution;
+    }
+
+    public IEnumerator DoRunCommand (Yarn.Command command, System.Action onComplete)
+    {
+        yield return StartCoroutine(CommandUtils.Dispatch(command.Text, this));
+
+        onComplete();
     }
 
     /// Called when the dialogue system has started running.
-    public override IEnumerator DialogueStarted()
+    public override void DialogueStarted()
     {
-        Debug.Log("Dialogue starting!");
+        Debug.Log ("Dialogue starting!");
+        
+        // Set variable to true
         inDialogue = true;
 
-        yield break;
+        // Send to any listeners
+        onDialogueStart?.Invoke();
     }
 
     /// Called when the dialogue system has finished running.
-    public override IEnumerator DialogueComplete()
+    public override void DialogueComplete()
     {
         Debug.Log("Complete!");
+
+        // Set variable to false
         inDialogue = false;
 
-        dialogueEnd?.Invoke();
-
-        yield break;
+        // Send to any listeners
+        onDialogueEnd?.Invoke();
     }
 
     public void StartDialogue(string nodeName)

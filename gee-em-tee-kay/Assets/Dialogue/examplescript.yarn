@@ -1,0 +1,27 @@
+title: Node1
+---
+Player: dialogue goes here
+Player: if you want to do a choice, you do it like so
+[[choice text here|Node2]]
+[[other choice text here|Node3]]
+===
+
+title: Node2
+---
+Player: the first choice takes you here
+===
+
+title: Node3
+---
+Player: the second choice takes you here
+Player: additionally, there are the following tags
+Player: [wavey]this is how you do wavey text[/w] it acts as a toggle
+Player: [bold]this is how you do bold text[/b] its also a toggle
+Player: [italics]this is how you do italics[/i] also a toggle
+Player: [jittery]this is the jittery text[/j] toggle
+Player: {shake=1.0}this is screen shake. its not a toggle, it just happens on the character you put it before. also works with or without parameters
+Player: [color=!13468b]this is the colour tag. it responds to presets and also hex codes?[/c] toggle
+Player: this is the {delay=0.2} tag. the parameter is the amount of seconds
+Player: and i think that's it?
+Player: [rainbow]oh also this is the bi rainbow text[/r] also a toggle
+===

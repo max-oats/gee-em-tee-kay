@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: 2fa3497db2083a7488eafbf49ff99b82
+ScriptedImporter:
+  fileIDToRecycleName:
+    4900000: Strings
+    11400000: Program
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en
+  stringIDs:
+  - day2-Day2.Drowning-0
+  - day2-Day2.Drowning-1
+  - day2-Day2.Drowning-2
+  - day2-Day2.Drowning-3
+  - day2-Day2.Talk-4
+  - day2-Day2.Talk-5
+  - day2-Day2.Talk-6
+  - day2-Day2.Talk-7
+  - day2-Day2.Talk-8
+  - day2-Day2.Talk-9
+  - day2-Day2.Talk-10
+  - day2-Day2.Talk-11
+  - day2-Day2.Talk-12
+  - day2-Day2.Talk-13
+  - day2-Day2.Talk-14
+  - day2-Day2.Talk-15
+  - day2-Day2.Talk-16
+  - day2-Day2.Talk-17
+  - day2-Day2.Talk-18
+  - day2-Day2.Horny-19
+  - day2-Day2.Horny-20
+  - day2-Day2.Horny-21
+  - day2-Day2.Horny-22
+  - day2-Day2.Horny-23
+  - day2-Day2.Jealous-24
+  - day2-Day2.Jealous-25
+  - day2-Day2.Jealous-26
+  - day2-Day2.Jealous-27
+  - day2-Day2.Men-28
+  - day2-Day2.Men-29
+  - day2-Day2.Men-30
+  - day2-Day2.Men-31
+  - day2-Day2.Men-32
+  - day2-Day2.Men-33
+  - day2-Day2.Men-34
+  - day2-Day2.Anyway-35
+  - day2-Day2.Anyway-36
+  - day2-Day2.Anyway-37
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: "Error on line 8 at position 4:\nmismatched input '\\n\\n'
+    expecting ':'\r\n===\r\n   ^^"

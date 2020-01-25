@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 91d19c3e5cbfb58429c1a5b451acb76d
+ScriptedImporter:
+  fileIDToRecycleName:
+    4900000: Strings
+    11400000: Program
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en
+  stringIDs:
+  - examplescript-Node1-0
+  - examplescript-Node1-1
+  - examplescript-Node1-2
+  - examplescript-Node1-3
+  - examplescript-Node2-4
+  - examplescript-Node3-5
+  - examplescript-Node3-6
+  - examplescript-Node3-7
+  - examplescript-Node3-8
+  - examplescript-Node3-9
+  - examplescript-Node3-10
+  - examplescript-Node3-11
+  - examplescript-Node3-12
+  - examplescript-Node3-13
+  - examplescript-Node3-14
+  - examplescript-Node3-15
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
