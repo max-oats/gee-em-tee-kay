@@ -53,5 +53,6 @@ MonoBehaviour:
   maxNumberOfLeavesPerDay: 3
   deadColor: {r: 0, g: 0, b: 0, a: 1}
   windowLocation: {fileID: 0}
-  swayAmplitudeDegrees: 10
-  swaySpeedScale: 0.5
+  swayAmplitudeDegrees: 20
+  swaySpeedScale: 0.7
+  swayOffset: -0.5

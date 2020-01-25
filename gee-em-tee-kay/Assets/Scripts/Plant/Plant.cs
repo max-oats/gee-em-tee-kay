@@ -21,6 +21,7 @@ public class Plant : MonoBehaviour
 
     [SerializeField] private float swayAmplitudeDegrees;
     [SerializeField] private float swaySpeedScale;
+    [SerializeField] private float swayOffset;
 
     private GameObject flowerPrefab;
     private ColorHSV initialPrimaryFlowerColor;
@@ -186,14 +187,20 @@ public class Plant : MonoBehaviour
             if (debugShouldSway)
             {
                 Vector3 forwardRelativeToScene = Quaternion.Inverse(transform.rotation) * Vector3.forward;
-                Transform transformToSpin = sections[1].transform;
-                Quaternion stemRotation = Quaternion.AngleAxis(swayAmplitudeDegrees * Mathf.Sin(swaySpeedScale * Time.time), forwardRelativeToScene);
-                transformToSpin.localRotation = stemRotation;
+                for (int i = 1; i < sections.Count; i++)
+                {
+                    Transform transformToSpin = sections[i].transform;
+                    Quaternion stemRotation = Quaternion.AngleAxis(swayAmplitudeDegrees / sections.Count * Mathf.Sin(swaySpeedScale * Time.time + i * swayOffset), forwardRelativeToScene);
+                    transformToSpin.localRotation = stemRotation;
+                }
             }
             else
             {
-                Transform transformToSpin = sections[1].transform;
-                transformToSpin.localRotation = new Quaternion();
+                for (int i = 1; i < sections.Count; i++)
+                {
+                    Transform transformToSpin = sections[i].transform;
+                    transformToSpin.localRotation = new Quaternion();
+                }
             }
         }
     }
