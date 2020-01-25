@@ -26,6 +26,27 @@ ModelImporter:
     100040: Bone_008
     100042: Bone_009
     100044: Bone_010
+    100046: Bone.001
+    100048: Bone.002
+    100050: Bone.003
+    100052: Bone.004
+    100054: Bone.005
+    100056: Bone.006
+    100058: Bone.007
+    100060: Bone.008
+    100062: Bone.009
+    100064: Bone.009_end
+    100066: Bone.010
+    100068: Bone.010_end
+    100070: Camera
+    100072: Cube.001
+    100074: Cube.002
+    100076: Cube.003
+    100078: Cube.004
+    100080: Cylinder.001
+    100082: Cylinder.002
+    100084: Cylinder.003
+    100086: Lamp
     400000: //RootNode
     400002: Cube
     400004: Cube_001
@@ -49,6 +70,28 @@ ModelImporter:
     400040: Bone_008
     400042: Bone_009
     400044: Bone_010
+    400046: Bone.001
+    400048: Bone.002
+    400050: Bone.003
+    400052: Bone.004
+    400054: Bone.005
+    400056: Bone.006
+    400058: Bone.007
+    400060: Bone.008
+    400062: Bone.009
+    400064: Bone.009_end
+    400066: Bone.010
+    400068: Bone.010_end
+    400070: Camera
+    400072: Cube.001
+    400074: Cube.002
+    400076: Cube.003
+    400078: Cube.004
+    400080: Cylinder.001
+    400082: Cylinder.002
+    400084: Cylinder.003
+    400086: Lamp
+    2000000: Camera
     2100000: unnamed
     2100002: None__ColourAtlas_png
     2100004: MainMaterial__ColourAtlas_png
@@ -59,6 +102,9 @@ ModelImporter:
     2100014: MainMaterial__WallTexture1_png
     2100016: WallMaterialDark__WallTexture1_png
     2100018: MainMaterial
+    2100020: No Name
+    2100022: WallMaterialDark
+    2100024: WoodMaterial
     2300000: //RootNode
     2300002: Cube
     2300004: Cube_001
@@ -70,6 +116,12 @@ ModelImporter:
     2300016: Cube_003
     2300018: Cube_004
     2300020: Plane
+    2300022: Cube.001
+    2300024: Cube.002
+    2300026: Cube.003
+    2300028: Cube.004
+    2300030: Cylinder.002
+    2300032: Cylinder.003
     3300000: //RootNode
     3300002: Cube
     3300004: Cube_001
@@ -81,6 +133,12 @@ ModelImporter:
     3300016: Cube_003
     3300018: Cube_004
     3300020: Plane
+    3300022: Cube.001
+    3300024: Cube.002
+    3300026: Cube.003
+    3300028: Cube.004
+    3300030: Cylinder.002
+    3300032: Cylinder.003
     4300000: Cube
     4300002: Cube_001
     4300004: Cube_002
@@ -91,10 +149,19 @@ ModelImporter:
     4300014: Plane
     4300016: Cube_004
     4300018: Cube_003
+    4300020: Cylinder.001
+    4300022: Cube.004
+    4300024: Cube.003
+    4300026: Cylinder.003
+    4300028: Cylinder.002
+    4300030: Cube.002
+    4300032: Cube.001
     7400000: Default Take
     7400002: ArmatureAction
     9500000: //RootNode
+    10800000: Lamp
     13700000: Cylinder_001
+    13700002: Cylinder.001
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -110,6 +177,26 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MainMaterial__WallTexture1_png
+    second: {fileID: 2100000, guid: 8a706827106afc64faee4e6823791882, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Masked
+    second: {fileID: 2100000, guid: a22deaf74ad20614f895edbe1810ae6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 9ad1ba90beb79d94e979cf580705064b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallMaterialDark
+    second: {fileID: 2100000, guid: 3c81f8eea92192d4fb9efc23221fcb12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodMaterial
     second: {fileID: 2100000, guid: 8a706827106afc64faee4e6823791882, type: 2}
   - first:
       type: UnityEngine:Material
@@ -174,8 +261,8 @@ ModelImporter:
     - serializedVersion: 16
       name: ArmatureAction
       takeName: ArmatureAction
-      firstFrame: 0
-      lastFrame: 145
+      firstFrame: 1
+      lastFrame: 147
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -198,7 +285,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -208,8 +295,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

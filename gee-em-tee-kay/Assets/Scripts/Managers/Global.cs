@@ -10,6 +10,7 @@ public class Global : MonoBehaviour
     public static DayManager dayManager;
     public static CamController cameraController;
     public static DialogueHandler dialogueHandler;
+    public static FlagManager flagManager;
     public static PlantManager plantManager;
     public static PlantHealthData plantHealthData;
     public static PotPositionHolder potPositionHolder;
@@ -40,6 +41,7 @@ public class Global : MonoBehaviour
             cameraController = camController;
             dialogueHandler = diaHandler;
             dayManager = theDayManager;
+            flagManager = GetComponentInChildren<FlagManager>();;
             plantManager = thePlantManager;
             plantHealthData = thePlantHealthData;
             potPositionHolder = thePotPositionHolder;
