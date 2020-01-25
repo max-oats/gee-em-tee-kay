@@ -45,13 +45,13 @@ tags:
 ---
 <<phoneOn Player>>
 Player: yeah, {delay=0.2}i'm walking into the new place right now!
-Player: well, its{delay=0.2}.{delay=0.2}.{delay=0.2}. cozy.
+Player: well, it's{delay=0.2}.{delay=0.2}.{delay=0.2}. cozy.
 Player: they left a [color=green]plant pot[/color] here
 Player: which i guess is my bed now?
 Player: bud!!!! {delay=0.2}i am totally fine!|toootally
 Player: it was [b]totally[/b] mutual.|was that convincing?
 Player: yeah, the moving van isn't bringing the furniture for another [e][b]5 days!!!!!!!
-Player: but don't worry. 
+Player: but don't worry.
 Player: i spent my remaining £2 on a seed for my plant pot!!!!!
 Player: {d=0.2}.{d=0.2}.{d=0.2}. hello?
 <<phoneOff Player>>
