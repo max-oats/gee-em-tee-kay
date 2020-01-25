@@ -27,6 +27,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Main__MainTex_png
     second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
   - first:

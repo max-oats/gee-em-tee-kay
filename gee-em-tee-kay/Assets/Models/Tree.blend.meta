@@ -192,6 +192,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Masked
+    second: {fileID: 2100000, guid: a22deaf74ad20614f895edbe1810ae6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Masked__MainTex_png
     second: {fileID: 2100000, guid: a22deaf74ad20614f895edbe1810ae6b, type: 2}
   materials:

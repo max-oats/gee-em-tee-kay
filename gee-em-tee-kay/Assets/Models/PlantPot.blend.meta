@@ -44,6 +44,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: MainMaterial__MainTex_png
     second: {fileID: 2100000, guid: 64a767a199fd88846aa243b0e5fd328b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shadow
+    second: {fileID: 2100000, guid: 63c3336a62ad0ad48bcb78393eb73b3d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
