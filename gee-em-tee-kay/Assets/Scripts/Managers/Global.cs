@@ -17,8 +17,6 @@ public class Global : MonoBehaviour
     public static bool hasStarted = false;
     public static DebugStuff debug;
 
-    public static string plantName;
-
     [SerializeField] private CamController camController;
     [SerializeField] private DialogueHandler diaHandler;
     [SerializeField] private DayManager theDayManager;
@@ -51,11 +49,11 @@ public class Global : MonoBehaviour
         }
     }
 
-    public static void AddName()
+    public static void AddName(string name)
     {
         var writer = new StreamWriter(Application.dataPath + "/namesList.txt", true);
 
-        writer.WriteLine("- " + plantName);
+        writer.WriteLine("- " + name);
 
         writer.Close();
     }

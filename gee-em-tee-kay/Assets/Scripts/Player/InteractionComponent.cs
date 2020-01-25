@@ -137,7 +137,7 @@ public class InteractionComponent : MonoBehaviour
                 if (interactString.Length > 0)
                 {
                     plantNamed = true;
-                    Global.plantName = interactString;
+                    Global.flagManager.SetFlag("$plant_name", interactString);
                     Global.plantManager.CreatePlant(interactString.GetHashCode());
                 }
             }
@@ -205,11 +205,11 @@ public class InteractionComponent : MonoBehaviour
 
         string nodeName = "Day1.NamePlant";
 
-        Global.AddName();
+        Global.AddName(Global.flagManager.GetFlag("$plant_name"));
 
         foreach (SpecialName sn in Global.dialogueHandler.specialNames)
         {
-            if (Global.plantName == sn.plantName)
+            if (Global.flagManager.GetFlag("$plant_name") == sn.plantName)
             {
                 nodeName += "." + sn.nodeName;
             }

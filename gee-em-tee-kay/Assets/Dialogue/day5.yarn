@@ -33,7 +33,7 @@ Player: bye
 
 title: Day5.Talk
 ---
-Player: so PLANTNAME!
+Player: so {$plant_name}!
 Player: hey...
 Player: ...
 Player: so you survived the whole week, huh?
@@ -94,7 +94,7 @@ Player: people think they can control their lives, but at the end of the day
 Player: you can do [i]everything[/i] right and life will still find a way to [j]screw you over[/j]
 Player: ...
 Player: at least you stayed with me, huh?
-Player: i've still got you, eh, PLANTNAME?
+Player: i've still got you, eh, {$plant_name}?
 Player: ...
 Player: ...
 Player: anyway
@@ -124,7 +124,7 @@ Player: i've learned a lot, and the person i was at the end of that relationship
 Player: i don't want to be him anymore
 Player: i think that i can take the lessons i learned and change myself
 Player: for the better
-Player: you're looking mighty fine for a start, PLANTNAME!
+Player: you're looking mighty fine for a start, {$plant_name}!
 Player: if i do say so myself
 Player: so you know, maybe it's not so bad
 Player: this is a [wavey]fresh start[/w]
@@ -158,7 +158,7 @@ Player: and i'm slowly learning to not blame myself for that either
 Player: i can acknowledge my mistakes without beating myself up over something that really, in the end...
 Player: i had no control over
 Player: ...
-Player: so thank you for showing me that, PLANTNAME
+Player: so thank you for showing me that, {$plant_name}
 Player: just because something has [wavey]infinite potential...[/w]
 Player: doesn't mean that you can change everything about it
 [[Day5.KeepOrChuckChoice]]
@@ -176,7 +176,7 @@ Player: you've made a bad week a lot better
 Player: thanks, buddy
 Player: ...
 Player: my furniture arrives tomorrow
-Player: and that presents me with a tough decision, PLANTNAME
+Player: and that presents me with a tough decision, {$plant_name}
 Player: if i keep you, i'll probably have to get rid of something else
 Player: it's gonna be hard to fit all my stuff in anyway, without you taking up roughly [wavey]one ninth[/w] of my floor space
 Player: but at the same time...
@@ -189,8 +189,8 @@ Player: ...
 Player: yeah, that's pretty much what i expected
 Player: ...
 Player: ...
-[[keep PLANTNAME|Day5.KeepPlant]]
-[[don't keep PLANTNAME|Day5.ChuckPlant]]
+[[keep {$plant_name}|Day5.KeepPlant]]
+[[don't keep {$plant_name}|Day5.ChuckPlant]]
 ===
 
 title: Day5.KeepPlant
@@ -213,7 +213,7 @@ Player: nah that's dumb
 title: Day5.ChuckPlant
 ---
 <<chuckPlant>>
-Player: PLANTNAME...
+Player: {$plant_name}...
 Player: i gotta be real with you
 Player: you changed my life
 Player: and not like in some awful [a]"going to africa for a week [b]changed my life[/b]!!!"[/a] kinda way
@@ -224,7 +224,7 @@ Player: when i first walked into this room and it was just so [jittery]empty[/j]
 Player: i could just feel that i...
 Player: i could just tell, i...
 Player: ...
-Player: in a very real way, PLANTNAME, you saved me
+Player: in a very real way, {$plant_name}, you saved me
 Player: and i will never forget you
 Player: ...
 Player: i've given you so much of my pain
@@ -237,6 +237,6 @@ Player: and they'll see how tall and bright you are
 Player: and they'll see what a good listener you are!
 Player: ...
 Player: i like that idea
-Player: thank you, PLANTNAME
+Player: thank you, {$plant_name}
 Player: thank you for everything
 ===

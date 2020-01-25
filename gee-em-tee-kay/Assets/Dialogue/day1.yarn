@@ -1,36 +1,36 @@
 title: Day1.NamePlant
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: i'm so sorry.
 ===
 
 title: Day1.NamePlant.Max
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: [jitter][bold]lmaoooooo what a dang loser!!!!!!!!
 ===
 
 title: Day1.NamePlant.MaxHandsome
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: that is one [italics]handsome[/i] name.
 ===
 
 title: Day1.NamePlant.Robin
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: which means you're gonna go to cambridge!! that's so exciting!
 ===
 
 title: Day1.NamePlant.Flowey
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: it fills you with [jittery]determination.
 ===
 
 title: Day1.NamePlant.Plant
 ---
-Player: you are called PLANTNAME now.
+Player: you are called {$plant_name} now.
 Player: wow, that is real original. good work, me.
 ===
 
@@ -54,6 +54,6 @@ Player: i think i'd hang up on me too.
 title: Day1.Talk
 ---
 Player: ...
-Player: ok. {delay=0.2}i'm not gonna talk to you, PLANTNAME.
+Player: ok. {delay=0.2}i'm not gonna talk to you, {$plant_name}.
 Player: your name is [i]far too[/i] [b][j]cursed.[/b][/j]|chris used to talk to plants.
 ===

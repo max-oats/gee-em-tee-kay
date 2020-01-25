@@ -24,7 +24,7 @@ Player: that is [jittery]not[/j] a metaphor for my relationship!
 
 title: Day3.Talk
 ---
-Player: so... PLANTNAME.
+Player: so... {$plant_name}.
 Player: i can't believe i'm saying this
 Player: but talking to you actually helped yesterday.
 Player: so i'm gonna try this out!
@@ -89,5 +89,5 @@ title: Day3.NoUse
 ---
 Player: .{delay=0.1}.{delay=0.1}.
 Player: ah... {delay=0.2}this isn't helping.
-Player: sorry PLANTNAME. i know you mean well.
+Player: sorry {$plant_name}. i know you mean well.
 ===
